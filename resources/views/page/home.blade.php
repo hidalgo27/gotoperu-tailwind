@@ -13,8 +13,8 @@
 
         <div class="relative grid mt-48 grid-cols-1 gap-12 place-items-center text-center justify-center text-white z-30">
             <div>
-                <h1 class="text-5xl mb-6 font-bold font-cinzel text-secondary">Peru small groups and private tours</h1>
-                <h3 class="text-2xl text-gray-50">Unique experiences and connections like no other.</h3>
+                <h1 class="text-5xl mb-6 font-bold font-cinzel text-secondary">Expertise in Peru travel matters</h1>
+                <h3 class="text-2xl text-gray-50">Explore our favorite Peru crafted itineraries to help inspire your next adventure</h3>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
 
 
     <section class="container py-16 text-gray-500 text-center mx-auto relative">
-        <p>Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
+        <p>Peru travel packages with an award-winning team on a completely customized, private or group tour for an authentic Peru trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore MachuPicchu, Cusco, Lima, Lake Titicaca, the Amazon and many more unique Peruvian destinations safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
 
 
     </section>
@@ -406,8 +406,8 @@
             <img src="{{asset('images/cua2.jpg')}}" alt="" class="object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
             <div class="absolute inset-y-0 left-0 w-64 p-6 bg-primary bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-2xl">Cusco & Machu Picchu</h3>
-                <p class="mt-3 mb-6 block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque error laudantium nostrum? Accusantium eum.</p>
-                <a href="#" class="btn-white">All destinations</a>
+                <p class="mt-3 mb-6 block text-sm">Travel Packages to Machu Picchu with breathtaking scenery, visit the Incas highest archeological achievement, and you will tune in to the mystery that is at the heart of the Andean Mountains. If you are planning a trip to Machu Picchu, take advantage of our first-class tour service from the city of Cusco to Ollantaytambo and Aguas Calientes.</p>
+                <a href="/destinations/machu-picchu" class="btn-white">All destinations</a>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -692,11 +692,12 @@
             <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
             <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
             <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-        </div> GOTOPERU
+        </div> Peru Travel Information
     </div>
     <section class="flex container gap-4">
-        <div class="w-3/5">
-            <img src="https://picsum.photos/700/555" alt="" class="object-cover">
+        <div class="w-3/5 relative">
+            <img src="{{asset('images/hotel.jpg')}}" alt="" class="object-cover">
+            <div class="absolute inset-0 gradient-cicle-gray"></div>
         </div>
         <div class="w-2/5 bg-secondary bg-opacity-20 p-6 flex items-center">
             <div class="">
@@ -708,15 +709,22 @@
                     <span class="inline-block w-3 h-2 bg-secondary ml-1"></span>
                     <span class="inline-block w-1 h-2 bg-secondary ml-1"></span>
                 </div>
-                <p class="block my-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ab beatae eveniet expedita explicabo harum iste maiores nostrum odit porro quae quaerat ratione repellat sapiente unde, vero vitae voluptas voluptates.</p>
-                <a href="" class="btn-primary">View all</a>
+                <p class="block my-12">
+                    At GOTOPERU our expert local team handpicked the best Peru hotels at each category.
+                    All feature excellent locations and facilities for a comfortable stay, plus the best service and warm peruvian hospitality. Our hotels will be a great part of an unforgettable Peru vacation!
+                    Select your preferred Hotel category for all our Peru travel packages.
+                </p>
+                <a href="#" class="btn-primary">View all</a>
             </div>
         </div>
     </section>
 
     <section class="flex my-4 container gap-4">
         <div class="relative flex items-center">
-            <img src="https://picsum.photos/390/620" alt="" class="bg-cover h-full">
+            <div class="relative">
+                <img src="{{asset('images/blog.jpg')}}" alt="" class="bg-cover h-full">
+            </div>
+            <div class="absolute inset-0 gradient-cicle-gray"></div>
             <div class="absolute inset-x-0 bottom-0 p-6 m-6  rounded-lg shadow-lg text-gray-500 bg-gray-50">
                 <h3 class="font-semibold text-2xl">Lugares Para Visitar en Perú en el 2021</h3>
                 <div class="flex inline-flex divide-x text-xs my-3 divide-gray-500 gap-1">
@@ -757,13 +765,13 @@
             <div class="absolute inset-0 p-6 bg-gray-900 bg-opacity-50">
                 <div class="flex flex-col h-full justify-end">
                     <div class="text-gray-50 text-right">
-                        <h3 class="font-semibold text-2xl">Noticias y guias</h3>
+                        <h3 class="font-semibold text-2xl">News and travel guides</h3>
                         <div class=" mb-10">
                             <span class="inline-block w-1 h-2 bg-white ml-1"></span>
                             <span class="inline-block w-3 h-2 bg-white ml-1"></span>
                             <span class="inline-block w-20 h-2 bg-white"></span>
                         </div>
-                        <p class="block my-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ab beatae eveniet expedita explicabo harum iste maiores nostrum odit porro quae quaerat ratione repellat sapiente unde, vero vitae voluptas voluptates.</p>
+                        <p class="block my-12">Welcome travelers to our Peru blog, you will find useful Peru travel information and much more to inspire you for your next vacation to the land of the Incas including travel tips for Lima, Cusco, the Inca Trail, Machu Picchu, the Amazon and many other peruvian amazing destinations.</p>
                         <a href="" class="btn-secondary">View all</a>
                     </div>
                     <div class="">sd</div>

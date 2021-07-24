@@ -119,7 +119,9 @@
                     <div class="">
                         @foreach($paquete['paquetes_destinos'] as $paquete_destino)
                             <h3 class="font-semibold mt-3">{{$paquete_destino['destinos']['nombre']}}</h3>
-                            <div class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci at aut autem cumque eligendi explicabo id.</div>
+                            <div class="text-sm">
+                                {!! $paquete_destino['destinos']['resumen'] !!}
+                            </div>
                         @endforeach
                     </div>
 
@@ -172,8 +174,67 @@
 
                 </div>
                 <div class="w-2/6">
-                    <div class="border sticky top-0 top-16 px-6">
-                        <img src="https://gotolatinamerica.com/img/maps/GTLM1700.jpg" alt="">
+                    <div class="flex flex-col sticky top-0 top-16 gap-3">
+{{--                        <img src="https://gotolatinamerica.com/img/maps/GTLM1700.jpg" alt="">--}}
+                        <div class="flex gap-3">
+                            <div class="flex-1 border p-3 flex text-xl items-center justify-center">
+                                {{ $paquete['duracion'] }} days
+                            </div>
+                            <div class="flex-1 border p-3 flex items-center">
+                                @foreach($paquete['precio_paquetes'] as $precio)
+                                    @if($precio['estrellas'] == 2)
+                                        @if($precio['precio_d'] > 0)
+                                            <div class="text-xl font-semibold text-gray-600">
+                                                <span> from </span>
+                                                <span>${{$precio['precio_d']}}</span>
+                                                <span class="text-xs"> usd</span>
+                                            </div>
+                                        @else
+                                            <span class="text-red-500 font-bold">Consulte</span>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="p-6 border">
+                            <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2>
+                            <div class="mt-3 text-sm text-gray-600">
+                                @foreach($paquete['paquetes_destinos'] as $paquete_destino)
+                                    {{$paquete_destino['destinos']['nombre']}}
+                                    @if ($loop->iteration < count($paquete['paquetes_destinos'])) , @else . @endif
+                                @endforeach
+                            </div>
+                            {{--                    <div class="text-gray-600 text-sm bg-secondary rounded-lg shadow-lg my-4 p-3">--}}
+
+                            {{--                    </div>--}}
+                        </div>
+
+                        <div class="">
+                            {{--                    <a href="" class="btn-secondary text-center block">Request a Quote</a>--}}
+                            {{--                    <form-detail-component></form-detail-component>--}}
+                            @livewire('page.form-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))
+                        </div>
+
+                        <div class="mt-4">
+                            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                                <div class="">
+                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                                </div> Destinations included
+                            </div>
+
+{{--                            <hr class="mt-2 mb-4">--}}
+                            @foreach($paquete['paquetes_destinos'] as $paquete_destino)
+                                <h3 class="font-semibold mt-3 flex text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    {{$paquete_destino['destinos']['nombre']}}
+                                </h3>
+                            @endforeach
+                        </div>
+
                     </div>
                 </div>
             </div>
