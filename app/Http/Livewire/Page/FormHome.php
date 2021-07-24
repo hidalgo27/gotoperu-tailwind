@@ -28,7 +28,7 @@ class FormHome extends Component
             'email' => 'required|email'
         ]);
 
-        $from = 'info@gotoperu.com';
+        $from = 'martin@gotoperu.com';
 
         $destinations_s = '';
         foreach ($this->values_destinations as $item) {
@@ -44,7 +44,7 @@ class FormHome extends Component
                 $messaje->to($this->email, $this->name)
                     ->subject('GotoPeru')
                     /*->attach('ruta')*/
-                    ->from('info@gotoperu.com', 'GotoPeru');
+                    ->from('martin@gotoperu.com', 'GotoPeru');
             });
             Mail::send(['html' => 'notifications.page.admin-form-contact'], [
                 'nombre' => $this->name,
@@ -62,7 +62,7 @@ class FormHome extends Component
                     ->subject('GotoPeru')
 //                    ->cc($from2, 'GotoPeru')
                     /*->attach('ruta')*/
-                    ->from('info@gotoperu.com', 'GotoPeru');
+                    ->from('martin@gotoperu.com', 'GotoPeru');
             });
 
         $this->reset('values_destinations');
