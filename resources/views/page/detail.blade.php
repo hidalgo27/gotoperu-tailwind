@@ -1,0 +1,235 @@
+<x-page-layout>
+    @foreach($paquetes_api as $paquetes)
+        <section class="-mt-32 h-80vh -z-1 relative">
+            @foreach($paquetes['imagen_paquetes'] as $imagen)
+                <img src="{{$imagen['nombre']}}" alt="{{$paquetes['titulo']}}" class="h-full w-full object-cover">
+            @endforeach
+            <div class="absolute bottom-0 left-0 p-12">
+                <h1 class="text-5xl font-semibold mb-3 text-gray-50">{{ $paquetes['titulo'] }}</h1>
+            </div>
+        </section>
+
+        <section class="container mt-12 flex gap-4">
+            <div class="w-4/6">
+                <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                    <div class="">
+                        <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                        <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                    </div> Overview
+                </div>
+                <div class="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis consequuntur doloribus id perferendis ratione recusandae, soluta temporibus ut? Ad cum eum expedita itaque maxime nostrum perferendis porro, quibusdam quidem. Consequuntur!
+                </div>
+
+            </div>
+            <div class="w-2/6 flex flex-col gap-3">
+                <div class="flex gap-3">
+                    <div class="flex-1 border p-3 flex text-xl items-center justify-center">
+                        {{ $paquetes['duracion'] }} days
+                    </div>
+                    <div class="flex-1 border p-3 flex items-center">
+                        @foreach($paquetes['precio_paquetes'] as $precio)
+                            @if($precio['estrellas'] == 2)
+                                @if($precio['precio_d'] > 0)
+                                    <div class="text-xl font-semibold text-gray-600">
+                                        <span> from </span>
+                                        <span>${{$precio['precio_d']}}</span>
+                                        <span class="text-xs"> usd</span>
+                                    </div>
+                                @else
+                                    <span class="text-red-500 font-bold">Consulte</span>
+                                @endif
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                <div class="p-6 border">
+                    <h2 class="text-2xl font-bold text-gray-600"> {{$paquetes['titulo']}}</h2>
+                    <div class="mt-3 text-sm text-gray-600">
+                        @foreach($paquetes['paquetes_destinos'] as $paquete_destino)
+                            {{$paquete_destino['destinos']['nombre']}}
+                            @if ($loop->iteration < count($paquetes['paquetes_destinos'])) , @else . @endif
+                        @endforeach
+                    </div>
+                    {{--                    <div class="text-gray-600 text-sm bg-secondary rounded-lg shadow-lg my-4 p-3">--}}
+
+                    {{--                    </div>--}}
+                </div>
+
+                <div class="">
+                    {{--                    <a href="" class="btn-secondary text-center block">Request a Quote</a>--}}
+                    <form-detail-component></form-detail-component>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="container mt-12 mb-3">
+            <div class="flex items-center text-lg text-gray-700 font-bold gap-2">
+                <div class="c">
+                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                </div> Destinations
+            </div>
+        </div>
+        <section class="flex flex-col gap-4">
+
+            <div class="flex gap-3">
+                <div class="flex w-4/6 gap-3">
+                    {{--                    <div class="flex-shrink">--}}
+
+                    {{--                    </div>--}}
+                    @php $i = 1; @endphp
+                    <div class="grid grid-cols-2 place-content-between gap-3">
+                        @foreach($paquetes['paquetes_destinos'] as $paquete_destino)
+
+                            {{--                        {{}}--}}
+                            {{--                            count($paquetes['paquetes_destinos'])--}}
+                            @foreach($paquete_destino['destinos']['destino_imagen'] as $destino_imagen)
+                                <div class="relative @if (count($paquetes['paquetes_destinos'])%2 != 0 AND $i == 1) col-span-2 @endif">
+                                    {{--                                    {{count($paquetes['paquetes_destinos'])}}--}}
+                                    <img src="{{$destino_imagen['nombre']}}" alt="" class="@if (count($paquetes['paquetes_destinos'])%2 != 0 AND $i == 1) object-cover h-80 object-bottom w-full @endif">
+                                    <div class="absolute inset-x-0 bottom-0 text-sm tracking-wide text-white p-2 font-medium">
+                                        {{$paquete_destino['destinos']['nombre']}}
+                                    </div>
+                                </div>
+                                @php $i++ @endphp
+                            @endforeach
+                        @endforeach
+
+
+                        {{--                        <div class="relative">--}}
+                        {{--                            <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/slider/1574272013161cusco2_1574272012.jpg" alt="" class="">--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="relative">--}}
+                        {{--                            <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/slider/1574272013161cusco2_1574272012.jpg" alt="" class="">--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="w-1/2">--}}
+                        {{--                            <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/slider/1574272013161cusco2_1574272012.jpg" alt="" class="">--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="w-1/2">--}}
+                        {{--                            <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/slider/1574272013161cusco2_1574272012.jpg" alt="" class="">--}}
+                        {{--                        </div>--}}
+                    </div>
+                </div>
+                <div class="w-2/6 bg-primary flex items-center bg-opacity-30 p-6">
+                    <div class="">
+                        @foreach($paquetes['paquetes_destinos'] as $paquete_destino)
+                            <h3 class="font-semibold mt-3">{{$paquete_destino['destinos']['nombre']}}</h3>
+                            <div class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci at aut autem cumque eligendi explicabo id.</div>
+                        @endforeach
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12 container flex flex-col gap-4">
+
+            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                <div class="">
+                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                </div> itinerary
+            </div>
+
+            <div class="flex gap-4">
+                <div class="w-4/6">
+                    <itinerary-component :idpackage="{{$paquetes['id']}}"></itinerary-component>
+                </div>
+                <div class="w-2/6">
+                    <div class="border sticky top-0 top-16 px-6">
+                        <img src="https://gotolatinamerica.com/img/maps/GTLM1700.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="my-12 container flex flex-col gap-4">
+
+            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                <div class="">
+                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                </div> Prices
+            </div>
+            <p>Los precios estan basados en doble acomodación.</p>
+            <div class="">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                            Economic
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                            Tourist
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                            Superior
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                            Luxury
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                        @foreach($paquetes['precio_paquetes'] as $precio)
+                            @if($precio['precio_d'] > 0)
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_d']}}<small>USD</small></td>
+                            @else
+                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">Inquire</td>
+                            @endif
+                        @endforeach
+
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <p class="text-sm text-gray-500">*Si tiene algún hotel en especifico con gusto lo prepararemos una cotización personalizada.</p>
+                        </td>
+                    </tr>
+
+                    <!-- More people... -->
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <section class="my-12 container">
+
+            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                <div class="">
+                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                </div> Included
+            </div>
+            <div class="">
+                {!! $paquetes['incluye'] !!}
+            </div>
+
+        </section>
+
+        <section class="my-12 container">
+            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                <div class="">
+                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                </div> Not Included
+            </div>
+            <div class="">
+                {!! $paquetes['noincluye'] !!}
+            </div>
+        </section>
+
+    @endforeach
+</x-page-layout>
+
+
