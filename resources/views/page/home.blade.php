@@ -322,7 +322,9 @@
                                 <div class="font-bold text-secondary text-lg mb-4">
                                     {{ $feature->duracion }} days from $ 2045 <span class="text-xs">usd</span>
                                 </div>
-                                <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At eveniet ipsam nesciunt sunt voluptatum? Commodi corporis distinctio et expedita.</p>
+                                <div class="mb-6">
+                                    {!! $feature->descripcion !!}
+                                </div>
                                 <a href="{{route('packages.detail', $feature->url)}}" class="btn btn-primary">See full itinerary</a>
                             </div>
                         </div>

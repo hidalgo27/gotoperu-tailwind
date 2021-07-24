@@ -19,7 +19,7 @@
                     </div> Overview
                 </div>
                 <div class="">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis consequuntur doloribus id perferendis ratione recusandae, soluta temporibus ut? Ad cum eum expedita itaque maxime nostrum perferendis porro, quibusdam quidem. Consequuntur!
+                    {!! $feature['descripcion'] !!}
                 </div>
 
             </div>
