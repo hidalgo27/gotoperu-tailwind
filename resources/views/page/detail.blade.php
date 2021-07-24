@@ -19,7 +19,7 @@
                     </div> Overview
                 </div>
                 <div class="">
-                    {!! $feature['descripcion'] !!}
+                    {!! $paquete['descripcion'] !!}
                 </div>
 
             </div>

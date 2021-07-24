@@ -324,7 +324,7 @@
                                 </div>
                                 <div class="mb-6">
                                     {!! Str::limit($feature->descripcion, 150) !!}
-                                    
+
                                 </div>
                                 <a href="{{route('packages.detail', $feature->url)}}" class="btn btn-primary">See full itinerary</a>
                             </div>
