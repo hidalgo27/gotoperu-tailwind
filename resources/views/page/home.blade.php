@@ -323,7 +323,8 @@
                                     {{ $feature->duracion }} days from $ 2045 <span class="text-xs">usd</span>
                                 </div>
                                 <div class="mb-6">
-                                    {!! $feature->descripcion !!}
+                                    {!! Str::limit($feature->descripcion, 150) !!}
+                                    
                                 </div>
                                 <a href="{{route('packages.detail', $feature->url)}}" class="btn btn-primary">See full itinerary</a>
                             </div>
