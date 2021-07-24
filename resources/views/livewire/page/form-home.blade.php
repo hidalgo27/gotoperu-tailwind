@@ -152,9 +152,14 @@
                                     <div class="col-span-2 inline-flex w-full overflow-hidden bg-gray-100 shadow-sm">
                                         <div class="flex items-center justify-center w-12 bg-green-500">
                                         </div>
-                                        <div class="px-3 py-2 text-left">
-                                            <span class="font-semibold text-green-500">Success</span>
-                                            <p class="mb-1 text-sm leading-none text-gray-500">{{$success}}</p>
+                                        <div class="px-3 py-2 text-left w-full flex justify-between items-center">
+                                            <div>
+                                                <span class="font-semibold text-green-500">Success</span>
+                                                <p class="mb-1 text-sm leading-none text-gray-500">{{$success}}</p>
+                                            </div>
+                                            <div class="">
+                                                <span @click="showModal = !showModal" class="p-2 py-1 rounded text-green-500 text-sm bg-green-200 border border-green-300 cursor-pointer">OK</span>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
@@ -165,8 +170,8 @@
                             <!-- Buttons -->
                             <div class="text-right space-x-5 mt-5">
                                 <button type="button" @click="showModal = !showModal" class="btn btn-danger">Cancel</button>
-                                <button type="submit" class="btn btn-primary">
-                                    send <span wire:loading><div class="lds-hourglass" v-show="showload"></div></span>
+                                <button type="submit" class="btn btn-primary" wire:click="load_submit">
+                                    send <span wire:loading wire:target="load_submit"><div class="lds-hourglass"></div></span>
                                 </button>
 
                             </div>

@@ -1,16 +1,16 @@
 <x-page-layout>
-    @foreach($paquetes_api as $paquetes)
+    @foreach($paquetes as $paquete)
         <section class="-mt-32 h-80vh -z-1 relative">
-            @foreach($paquetes['imagen_paquetes'] as $imagen)
-                <img src="{{$imagen['nombre']}}" alt="{{$paquetes['titulo']}}" class="h-full w-full object-cover">
+            @foreach($paquete['imagen_paquetes'] as $imagen)
+                <img src="{{$imagen['nombre']}}" alt="{{$paquete['titulo']}}" class="h-full w-full object-cover">
             @endforeach
             <div class="absolute bottom-0 left-0 p-12">
-                <h1 class="text-5xl font-semibold mb-3 text-gray-50">{{ $paquetes['titulo'] }}</h1>
+                <h1 class="text-5xl font-semibold mb-3 text-gray-50">{{ $paquete['titulo'] }}</h1>
             </div>
         </section>
 
-        <section class="container mt-12 flex gap-4">
-            <div class="w-4/6">
+        <section class="container mt-12 grid grid-cols-3 gap-4">
+            <div class="col-span-2">
                 <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
                     <div class="">
                         <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
@@ -23,13 +23,13 @@
                 </div>
 
             </div>
-            <div class="w-2/6 flex flex-col gap-3">
+            <div class="flex flex-col gap-3">
                 <div class="flex gap-3">
                     <div class="flex-1 border p-3 flex text-xl items-center justify-center">
-                        {{ $paquetes['duracion'] }} days
+                        {{ $paquete['duracion'] }} days
                     </div>
                     <div class="flex-1 border p-3 flex items-center">
-                        @foreach($paquetes['precio_paquetes'] as $precio)
+                        @foreach($paquete['precio_paquetes'] as $precio)
                             @if($precio['estrellas'] == 2)
                                 @if($precio['precio_d'] > 0)
                                     <div class="text-xl font-semibold text-gray-600">
@@ -45,11 +45,11 @@
                     </div>
                 </div>
                 <div class="p-6 border">
-                    <h2 class="text-2xl font-bold text-gray-600"> {{$paquetes['titulo']}}</h2>
+                    <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2>
                     <div class="mt-3 text-sm text-gray-600">
-                        @foreach($paquetes['paquetes_destinos'] as $paquete_destino)
+                        @foreach($paquete['paquetes_destinos'] as $paquete_destino)
                             {{$paquete_destino['destinos']['nombre']}}
-                            @if ($loop->iteration < count($paquetes['paquetes_destinos'])) , @else . @endif
+                            @if ($loop->iteration < count($paquete['paquetes_destinos'])) , @else . @endif
                         @endforeach
                     </div>
                     {{--                    <div class="text-gray-600 text-sm bg-secondary rounded-lg shadow-lg my-4 p-3">--}}
@@ -59,7 +59,8 @@
 
                 <div class="">
                     {{--                    <a href="" class="btn-secondary text-center block">Request a Quote</a>--}}
-                    <form-detail-component></form-detail-component>
+{{--                    <form-detail-component></form-detail-component>--}}
+                    @livewire('page.form-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))
                 </div>
 
             </div>
@@ -83,14 +84,14 @@
                     {{--                    </div>--}}
                     @php $i = 1; @endphp
                     <div class="grid grid-cols-2 place-content-between gap-3">
-                        @foreach($paquetes['paquetes_destinos'] as $paquete_destino)
+                        @foreach($paquete['paquetes_destinos'] as $paquete_destino)
 
                             {{--                        {{}}--}}
-                            {{--                            count($paquetes['paquetes_destinos'])--}}
+                            {{--                            count($paquete['paquetes_destinos'])--}}
                             @foreach($paquete_destino['destinos']['destino_imagen'] as $destino_imagen)
-                                <div class="relative @if (count($paquetes['paquetes_destinos'])%2 != 0 AND $i == 1) col-span-2 @endif">
-                                    {{--                                    {{count($paquetes['paquetes_destinos'])}}--}}
-                                    <img src="{{$destino_imagen['nombre']}}" alt="" class="@if (count($paquetes['paquetes_destinos'])%2 != 0 AND $i == 1) object-cover h-80 object-bottom w-full @endif">
+                                <div class="relative @if (count($paquete['paquetes_destinos'])%2 != 0 AND $i == 1) col-span-2 @endif">
+                                    {{--                                    {{count($paquete['paquetes_destinos'])}}--}}
+                                    <img src="{{$destino_imagen['nombre']}}" alt="" class="@if (count($paquete['paquetes_destinos'])%2 != 0 AND $i == 1) object-cover h-80 object-bottom w-full @endif">
                                     <div class="absolute inset-x-0 bottom-0 text-sm tracking-wide text-white p-2 font-medium">
                                         {{$paquete_destino['destinos']['nombre']}}
                                     </div>
@@ -116,7 +117,7 @@
                 </div>
                 <div class="w-2/6 bg-primary flex items-center bg-opacity-30 p-6">
                     <div class="">
-                        @foreach($paquetes['paquetes_destinos'] as $paquete_destino)
+                        @foreach($paquete['paquetes_destinos'] as $paquete_destino)
                             <h3 class="font-semibold mt-3">{{$paquete_destino['destinos']['nombre']}}</h3>
                             <div class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci at aut autem cumque eligendi explicabo id.</div>
                         @endforeach
@@ -138,7 +139,37 @@
 
             <div class="flex gap-4">
                 <div class="w-4/6">
-                    <itinerary-component :idpackage="{{$paquetes['id']}}"></itinerary-component>
+
+
+                    @foreach($paquete->paquete_itinerario as $section)
+
+                        <article class="mb-4"
+                                 @if($loop->first)
+                                 x-data="{ open: true }"
+                                 @else
+                                 x-data="{ open: false }"
+                            @endif
+                        >
+                            <header class="border border-gray-200 px-4 py-2 flex justify-between cursor-pointer bg-gray-100" x-on:click="open = !open">
+                                <h1 class="font-semibold text-sm text-gray-600 "><span class="capitalize">Day {{$loop->iteration}}:</span> {{ucfirst(strtolower($section->itinerarios->titulo))}}</h1>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </header>
+                            <div class="bg-white py-2 px-4 border mt-1" x-show="open" x-transition>
+                                <div class="grid grid-cols-1 gap-2 text-sm">
+{{--                                    @foreach($section->lessons as $lesson)--}}
+{{--                                        <li class="text-gray-700 text-base"><i class="fas fa-play-circle mr-2 text-gray-600"></i>{{$lesson->name}}</li>--}}
+{{--                                    @endforeach--}}
+                                    {!! $section->itinerarios->descripcion !!}
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+
+
+
                 </div>
                 <div class="w-2/6">
                     <div class="border sticky top-0 top-16 px-6">
@@ -179,7 +210,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     <tr>
-                        @foreach($paquetes['precio_paquetes'] as $precio)
+                        @foreach($paquete['precio_paquetes'] as $precio)
                             @if($precio['precio_d'] > 0)
                                 <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_d']}}<small>USD</small></td>
                             @else
@@ -211,7 +242,7 @@
                 </div> Included
             </div>
             <div class="">
-                {!! $paquetes['incluye'] !!}
+                {!! $paquete['incluye'] !!}
             </div>
 
         </section>
@@ -225,7 +256,7 @@
                 </div> Not Included
             </div>
             <div class="">
-                {!! $paquetes['noincluye'] !!}
+                {!! $paquete['noincluye'] !!}
             </div>
         </section>
 

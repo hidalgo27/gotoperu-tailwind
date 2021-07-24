@@ -42,11 +42,17 @@ class HomeController extends Controller
     }
 
     public function packages_detail($url) {
-        $paquetes_api = Http::get(env('APP_URL').'/api/packages/'.$url);
-        $paquetes_api = $paquetes_api->json();
+//        $paquetes_api = Http::get(env('APP_URL').'/api/packages/'.$url);
+//        $paquetes_api = $paquetes_api->json();
+
+        $paquetes = TPaquete::
+        with('imagen_paquetes','paquetes_destinos.destinos.destino_imagen','paquetes_categoria.categoria', 'precio_paquetes', 'paquete_itinerario')
+            ->where('url', $url)
+            ->get();
+
         return view('page.detail',
             compact(
-                'paquetes_api'
+                'paquetes'
             ));
     }
 
