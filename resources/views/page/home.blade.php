@@ -590,7 +590,7 @@
                 <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
                 <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
                 <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-            </div> Siguenos en nuestras redes
+            </div> Social Media
         </div>
 
         <div class="grid grid-cols-2 gap-4">
@@ -648,21 +648,22 @@
                 <div class="">
                     <div class="flex items-center text-center text-gray-700 gap-2">
                         <div class="border p-4 w-1/2">
-                            <p class="block text-4xl font-bold">97%</p>
-                            <p class="text-xs">GUEST SATISFACTION RATE</p>
+                            <p class="block text-4xl font-bold">30 000</p>
+                            <p class="text-xs">FACEBOOK FANS</p>
                         </div>
                         <div class="border p-4 w-1/2">
-                            <p class="block text-3xl font-bold">9000 +</p>
-                            <p class="text-xs">GOTOPERU GUESTS</p>
+                            <p class="block text-3xl font-bold">#gotoperu</p>
+                            <p class="text-xs">INSTAGRAM HASHTAG</p>
                         </div>
                     </div>
                 </div>
                 <div class="">
                     {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
 
-                    <div class="bg-gray-500 bg-opacity-10 p-12">
+                    <div class="bg-gray-500 bg-opacity-10 text-center p-12">
                         <img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="mx-auto py-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet in quisquam quo quod soluta tenetur velit. Aliquid architecto consequatur cumque deserunt eos, illo itaque, laboriosam maxime nesciunt omnis optio tenetur?
+                        <h3>PHOTOS FROM OUR TRAVELERS</h3>
+                        <p>Get inspired by photos and videos from fellow travelers in Peru, or share your favorite @go.to.peru experiences with us.</p>
                     </div>
                 </div>
                 <div class="grid grid-cols-4 items-center text-2xl text-gray-700 font-bold gap-3">
