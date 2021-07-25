@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Page;
 use App\Http\Controllers\Controller;
 use App\Models\TDestino;
 use App\Models\TPaquete;
+use App\Models\TPaqueteDestino;
 use App\Models\TTestimonio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -63,10 +64,14 @@ class HomeController extends Controller
 
     public function destinations_show(TDestino $destinations) {
 //        return $destinations->id;
-        $paquetes_api = Http::get(env('APP_URL').'/api/packages/destinations/'.$destinations->id);
-        $paquetes_api = $paquetes_api->json();
+//        $paquetes_api = Http::get(env('APP_URL').'/api/packages/destinations/'.$destinations->id);
+//        $paquetes_api = $paquetes_api->json();
 
-//        return $paquetes_api;
+        $paquetes_api = TPaqueteDestino::
+        with('paquetes.precio_paquetes','destinos', 'paquetes.paquetes_destinos.destinos')
+            ->where('iddestinos', $destinations->id)
+            ->get();
+
 
         return view('page.destination-show', compact('paquetes_api', 'destinations'));
     }
