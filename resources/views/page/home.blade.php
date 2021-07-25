@@ -44,34 +44,34 @@
 
     <section class="grid gap-8 py-8 mb-16 opacity-60 grid-cols-12 hidden md:inline-flex"><!--.row -->
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full filter grayscale invert">
+            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale dark:invert">
         </div>
     </section>
 
