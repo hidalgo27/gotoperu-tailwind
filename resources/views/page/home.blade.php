@@ -42,42 +42,36 @@
 
     </section>
 
-    <section class="grid gap-8 pb-16 opacity-60 grid-cols-12 hidden md:inline-flex"><!--.row -->
+    <section class="grid gap-8 py-8 mb-16 opacity-60 grid-cols-12 hidden md:inline-flex"><!--.row -->
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/facebook.png"  alt="logo facebook" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/youtube.png" alt="logo youtube" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full filter grayscale invert">
         </div>
     </section>
 
@@ -111,10 +105,10 @@
 
 
     <section class="container">
-        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-20 xl:text-5xl">Your Peru Vacation Worry-Free</h2>
+        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-20 xl:text-5xl dark:text-secondary">Your Peru Vacation Worry-Free</h2>
         <div class="grid text-center mb-16 gap-4 grid-cols-1 sm:grid-cols-3">
             <div class="relative mb-12 sm:mb-0">
-                <div class="text-center bg-gray-50 mb-4 absolute -top-7 right-1/2 transform translate-x-1/2">
+                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">
                     <a href="#" class="block relative">
                         {{--                        <img alt="profil" src="/images/person/4.jpg" class="mx-auto object-cover h-40 w-40  border border-white dark:border-gray-800"/>--}}
 
@@ -136,7 +130,7 @@
                 </div>
             </div>
             <div class="relative mb-12 sm:mb-0">
-                <div class="text-center mb-4 bg-gray-50 absolute -top-7 right-1/2 transform translate-x-1/2">
+                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">
                     <a href="#" class="block relative">
                         <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-primary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
@@ -155,7 +149,7 @@
                 </div>
             </div>
             <div class="relative mb-12 sm:mb-0">
-                <div class="text-center mb-4 bg-gray-50 absolute -top-7 right-1/2 transform translate-x-1/2">
+                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">
                     <a href="#" class="block relative">
                         {{--                        <img alt="profil" src="/images/person/4.jpg" class="mx-auto object-cover h-40 w-40  border border-white dark:border-gray-800"/>--}}
                         <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -178,13 +172,13 @@
     </section>
 
 
-    <div class="flex container items-center text-2xl text-gray-700 font-bold gap-2">
+    <div class="flex container items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
         <div class="border-4 h-1 w-12 border-primary"></div> GOTOPERU
     </div>
     <div class="grid grid-cols-1 md:grid-cols-5 container gap-4">
         <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
             <div class="w-full">
-                <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 gap-2">
+                <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
                     <div class="border p-4 w-full">
                         <p class="block text-4xl font-bold">97%</p>
                         <p class="text-xs">GUEST SATISFACTION RATE</p>
@@ -199,7 +193,7 @@
                 {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
                 {{--                <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
                 <div class="flex items-center justify-center">
-                    <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-50">
+                    <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-300">
                         <p class="mb-2 flex inline-flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -235,13 +229,13 @@
             </div>
             <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
                 <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4">
+                    <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 filter grayscale invert">
                 </div>
                 <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4">
+                    <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 filter grayscale invert">
                 </div>
                 <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4">
+                    <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 filter grayscale invert">
                 </div>
             </div>
 
@@ -256,7 +250,7 @@
                 <div class="swiper-wrapper">
                 @foreach($testinomials as $testinomial)
                     <div class="swiper-slide p-12">
-                        <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-white dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-50">
+                        <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-white dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">
                             <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
                                 <a href="#" class="block relative">
                                     <img alt="profil" src="https://gotoperu.com.mx/images/video-testimonial/2.jpg" class="mx-auto object-cover rounded-full h-20 w-20 z-30"/>
@@ -297,8 +291,8 @@
         </div>
     </div>
 
-    <section class="py-12 my-12 bg-line-cover bg-gray-50 bg-fixed">
-        <div class="flex container mb-3 items-center text-2xl text-gray-700 font-bold gap-2">
+    <section class="py-12 my-12 bg-line-cover bg-gray-50 dark:bg-gray-800 bg-fixed">
+        <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
             <div class="border-4 h-1 w-12 border-secondary"></div> Featured Perú Itineraries
         </div>
 
@@ -342,7 +336,7 @@
 
     </section>
 
-    <div class="flex container mb-3 items-center text-2xl text-gray-700 font-bold gap-2">
+    <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
         <div class="border-4 h-1 w-12 border-primary"></div> Perú Recommended Itineraries
     </div>
 
@@ -370,7 +364,7 @@
                     </div>
                 </div>
                 <div class="border p-6 block group-hover:border-primary text-center transition duration-500">
-                    <div class="font-bold text-gray-500 text-lg mb-4">
+                    <div class="font-bold text-gray-500 dark:text-gray-300 text-lg mb-4">
                         {{ $paquete['duracion'] }} days /
                         @foreach($paquete['precio_paquetes'] as $precio)
                             @if($precio['estrellas'] == 2)
@@ -392,8 +386,8 @@
     </section>
 
 
-    <div class="flex container mb-3 items-center text-2xl text-gray-700 font-bold gap-2 mt-24">
-        <div class="border-4 h-1 w-12 border-secondary"></div> Destinations
+    <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2 mt-24">
+        <div class="border-4 h-1 w-12 border-secondary dark:border-secondary"></div> Destinations
 {{--        <div class="text-center mb-10">--}}
 {{--            <span class="inline-block w-1 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
 {{--            <span class="inline-block w-3 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
@@ -403,21 +397,21 @@
 {{--        </div>--}}
     </div>
 
-    <section class="flex mb-4 container gap-4">
-        <div class="w-3/5 overflow-hidden group relative">
-            <img src="{{asset('images/cua2.jpg')}}" alt="" class="object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-            <div class="absolute inset-y-0 left-0 w-64 p-6 bg-primary bg-opacity-95 text-gray-50">
+    <section class="grid grid-cols-1 md:grid-cols-5 mb-4 container gap-4">
+        <div class="md:col-span-3 overflow-hidden group relative">
+            <img src="{{asset('images/cua2.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+            <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-primary bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-2xl">Cusco & Machu Picchu</h3>
-                <p class="mt-3 mb-6 block text-sm">Travel Packages to Machu Picchu with breathtaking scenery, visit the Incas highest archeological achievement, and you will tune in to the mystery that is at the heart of the Andean Mountains. If you are planning a trip to Machu Picchu, take advantage of our first-class tour service from the city of Cusco to Ollantaytambo and Aguas Calientes.</p>
-                <a href="/destinations/machu-picchu" class="btn-white">All destinations</a>
+                <p class="mt-3 md:mb-6 block text-sm">Travel Packages to Machu Picchu with breathtaking scenery, visit the Incas highest archeological achievement, and you will tune in to the mystery that is at the heart of the Andean Mountains. If you are planning a trip to Machu Picchu, take advantage of our first-class tour service from the city of Cusco to Ollantaytambo and Aguas Calientes.</p>
+                <a href="/destinations/machu-picchu" class="btn-white hidden md:inline-flex">All destinations</a>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
         </div>
 
-        <div class="flex flex-col gap-4 content-between w-2/5 overflow-hidden">
+        <div class="md:col-span-2 flex flex-col gap-4 content-between overflow-hidden">
 
             <div class="overflow-hidden relative group">
                 <img src="https://picsum.photos/500/360" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
@@ -447,9 +441,9 @@
 
     </section>
 
-    <section class="flex mb-4 container gap-4">
+    <section class="grid grid-cols-1 md:grid-cols-5 mb-4 container gap-4">
 
-        <div class="flex flex-col gap-4 content-between w-2/5 overflow-hidden">
+        <div class="md:col-span-2 order-2 md:order-1 flex flex-col gap-4 content-between overflow-hidden">
 
             <div class="overflow-hidden relative group">
                 <img src="{{asset('images/asc.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
@@ -476,14 +470,14 @@
             </div>
         </div>
 
-        <div class="w-3/5 overflow-hidden group relative">
-            <img src="{{asset('images/pa.jpg')}}" alt="" class="object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-            <div class="absolute inset-y-0 right-0 w-64 p-6 bg-secondary bg-opacity-95 text-gray-50">
+        <div class="md:col-span-3 order-1 md:order-2 overflow-hidden group relative">
+            <img src="{{asset('images/pa.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+            <div class="md:absolute md:inset-y-0 md:right-0 w-full md:w-64 p-6 bg-secondary bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-right text-2xl">Paracas & Nazca Lines</h3>
-                <p class="mt-3 mb-6 block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque error laudantium nostrum? Accusantium eum.</p>
-                <a href="#" class="btn-white">All destinations</a>
+                <p class="mt-3 md:mb-6 block text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque error laudantium nostrum? Accusantium eum.</p>
+                <a href="#" class="btn-white hidden md:inline-flex">All destinations</a>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 absolute bottom-0 left-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 left-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -492,21 +486,21 @@
 
     </section>
 
-    <section class="flex mb-4 container gap-4">
-        <div class="w-3/5 overflow-hidden group relative">
-            <img src="{{asset('images/titicaca.jpg')}}" alt="" class="object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-            <div class="absolute inset-y-0 left-0 w-64 p-6 bg-gray-700 bg-opacity-95 text-gray-50">
+    <section class="grid col-span-1 md:grid-cols-5 mb-4 container gap-4">
+        <div class="md:col-span-3 overflow-hidden group relative">
+            <img src="{{asset('images/titicaca.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+            <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-gray-700 bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-2xl">Puno & Titicaca Lake</h3>
                 <p class="mt-3 mb-6 block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque error laudantium nostrum? Accusantium eum.</p>
-                <a href="#" class="btn-white">All destinations</a>
+                <a href="#" class="btn-white hidden md:inline-flex">All destinations</a>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
         </div>
 
-        <div class="flex flex-col gap-4 content-between w-2/5 overflow-hidden">
+        <div class="md:col-span-2 flex flex-col gap-4 content-between overflow-hidden">
 
             <div class="overflow-hidden relative group">
                 <img src="{{asset('images/asc.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
@@ -537,13 +531,13 @@
     </section>
 
     <section class="container">
-        <div class="flex mb-3 items-center text-2xl text-gray-700 font-bold gap-2 mt-24">
-            <div class="border-4 h-1 w-12 border-secondary"></div> Travel Style
+        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 mt-24">
+            <div class="border-4 h-1 w-12 border-primary"></div> Travel Style
         </div>
 
         <div class="grid grid-cols-6 gap-4 mt-12">
             <div class="col-start-2 col-span-4">
-                <div class="grid grid-cols-8 content-between text-center">
+                <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
                     <div class="">
                         <img src="{{asset('images/include/assistances.png')}}" alt="" class="object-contain px-4 text-center">
                         <p class="text-xs">Assistances</p>
@@ -581,13 +575,13 @@
         </div>
 
         <div class="mt-12">
-            <category-component></category-component>
+{{--            <category-component></category-component>--}}
         </div>
 
     </section>
 
     <section class="container my-12">
-        <div class="flex mb-3 items-center text-2xl text-gray-700 font-bold gap-2">
+        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
             <div class="">
                 <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
                 <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
@@ -595,60 +589,15 @@
             </div> Social Media
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="grid grid-cols-1 items-center relative bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('images/hotels-t.jpg')}})">
-                {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-
-                {{--            <div class="absolute flex items-center inset-0 ">--}}
                 <div class="flex">
                     <div class="elfsight-app-ba7c9526-9468-4d5b-b378-68ec76259e00"></div>
                 </div>
-
-
-                {{--            </div>--}}
-
-                {{--            <div class="absolute bottom-0 px-2 py-4 bg-gray-50 bg-opacity-80">--}}
-                {{--                <div class="grid grid-cols-8 content-between text-center">--}}
-                {{--                    <div class="">--}}
-                {{--                        <img src="{{asset('images/include/assistances.png')}}" alt="" class="object-contain px-4 text-center">--}}
-                {{--                        <p class="text-xs">Assistances</p>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="">--}}
-                {{--                        <img src="{{asset('images/include/breakfast.png')}}" alt="" class="object-contain px-4 text-center">--}}
-                {{--                        <p class="text-xs">Breakfast</p>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="">--}}
-                {{--                        <img src="{{asset('images/include/entrances.png')}}" alt="" class="object-contain px-4 text-center">--}}
-                {{--                        <p class="text-xs">Entrances</p>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="">--}}
-                {{--                        <img src="{{asset('images/include/flight.png')}}" alt="" class="object-contain px-4 text-center">--}}
-                {{--                        <p class="text-xs">Flight</p>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="">--}}
-                {{--                        <img src="{{asset('images/include/hotels.png')}}" alt="" class="object-contain px-4 text-center">--}}
-                {{--                        <p class="text-xs">Hotels</p>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="">--}}
-                {{--                        <img src="{{asset('images/include/tours.png')}}" alt="" class="object-contain px-4 text-center">--}}
-                {{--                        <p class="text-xs">Tours</p>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="">--}}
-                {{--                        <img src="{{asset('images/include/trains.png')}}" alt="" class="object-contain px-4 text-center">--}}
-                {{--                        <p class="text-xs">Trains</p>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="">--}}
-                {{--                        <img src="{{asset('images/include/transfers.png')}}" alt="" class="object-contain px-4 text-center">--}}
-                {{--                        <p class="text-xs">Transfers</p>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-
-
             </div>
             <div class="flex gap-4 flex-col justify-between content-between overflow-hidden">
                 <div class="">
-                    <div class="flex items-center text-center text-gray-700 gap-2">
+                    <div class="flex items-center text-center text-gray-700 dark:text-gray-300 gap-2">
                         <div class="border p-4 w-1/2">
                             <p class="block text-4xl font-bold">30 000</p>
                             <p class="text-xs">FACEBOOK FANS</p>
@@ -690,27 +639,27 @@
     </section>
 
 
-    <div class="flex mb-3 container items-center text-2xl text-gray-700 font-bold gap-2">
+    <div class="flex mb-3 container items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
         <div class="">
-            <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
-            <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
-            <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
+            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
+            <span class="hidden md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span>
         </div> Peru Travel Information
     </div>
-    <section class="flex container gap-4">
-        <div class="w-3/5 relative">
-            <img src="{{asset('images/hotel.jpg')}}" alt="" class="object-cover">
+    <section class="grid grid-cols-1 md:grid-cols-5 container gap-4">
+        <div class="md:col-span-3 relative">
+            <img src="{{asset('images/hotel.jpg')}}" alt="" class="object-cover h-full w-full">
             <div class="absolute inset-0 gradient-cicle-gray"></div>
         </div>
-        <div class="w-2/5 bg-secondary bg-opacity-20 p-6 flex items-center">
+        <div class="md:col-span-2 bg-secondary bg-opacity-20 dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
             <div class="">
                 <h3 class="font-semibold text-2xl">Hotels</h3>
                 <div class=" mb-10">
-                    <span class="inline-block w-1 h-2 bg-secondary ml-1"></span>
-                    <span class="inline-block w-3 h-2 bg-secondary ml-1"></span>
-                    <span class="inline-block w-10 h-2 bg-secondary"></span>
-                    <span class="inline-block w-3 h-2 bg-secondary ml-1"></span>
-                    <span class="inline-block w-1 h-2 bg-secondary ml-1"></span>
+                    <span class="inline-block w-1 h-2 bg-secondary dark:bg-primary ml-1"></span>
+                    <span class="inline-block w-3 h-2 bg-secondary dark:bg-primary ml-1"></span>
+                    <span class="inline-block w-10 h-2 bg-secondary dark:bg-primary"></span>
+                    <span class="inline-block w-3 h-2 bg-secondary dark:bg-primary ml-1"></span>
+                    <span class="inline-block w-1 h-2 bg-secondary dark:bg-primary ml-1"></span>
                 </div>
                 <p class="block my-12">
                     At GOTOPERU our expert local team handpicked the best Peru hotels at each category.
@@ -722,13 +671,13 @@
         </div>
     </section>
 
-    <section class="flex my-4 container gap-4">
-        <div class="relative flex items-center">
-            <div class="relative">
-                <img src="{{asset('images/blog.jpg')}}" alt="" class="bg-cover h-full">
+    <section class="grid grid-cols-1 md:grid-cols-3 my-4 container gap-4">
+        <div class="md:col-span-1 relative flex items-center">
+            <div class="relative w-full">
+                <img src="{{asset('images/blog.jpg')}}" alt="" class="object-cover w-full h-full">
             </div>
             <div class="absolute inset-0 gradient-cicle-gray"></div>
-            <div class="absolute inset-x-0 bottom-0 p-6 m-6  rounded-lg shadow-lg text-gray-500 bg-gray-50">
+            <div class="absolute inset-x-0 bottom-0 p-6 m-6  rounded-lg shadow-lg text-gray-500 bg-gray-50 dark:bg-gray-800 dark:text-gray-300">
                 <h3 class="font-semibold text-2xl">Lugares Para Visitar en Perú en el 2021</h3>
                 <div class="flex inline-flex divide-x text-xs my-3 divide-gray-500 gap-1">
                     <div class="flex inline-flex items-center gap-1">
@@ -763,9 +712,9 @@
                 <a href="" class="btn-secondary">View all</a>
             </div>
         </div>
-        <div class="relative">
-            <img src="https://picsum.photos/840/665" alt="" class="object-cover">
-            <div class="absolute inset-0 p-6 bg-gray-900 bg-opacity-50">
+        <div class="md:col-span-2 relative">
+            <img src="https://picsum.photos/840/665" alt="" class="h-full w-full object-cover">
+            <div class="md:absolute md:inset-0 p-6 bg-gray-900 bg-opacity-50">
                 <div class="flex flex-col h-full justify-end">
                     <div class="text-gray-50 text-right">
                         <h3 class="font-semibold text-2xl">News and travel guides</h3>
@@ -777,7 +726,6 @@
                         <p class="block my-12">Welcome travelers to our Peru blog, you will find useful Peru travel information and much more to inspire you for your next vacation to the land of the Incas including travel tips for Lima, Cusco, the Inca Trail, Machu Picchu, the Amazon and many other peruvian amazing destinations.</p>
                         <a href="" class="btn-secondary">View all</a>
                     </div>
-                    <div class="">sd</div>
                 </div>
             </div>
         </div>

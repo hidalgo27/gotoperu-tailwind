@@ -38,11 +38,80 @@
 
         }
 
+        window.addEventListener('load', function (){
+            document.getElementById('preload').classList.add('hidden');
+        })
+
+
     </script>
 
-</head>
-<body class="bg-white dark:bg-gray-800 relative">
+    <style>
+        .preload {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: #151515;
+            z-index: 1000000000;
+        }
 
+        .pulse {
+            position: relative;
+            left: 50%;
+            top: 50vh;
+            margin-left: -40px;
+            margin-top: -40px;
+        }
+        .pulse:before, .pulse:after {
+            content: "";
+            border: 5px solid #323232;
+            width: 80px;
+            height: 80px;
+            border-radius: 500px;
+            position: absolute;
+        }
+        .pulse:before {
+            animation: pulse-outer 0.8s ease-in infinite;
+        }
+        .pulse:after {
+            animation: pulse-inner 0.8s linear infinite;
+        }
+
+        @keyframes pulse-outer {
+            0% {
+                opacity: 1;
+                filter: alpha(opacity=100);
+            }
+            50% {
+                opacity: 0.5;
+                filter: alpha(opacity=50);
+            }
+            100% {
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+        }
+        @keyframes pulse-inner {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: alpha(opacity=100);
+            }
+        }
+
+    </style>
+
+</head>
+<body class="bg-white dark:bg-gray-800 dark:text-gray-400 relative">
+{{--<div class="preload" id="preload">--}}
+{{--    <div class="pulse"></div>--}}
+{{--</div>--}}
 @php
     $nav_links = [
         [
@@ -205,14 +274,15 @@
 
 
 
-    <nav class="banner-wrapper sticky top-0 z-30 hidden sm:inline-block">
+
+    <nav class="banner-wrapper top-0 z-30 sticky">
         <div class="banner">
             <!-- This example requires Tailwind CSS v2.0+ -->
-            <div class="bg-gray-50 opacity-90 shadow-lg dark:bg-gray-800">
-                <div class="container flex items-center justify-center mx-auto text-gray-600 capitalize dark:text-gray-300">
+            <div class="bg-gray-50 opacity-90 shadow-lg dark:bg-gray-800 hidden md:inline-flex">
+                <div class="container flex items-center justify-center mx-auto text-gray-600 capitalize">
                     {{--                    <a href="#" class="text-gray-800 text-sm dark:text-gray-200 border-b border-transparent transition duration-500 hover:border-blue-500 mx-1.5 sm:mx-6">Peru Travel Packages</a>--}}
                     @foreach($nav_links as $nav_link)
-                        <a href="{{ $nav_link['route'] }}" class="menu-list {{ $nav_link['active'] == 1 ? 'active' : '' }}">{{ $nav_link['name'] }}</a>
+                        <a href="{{ $nav_link['route'] }}" class="dark:text-gray-400 menu-list {{ $nav_link['active'] == 1 ? 'active' : '' }}">{{ $nav_link['name'] }}</a>
                     @endforeach
                 </div>
             </div>
@@ -220,45 +290,40 @@
         </div>
     </nav>
 
+
 {{--    @yield('content')--}}
     {{$slot}}
 
-    <section class="grid gap-8 py-12 mt-12 bg-gray-500 bg-opacity-10 grid-cols-12"><!--.row -->
+    <section class="grid grid-cols-4 md:grid-cols-10 gap-8  py-12 mt-12 bg-gray-500 bg-opacity-10"><!--.row -->
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/facebook.png"  alt="logo facebook" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full filter grayscale invert">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/youtube.png" alt="logo youtube" class="w-full">
+            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full filter grayscale invert">
         </div>
     </section>
 
@@ -266,7 +331,7 @@
         {{--        <svg class="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-gray-200 dark:text-gray-800" preserveAspectRatio="none" viewBox="0 0 1440 54">--}}
         {{--            <path fill="currentColor" d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"></path>--}}
         {{--        </svg>--}}
-        <div class="px-24 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-24">
+        <div class="container pt-12">
             <div class="text-center mb-20">
                 <a href="/" aria-label="Go home" title="Company" class="inline-flex items-center">
                     <img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-white.png" alt="" class="mx-auto">
@@ -274,7 +339,7 @@
             </div>
 
 
-            <div class="grid grid-cols-6 mb-24">
+            <div class="grid grid-cols-2 gap-4 dark:text-gray-300 md:grid-cols-6 mb-24">
                 <div>
                     <p class="font-semibold tracking-wide text-secondary mb-6">
                         Category
@@ -394,18 +459,18 @@
             </div>
 
             <div class="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
-                <p class="text-sm dark:text-gray-100">
+                <p class="text-sm dark:text-gray-300">
                     © Copyright 2021 GotoPeru. All rights reserved.
                 </p>
                 <div class="flex items-center mt-4 space-x-4 sm:mt-0">
-                    <a href="/" class="transition-colors duration-300 text-deep-purple-100 hover:text-teal-accent-400">
+                    <a href="/" class="transition-colors duration-300 text-blue-100 hover:text-blue-400">
                         <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
                             <path
                                 d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
                             ></path>
                         </svg>
                     </a>
-                    <a href="/" class="transition-colors duration-300 text-deep-purple-100 hover:text-teal-accent-400">
+                    <a href="/" class="transition-colors duration-300 text-gray-300 hover:text-gray-600">
                         <svg viewBox="0 0 30 30" fill="currentColor" class="h-6">
                             <circle cx="15" cy="15" r="4"></circle>
                             <path
@@ -413,7 +478,7 @@
                             ></path>
                         </svg>
                     </a>
-                    <a href="/" class="transition-colors duration-300 text-deep-purple-100 hover:text-teal-accent-400">
+                    <a href="/" class="transition-colors duration-300 text-blue-400 hover:text-blue-600">
                         <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
                             <path
                                 d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
