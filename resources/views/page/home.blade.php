@@ -229,13 +229,13 @@
             </div>
             <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
                 <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 filter grayscale invert">
+                    <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
                 </div>
                 <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 filter grayscale invert">
+                    <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
                 </div>
                 <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 filter grayscale invert">
+                    <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
                 </div>
             </div>
 
