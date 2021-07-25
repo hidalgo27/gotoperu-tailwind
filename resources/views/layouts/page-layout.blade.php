@@ -5,50 +5,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Peru Travel Packages</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins.css') }}" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('favicon/site.webmanifest')}}">
+    <link rel="mask-icon" href="{{asset('favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     @livewireStyles
 
     @stack('css')
 
     {{--    <link rel="stylesheet" href="https://unpkg.com/element-plus/lib/theme-chalk/index.css">--}}
-    <style>
-        .banner-wrapper {
-            /*z-index: 99;*/
-            transition: all 300ms ease-in-out;
-            width: 100%;
-        }
-        .banner {
-            width: 100%;
 
-            text-transform: uppercase;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            /*background: rgba(162, 197, 35, 1);*/
-            transition: all 300ms ease-in-out;
-        }
-        .animateIn{
-            transform: translateY(0px);
-        }
-
-        .animateOut{
-            transform: translateY(-100%);
-        }
-
-        .console-container {
-
-
-        }
-        .console-underscore {
-            display:inline-block;
-            position:relative;
-            left:5px;
-        }
-
-    </style>
     <script>
         // if (localStorage.theme === 'dark' || (!'theme' in localStorage && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         //     document.querySelector('html').classList.add('dark')
@@ -67,52 +41,160 @@
     </script>
 
 </head>
-<body class="bg-white dark:bg-gray-800">
-<div id="app" class="relative">
-    {{--    <div class="fixed z-40 p-8">--}}
-    {{--        <button onclick="openModal(true)" class="rounded text-gray-50 focus:outline-none">--}}
-    {{--            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
-    {{--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />--}}
-    {{--            </svg>--}}
-    {{--        </button>--}}
-    {{--    </div>--}}
+<body class="bg-white dark:bg-gray-800 relative">
+
+@php
+    $nav_links = [
+        [
+            'name' => 'Peru Travel Packages',
+            'route' => route('packages'),
+            'active' => request()->routeIs('packages.*'),
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>'
+        ],
+        [
+            'name' => 'Only Tours',
+            'route' => "#",
+            'active' => "",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                    </svg>'
+        ],
+        [
+            'name' => 'Destination',
+            'route' => route('destinations'),
+            'active' => request()->routeIs('destinations.*'),
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>'
+        ],
+        [
+            'name' => 'Holels',
+            'route' => "#",
+            'active' => "",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>'
+        ],
+        [
+            'name' => 'About Us',
+            'route' => "#",
+            'active' => "",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-700 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>'
+        ],
+        [
+            'name' => 'Reviews',
+            'route' => "#",
+            'active' => "",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>'
+        ],
+        [
+            'name' => 'Social Responsability',
+            'route' => "#",
+            'active' => "",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-700 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>'
+        ],
+
+    ];
+@endphp
 
 
-
-    <div class="fixed bottom-0 right-0 z-40 py-6 px-7">
+    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 hidden sm:inline-flex">
         <a href="https://api.whatsapp.com/send?phone=51958123295" target="_blank">
             <span class="flex relative h-10 w-10">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
-{{--              <span class="relative inline-flex rounded-full h-10 w-10 bg-gray-500"></span>--}}
             </span>
         </a>
     </div>
-    <div class="fixed bottom-0 right-0 z-40 py-5 px-4">
+    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 hidden sm:inline-flex">
         <a href="https://api.whatsapp.com/send?phone=51958123295" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
+<div x-data="{menu: false}">
+    <div class="fixed bg-12 bottom-0 w-full z-30 sm:hidden">
+        <div class="bg-gray-50 dark:bg-gray-800 flex gap-4 w-full mx-auto grid grid-cols-5 gap-3 text-center">
+            <div class="border-t-4 border-secondary py-4">
+                <a href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                </a>
+            </div>
+            <div class="py-4">
+                <a href="{{route('packages')}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="py-4">
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="py-4">
+                <a href="{{route('destinations')}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="py-4 cursor-pointer" @click="menu = !menu">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4 8h16M4 16h16" />
+                    </svg>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 right-0 mb-16 w-9/12 mr-1 rounded-lg bg-gray-50 z-50" x-show="menu" x-transition x-on:click.away="menu = false">
+        @foreach($nav_links as $nav_link)
+            <a href="{{ $nav_link['route'] }}" class="w-full text-sm flex inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+                <span class="mr-2">
+                    {!! $nav_link['icon'] !!}
+                </span>
+                <span class="">
+                    {{ $nav_link['name'] }}
+                </span>
+            </a>
+        @endforeach
+    </div>
+
+</div>
+
     <header>
         <div class="border-b dark:border-gray-900 dark:border-opacity-40  shadow p-4 bg-gray-50 dark:bg-gray-800 items-center flex flex-wrap">
-            <div class="">
+            <div class="mx-auto">
                 <a href="/"><img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="w-full"></a>
             </div>
-            <div class="flex-1 p-3 dark:text-gray-400">
-                {{--                Go with the Experts--}}
+            <div class="flex-1 p-3 dark:text-gray-400 hidden sm:inline-block">
                 <div class='console-container'>
                     <span id='text'></span>
                     <div class='console-underscore' id='console'>_</div>
                 </div>
             </div>
-            <div class="flex justify-end gap-4 items-center invisible sm:visible">
+            <div class="flex justify-end gap-4 items-center hidden sm:inline-flex">
                 <button id="switchTheme" class="h-10 w-10 flex justify-center items-center focus:outline-none text-gray-500">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
                 </button>
-{{--                <a href="#"  class="btn-primary">Inquire Now</a>--}}
+
                 @livewire('page.form-inquire')
                 @livewire('page.form-subscribe')
-{{--                <a href="#"  class="btn-secondary">Subscribe Now</a>--}}
-                {{--                <subscribe-component></subscribe-component>--}}
+
                 <div class="dark:text-gray-400">
                     <span class="text-xs block text-right">USA/Canada</span>
                     202 246 2282
@@ -121,48 +203,9 @@
         </div>
     </header>
 
-    @php
-        $nav_links = [
-            [
-                'name' => 'Peru Travel Packages',
-                'route' => route('packages'),
-                'active' => request()->routeIs('packages.*')
-            ],
-            [
-                'name' => 'Only Tours',
-                'route' => "#",
-                'active' => ""
-            ],
-            [
-                'name' => 'Destination',
-                'route' => route('destinations'),
-                'active' => request()->routeIs('destinations.*')
-            ],
-            [
-                'name' => 'Holels',
-                'route' => "#",
-                'active' => ""
-            ],
-            [
-                'name' => 'About Us',
-                'route' => "#",
-                'active' => ""
-            ],
-            [
-                'name' => 'Reviews',
-                'route' => "#",
-                'active' => ""
-            ],
-            [
-                'name' => 'Social Responsability',
-                'route' => "#",
-                'active' => ""
-            ],
 
-        ];
-    @endphp
 
-    <nav class="banner-wrapper sticky top-0 z-30">
+    <nav class="banner-wrapper sticky top-0 z-30 hidden sm:inline-block">
         <div class="banner">
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="bg-gray-50 opacity-90 shadow-lg dark:bg-gray-800">
@@ -177,10 +220,8 @@
         </div>
     </nav>
 
-
 {{--    @yield('content')--}}
     {{$slot}}
-
 
     <section class="grid gap-8 py-12 mt-12 bg-gray-500 bg-opacity-10 grid-cols-12"><!--.row -->
         <div>
@@ -383,7 +424,6 @@
             </div>
         </div>
     </footer>
-</div>
 @livewireScripts
 
 <script src="{{asset('js/app.js')}}"></script>

@@ -160,7 +160,7 @@
         ];
     @endphp
 
-    <nav class="banner-wrapper sticky top-0 z-30">
+    <nav class="banner-wrapper sticky top-0 z-30 hidden sm:inline-block">
         <div class="banner">
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="bg-gray-50 opacity-90 shadow-lg dark:bg-gray-800">

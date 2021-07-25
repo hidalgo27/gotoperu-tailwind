@@ -6,29 +6,31 @@
             {{--            <source src="{{asseDestinationst('media/intro.mp4')}}" type="video/mp4" />Your browser does not support the video tag.--}}
         </video>
     </div>
-    <div class="flex flex-col justify-between h-83-5vh  overflow-hidden">
-        <div class="relative items-start grid grid-cols-3 justify-between ">
+    <div class="flex h-83-5vh relative overflow-hidden">
+{{--        <div class="relative items-start grid grid-cols-3 justify-between ">--}}
 
-        </div>
+{{--        </div>--}}
 
-        <div class="relative grid mt-48 grid-cols-1 gap-12 place-items-center text-center justify-center text-white z-30">
-            <div>
-                <h1 class="text-5xl mb-6 font-bold font-cinzel text-secondary">Expertise in Peru travel matters</h1>
+        <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
+            <div class="mx-auto">
+                <h1 class="text-5xl text-center  mb-6 font-bold font-cinzel text-secondary">Expertise in Peru travel matters</h1>
                 <h3 class="text-2xl text-gray-50">Explore our favorite Peru crafted itineraries to help inspire your next adventure</h3>
             </div>
         </div>
 
-        <div class="relative z-30 p-5 flex justify-center">
-            <a href="#" class="text-gray-50">
-                <svg xmlns="http://www.w3.org/2000/svg" class="animate-bounce h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-            </a>
-        </div>
+{{--        <div class="relative z-30 p-5 flex justify-center">--}}
+{{--            <a href="#" class="text-gray-50">--}}
+{{--                <svg xmlns="http://www.w3.org/2000/svg" class="animate-bounce h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />--}}
+{{--                </svg>--}}
+{{--            </a>--}}
+{{--        </div>--}}
     </div>
 
 {{--            <form-home-component></form-home-component>--}}
+    <div class="hidden md:inline-block">
             @livewire('page.form-home')
+    </div>
 
 
 {{--            <div class="mb-10 pb-10 border-b border-gray-200"></div>--}}
@@ -40,7 +42,7 @@
 
     </section>
 
-    <section class="grid gap-8 pb-16 opacity-60 grid-cols-12"><!--.row -->
+    <section class="grid gap-8 pb-16 opacity-60 grid-cols-12 hidden md:inline-flex"><!--.row -->
         <div>
             <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full">
         </div>
@@ -110,8 +112,8 @@
 
     <section class="container">
         <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-20 xl:text-5xl">Your Peru Vacation Worry-Free</h2>
-        <div class="grid text-center mb-16 gap-4 grid-cols-3">
-            <div class="relative">
+        <div class="grid text-center mb-16 gap-4 grid-cols-1 sm:grid-cols-3">
+            <div class="relative mb-12 sm:mb-0">
                 <div class="text-center bg-gray-50 mb-4 absolute -top-7 right-1/2 transform translate-x-1/2">
                     <a href="#" class="block relative">
                         {{--                        <img alt="profil" src="/images/person/4.jpg" class="mx-auto object-cover h-40 w-40  border border-white dark:border-gray-800"/>--}}
@@ -133,7 +135,7 @@
                     </div>
                 </div>
             </div>
-            <div class="relative">
+            <div class="relative mb-12 sm:mb-0">
                 <div class="text-center mb-4 bg-gray-50 absolute -top-7 right-1/2 transform translate-x-1/2">
                     <a href="#" class="block relative">
                         <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-primary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -152,7 +154,7 @@
                     </div>
                 </div>
             </div>
-            <div class="relative">
+            <div class="relative mb-12 sm:mb-0">
                 <div class="text-center mb-4 bg-gray-50 absolute -top-7 right-1/2 transform translate-x-1/2">
                     <a href="#" class="block relative">
                         {{--                        <img alt="profil" src="/images/person/4.jpg" class="mx-auto object-cover h-40 w-40  border border-white dark:border-gray-800"/>--}}
@@ -179,15 +181,15 @@
     <div class="flex container items-center text-2xl text-gray-700 font-bold gap-2">
         <div class="border-4 h-1 w-12 border-primary"></div> GOTOPERU
     </div>
-    <div class="flex container gap-4">
-        <div class="flex gap-4 flex-col content-between w-2/5 overflow-hidden">
-            <div class="">
-                <div class="flex items-center text-center text-gray-700 gap-2">
-                    <div class="border p-4 w-1/2">
+    <div class="grid grid-cols-1 md:grid-cols-5 container gap-4">
+        <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
+            <div class="w-full">
+                <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 gap-2">
+                    <div class="border p-4 w-full">
                         <p class="block text-4xl font-bold">97%</p>
                         <p class="text-xs">GUEST SATISFACTION RATE</p>
                     </div>
-                    <div class="border p-4 w-1/2">
+                    <div class="border p-4 w-full">
                         <p class="block text-3xl font-bold">9000 +</p>
                         <p class="text-xs">GOTOPERU GUESTS</p>
                     </div>
@@ -245,11 +247,11 @@
 
 
         </div>
-        <div class="w-3/5 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('https://picsum.photos/700/450')}})">
+        <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('https://picsum.photos/700/450')}})">
             {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
 
             {{--            <div class="absolute flex items-center inset-0 ">--}}
-            <div class="mx-16">
+            <div class="md:mx-16">
             <div class="w-full swiper-container mySwiper">
                 <div class="swiper-wrapper">
                 @foreach($testinomials as $testinomial)
@@ -304,19 +306,19 @@
         <div class="swiper-container slider-featured">
             <div class="swiper-wrapper">
                 @foreach($paquetes_features as $feature)
-                    <div class="swiper-slide grid grid-cols-3">
+                    <div class="swiper-slide grid grid-cols-1 md:grid-cols-3">
 
                         <!--                    <div class="" v-for="imagen in slide.imagen_paquetes">-->
                         <!--                        <img :src="imagen.nombre" alt="" class="object-cover">-->
                         <!--                    </div>-->
-                        <div class="col-span-2 relative z-0">
+                        <div class=" md:col-span-2 mb:6 md:mb-0 relative z-0">
                             @foreach($feature->imagen_paquetes as $imagen)
                             <img src="{{$imagen->nombre}}" alt="" class="object-cover">
                             @endforeach
                                 <div class="absolute inset-0 gradient-cicle-gray"></div>
                         </div>
                         <div class="flex items-center relative z-50">
-                            <div class="p-12 -ml-24 bg-white rounded-lg shadow-xl ">
+                            <div class="p-12 w-full md:-ml-24 bg-white rounded-lg shadow-xl ">
                             <!--                        <h4 class="text-2xl text-secondary font-semibold">{{ $feature->duracion }} days $999</h4>-->
                                 <h3 class="text-2xl my-3 font-bold text-gray-500">{{ $feature->titulo }}</h3>
                                 <div class="font-bold text-secondary text-lg mb-4">
@@ -344,7 +346,7 @@
         <div class="border-4 h-1 w-12 border-primary"></div> Perú Recommended Itineraries
     </div>
 
-    <section class="container grid grid-cols-3 gap-6 mb-12">
+    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
         @foreach($paquete_recommended as $paquete)
             <div class="group">
