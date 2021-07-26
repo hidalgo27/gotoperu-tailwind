@@ -345,7 +345,7 @@
         @foreach($paquete_recommended as $paquete)
             <div class="group">
                 <div class="overflow-hidden relative">
-                    <div class="bg-blue-500 relative">
+                    <div class="relative">
                         <img src="{{$paquete->imagen}}" alt="sds" class="object-cover transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105"/>
                         <div class="absolute inset-0 gradient-cicle-gray"></div>
                     </div>
@@ -399,7 +399,10 @@
 
     <section class="grid grid-cols-1 md:grid-cols-5 mb-4 container gap-4">
         <div class="md:col-span-3 overflow-hidden group relative">
-            <img src="{{asset('images/cua2.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+            <div class="relative">
+                <img src="{{asset('images/cua2.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                <div class="absolute inset-0 gradient-cicle-gray"></div>
+            </div>
             <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-primary bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-2xl">Cusco & Machu Picchu</h3>
                 <p class="mt-3 md:mb-6 block text-sm">Travel Packages to Machu Picchu with breathtaking scenery, visit the Incas highest archeological achievement, and you will tune in to the mystery that is at the heart of the Andean Mountains. If you are planning a trip to Machu Picchu, take advantage of our first-class tour service from the city of Cusco to Ollantaytambo and Aguas Calientes.</p>
@@ -414,27 +417,37 @@
         <div class="md:col-span-2 flex flex-col gap-4 content-between overflow-hidden">
 
             <div class="overflow-hidden relative group">
-                <img src="https://picsum.photos/500/360" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                <a href="{{route('packages.detail', 'sacred-valley-machu-picchu')}}">
+                    <div class="relative">
+                        <img src="{{asset('images/banners/packages/sacred-valley.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <div class="absolute inset-0 gradient-cicle-gray"></div>
+                    </div>
                 <div class="absolute w-full bottom-0 inset-x-0 p-3">
                     <div class="py-2 px-4 text-gray-100 bg-primary bg-opacity-95 shadow-lg rounded-lg">
                         <div class="font-normal text-sm">
-                            12 days / <span class="text-xs align-top">from</span> $ 2045 <span class="text-xs">usd</span>
+                            2 days / <span class="text-xs align-top">from</span> $ 359 <span class="text-xs">usd</span>
                         </div>
-                        <h2 class="text-lg font-semibold">Best of Peru</h2>
+                        <h2 class="text-lg font-semibold">Sacred Valley & Machupicchu</h2>
                     </div>
                 </div>
+                </a>
             </div>
 
             <div class="overflow-hidden relative group">
-                <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                <a href="{{route('packages.detail', 'cusco-machu-picchu-rainbows-photography')}}">
+                <div class="relative">
+                    <img src="{{asset('images/banners/packages/rainbow.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                    <div class="absolute inset-0 gradient-cicle-gray"></div>
+                </div>
                 <div class="absolute w-full bottom-0 inset-x-0 p-3">
                     <div class="py-2 px-4 text-gray-100 bg-primary bg-opacity-95 shadow-lg rounded-lg">
                         <div class="font-normal text-sm">
-                            12 days / <span class="text-xs align-top">from</span> $ 2045 <span class="text-xs">usd</span>
+                            7 days / <span class="text-xs align-top">from</span> $ 899 <span class="text-xs">usd</span>
                         </div>
-                        <h2 class="text-lg font-semibold">Best of Peru</h2>
+                        <h2 class="text-lg font-semibold">Cusco, Machupicchu, Rainbow, Photography</h2>
                     </div>
                 </div>
+                </a>
             </div>
 
         </div>
@@ -446,15 +459,20 @@
         <div class="md:col-span-2 order-2 md:order-1 flex flex-col gap-4 content-between overflow-hidden">
 
             <div class="overflow-hidden relative group">
-                <img src="{{asset('images/asc.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                <a href="{{route('packages.detail', 'paracas-nazca')}}">
+                    <div class="relative">
+                        <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <div class="absolute inset-0 gradient-cicle-gray"></div>
+                    </div>
                 <div class="absolute w-full bottom-0 inset-x-0 p-3">
                     <div class="py-2 px-4 text-gray-100 bg-secondary bg-opacity-95 shadow-lg rounded-lg">
                         <div class="font-normal text-sm">
-                            12 days / <span class="text-xs align-top">from</span> $ 2045 <span class="text-xs">usd</span>
+                            2 days / <span class="text-xs align-top">from</span> $ 299 <span class="text-xs">usd</span>
                         </div>
-                        <h2 class="text-lg font-semibold">Best of Peru</h2>
+                        <h2 class="text-lg font-semibold">Paracas & Nazca</h2>
                     </div>
                 </div>
+                </a>
             </div>
 
             <div class="overflow-hidden relative group">
@@ -471,11 +489,14 @@
         </div>
 
         <div class="md:col-span-3 order-1 md:order-2 overflow-hidden group relative">
-            <img src="{{asset('images/pa.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+            <div class="relative h-full w-full">
+                <img src="{{asset('images/pa.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+            </div>
+            <div class="absolute inset-0 gradient-cicle-gray"></div>
             <div class="md:absolute md:inset-y-0 md:right-0 w-full md:w-64 p-6 bg-secondary bg-opacity-95 text-gray-50">
-                <h3 class="font-bold text-right text-2xl">Paracas & Nazca Lines</h3>
-                <p class="mt-3 md:mb-6 block text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque error laudantium nostrum? Accusantium eum.</p>
-                <a href="#" class="btn-white hidden md:inline-flex">All destinations</a>
+                <h3 class="font-bold text-right text-2xl">Nazca, Ballestas & Huacachina</h3>
+                <p class="mt-3 md:mb-6 block text-sm">First discovered in 1927 the Nazca Lines are widely considered among the greatest mysteries of ancient South America, this destination is also near the Ballestas Islands, the Paracas National Reserve and unique sand dunes, for example the Huacachina, the only desert oasis in South America, and also the ideal hotspot for sandboarding and buggy in Peru!.</p>
+                <a href="{{route('destinations.show', 'lineas-de-nazca')}}" class="btn-white hidden md:inline-flex">All destinations</a>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 left-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />

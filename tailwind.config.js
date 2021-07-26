@@ -37,6 +37,7 @@ module.exports = {
             fontWeight: ['hover', 'focus'],
             scale: ['group-hover'],
             translate: ['group-hover'],
+            backgroundColor: ['active'],
         },
     },
 

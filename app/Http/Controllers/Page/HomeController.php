@@ -75,4 +75,24 @@ class HomeController extends Controller
 
         return view('page.destination-show', compact('paquetes_api', 'destinations'));
     }
+
+    public function about(){
+        return view('page.about');
+    }
+
+    public function hotels(){
+        return view('page.hotels');
+    }
+
+    public function responsability(){
+        return view('page.responsability');
+    }
+
+    public function reviews(){
+        return view('page.reviews');
+    }
+
+    public function tours(){
+        return view('page.tours');
+    }
 }

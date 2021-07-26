@@ -24,17 +24,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/peru-travel-packages', [HomeController::class, 'packages'])->name('packages');
+Route::get('/peru-travel-packages', [HomeController::class, 'packages'])->name('packages.all');
 Route::get('/peru-travel-packages/{url}', [HomeController::class, 'packages_detail'])->name('packages.detail');
 
-Route::get('/destinations', [HomeController::class, 'destinations'])->name('destinations');
+Route::get('/destinations', [HomeController::class, 'destinations'])->name('destinations.all');
 Route::get('/destinations/{destinations}', [HomeController::class, 'destinations_show'])->name('destinations.show');
 
-//Route::get('destinations/{destination}', function (){
-//    return "Squi sera la info";
-//})->name('destinations.show');
-
-
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/hotels', [HomeController::class, 'hotels'])->name('hotels');
+Route::get('/social-responsability', [HomeController::class, 'responsability'])->name('responsability');
+Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews');
+Route::get('/peru-tours', [HomeController::class, 'tours'])->name('tours');
 
 //form inquire
 Route::post('/formulario-diseno', [FormpageController::class, 'formulario_diseno'])->name('formulario_diseno');

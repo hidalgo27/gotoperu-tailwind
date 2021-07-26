@@ -138,13 +138,13 @@
             ],
             [
                 'name' => 'Holels',
-                'route' => "#",
-                'active' => ""
+                'route' => route('hotels'),
+                'active' => request()->routeIs('hotels')
             ],
             [
                 'name' => 'About Us',
-                'route' => "#",
-                'active' => ""
+                'route' => route('about'),
+                'active' => request()->routeIs('about')
             ],
             [
                 'name' => 'Reviews',

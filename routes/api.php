@@ -32,10 +32,10 @@ Route::get('category', [CategoryController::class, 'category'])->name('api.categ
 Route::get('slider_home_featured', [HomeSliderController::class, 'slider_home_featured'])->name('api.slider_home_featured');
 Route::get('slider_home_recommended', [HomeSliderController::class, 'slider_home_recommended'])->name('api.slider_home_recommended');
 
-Route::get('packages', [PackagesController::class, 'packages'])->name('api.packages');
-Route::get('packages/{url}', [PackagesController::class, 'packages_detail'])->name('api.packages.detail');
-Route::get('packages/itinerary/{url}', [PackagesController::class, 'itinerary'])->name('api.packages.itinerary');
+//Route::get('packages', [PackagesController::class, 'packages'])->name('api.packages');
+//Route::get('packages/{url}', [PackagesController::class, 'packages_detail'])->name('api.packages.detail');
+//Route::get('packages/itinerary/{url}', [PackagesController::class, 'itinerary'])->name('api.packages.itinerary');
 
-Route::get('packages/destinations/{destino}', [PackagesController::class, 'destinos_show'])->name('api.destination.show');
+//Route::get('packages/destinations/{destino}', [PackagesController::class, 'destinos_show'])->name('api.destination.show');
 
 

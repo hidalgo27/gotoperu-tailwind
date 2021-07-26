@@ -115,6 +115,14 @@
 }
 
 
+.menu-pop.active{
+    @apply bg-blue-500 text-white
+}
+.menu-movil .active{
+    @apply border-t-4 border-secondary
+}
+
+
 .lds-hourglass {
     display: inline-block;
     position: relative;
