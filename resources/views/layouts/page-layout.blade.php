@@ -209,17 +209,17 @@
         <div class="menu-movil bg-gray-50 dark:bg-gray-800 flex gap-4 w-full mx-auto grid grid-cols-5 gap-3 text-center">
             @foreach($nav_links as $nav_link_m)
                 @if($nav_link_m['state'] == 1 OR $nav_link_m['state'] == 2)
-                <div class="py-4 {{ $nav_link_m['active'] == 1 ? 'active' : '' }}">
-                    <a href="{{ $nav_link_m['route'] }}" >
+                <div class="{{ $nav_link_m['active'] == 1 ? 'active' : '' }}">
+                    <a href="{{ $nav_link_m['route'] }}" class="py-4 block">
                         {!! $nav_link_m['icon'] !!}
                     </a>
                 </div>
                 @endif
 
             @endforeach
-            <div class="py-4 cursor-pointer" @click="menu = !menu">
+            <div class="cursor-pointer" @click="menu = !menu">
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto py-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4 8h16M4 16h16" />
                     </svg>
 
