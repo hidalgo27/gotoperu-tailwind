@@ -11,7 +11,7 @@
     <p>Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
 </section>
 
-<section class="container grid grid-cols-3 gap-6 mb-12">
+<section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
     @foreach($paquetes_api as $paquete)
         <div class="group">

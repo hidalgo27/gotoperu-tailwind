@@ -9,7 +9,7 @@
             </div>
         </section>
 
-        <section class="container mt-12 grid grid-cols-3 gap-4">
+        <section class="container mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="col-span-2">
                 <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
                     <div class="">
@@ -77,13 +77,13 @@
         </div>
         <section class="flex flex-col gap-4">
 
-            <div class="flex gap-3">
-                <div class="flex w-4/6 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-6 md:gap-3">
+                <div class="md:col-span-4 flex md:gap-3">
                     {{--                    <div class="flex-shrink">--}}
 
                     {{--                    </div>--}}
                     @php $i = 1; @endphp
-                    <div class="grid grid-cols-2 place-content-between gap-3">
+                    <div class="grid grid-cols-2 place-content-between md:gap-3">
                         @foreach($paquete['paquetes_destinos'] as $paquete_destino)
 
                             {{--                        {{}}--}}
@@ -115,7 +115,7 @@
                         {{--                        </div>--}}
                     </div>
                 </div>
-                <div class="w-2/6 bg-primary flex items-center bg-opacity-30 p-6">
+                <div class="md:col-span-2 bg-primary flex items-center bg-opacity-30 p-6">
                     <div class="">
                         @foreach($paquete['paquetes_destinos'] as $paquete_destino)
                             <h3 class="font-semibold mt-3">{{$paquete_destino['destinos']['nombre']}}</h3>
@@ -139,8 +139,8 @@
                 </div> itinerary
             </div>
 
-            <div class="flex gap-4">
-                <div class="w-4/6">
+            <div class="grid col-span-1 md:grid-cols-6 gap-4">
+                <div class="md:col-span-4">
 
 
                     @foreach($paquete->paquete_itinerario as $section)
@@ -173,7 +173,7 @@
 
 
                 </div>
-                <div class="w-2/6">
+                <div class="md:col-span-2">
                     <div class="flex flex-col sticky top-0 top-16 gap-3">
 {{--                        <img src="https://gotolatinamerica.com/img/maps/GTLM1700.jpg" alt="">--}}
                         <div class="flex gap-3">
@@ -251,8 +251,8 @@
                 </div> Prices
             </div>
             <p>Los precios estan basados en doble acomodación.</p>
-            <div class="">
-                <table class="min-w-full divide-y divide-gray-200">
+            <div class="overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200 overflow-x-scroll">
                     <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">

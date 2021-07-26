@@ -14,7 +14,7 @@
         </div>
     </section>
 
-    <section class="container grid grid-cols-3 gap-12 mb-12">
+    <section class="container grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
         @foreach($destinations as $destination)
             <article class="grid grid-cols-1 place-content-between mb-6 border-r border-l">
                 <div class="w-full">

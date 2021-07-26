@@ -1,6 +1,6 @@
 <x-page-layout>
 
-    <div class="absolute inset-0 h-screen overflow- w-screen -z-1">
+    <div class="absolute inset-0 h-screen overflow- w-full -z-1">
         <video autoplay loop muted class="object-cover h-full w-full">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.
             {{--            <source src="{{asseDestinationst('media/intro.mp4')}}" type="video/mp4" />Your browser does not support the video tag.--}}
