@@ -5,7 +5,7 @@
                 <img src="{{$imagen['nombre']}}" alt="{{$paquete['titulo']}}" class="h-full w-full object-cover">
             @endforeach
             <div class="absolute bottom-0 left-0 p-12">
-                <h1 class="text-5xl font-semibold mb-3 text-gray-50">{{ $paquete['titulo'] }}</h1>
+                <h1 class="text-3xl md:text-5xl font-semibold mb-3 text-gray-50">{{ $paquete['titulo'] }}</h1>
             </div>
         </section>
 
@@ -78,7 +78,7 @@
         <section class="flex flex-col gap-4">
 
             <div class="grid grid-cols-1 md:grid-cols-6 md:gap-3">
-                <div class="md:col-span-4 flex md:gap-3">
+                <div class="col-span-4 md:col-span-4 flex md:gap-3">
                     {{--                    <div class="flex-shrink">--}}
 
                     {{--                    </div>--}}
@@ -115,7 +115,7 @@
                         {{--                        </div>--}}
                     </div>
                 </div>
-                <div class="md:col-span-2 bg-primary flex items-center bg-opacity-30 p-6">
+                <div class="col-span-2 md:col-span-2 bg-primary flex items-center bg-opacity-30 p-6">
                     <div class="">
                         @foreach($paquete['paquetes_destinos'] as $paquete_destino)
                             <h3 class="font-semibold mt-3">{{$paquete_destino['destinos']['nombre']}}</h3>
@@ -140,7 +140,7 @@
             </div>
 
             <div class="grid col-span-1 md:grid-cols-6 gap-4">
-                <div class="md:col-span-4">
+                <div class="col-span-4 md:col-span-4">
 
 
                     @foreach($paquete->paquete_itinerario as $section)
@@ -173,7 +173,7 @@
 
 
                 </div>
-                <div class="md:col-span-2">
+                <div class="col-span-4 md:col-span-2">
                     <div class="flex flex-col sticky top-0 top-16 gap-3">
 {{--                        <img src="https://gotolatinamerica.com/img/maps/GTLM1700.jpg" alt="">--}}
                         <div class="flex gap-3">
