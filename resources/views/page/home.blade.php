@@ -459,6 +459,23 @@
         <div class="md:col-span-2 order-2 md:order-1 flex flex-col gap-4 content-between overflow-hidden">
 
             <div class="overflow-hidden relative group">
+                <a href="{{route('packages.detail', 'best-of-peru')}}">
+                    <div class="relative">
+                        <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <div class="absolute inset-0 gradient-cicle-gray"></div>
+                    </div>
+                    <div class="absolute w-full inset-x-0 bottom-0 p-3">
+                        <div class="py-2 px-4 text-gray-100 bg-secondary bg-opacity-95 shadow-lg rounded-lg">
+                            <div class="font-normal text-sm">
+                                12 days / <span class="text-xs align-top">from</span> $ 1699 <span class="text-xs">usd</span>
+                            </div>
+                            <h2 class="text-lg font-semibold">Best of Peru</h2>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="overflow-hidden relative group">
                 <a href="{{route('packages.detail', 'paracas-nazca')}}">
                     <div class="relative">
                         <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
@@ -475,24 +492,14 @@
                 </a>
             </div>
 
-            <div class="overflow-hidden relative group">
-                <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                <div class="absolute w-full inset-x-0 bottom-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-secondary bg-opacity-95 shadow-lg rounded-lg">
-                        <div class="font-normal text-sm">
-                            12 days / <span class="text-xs align-top">from</span> $ 2045 <span class="text-xs">usd</span>
-                        </div>
-                        <h2 class="text-lg font-semibold">Best of Peru</h2>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
         <div class="md:col-span-3 order-1 md:order-2 overflow-hidden group relative">
             <div class="relative h-full w-full">
                 <img src="{{asset('images/pa.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                <div class="absolute inset-0 gradient-cicle-gray"></div>
             </div>
-            <div class="absolute inset-0 gradient-cicle-gray"></div>
             <div class="md:absolute md:inset-y-0 md:right-0 w-full md:w-64 p-6 bg-secondary bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-right text-2xl">Nazca, Ballestas & Huacachina</h3>
                 <p class="mt-3 md:mb-6 block text-sm">First discovered in 1927 the Nazca Lines are widely considered among the greatest mysteries of ancient South America, this destination is also near the Ballestas Islands, the Paracas National Reserve and unique sand dunes, for example the Huacachina, the only desert oasis in South America, and also the ideal hotspot for sandboarding and buggy in Peru!.</p>
@@ -512,8 +519,8 @@
             <img src="{{asset('images/titicaca.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
             <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-gray-700 bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-2xl">Puno & Titicaca Lake</h3>
-                <p class="mt-3 mb-6 block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque error laudantium nostrum? Accusantium eum.</p>
-                <a href="#" class="btn-white hidden md:inline-flex">All destinations</a>
+                <p class="mt-3 mb-6 text-sm block">Explore the gigantic Lake Titicaca which is Half Peruvian and Half Bolivian, sitting at 12,500 feet above sea level is the world’s largest high-altitude lake. The Incas believed that these waters birthed the founders of the empire ( Mama Ocllo & Manco Capac  ) . Nowadays many communities still make their home on the lake keeping their ancient traditions alive!</p>
+                <a href="{{route('destinations.show', 'puno')}}" class="btn-white hidden md:inline-flex">All destinations</a>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -524,27 +531,37 @@
         <div class="md:col-span-2 flex flex-col gap-4 content-between overflow-hidden">
 
             <div class="overflow-hidden relative group">
-                <img src="{{asset('images/asc.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-gray-700 bg-opacity-95 shadow-lg rounded-lg">
-                        <div class="font-normal text-sm">
-                            12 days / <span class="text-xs align-top">from</span> $ 2045 <span class="text-xs">usd</span>
-                        </div>
-                        <h2 class="text-lg font-semibold">Best of 2Peru</h2>
+                <a href={{route('packages.detail', 'lake-titicaca-from-cusco')}}"">
+                    <div class="relative">
+                        <img src="{{asset('images/banners/packages/lake-titicaca-from-cusco.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <div class="absolute inset-0 gradient-cicle-gray"></div>
                     </div>
-                </div>
+                    <div class="absolute w-full bottom-0 inset-x-0 p-3">
+                        <div class="py-2 px-4 text-gray-100 bg-gray-700 bg-opacity-95 shadow-lg rounded-lg">
+                            <div class="font-normal text-sm">
+                                3 days / <span class="text-xs align-top">from</span> $ 219 <span class="text-xs">usd</span>
+                            </div>
+                            <h2 class="text-lg font-semibold">Lake Titicaca from Cusco</h2>
+                        </div>
+                    </div>
+                </a>
             </div>
 
             <div class="overflow-hidden relative group">
-                <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-gray-700 bg-opacity-95 shadow-lg rounded-lg">
-                        <div class="font-normal text-sm">
-                            12 days / <span class="text-xs align-top">from</span> $ 2045 <span class="text-xs">usd</span>
-                        </div>
-                        <h2 class="text-lg font-semibold">Best of Peru</h2>
+                <a href="{{route('packages.detail', 'best-of-peru')}}">
+                    <div class="relative">
+                        <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <div class="absolute inset-0 gradient-cicle-gray"></div>
                     </div>
-                </div>
+                    <div class="absolute w-full bottom-0 inset-x-0 p-3">
+                        <div class="py-2 px-4 text-gray-100 bg-gray-700 bg-opacity-95 shadow-lg rounded-lg">
+                            <div class="font-normal text-sm">
+                                12 days / <span class="text-xs align-top">from</span> $ 1699 <span class="text-xs">usd</span>
+                            </div>
+                            <h2 class="text-lg font-semibold">Best of Peru</h2>
+                        </div>
+                    </div>
+                </a>
             </div>
 
         </div>

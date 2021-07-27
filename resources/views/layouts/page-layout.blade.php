@@ -109,9 +109,9 @@
 
 </head>
 <body class="bg-white dark:bg-gray-800 dark:text-gray-400 relative">
-<div class="preload" id="preload">
-    <div class="pulse"></div>
-</div>
+{{--<div class="preload" id="preload">--}}
+{{--    <div class="pulse"></div>--}}
+{{--</div>--}}
 @php
     $nav_links = [
         [
