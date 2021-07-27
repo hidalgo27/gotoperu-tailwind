@@ -312,11 +312,20 @@
                                 <div class="absolute inset-0 gradient-cicle-gray"></div>
                         </div>
                         <div class="flex items-center relative z-50">
-                            <div class="p-12 w-full md:-ml-24 bg-white rounded-lg shadow-xl ">
+                            <div class="p-12 w-full md:-ml-24 bg-white dark:bg-gray-800 rounded-lg shadow-xl ">
                             <!--                        <h4 class="text-2xl text-secondary font-semibold">{{ $feature->duracion }} days $999</h4>-->
-                                <h3 class="text-2xl my-3 font-bold text-gray-500">{{ $feature->titulo }}</h3>
+                                <h3 class="text-2xl my-3 font-bold text-gray-500 dark:text-gray-300">{{ $feature->titulo }}</h3>
                                 <div class="font-bold text-secondary text-lg mb-4">
-                                    {{ $feature->duracion }} days from $ 2045 <span class="text-xs">usd</span>
+                                    @foreach($feature['precio_paquetes'] as $precio)
+                                        @if($precio['estrellas'] == 2)
+                                            @if($precio['precio_d'] > 0)
+                                                {{ $feature->duracion }} days from $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
+                                            @else
+                                                <span class="text-red-500">Consultesd</span>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
                                 </div>
                                 <div class="mb-6">
                                     {!! Str::limit($feature->descripcion, 150) !!}
