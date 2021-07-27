@@ -22,14 +22,14 @@ class FormSubscribe extends Component
             'email' => 'required|email'
         ]);
 
-        $from = 'martin@gotoperu.com';
+        $from = 'info@gotoperu.com';
 
 
         Mail::send(['html' => 'notifications.page.response-subscribe'], ['name' => $this->name], function ($messaje) {
             $messaje->to($this->email, $this->name)
                 ->subject('GotoPeru')
                 /*->attach('ruta')*/
-                ->from('martin@gotoperu.com', 'GotoPeru');
+                ->from('info@gotoperu.com', 'GotoPeru');
         });
         Mail::send(['html' => 'notifications.page.admin-form-subscribe'], [
             'nombre' => $this->name,
@@ -40,7 +40,7 @@ class FormSubscribe extends Component
                 ->subject('GotoPeru')
 //                    ->cc($from2, 'GotoPeru')
                 /*->attach('ruta')*/
-                ->from('martin@gotoperu.com', 'GotoPeru');
+                ->from('info@gotoperu.com', 'GotoPeru');
         });
 
 
