@@ -25,20 +25,21 @@ class HomeController extends Controller
             ->where('offers_home', '1')
             ->get();
 
+
         return view('page.home',
             compact(
                 'paquete_recommended',
                 'testinomials',
-                'paquetes_features'
+                'paquetes_features',
+
             ));
     }
 
     public function packages() {
-        $paquetes_api = TPaquete::all();
-//        $paquetes_api = $paquetes_api->json();
+        $paquetes = TPaquete::where('is_p_t', '1')->get();
         return view('page.packages',
             compact(
-                'paquetes_api'
+                'paquetes'
             ));
     }
 
@@ -79,6 +80,20 @@ class HomeController extends Controller
     public function about(){
         return view('page.about');
     }
+    public function book(){
+        return view('page.book');
+    }
+    public function confidence(){
+        return view('page.confidence');
+    }
+    public function conditions(){
+        return view('page.conditions');
+    }
+    public function faq(){
+        return view('page.faq');
+    }
+
+
 
     public function hotels(){
         return view('page.hotels');
@@ -89,10 +104,15 @@ class HomeController extends Controller
     }
 
     public function reviews(){
-        return view('page.reviews');
+        $testinomials = TTestimonio::all();
+        return view('page.reviews', compact('testinomials'));
     }
 
     public function tours(){
-        return view('page.tours');
+        $paquetes = TPaquete::where('is_p_t', '2')->get();
+        return view('page.tours',
+            compact(
+                'paquetes'
+            ));
     }
 }

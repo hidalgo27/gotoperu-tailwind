@@ -116,7 +116,7 @@
 
 
 .menu-pop.active{
-    @apply bg-blue-500 text-white
+    @apply bg-gray-700 text-secondary
 }
 .menu-movil .active{
     @apply border-t-4 border-secondary

@@ -3,7 +3,7 @@
     <!-- Modal -->
     <div x-data="{ showModal : false }">
         <!-- Button -->
-        <button type="button" @click="showModal = !showModal" class="btn-primary text-center w-full block">Inquire Now</button>
+            <button type="button" @click="showModal = !showModal" class="btn-primary text-center w-full block">Inquire Now</button>
 
 
         <!-- Modal Background -->

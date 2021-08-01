@@ -321,7 +321,7 @@
                                             @if($precio['precio_d'] > 0)
                                                 {{ $feature->duracion }} days from $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
                                             @else
-                                                <span class="text-red-500">Consultesd</span>
+                                                <span class="text-red-500">Inquire</span>
                                             @endif
                                         @endif
                                     @endforeach
@@ -386,7 +386,7 @@
                         @endforeach
 
                     </div>
-                    <a href="{{route('packages.detail', $paquete['url'])}}" class="btn-secondary">Ver detalles</a>
+                    <a href="{{route('packages.detail', $paquete['url'])}}" class="btn-secondary">View details</a>
                 </div>
             </div>
         @endforeach

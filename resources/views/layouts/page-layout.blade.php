@@ -111,10 +111,11 @@
 
 </head>
 <body class="bg-white dark:bg-gray-800 dark:text-gray-400 relative">
-<div class="preload" id="preload">
-    <div class="pulse"></div>
-</div>
+{{--<div class="preload" id="preload">--}}
+{{--    <div class="pulse"></div>--}}
+{{--</div>--}}
 @php
+
     $nav_links = [
         [
             'name' => 'Home',
@@ -123,74 +124,138 @@
             'active' => request()->routeIs('home'),
             'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>'
+                    </svg>',
+                    'nav_sub_links' => []
+
         ],
         [
             'name' => 'Peru Travel Packages',
             'state' => '2',
             'route' => route('packages.all'),
             'active' => request()->routeIs('packages.*'),
-            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>'
+                    </svg>',
+                    'nav_sub_links' => []
+
         ],
         [
             'name' => 'Only Tours',
             'state' => '2',
             'route' => route('tours'),
             'active' => request()->routeIs('tours'),
-            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                    </svg>'
+                    </svg>',
+                    'nav_sub_links' => []
         ],
         [
             'name' => 'Destination',
             'state' => '2',
             'route' => route('destinations.all'),
             'active' => request()->routeIs('destinations.*'),
-            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>'
+                    </svg>',
+                    'nav_sub_links' =>[]
         ],
         [
             'name' => 'Holels',
             'state' => '3',
             'route' => route('hotels'),
             'active' => request()->routeIs('hotels'),
-            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>'
+                    </svg>',
+                    'nav_sub_links' => []
         ],
         [
-            'name' => 'About Us',
+            'name' => 'Travel Info',
             'state' => '3',
             'route' => route('about'),
             'active' => request()->routeIs('about'),
-            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-700 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>'
+                </svg>',
+           'nav_sub_links' =>
+                [
+                    $sub_data =
+                    [
+                        [
+                            'name' => 'Why book with us',
+                            'state' => '1',
+                            'route' => route('book'),
+                            'active' => request()->routeIs('book'),
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>'
+                        ],
+                        [
+                            'name' => 'Travel with confidence',
+                            'state' => '3',
+                            'route' => route('confidence'),
+                            'active' => request()->routeIs('confidence'),
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>'
+                        ],
+                        [
+                            'name' => 'Booking terms',
+                            'state' => '3',
+                            'route' => route('conditions'),
+                            'active' => request()->routeIs('conditions'),
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>'
+                        ],
+                        [
+                            'name' => 'About us',
+                            'state' => '3',
+                            'route' => route('about'),
+                            'active' => request()->routeIs('about'),
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>'
+                        ],
+                        [
+                            'name' => 'FAQ',
+                            'state' => '3',
+                            'route' => route('faq'),
+                            'active' => request()->routeIs('faq'),
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>'
+                        ]
+                    ]
+                ]
+
         ],
         [
             'name' => 'Reviews',
             'state' => '3',
             'route' => route('reviews'),
             'active' => request()->routeIs('reviews'),
-            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>'
+                    </svg>',
+                    'nav_sub_links' => []
         ],
         [
             'name' => 'Social Responsability',
             'state' => '3',
             'route' => route('responsability'),
             'active' => request()->routeIs('responsability'),
-            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-700 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>'
+                </svg>',
+                'nav_sub_links' => []
         ],
 
     ];
+
+
+
 @endphp
 
 
@@ -211,11 +276,11 @@
         <div class="menu-movil bg-gray-50 dark:bg-gray-800 flex gap-4 w-full mx-auto grid grid-cols-5 gap-3 text-center">
             @foreach($nav_links as $nav_link_m)
                 @if($nav_link_m['state'] == 1 OR $nav_link_m['state'] == 2)
-                <div class="{{ $nav_link_m['active'] == 1 ? 'active' : '' }}">
-                    <a href="{{ $nav_link_m['route'] }}" class="py-4 block">
-                        {!! $nav_link_m['icon'] !!}
-                    </a>
-                </div>
+                    <div class="{{ $nav_link_m['active'] == 1 ? 'active' : '' }}">
+                        <a href="{{ $nav_link_m['route'] }}" class="py-4 block">
+                            {!! $nav_link_m['icon'] !!}
+                        </a>
+                    </div>
                 @endif
 
             @endforeach
@@ -231,7 +296,7 @@
 
     <div class="fixed bottom-0 right-0 mb-16 w-9/12 mr-1 rounded-lg bg-gray-50 z-50" x-show="menu" x-transition x-on:click.away="menu = false">
         @foreach($nav_links as $nav_link)
-            <a href="{{ $nav_link['route'] }}" class="w-full text-sm flex inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white menu-pop {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+            <a href="{{ $nav_link['route'] }}" class="w-full text-sm flex inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-700 hover:text-secondary menu-pop {{ $nav_link['active'] == 1 ? 'active' : '' }}">
                 <span class="mr-2">
                     {!! $nav_link['icon'] !!}
                 </span>
@@ -273,15 +338,56 @@
 
 
 
-
     <nav class="banner-wrapper top-0 z-30 sticky">
         <div class="banner">
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="bg-gray-50 opacity-90 shadow-lg dark:bg-gray-800 hidden md:inline-flex">
-                <div class="container flex items-center justify-center mx-auto text-gray-600 capitalize">
+                <div class="container flex items-center justify-center mx-auto text-gray-600 capitalize " x-data="{menu : false}">
                     {{--                    <a href="#" class="text-gray-800 text-sm dark:text-gray-200 border-b border-transparent transition duration-500 hover:border-blue-500 mx-1.5 sm:mx-6">Peru Travel Packages</a>--}}
                     @foreach($nav_links as $nav_link)
-                        <a href="{{ $nav_link['route'] }}" class="dark:text-gray-400 menu-list {{ $nav_link['active'] == 1 ? 'active' : '' }}">{{ $nav_link['name'] }}</a>
+                        @if($nav_link['state'] > 1)
+                            <div class="relative">
+
+                            @if($nav_link['nav_sub_links'])
+                                    <span @click="menu = !menu" class="dark:text-gray-400 flex items-center menu-list block cursor-pointer {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+                                        {{ $nav_link['name'] }}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </span>
+                                <div class="bg-gray-50 absolute top-0 rounded-lg mt-16 w-72 z-50 shadow" x-show="menu" x-on:click.away="menu = false" x-transition>
+                                    <p class="font-bold text-gray-500 text-xs px-5 py-3">INFORMATION</p>
+
+
+                                    @foreach($nav_link['nav_sub_links'] as $nav_sub)
+
+                                        @foreach($sub_data as $sub_data_item)
+
+                                            <a href="{{ $sub_data_item['route'] }}" class="w-full text-sm flex items-center inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-500 rounded hover:bg-gray-700 hover:text-secondary menu-pop {{ $sub_data_item['active'] == 1 ? 'active' : '' }}">
+                                                    <span class="mr-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </span>
+                                                <span class="">
+                                                        {{ $sub_data_item['name'] }}
+                                                    </span>
+                                            </a>
+                                        @endforeach
+
+                                    @endforeach
+                                </div>
+                                @else
+                                    <a href="{{ $nav_link['route'] }}" class="dark:text-gray-400 menu-list block relative {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+
+                                        {{ $nav_link['name'] }}
+
+
+                                    </a>
+                            @endif
+                            </div>
+
+                        @endif
                     @endforeach
                 </div>
             </div>

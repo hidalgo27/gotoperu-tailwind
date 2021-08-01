@@ -30,7 +30,12 @@ Route::get('/peru-travel-packages/{url}', [HomeController::class, 'packages_deta
 Route::get('/destinations', [HomeController::class, 'destinations'])->name('destinations.all');
 Route::get('/destinations/{destinations}', [HomeController::class, 'destinations_show'])->name('destinations.show');
 
-Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/about-us', [HomeController::class, 'about'])->name('about');
+Route::get('/why-book-with-us', [HomeController::class, 'book'])->name('book');
+Route::get('/travel-with-confidence', [HomeController::class, 'confidence'])->name('confidence');
+Route::get('/booking-terms-and-conditions', [HomeController::class, 'conditions'])->name('conditions');
+Route::get('/frequently-asked-questions', [HomeController::class, 'faq'])->name('faq');
+
 Route::get('/hotels', [HomeController::class, 'hotels'])->name('hotels');
 Route::get('/social-responsability', [HomeController::class, 'responsability'])->name('responsability');
 Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews');
