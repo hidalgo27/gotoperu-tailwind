@@ -109,7 +109,7 @@ class HomeController extends Controller
     }
 
     public function tours(){
-        $paquetes = TPaquete::where('is_p_t', '2')->get();
+        $paquetes = TPaquete::where('is_p_t', '0')->get();
         return view('page.tours',
             compact(
                 'paquetes'
