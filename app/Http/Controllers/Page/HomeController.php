@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\TDestino;
+use App\Models\THotel;
 use App\Models\TPaquete;
 use App\Models\TPaqueteDestino;
 use App\Models\TTestimonio;
@@ -96,7 +97,8 @@ class HomeController extends Controller
 
 
     public function hotels(){
-        return view('page.hotels');
+        $hotels = THotel::all();
+        return view('page.hotels', compact('hotels'));
     }
 
     public function responsability(){

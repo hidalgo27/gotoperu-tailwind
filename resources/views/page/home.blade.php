@@ -1,10 +1,15 @@
 <x-page-layout>
 
-    <div class="absolute inset-0 h-screen overflow- w-full -z-1">
-        <video autoplay loop muted class="object-cover h-full w-full">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.
+    <div class="absolute inset-0 h-screen overflow- w-full -z-1 overflow-hidden">
+{{--        <video autoplay loop muted class="object-cover h-full w-full">--}}
+{{--            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.--}}
             {{--            <source src="{{asseDestinationst('media/intro.mp4')}}" type="video/mp4" />Your browser does not support the video tag.--}}
-        </video>
+
+        <div class="vimeo-wrapper">
+            <iframe src="https://player.vimeo.com/video/361847703?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
+        </div>
+
+{{--        </video>--}}
     </div>
     <div class="flex h-83-5vh relative overflow-hidden">
 {{--        <div class="relative items-start grid grid-cols-3 justify-between ">--}}
