@@ -161,7 +161,7 @@
                     'nav_sub_links' =>[]
         ],
         [
-            'name' => 'Holels',
+            'name' => 'Hotels',
             'state' => '3',
             'route' => route('hotels'),
             'active' => request()->routeIs('hotels'),
