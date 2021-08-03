@@ -75,7 +75,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-5 border mb-6">
             <div class="col-span-2">
-                <img src="https://picsum.photos/700/455" alt="" class="object-cover h-full w-full">
+                <img src="{{asset('images/banners/confidence/24.jpg')}}" alt="" class="object-cover h-full w-full">
             </div>
             <div class="col-span-3 p-12">
                 <h3 class="font-bold text-gray-500 pb-4 text-xl dark:text-white">24/7 support</h3>
