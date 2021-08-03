@@ -5,9 +5,12 @@
 {{--            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.--}}
             {{--            <source src="{{asseDestinationst('media/intro.mp4')}}" type="video/mp4" />Your browser does not support the video tag.--}}
 
-        <div class="vimeo-wrapper">
+        <div class="vimeo-wrapper hidden sm:block">
             <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
         </div>
+
+        <img src="{{asset('images/400/sacred-valley-machu-picchu.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
+
 
 {{--        </video>--}}
     </div>
