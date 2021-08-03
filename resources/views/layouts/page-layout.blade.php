@@ -150,7 +150,7 @@
                     'nav_sub_links' => []
         ],
         [
-            'name' => 'Destination',
+            'name' => 'Destinations',
             'state' => '2',
             'route' => route('destinations.all'),
             'active' => request()->routeIs('destinations.*'),

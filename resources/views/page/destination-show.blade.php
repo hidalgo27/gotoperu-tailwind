@@ -50,7 +50,7 @@
                     @endforeach
 
                 </div>
-                <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary">Ver detalles</a>
+                <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary">View details</a>
             </div>
         </div>
     @endforeach

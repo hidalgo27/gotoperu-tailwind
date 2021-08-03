@@ -15,6 +15,12 @@ class TPaquete extends Model
     }
 
 
+    //Query scopes
+    public function scopeCategory($query, $destination_id) {
+        if ($destination_id) {
+            return $query->where('category_id', $destination_id);
+        }
+    }
 
     public function paquete_itinerario()
     {

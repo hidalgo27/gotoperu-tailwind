@@ -7,11 +7,9 @@
     </section>
 
     <section class="container py-12 text-gray-500 text-center">
-        <p class="">Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
-        <p class="my-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet beatae commodi doloremque est eveniet expedita id ipsam labore magnam maxime, minima nemo nihil porro quaerat rem ullam. A, earum?</p>
-        <div class="text-gray-600 text-xl font-medium">
-            Trabajaremos de acuerdo con su agenda y sus intereses de viaje para construir juntos los planes de viaje más exclusivos.
-        </div>
+
+        <p>Peru is a unique south american country, there is not a simple way to describe all the highlights that this destination offers; you will feel the magic of this land, you will see history, delicious food ( Peruvian Gastronomy is known worldwide) , rich culture, plenty of adventure and more. It’s a country with over 5000 years of history, and proudly one of the most diverse countries in the world that create practically infinite vacation destinations from Amazon national parks, ancient Inca ruins to the mysterious Nazca Lines and beautiful mountains for amazing treks as the Inca trail.</p>
+
     </section>
 
     <section class="container grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">

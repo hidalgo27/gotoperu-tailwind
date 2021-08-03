@@ -21,7 +21,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-5 border mb-6">
             <div class="col-span-2">
-                <img src="https://picsum.photos/700/460" alt="" class="object-cover h-full w-full">
+                <img src="{{asset('images/banners/confidence/safe-transportation.jpg')}}" alt="" class="object-cover h-full w-full">
             </div>
             <div class="col-span-3 p-12">
                 <h3 class="font-bold text-gray-500 pb-4 text-xl dark:text-white">Safe transportation</h3>
@@ -31,7 +31,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-5 border mb-6">
             <div class="col-span-2">
-                <img src="https://picsum.photos/700/451" alt="" class="object-cover h-full w-full">
+                <img src="{{asset('images/banners/confidence/quality-checked.jpg')}}" alt="" class="object-cover h-full w-full">
             </div>
             <div class="col-span-3 p-12">
                 <h3 class="font-bold text-gray-500 pb-4 text-xl dark:text-white">Quality-checked hotels</h3>
@@ -42,7 +42,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-5 border mb-6">
             <div class="col-span-2">
-                <img src="https://picsum.photos/700/452" alt="" class="object-cover h-full w-full">
+                <img src="{{asset('images/banners/confidence/handpicked.jpg')}}" alt="" class="object-cover h-full w-full">
             </div>
             <div class="col-span-3 p-12">
                 <h3 class="font-bold text-gray-500 pb-4 text-xl dark:text-white">Handpicked activities and Restaurants</h3>
@@ -53,7 +53,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-5 border mb-6">
             <div class="col-span-2">
-                <img src="https://picsum.photos/700/453" alt="" class="object-cover h-full w-full">
+                <img src="{{asset('images/banners/confidence/experienced-tour-guides.jpg')}}" alt="" class="object-cover h-full w-full">
             </div>
             <div class="col-span-3 p-12">
                 <h3 class="font-bold text-gray-500 pb-4 text-xl dark:text-white">Experienced tour guides</h3>

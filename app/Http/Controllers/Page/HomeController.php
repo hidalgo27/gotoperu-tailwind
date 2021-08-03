@@ -69,6 +69,7 @@ class HomeController extends Controller
 //        $paquetes_api = Http::get(env('APP_URL').'/api/packages/destinations/'.$destinations->id);
 //        $paquetes_api = $paquetes_api->json();
 
+//        $paquetes = TPaquete::
         $paquetes_api = TPaqueteDestino::
         with('paquetes.precio_paquetes','destinos', 'paquetes.paquetes_destinos.destinos')
             ->where('iddestinos', $destinations->id)
