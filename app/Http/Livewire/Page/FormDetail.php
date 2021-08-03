@@ -34,6 +34,7 @@ class FormDetail extends Component
                 ->from('info@gotoperu.com', 'GotoPeru');
         });
         Mail::send(['html' => 'notifications.page.admin-form-contact-detail'], [
+            'paquete' => $this->paquete,
             'nombre' => $this->name,
             'email' => $this->email,
             'telefono' => $this->phone,
