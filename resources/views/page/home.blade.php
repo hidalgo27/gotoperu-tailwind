@@ -112,7 +112,7 @@
 
 
 
-    <section class="container">
+    <section class="container hidden sm:block">
         <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-20 xl:text-5xl dark:text-secondary">Your Peru Vacation Worry-Free</h2>
         <div class="grid text-center mb-16 gap-4 grid-cols-1 sm:grid-cols-3">
             <div class="relative mb-12 sm:mb-0">
@@ -180,124 +180,127 @@
     </section>
 
 
-    <div class="flex container items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-        <div class="border-4 h-1 w-12 border-primary"></div> GOTOPERU
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-5 container gap-4">
-        <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
-            <div class="w-full">
-                <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
-                    <div class="border p-4 w-full">
-                        <p class="block text-4xl font-bold">97%</p>
-                        <p class="text-xs">GUEST SATISFACTION RATE</p>
-                    </div>
-                    <div class="border p-4 w-full">
-                        <p class="block text-3xl font-bold">9000 +</p>
-                        <p class="text-xs">GOTOPERU GUESTS</p>
-                    </div>
-                </div>
-            </div>
-            <div class="relative">
-                {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
-                {{--                <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-                <div class="flex items-center justify-center">
-                    <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-300">
-                        <p class="mb-2 flex inline-flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            100% Tailor Made, Private Tours
-                        </p>
-                        <p class="mb-2 flex inline-flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            Authentic & Unique Experiences
-                        </p>
-                        <p class="mb-2 flex inline-flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            24/7 Local Support While You Travel
-                        </p>
-                        <p class="mb-2 flex inline-flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            Travel with an Award-Winning Team
-                        </p>
-                        <p class="mb-2 flex inline-flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            100% Financial Protection
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
-                </div>
-                <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
-                </div>
-                <div class="border">
-                    <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
-                </div>
-            </div>
-
-
+    <section class="hidden md:inline-block">
+        <div class="flex container items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+            <div class="border-4 h-1 w-12 border-primary"></div> GOTOPERU
         </div>
-        <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('https://picsum.photos/700/450')}})">
-            {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-
-            {{--            <div class="absolute flex items-center inset-0 ">--}}
-            <div class="md:mx-16">
-            <div class="w-full swiper-container mySwiper">
-                <div class="swiper-wrapper">
-                @foreach($testinomials as $testinomial)
-                    <div class="swiper-slide p-12">
-                        <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-white dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">
-                            <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
-                                <a href="#" class="block relative">
-                                    <img alt="profil" src="https://gotoperu.com.mx/images/video-testimonial/2.jpg" class="mx-auto object-cover rounded-full h-20 w-20 z-30"/>
-                                </a>
-                            </div>
-                            <div class="w-full mb-6">
-                                <div class="text-3xl text-indigo-500 text-left leading-tight h-3">
-                                    “
-                                </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-100 text-center px-5">
-                                    {{ Str::limit($testinomial->contenido, 150) }}
-                                </p>
-                                <div class="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
-                                    ”
-                                </div>
-                            </div>
-                            <div class="w-full text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto cursor-pointer text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-
-                                <p class="text-md text-indigo-500 font-bold text-center">
-                                    {{ $testinomial->nombre }}
-                                </p>
-                                <p class="text-xs text-gray-500 dark:text-gray-300 text-center">
-                                    {{ $testinomial->ciudad }}
-                                </p>
-                            </div>
+        <div class="grid grid-cols-1 md:grid-cols-5 container gap-4">
+            <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
+                <div class="w-full">
+                    <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
+                        <div class="border p-4 w-full">
+                            <p class="block text-4xl font-bold">97%</p>
+                            <p class="text-xs">GUEST SATISFACTION RATE</p>
+                        </div>
+                        <div class="border p-4 w-full">
+                            <p class="block text-3xl font-bold">9000 +</p>
+                            <p class="text-xs">GOTOPERU GUESTS</p>
                         </div>
                     </div>
-                @endforeach
                 </div>
-                <div class="swiper-button-next btn-next"></div>
-                <div class="swiper-button-prev btn-prev"></div>
+                <div class="relative">
+                    {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
+                    {{--                <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
+                    <div class="flex items-center justify-center">
+                        <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-300">
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                100% Tailor Made, Private Tours
+                            </p>
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Authentic & Unique Experiences
+                            </p>
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                24/7 Local Support While You Travel
+                            </p>
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Travel with an Award-Winning Team
+                            </p>
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                100% Financial Protection
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+                    <div class="border">
+                        <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                    </div>
+                    <div class="border">
+                        <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                    </div>
+                    <div class="border">
+                        <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                    </div>
+                </div>
+
+
             </div>
+            <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('https://picsum.photos/700/450')}})">
+                {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
+
+                {{--            <div class="absolute flex items-center inset-0 ">--}}
+                <div class="md:mx-16">
+                    <div class="w-full swiper-container mySwiper">
+                        <div class="swiper-wrapper">
+                            @foreach($testinomials as $testinomial)
+                                <div class="swiper-slide p-12">
+                                    <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-white dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">
+                                        <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
+                                            <a href="#" class="block relative">
+                                                <img alt="profil" src="https://gotoperu.com.mx/images/video-testimonial/2.jpg" class="mx-auto object-cover rounded-full h-20 w-20 z-30"/>
+                                            </a>
+                                        </div>
+                                        <div class="w-full mb-6">
+                                            <div class="text-3xl text-indigo-500 text-left leading-tight h-3">
+                                                “
+                                            </div>
+                                            <p class="text-sm text-gray-600 dark:text-gray-100 text-center px-5">
+                                                {{ Str::limit($testinomial->contenido, 150) }}
+                                            </p>
+                                            <div class="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
+                                                ”
+                                            </div>
+                                        </div>
+                                        <div class="w-full text-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto cursor-pointer text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+
+                                            <p class="text-md text-indigo-500 font-bold text-center">
+                                                {{ $testinomial->nombre }}
+                                            </p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-300 text-center">
+                                                {{ $testinomial->ciudad }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-button-next btn-next"></div>
+                        <div class="swiper-button-prev btn-prev"></div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
 
     <section class="py-12 my-12 bg-line-cover bg-gray-50 dark:bg-gray-800 bg-fixed">
         <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
@@ -549,7 +552,7 @@
 
     </section>
 
-    <section class="container">
+    <section class="container hidden md:inline-block">
         <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 mt-24">
             <div class="border-4 h-1 w-12 border-primary"></div> Travel Style
         </div>
@@ -599,7 +602,7 @@
 
     </section>
 
-    <section class="container my-12">
+    <section class="container my-12 hidden md:inline-block">
         <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
             <div class="">
                 <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
@@ -658,7 +661,7 @@
     </section>
 
 
-    <div class="flex mb-3 container items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+    <div class="flex mb-3 container mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
         <div class="">
             <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
             <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
@@ -685,7 +688,7 @@
                     All feature excellent locations and facilities for a comfortable stay, plus the best service and warm peruvian hospitality. Our hotels will be a great part of an unforgettable Peru vacation!
                     Select your preferred Hotel category for all our Peru travel packages.
                 </p>
-                <a href="#" class="btn-primary">View all</a>
+                <a href="{{route('hotels')}}" class="btn-primary">View all</a>
             </div>
         </div>
     </section>

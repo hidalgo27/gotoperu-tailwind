@@ -69,7 +69,13 @@ class HomeController extends Controller
 //        $paquetes_api = Http::get(env('APP_URL').'/api/packages/destinations/'.$destinations->id);
 //        $paquetes_api = $paquetes_api->json();
 
-//        $paquetes = TPaquete::
+//        $paquetes = TPaquete::where('is_p_t', 1)
+//            ->paquetes_destinos($destinations->id)
+////            ->latest('id')
+//            ->paginate(8);
+//
+//
+//        return $paquetes;
         $paquetes_api = TPaqueteDestino::
         with('paquetes.precio_paquetes','destinos', 'paquetes.paquetes_destinos.destinos')
             ->where('iddestinos', $destinations->id)
@@ -113,6 +119,7 @@ class HomeController extends Controller
 
     public function tours(){
         $paquetes = TPaquete::where('is_p_t', '0')->get();
+
         return view('page.tours',
             compact(
                 'paquetes'

@@ -259,20 +259,21 @@
 @endphp
 
 
-    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 hidden sm:inline-flex">
+    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 mb-24 sm:mb-0 sm:inline-flex">
         <a href="https://api.whatsapp.com/send?phone=51958123295" target="_blank">
             <span class="flex relative h-10 w-10">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
             </span>
         </a>
     </div>
-    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 hidden sm:inline-flex">
+    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 mb-24 sm:mb-0 sm:inline-flex">
         <a href="https://api.whatsapp.com/send?phone=51958123295" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
 <div x-data="{menu: false}">
     <div class="fixed bg-12 bottom-0 w-full z-30 sm:hidden">
+        @livewire('page.form-inquire')
         <div class="menu-movil bg-gray-50 dark:bg-gray-800 flex gap-4 w-full mx-auto grid grid-cols-5 gap-3 text-center">
             @foreach($nav_links as $nav_link_m)
                 @if($nav_link_m['state'] == 1 OR $nav_link_m['state'] == 2)

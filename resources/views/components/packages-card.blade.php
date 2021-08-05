@@ -33,6 +33,9 @@
             @endforeach
 
         </div>
-        <a href="{{route('packages.detail', $paquete['url'])}}" class="btn-secondary">View details</a>
+        @if($paquete['codigo_f'] AND $paquete['is_p_t'] == 0)
+            <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
+        @endif
+        <a href="{{route('packages.detail', $paquete['url'])}}" class="btn-secondary block">View details</a>
     </div>
 </div>

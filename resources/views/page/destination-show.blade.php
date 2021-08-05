@@ -16,6 +16,10 @@
 
 
     <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+{{--        @foreach($paquetes as $paquete)--}}
+{{--            {{$paquete->titulo}}--}}
+{{--        @endforeach--}}
     @foreach($paquetes_api as $paquete)
         <div class="group">
             <div class="overflow-hidden relative">
