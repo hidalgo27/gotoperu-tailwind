@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 use App\Models\TDestino;
 use App\Models\THotel;
 use App\Models\TPaquete;
@@ -98,7 +99,8 @@ class HomeController extends Controller
         return view('page.conditions');
     }
     public function faq(){
-        return view('page.faq');
+        $faqs = Faq::all();
+        return view('page.faq', compact('faqs'));
     }
 
 

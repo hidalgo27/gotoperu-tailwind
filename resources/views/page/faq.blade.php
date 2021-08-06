@@ -9,11 +9,32 @@
         @livewire('page.form-home')
     </div>
     <section class="container py-12 text-gray-500 text-center">
-        <p class="">Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
-{{--        <p class="my-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet beatae commodi doloremque est eveniet expedita id ipsam labore magnam maxime, minima nemo nihil porro quaerat rem ullam. A, earum?</p>--}}
-        <div class="text-gray-600 text-xl font-medium">
-            Trabajaremos de acuerdo con su agenda y sus intereses de viaje para construir juntos los planes de viaje más exclusivos.
-        </div>
+        <p class="text-gray-600 text-xl font-medium">A trip to Peru is an exciting adventure! There are a number of common questions first-time travelers to Peru frequently ask.</p>
+    </section>
+
+    <section class="container">
+        @foreach($faqs as $faq)
+            <article class="mb-4"
+                     @if($loop->first)
+                     x-data="{ open: true }"
+                     @else
+                     x-data="{ open: false }"
+                @endif
+            >
+                <header class="border border-gray-200 px-4 py-2 flex justify-between cursor-pointer bg-gray-100" x-on:click="open = !open">
+                    <h1 class="font-semibold text-sm text-gray-600 "><span class="capitalize">{{$loop->iteration}}:</span> {{ucfirst(strtolower($faq->titulo))}}</h1>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </header>
+                <div class="bg-white py-2 px-4 border mt-1" x-show="open" x-transition>
+                    <div class="grid grid-cols-1 gap-2 text-sm">
+                        {!! $faq->descripcion !!}
+                    </div>
+                </div>
+            </article>
+        @endforeach
     </section>
 
 

@@ -145,7 +145,6 @@
             <div class="grid col-span-1 md:grid-cols-6 gap-4">
                 <div class="col-span-4 md:col-span-4">
 
-
                     @foreach($paquete->paquete_itinerario as $section)
 
                         <article class="mb-4"
@@ -164,9 +163,6 @@
                             </header>
                             <div class="bg-white py-2 px-4 border mt-1" x-show="open" x-transition>
                                 <div class="grid grid-cols-1 gap-2 text-sm">
-{{--                                    @foreach($section->lessons as $lesson)--}}
-{{--                                        <li class="text-gray-700 text-base"><i class="fas fa-play-circle mr-2 text-gray-600"></i>{{$lesson->name}}</li>--}}
-{{--                                    @endforeach--}}
                                     {!! $section->itinerarios->descripcion !!}
                                 </div>
                             </div>
@@ -207,14 +203,9 @@
                                     @if ($loop->iteration < count($paquete['paquetes_destinos'])) , @else . @endif
                                 @endforeach
                             </div>
-                            {{--                    <div class="text-gray-600 text-sm bg-secondary rounded-lg shadow-lg my-4 p-3">--}}
-
-                            {{--                    </div>--}}
                         </div>
 
                         <div class="">
-                            {{--                    <a href="" class="btn-secondary text-center block">Request a Quote</a>--}}
-                            {{--                    <form-detail-component></form-detail-component>--}}
                             @livewire('page.form-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))
                             @if($paquete['codigo_f'])
                                 <button class="wtrvl-checkout_button btn-primary block mt-2 w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
@@ -230,7 +221,6 @@
                                 </div> Destinations included
                             </div>
 
-{{--                            <hr class="mt-2 mb-4">--}}
                             @foreach($paquete['paquetes_destinos'] as $paquete_destino)
                                 <h3 class="font-semibold mt-3 flex text-gray-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
