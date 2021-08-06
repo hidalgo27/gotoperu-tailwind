@@ -598,7 +598,7 @@
 @livewireScripts
 
 <script src="{{asset('js/app.js')}}"></script>
-<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+
 @stack('scripts')
 
 <script>
@@ -631,10 +631,8 @@
         window.addEventListener('scroll', handler, false);
     })();
 
-</script>
-<script type="text/javascript">
     // function([string1, string2],target id,[color1,color2])
-    consoleText(['Go with the Experts', 'Vamos a Perú', 'Vamos a Italia'], 'text',['#585858','#7F8429','#f9a825']);
+    consoleText(['Go with the Experts', 'Vamos a Perú'], 'text',['#585858','#7F8429','#f9a825']);
 
     function consoleText(words, id, colors) {
         if (colors === undefined) colors = ['#fff'];
@@ -684,8 +682,7 @@
             }
         }, 400)
     }
-</script>
-<script>
+
     document.getElementById('switchTheme').addEventListener('click', function() {
 
         let htmlClasses = document.querySelector('html').classList;

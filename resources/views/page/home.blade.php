@@ -5,9 +5,9 @@
 {{--            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.--}}
             {{--            <source src="{{asseDestinationst('media/intro.mp4')}}" type="video/mp4" />Your browser does not support the video tag.--}}
 
-        <div class="vimeo-wrapper hidden sm:block">
-            <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
-        </div>
+{{--        <div class="vimeo-wrapper hidden sm:block">--}}
+{{--            <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>--}}
+{{--        </div>--}}
 
         <img src="{{asset('images/400/sacred-valley-machu-picchu.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
 
@@ -112,197 +112,86 @@
 
 
 
-    <section class="container hidden sm:block">
-        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-20 xl:text-5xl dark:text-secondary">Your Peru Vacation Worry-Free</h2>
-        <div class="grid text-center mb-16 gap-4 grid-cols-1 sm:grid-cols-3">
-            <div class="relative mb-12 sm:mb-0">
-                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">
-                    <a href="#" class="block relative">
-                        {{--                        <img alt="profil" src="/images/person/4.jpg" class="mx-auto object-cover h-40 w-40  border border-white dark:border-gray-800"/>--}}
+{{--    <section class="container hidden sm:block">--}}
+{{--        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-20 xl:text-5xl dark:text-secondary">Your Peru Vacation Worry-Free</h2>--}}
+{{--        <div class="grid text-center mb-16 gap-4 grid-cols-1 sm:grid-cols-3">--}}
+{{--            <div class="relative mb-12 sm:mb-0">--}}
+{{--                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">--}}
+{{--                    <a href="#" class="block relative">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />--}}
+{{--                        </svg>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-secondary">--}}
+{{--                    <div class="text-center">--}}
+{{--                        <p class="font-bold text-gray-500 pb-2 dark:text-white">--}}
+{{--                            Your wellbeign is our priority--}}
+{{--                        </p>--}}
+{{--                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 font-light transition duration-500">--}}
+{{--                            Find out more--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="relative mb-12 sm:mb-0">--}}
+{{--                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">--}}
+{{--                    <a href="#" class="block relative">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-primary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />--}}
+{{--                        </svg>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-primary">--}}
+{{--                    <div class="text-center">--}}
+{{--                        <p class="font-bold text-gray-500 pb-2 dark:text-white">--}}
+{{--                            Your perfectly planned trip--}}
+{{--                        </p>--}}
+{{--                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 font-light transition duration-500">--}}
+{{--                            Find out more--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="relative mb-12 sm:mb-0">--}}
+{{--                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">--}}
+{{--                    <a href="#" class="block relative">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />--}}
+{{--                        </svg>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-secondary">--}}
+{{--                    <div class="text-center">--}}
+{{--                        <p class="font-bold text-gray-500 pb-2 dark:text-white">--}}
+{{--                            Free Changes & Cancellation--}}
+{{--                        </p>--}}
+{{--                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 hover:font-bold font-light transition duration-500">--}}
+{{--                            Find out more--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
 
-                    </a>
-                </div>
-                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-secondary">
-                    <div class="text-center">
-                        <p class="font-bold text-gray-500 pb-2 dark:text-white">
-                            Your wellbeign is our priority
-                        </p>
-                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 font-light transition duration-500">
-                            Find out more
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="relative mb-12 sm:mb-0">
-                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">
-                    <a href="#" class="block relative">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-primary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                        </svg>
-                    </a>
-                </div>
-                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-primary">
-                    <div class="text-center">
-                        <p class="font-bold text-gray-500 pb-2 dark:text-white">
-                            Your perfectly planned trip
-                        </p>
-                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 font-light transition duration-500">
-                            Find out more
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="relative mb-12 sm:mb-0">
-                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">
-                    <a href="#" class="block relative">
-                        {{--                        <img alt="profil" src="/images/person/4.jpg" class="mx-auto object-cover h-40 w-40  border border-white dark:border-gray-800"/>--}}
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                    </a>
-                </div>
-                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-secondary">
-                    <div class="text-center">
-                        <p class="font-bold text-gray-500 pb-2 dark:text-white">
-                            Free Changes & Cancellation
-                        </p>
-                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 hover:font-bold font-light transition duration-500">
-                            Find out more
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+        <div class="border-4 h-1 w-12 border-primary"></div> Perú Recommended Itineraries
+    </div>
+
+    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+        @foreach($paquete_recommended as $paquete)
+            <x-packages-card :paquete="$paquete"></x-packages-card>
+        @endforeach
+
+
     </section>
 
 
-    <section class="hidden md:inline-block">
-        <div class="flex container items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-            <div class="border-4 h-1 w-12 border-primary"></div> GOTOPERU
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-5 container gap-4">
-            <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
-                <div class="w-full">
-                    <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
-                        <div class="border p-4 w-full">
-                            <p class="block text-4xl font-bold">97%</p>
-                            <p class="text-xs">GUEST SATISFACTION RATE</p>
-                        </div>
-                        <div class="border p-4 w-full">
-                            <p class="block text-3xl font-bold">9000 +</p>
-                            <p class="text-xs">GOTOPERU GUESTS</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
-                    {{--                <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-                    <div class="flex items-center justify-center">
-                        <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-300">
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                100% Tailor Made, Private Tours
-                            </p>
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Authentic & Unique Experiences
-                            </p>
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                24/7 Local Support While You Travel
-                            </p>
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Travel with an Award-Winning Team
-                            </p>
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                100% Financial Protection
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                    <div class="border">
-                        <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
-                    </div>
-                    <div class="border">
-                        <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
-                    </div>
-                    <div class="border">
-                        <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('https://picsum.photos/700/450')}})">
-                {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-
-                {{--            <div class="absolute flex items-center inset-0 ">--}}
-                <div class="md:mx-16">
-                    <div class="w-full swiper-container mySwiper">
-                        <div class="swiper-wrapper">
-                            @foreach($testinomials as $testinomial)
-                                <div class="swiper-slide p-12">
-                                    <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-white dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">
-                                        <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
-                                            <a href="#" class="block relative">
-                                                <img alt="profil" src="https://gotoperu.com.mx/images/video-testimonial/2.jpg" class="mx-auto object-cover rounded-full h-20 w-20 z-30"/>
-                                            </a>
-                                        </div>
-                                        <div class="w-full mb-6">
-                                            <div class="text-3xl text-indigo-500 text-left leading-tight h-3">
-                                                “
-                                            </div>
-                                            <p class="text-sm text-gray-600 dark:text-gray-100 text-center px-5">
-                                                {{ Str::limit($testinomial->contenido, 150) }}
-                                            </p>
-                                            <div class="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
-                                                ”
-                                            </div>
-                                        </div>
-                                        <div class="w-full text-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto cursor-pointer text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
-
-                                            <p class="text-md text-indigo-500 font-bold text-center">
-                                                {{ $testinomial->nombre }}
-                                            </p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-300 text-center">
-                                                {{ $testinomial->ciudad }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="swiper-button-next btn-next"></div>
-                        <div class="swiper-button-prev btn-prev"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="py-12 my-12 bg-line-cover bg-gray-50 dark:bg-gray-800 bg-fixed">
+    <section class="py-12 my-12  bg-gray-50 dark:bg-gray-800 bg-fixed">
         <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
             <div class="border-4 h-1 w-12 border-secondary"></div> Featured Perú Itineraries
         </div>
@@ -356,21 +245,10 @@
 
     </section>
 
-    <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-        <div class="border-4 h-1 w-12 border-primary"></div> Perú Recommended Itineraries
-    </div>
-
-    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
-        @foreach($paquete_recommended as $paquete)
-            <x-packages-card :paquete="$paquete"></x-packages-card>
-        @endforeach
 
 
-    </section>
 
-
-    <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2 mt-24">
+    <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
         <div class="border-4 h-1 w-12 border-secondary dark:border-secondary"></div> Destinations
 {{--        <div class="text-center mb-10">--}}
 {{--            <span class="inline-block w-1 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
@@ -552,11 +430,7 @@
 
     </section>
 
-    <section class="container hidden md:inline-block">
-        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 mt-24">
-            <div class="border-4 h-1 w-12 border-primary"></div> Travel Style
-        </div>
-
+    <section class="container mb-12">
         <div class="grid grid-cols-6 gap-4 mt-12">
             <div class="col-start-2 col-span-4">
                 <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
@@ -595,29 +469,162 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="mt-12">
+{{--    <section class="container hidden md:block">--}}
+{{--        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 mt-24">--}}
+{{--            <div class="border-4 h-1 w-12 border-primary"></div> Travel Style--}}
+{{--        </div>--}}
+
+{{--        --}}
+
+{{--        <div class="mt-12">--}}
 {{--            <category-component></category-component>--}}
+{{--        </div>--}}
+
+{{--    </section>--}}
+
+    <section class="container hidden md:block">
+
+        <div class="flex items-center text-2xl text-gray-700 mb-4 dark:text-secondary font-bold gap-2">
+            <div class="border-4 h-1 w-12 border-secondary"></div> Social Media & Reviews
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
+                <div class="w-full">
+                    <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
+                        <div class="border p-4 w-full">
+                            <p class="block text-4xl font-bold">97%</p>
+                            <p class="text-xs">GUEST SATISFACTION RATE</p>
+                        </div>
+                        <div class="border p-4 w-full">
+                            <p class="block text-3xl font-bold">9000 +</p>
+                            <p class="text-xs">GOTOPERU GUESTS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
+                    {{--                <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
+                    <div class="flex items-center justify-center">
+                        <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-300">
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                100% Tailor Made, Private Tours
+                            </p>
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Authentic & Unique Experiences
+                            </p>
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                24/7 Local Support While You Travel
+                            </p>
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Travel with an Award-Winning Team
+                            </p>
+                            <p class="mb-2 flex inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                100% Financial Protection
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+                    <div class="border">
+                        <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                    </div>
+                    <div class="border">
+                        <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                    </div>
+                    <div class="border">
+                        <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url('{{asset('images/banners/redes.jpg')}}')">
+                {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
+
+                {{--            <div class="absolute flex items-center inset-0 ">--}}
+                <div class="md:mx-16">
+                    <div class="w-full swiper-container mySwiper">
+                        <div class="swiper-wrapper">
+                            @foreach($testinomials as $testinomial)
+                                <div class="swiper-slide p-12">
+                                    <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-gray-100 dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">
+                                        <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
+                                            <a href="#" class="block relative">
+                                                <img alt="profil" src="https://gotoperu.com.mx/images/video-testimonial/2.jpg" class="mx-auto object-cover rounded-full h-20 w-20 z-30"/>
+                                            </a>
+                                        </div>
+                                        <div class="w-full mb-6">
+                                            <div class="text-3xl text-indigo-500 text-left leading-tight h-3">
+                                                “
+                                            </div>
+                                            <p class="text-sm text-gray-600 dark:text-gray-100 text-center px-5">
+                                                {{ Str::limit($testinomial->contenido, 150) }}
+                                            </p>
+                                            <div class="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
+                                                ”
+                                            </div>
+                                        </div>
+                                        <div class="w-full text-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto cursor-pointer text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+
+                                            <p class="text-md text-indigo-500 font-bold text-center">
+                                                {{ $testinomial->nombre }}
+                                            </p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-300 text-center">
+                                                {{ $testinomial->ciudad }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-button-next btn-next"></div>
+                        <div class="swiper-button-prev btn-prev"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>
 
-    <section class="container my-12 hidden md:inline-block">
-        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
-            <div class="">
-                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
-                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
-                <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-            </div> Social Media
-        </div>
+    <section class="container mt-6 mb-12 ">
+{{--        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">--}}
+{{--            <div class="">--}}
+{{--                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+{{--                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+{{--                <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
+{{--            </div> Social Media--}}
+{{--        </div>--}}
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="grid grid-cols-1 items-center relative bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('images/hotels-t.jpg')}})">
-                <div class="flex">
-                    <div class="elfsight-app-ba7c9526-9468-4d5b-b378-68ec76259e00"></div>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div class="col-span-3 grid grid-cols-1 items-center relative bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('images/hotels-t.jpg')}})">
+                <div class="flex relative">
+{{--                    <div class="elfsight-app-ba7c9526-9468-4d5b-b378-68ec76259e00"></div>--}}
+                    <img src="{{asset('images/banners/social.jpg')}}" alt="" class="object-cover h-full w-full">
+                    <div class="absolute inset-0 gradient-cicle-gray"></div>
                 </div>
             </div>
-            <div class="flex gap-4 flex-col justify-between content-between overflow-hidden">
+            <div class="col-span-2 flex gap-4 flex-col justify-between content-between overflow-hidden">
                 <div class="">
                     <div class="flex items-center text-center text-gray-700 dark:text-gray-300 gap-2">
                         <div class="border p-4 w-1/2">
@@ -735,7 +742,7 @@
             </div>
         </div>
         <div class="md:col-span-2 relative">
-            <img src="https://picsum.photos/840/665" alt="" class="h-full w-full object-cover">
+            <img src="{{asset('images/cua4.jpg')}}" alt="" class="h-full w-full object-cover">
             <div class="md:absolute md:inset-0 p-6 bg-gray-900 bg-opacity-50">
                 <div class="flex flex-col h-full justify-end">
                     <div class="text-gray-50 text-right">

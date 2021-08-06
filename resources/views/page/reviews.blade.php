@@ -194,6 +194,7 @@
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     @endpush
     @push('scripts')
+        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
         <script>
