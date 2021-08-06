@@ -5,9 +5,9 @@
 {{--            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.--}}
             {{--            <source src="{{asseDestinationst('media/intro.mp4')}}" type="video/mp4" />Your browser does not support the video tag.--}}
 
-{{--        <div class="vimeo-wrapper hidden sm:block">--}}
-{{--            <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>--}}
-{{--        </div>--}}
+        <div class="vimeo-wrapper hidden sm:block">
+            <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
+        </div>
 
         <img src="{{asset('images/400/sacred-valley-machu-picchu.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
 
@@ -44,43 +44,46 @@
 {{--            <div class="mb-10 pb-10 border-b border-gray-200"></div>--}}
 
 
-    <section class="container py-16 text-gray-500 text-center mx-auto relative">
+
+
+    <section class="grid gap-12 opacity-80 grid-cols-12 hidden md:inline-flex"><!--.row -->
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">
+        </div>
+        <div>
+            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale">
+        </div>
+    </section>
+
+    <section class="container my-20 text-gray-500 text-center mx-auto relative">
+        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-6 xl:text-5xl dark:text-secondary">Your Peru Vacation Worry-Free</h2>
         <p>Peru travel packages with an award-winning team on a completely customized, private or group tour for an authentic Peru trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore MachuPicchu, Cusco, Lima, Lake Titicaca, the Amazon and many more unique Peruvian destinations safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
 
 
-    </section>
-
-    <section class="grid gap-8 py-8 mb-16 opacity-60 grid-cols-12 hidden md:inline-flex"><!--.row -->
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
     </section>
 
 
