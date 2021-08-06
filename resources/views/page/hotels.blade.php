@@ -13,12 +13,19 @@
             Trabajaremos de acuerdo con su agenda y sus intereses de viaje para construir juntos los planes de viaje más exclusivos.
         </div>
     </section>
-
+    <div class="hidden md:inline-block">
+        @livewire('page.form-home')
+    </div>
     <div class="container">
     @foreach($hotels as $hotel)
         <div class="grid grid-cols-3 gap-4 mb-4 border">
             <div class="col-span-1">
-                <img src="{{$hotel->imagen}}" alt="{{$hotel->nombre}}" class="object-cover w-full h-full">
+{{--                @if($hotel->imagen)--}}
+{{--                    <img src="{{$hotel->imagen}}" alt="{{$hotel->nombre}}" class="object-cover w-full h-full">--}}
+{{--                @else--}}
+                    <img src="https://picsum.photos/400/400" alt="" class="object-cover w-full h-full">
+{{--                @endif--}}
+
             </div>
             <div class="col-span-2 p-6">
                 <h3 class="font-bold text-gray-500">{{$hotel->nombre}}</h3>

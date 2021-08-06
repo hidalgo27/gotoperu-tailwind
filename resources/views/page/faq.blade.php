@@ -5,7 +5,9 @@
             <h1 class="text-5xl font-semibold text-gray-50">frequently asked questions</h1>
         </div>
     </section>
-
+    <div class="hidden md:inline-block">
+        @livewire('page.form-home')
+    </div>
     <section class="container py-12 text-gray-500 text-center">
         <p class="">Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
 {{--        <p class="my-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet beatae commodi doloremque est eveniet expedita id ipsam labore magnam maxime, minima nemo nihil porro quaerat rem ullam. A, earum?</p>--}}

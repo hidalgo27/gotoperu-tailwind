@@ -5,7 +5,9 @@
             <h1 class="text-5xl font-semibold text-gray-50">TRAVEL WITH CONFIDENCE</h1>
         </div>
     </section>
-
+    <div class="hidden md:inline-block">
+        @livewire('page.form-home')
+    </div>
     <section class="container mt-12">
         <h2 class="text-center font-bold text-gray-500 md:text-2xl mb-12 xl:text-4xl dark:text-secondary">What we’re doing for your wellbeing</h2>
         <div class="grid grid-cols-1 md:grid-cols-5 border mb-6">

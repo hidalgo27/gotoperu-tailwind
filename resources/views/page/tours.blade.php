@@ -5,7 +5,9 @@
             <h1 class="text-5xl font-semibold text-gray-50">Peru Tours</h1>
         </div>
     </section>
-
+    <div class="hidden md:inline-block">
+        @livewire('page.form-home')
+    </div>
     <section class="container py-12 text-gray-500 text-center mx-auto">
         <p class="text-sm">GOTOPERU offers the best Peru travel packages covering the main Peru destinations such as Machu Picchu, Rainbow Mountain, Cusco, Lima, Sacred Valley, Titicaca Lake, Puno, Arequipa, Nazca, the Amazon and many more. Our travel packages range from 2 days to 20 days.</p>
         <p class="text-sm my-6">Our Itineraries are carefully-crafted experiences combining the most memorable unique activities and tours that Peru has to offer. Our Peru travel packages offer a planned itinerary seeing something new, interesting and fascinating every day. If you are a family, group of friends, solo traveler or a couple our daily activities will give you the opportunity to witness the history, architecture, nature and culture of Peru. You will not have to worry about anything, we have you cover since you arrive at Peru until you depart, you will be always under GOTOPERU umbrella with a friendly representative ready to assist you every day. All you need to do is sit back and enjoy everyday, creating priceless memories to share with friends and family. </p>

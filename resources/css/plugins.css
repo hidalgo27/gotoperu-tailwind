@@ -64,7 +64,7 @@
     @apply px-12 py-3 text-xs font-light text-gray-50 bg-primary tracking-wider border border-primary hover:bg-gray-200 hover:text-primary hover:bg-opacity-95 md:hover:bg-opacity-5 transition duration-500 focus:outline-none focus:ring-2 focus:ring-gray-300;
 }
 .btn-secondary {
-    @apply px-12 py-3 text-xs font-light text-gray-50 bg-secondary tracking-wider border border-secondary hover:bg-gray-200 hover:text-secondary hover:bg-opacity-5 transition duration-500 focus:outline-none focus:ring-2 focus:ring-gray-300;
+    @apply px-12 py-3 text-xs font-light text-gray-50 bg-secondary tracking-wider border border-secondary hover:bg-gray-200 hover:text-secondary hover:bg-opacity-95 md:hover:bg-opacity-5 transition duration-500 focus:outline-none focus:ring-2 focus:ring-gray-300;
 }
 .btn-white {
     @apply px-12 py-3 text-xs font-light tracking-wider border border-gray-300 hover:bg-gray-200 hover:bg-opacity-5 transition duration-500 text-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300;

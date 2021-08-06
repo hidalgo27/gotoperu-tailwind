@@ -8,6 +8,11 @@
             <h1 class="text-5xl font-semibold text-gray-50">Peru Travel Packages</h1>
         </div>
     </section>
+
+    <div class="hidden md:inline-block">
+        @livewire('page.form-home')
+    </div>
+
     <section class="container py-12 text-gray-500 text-center mx-auto">
         <p>Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
 

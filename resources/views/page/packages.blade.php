@@ -5,7 +5,9 @@
         <h1 class="text-5xl font-semibold text-gray-50">Peru Travel Packages</h1>
     </div>
 </section>
-
+    <div class="hidden md:inline-block">
+        @livewire('page.form-home')
+    </div>
 
 <section class="container py-12 text-gray-500 text-center mx-auto">
     <p class="text-sm">GOTOPERU offers the best Peru travel packages covering the main Peru destinations such as Machu Picchu, Rainbow Mountain, Cusco, Lima, Sacred Valley, Titicaca Lake, Puno, Arequipa, Nazca, the Amazon and many more. Our travel packages range from 2 days to 20 days.</p>

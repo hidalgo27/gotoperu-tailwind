@@ -6,6 +6,10 @@
         </div>
     </section>
 
+    <div class="hidden md:inline-block">
+        @livewire('page.form-home')
+    </div>
+
     <section class="grid grid-cols-1 md:grid-cols-2">
         <div class="bg-secondary p-12 grid grid-cols-3">
             <div class=""></div>

@@ -6,6 +6,10 @@
         </div>
     </section>
 
+    <div class="hidden md:inline-block">
+        @livewire('page.form-home')
+    </div>
+
     <section class="container py-12 text-gray-500 text-center">
         <h2 class="text-3xl font-semibold mb-2">YOUR LOCAL PERU TRAVEL EXPERTS </h2>
         <p class="">GOTOPERU is a specialist travel agency catering to travellers who want an original, authentic and unforgettable experience at the land of the Incas.</p>
