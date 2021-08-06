@@ -26,12 +26,12 @@
     {{--    <link rel="stylesheet" href="https://unpkg.com/element-plus/lib/theme-chalk/index.css">--}}
 
     <script>
-        // if (localStorage.theme === 'dark' || (!'theme' in localStorage && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        // if (sessionStorage.theme === 'dark' || (!'theme' in sessionStorage && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         //     document.querySelector('html').classList.add('dark')
-        // } else if (localStorage.theme === 'dark') {
+        // } else if (sessionStorage.theme === 'dark') {
         //     document.querySelector('html').classList.add('dark')
         // }
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (sessionStorage.theme === 'dark' || (!('theme' in sessionStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             let elem = document.getElementById('switchTheme');
             document.documentElement.classList.add('dark')
         } else {
@@ -327,11 +327,11 @@
                 </button>
 
                 @livewire('page.form-inquire')
-                @livewire('page.form-subscribe')
+{{--                @livewire('page.form-subscribe')--}}
 
                 <div class="dark:text-gray-400">
-                    <span class="text-xs block text-right">USA/Canada</span>
-                    202 246 2282
+                    <span class="text-xs block text-right">PE/Peru</span>
+                    +51 960 106076
                 </div>
             </div>
         </div>
@@ -687,16 +687,16 @@
 
         let htmlClasses = document.querySelector('html').classList;
         let elem = document.getElementById('switchTheme');
-        if(localStorage.theme === 'dark') {
+        if(sessionStorage.theme === 'dark') {
             elem.classList.remove('text-yellow-500');
             elem.classList.add('text-gray-500');
             htmlClasses.remove('dark');
-            localStorage.removeItem('theme')
+            sessionStorage.removeItem('theme')
         } else {
             elem.classList.add('text-yellow-500');
             elem.classList.remove('text-gray-500');
             htmlClasses.add('dark');
-            localStorage.theme = 'dark';
+            sessionStorage.theme = 'dark';
         }
     });
 </script>

@@ -546,13 +546,13 @@
                 </div>
                 <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
                     <div class="border">
-                        <img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                        <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank"><img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
                     </div>
                     <div class="border">
-                        <img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                        <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank"><img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
                     </div>
                     <div class="border">
-                        <img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert">
+                        <a href="https://www.trustpilot.com/review/gotoperu.com"><img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
                     </div>
                 </div>
 
@@ -651,16 +651,16 @@
                 </div>
                 <div class="grid grid-cols-4 items-center text-2xl text-gray-700 font-bold gap-3">
                     <div class="border">
-                        <img src="{{asset('images/logos/instagram.png')}}" alt="" class="p-6">
+                        <a href="https://www.instagram.com/go.to.peru/" target="_blank"><img src="{{asset('images/logos/instagram.png')}}" alt="" class="p-6"></a>
                     </div>
                     <div class="border">
-                        <img src="{{asset('images/logos/facebook.png')}}" alt="" class="p-6">
+                        <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank"><img src="{{asset('images/logos/facebook.png')}}" alt="" class="p-6"></a>
                     </div>
                     <div class="border">
-                        <img src="{{asset('images/logos/youtube.png')}}" alt="" class="p-6">
+                        <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank"><img src="{{asset('images/logos/youtube.png')}}" alt="" class="p-6"></a>
                     </div>
                     <div class="border">
-                        <img src="{{asset('images/logos/tiktok.png')}}" alt="" class="p-6">
+                        <a href="https://www.tiktok.com/@gotoperu" target="_blank"><img src="{{asset('images/logos/tiktok.png')}}" alt="" class="p-6"></a>
                     </div>
                 </div>
 

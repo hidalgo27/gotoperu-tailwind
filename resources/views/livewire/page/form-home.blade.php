@@ -25,7 +25,7 @@
                 <!-- Modal -->
                 <div x-data="{ showModal : false }">
                     <!-- Button -->
-                    <button type="button" @click="showModal = !showModal" class="btn-secondary text-center w-full block">Get a free qoute</button>
+                    <button type="button" @click="showModal = !showModal" class="btn-primary text-center w-full block">Get a free qoute</button>
 
 
                     <!-- Modal Background -->
