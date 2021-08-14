@@ -4,7 +4,7 @@
     <tr>
         <td style="padding:0px 50px 0px 50px">
             <p style="font-size:18px">{{$name}}</p>
-            <p>Gracias por su subscripcion.</p>
+            <p>Thank you for your subscription.</p>
         </td>
     </tr>
 

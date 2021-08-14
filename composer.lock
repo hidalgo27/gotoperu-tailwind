@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2168c9d22de493b3bdc97b9c0e42835",
+    "content-hash": "66c8a3a5a4c5cec7092e478ed7609cab",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5357,6 +5357,77 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.3"
             },
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "victorybiz/laravel-tel-input",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/victorybiz/laravel-tel-input.git",
+                "reference": "5e90c1c98ee6473583573e272277a7f628622fb4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/victorybiz/laravel-tel-input/zipball/5e90c1c98ee6473583573e272277a7f628622fb4",
+                "reference": "5e90c1c98ee6473583573e272277a7f628622fb4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Victorybiz\\LaravelTelInput\\LaravelTelInputServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelTelInput": "Victorybiz\\LaravelTelInput\\LaravelTelInputFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Victorybiz\\LaravelTelInput\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Victory Osayi Airuoyuwa",
+                    "email": "lavictorybiz@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Telephone Input component for Blade and Livewire based on the intl-tel-input JavaScript plugin. ",
+            "homepage": "https://github.com/victorybiz/laravel-tel-input",
+            "keywords": [
+                "blade",
+                "international-telephone-input",
+                "intl-tel-input",
+                "laravel",
+                "laravel-blade",
+                "laravel-livewire",
+                "laravel-tel-input",
+                "livewire",
+                "livewire-tel-input",
+                "tel-input",
+                "telephone-input",
+                "victorybiz"
+            ],
+            "support": {
+                "issues": "https://github.com/victorybiz/laravel-tel-input/issues",
+                "source": "https://github.com/victorybiz/laravel-tel-input/tree/v1.1.2"
+            },
+            "time": "2021-08-10T14:31:08+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

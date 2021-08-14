@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 .vimeo-wrapper {
     position: absolute;
     top: 0;
@@ -20,7 +19,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+.text-xss{
+    font-size: .5rem;
+}
 .h-80vh{
     height: 80vh;
 }
@@ -39,6 +40,9 @@
     z-index: -1;
 }
 
+.btn-check-form.active{
+    @apply border border-primary;
+}
 
 .bg-line-cover{
     /*background-color: #f7f7f7;*/
@@ -159,8 +163,8 @@
     height: 0;
     margin: 0;
     box-sizing: border-box;
-    border: 10px solid #e3e3e3;
-    border-color: #e3e3e3 transparent #e3e3e3 transparent;
+    border: 10px solid #3f3e3e;
+    border-color: #3f3e3e transparent #3f3e3e transparent;
     animation: lds-hourglass 1.2s infinite;
 }
 @keyframes lds-hourglass {
@@ -181,4 +185,8 @@
 .gradient-cicle-gray{
     background: rgb(255,255,255);
     background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8253676470588236) 100%);
+}
+
+.iti.iti--allow-dropdown{
+    width: 100%;
 }

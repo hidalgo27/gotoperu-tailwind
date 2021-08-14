@@ -5,9 +5,9 @@
             <h1 class="text-5xl font-semibold text-gray-50">Peru Destinations</h1>
         </div>
     </section>
-    <div class="hidden md:inline-block">
-        @livewire('page.form-home')
-    </div>
+{{--    <div class="hidden md:inline-block">--}}
+{{--        @livewire('page.form-home')--}}
+{{--    </div>--}}
     <section class="container py-12 text-gray-500 text-center">
 
         <p>Peru is a unique south american country, there is not a simple way to describe all the highlights that this destination offers; you will feel the magic of this land, you will see history, delicious food ( Peruvian Gastronomy is known worldwide) , rich culture, plenty of adventure and more. It’s a country with over 5000 years of history, and proudly one of the most diverse countries in the world that create practically infinite vacation destinations from Amazon national parks, ancient Inca ruins to the mysterious Nazca Lines and beautiful mountains for amazing treks as the Inca trail.</p>
@@ -41,5 +41,7 @@
 
         @endforeach
     </section>
-
+    <section class="mt-12">
+        @livewire('page.form-footer')
+    </section>
 </x-page-layout>

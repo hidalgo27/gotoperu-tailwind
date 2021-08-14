@@ -36,9 +36,9 @@
     </div>
 
 {{--            <form-home-component></form-home-component>--}}
-    <div class="hidden md:inline-block">
-            @livewire('page.form-home')
-    </div>
+{{--    <div class="hidden md:inline-block">--}}
+{{--            @livewire('page.form-home')--}}
+{{--    </div>--}}
 
 
 {{--            <div class="mb-10 pb-10 border-b border-gray-200"></div>--}}
@@ -703,7 +703,7 @@
         </div>
     </section>
 
-    <section class="grid grid-cols-1 md:grid-cols-3 my-4 container gap-4">
+    <section class="grid hidden grid-cols-1 md:grid-cols-3 my-4 container gap-4">
         <div class="md:col-span-1 relative flex items-center">
             <div class="relative w-full">
                 <img src="{{asset('images/blog.jpg')}}" alt="" class="object-cover w-full h-full">
@@ -763,6 +763,9 @@
         </div>
     </section>
 
+    <section class="mt-12">
+        @livewire('page.form-footer')
+    </section>
 
 @push('css')
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />

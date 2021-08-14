@@ -6,9 +6,9 @@
         </div>
     </section>
 
-    <div class="hidden md:inline-block">
-        @livewire('page.form-home')
-    </div>
+{{--    <div class="hidden md:inline-block">--}}
+{{--        @livewire('page.form-home')--}}
+{{--    </div>--}}
 
     <section class="container py-12 text-gray-500 text-center">
         <h2 class="text-3xl font-semibold mb-2">YOUR LOCAL PERU TRAVEL EXPERTS </h2>
@@ -55,6 +55,10 @@
         <p class="">Each of our travel local professionals who know our country inside and out as we live and work on each peruvian destination we cover.</p>
         <p><p>GOTOPERU representatives </p></p>
 
+    </section>
+
+    <section class="mt-12">
+        @livewire('page.form-footer')
     </section>
 
 </x-page-layout>

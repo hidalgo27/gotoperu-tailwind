@@ -6,9 +6,9 @@
         </div>
     </section>
 
-    <div class="hidden md:inline-block">
-        @livewire('page.form-home')
-    </div>
+{{--    <div class="hidden md:inline-block">--}}
+{{--        @livewire('page.form-home')--}}
+{{--    </div>--}}
 
     <section class="grid grid-cols-1 -mt-6 md:grid-cols-2">
         <div class="bg-secondary p-12 grid grid-cols-3">
@@ -127,6 +127,8 @@
 
         </div>
     </section>
-
+    <section class="mt-12">
+        @livewire('page.form-footer')
+    </section>
 
 </x-page-layout>

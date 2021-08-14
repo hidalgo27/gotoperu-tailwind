@@ -12,10 +12,19 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/plugins.scss', 'public/css')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
     ]);
+// webpack.mix.js
+// ...
+// mix.copy('node_modules/intl-tel-input/build/js/utils.js', 'public/vendor/intl-tel-input/build/js');
+
+mix.scripts([
+    'node_modules/pikaday/pikaday.js',
+    // 'node_modules/intl-tel-input/build/js/intlTelInput-jquery.js',
+], 'public/js/plugins.js');
 
 if (mix.inProduction()) {
     mix.version();

@@ -38,6 +38,7 @@ module.exports = {
             scale: ['group-hover'],
             translate: ['group-hover'],
             backgroundColor: ['active'],
+            borderWidth: ['hover', 'focus'],
         },
     },
 

@@ -60,7 +60,8 @@
                 <div class="">
                     {{--                    <a href="" class="btn-secondary text-center block">Request a Quote</a>--}}
 {{--                    <form-detail-component></form-detail-component>--}}
-                    @livewire('page.form-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))
+{{--                    @livewire('page.form-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))--}}
+                    <a href="#form-dream-adventure" class="btn-secondary font-bold text-center w-full block">Inquire Now</a>
                     @if($paquete['codigo_f'])
                         <button class="wtrvl-checkout_button btn-primary block mt-2 w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
                     @endif
@@ -206,7 +207,7 @@
                         </div>
 
                         <div class="">
-                            @livewire('page.form-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))
+{{--                            @livewire('page.form-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))--}}
                             @if($paquete['codigo_f'])
                                 <button class="wtrvl-checkout_button btn-primary block mt-2 w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
                             @endif
@@ -319,7 +320,9 @@
             </div>
         </section>
 
+        @livewire('page.form-footer-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))
     @endforeach
+
         @push('scripts')
             <script src="https://cdn.wetravel.com/master/core-app/assets/embed_checkout.js"></script>
         @endpush

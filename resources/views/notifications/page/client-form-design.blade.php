@@ -4,7 +4,7 @@
     <tr>
         <td style="padding:0px 50px 0px 50px">
             <p style="font-size:18px">{{$name}}</p>
-            <p>Gracias por contactarnos, un representante de GOTOPERU se comunicará con usted a la brevedad.</p>
+            <p>Thank you for contacting us, a GOTOPERU representative will contact you shortly.</p>
         </td>
     </tr>
 

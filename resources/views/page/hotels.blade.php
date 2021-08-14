@@ -13,9 +13,9 @@
             Trabajaremos de acuerdo con su agenda y sus intereses de viaje para construir juntos los planes de viaje más exclusivos.
         </div>
     </section>
-    <div class="hidden md:inline-block">
-        @livewire('page.form-home')
-    </div>
+{{--    <div class="hidden md:inline-block">--}}
+{{--        @livewire('page.form-home')--}}
+{{--    </div>--}}
     <div class="container">
     @foreach($hotels as $hotel)
         <div class="grid grid-cols-3 gap-4 mb-4 border">
@@ -66,5 +66,7 @@
         </div>
     @endforeach
     </div>
-
+    <section class="mt-12">
+        @livewire('page.form-footer')
+    </section>
 </x-page-layout>
