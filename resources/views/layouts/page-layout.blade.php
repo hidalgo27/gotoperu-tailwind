@@ -20,7 +20,6 @@
     <meta name="google-site-verification" content="RKqlAT_PUqYYY0MkFZc-h48BgcRpUvekk7ZGAojEjHA" />
 
     @livewireStyles
-    @laravelTelInputStyles
 
     @stack('css')
 
