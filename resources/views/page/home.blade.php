@@ -7,6 +7,8 @@
 
         <div class="vimeo-wrapper hidden sm:block">
             <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
+            <div class="absolute inset-0 gradient-cicle-gray"></div>
+
         </div>
 
         <img src="{{asset('images/400/sacred-valley-machu-picchu.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
@@ -26,7 +28,7 @@
             </div>
         </div>
 
-{{--        <div class="relative z-30 p-5 flex justify-center">--}}
+{{--        <div class="relative z-50 p-5 flex justify-center">--}}
 {{--            <a href="#" class="text-gray-50">--}}
 {{--                <svg xmlns="http://www.w3.org/2000/svg" class="animate-bounce h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
 {{--                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />--}}
@@ -46,7 +48,7 @@
 
 
 
-    <section class="grid gap-12 opacity-80 grid-cols-12 hidden md:inline-flex"><!--.row -->
+    <section class="grid gap-12 bg-gray-100 py-6 grid-cols-8 hidden md:inline-flex"><!--.row -->
         <div>
             <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full dark:filter dark:grayscale">
         </div>
@@ -71,16 +73,16 @@
         <div>
             <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full dark:filter dark:grayscale">
         </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale">
-        </div>
+{{--        <div>--}}
+{{--            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
+{{--        <div>--}}
+{{--            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
     </section>
 
     <section class="container my-20 text-gray-500 text-center mx-auto relative">
-        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-6 xl:text-5xl dark:text-secondary">Your Peru Vacation Worry-Free</h2>
+        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-6 xl:text-5xl dark:text-secondary">Your Peru Vacation <span class="text-secondary">Worry-Free</span></h2>
         <p>Peru travel packages with an award-winning team on a completely customized, private or group tour for an authentic Peru trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore MachuPicchu, Cusco, Lima, Lake Titicaca, the Amazon and many more unique Peruvian destinations safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
 
 
@@ -194,7 +196,7 @@
     </section>
 
 
-    <section class="py-12 my-12  bg-gray-50 dark:bg-gray-800 bg-fixed">
+    <section class="py-12 my-12  bg-gray-100 dark:bg-gray-800 bg-fixed">
         <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
             <div class="border-4 h-1 w-12 border-secondary"></div> Featured Perú Itineraries
         </div>
@@ -264,15 +266,13 @@
 
     <section class="grid grid-cols-1 md:grid-cols-5 mb-4 container gap-4">
         <div class="md:col-span-3 overflow-hidden group relative">
-            <div class="relative">
-                <img src="{{asset('images/cua2.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                <div class="absolute inset-0 gradient-cicle-gray"></div>
-            </div>
+            <img src="{{asset('images/cua2.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
             <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-primary bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-2xl">Cusco & Machu Picchu</h3>
-                <p class="mt-3 md:mb-6 block text-sm">Travel Packages to Machu Picchu with breathtaking scenery, visit the Incas highest archeological achievement, and you will tune in to the mystery that is at the heart of the Andean Mountains. If you are planning a trip to Machu Picchu, take advantage of our first-class tour service from the city of Cusco to Ollantaytambo and Aguas Calientes.</p>
-                <a href="/destinations/machu-picchu" class="btn-white hidden md:inline-flex">All destinations</a>
+                <p class="mt-3 mb-6 text-sm block">Travel Packages to Machu Picchu with breathtaking scenery, visit the Incas highest archeological achievement, and you will tune in to the mystery that is at the heart of the Andean Mountains. If you are planning a trip to Machu Picchu, take advantage of our first-class tour service from the city of Cusco to Ollantaytambo and Aguas Calientes.</p>
+                <a href="{{route('destinations.show', 'machu-picchu')}}" class="btn-white hidden md:inline-flex">All destinations</a>
             </div>
+
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -487,8 +487,9 @@
 
 {{--    </section>--}}
 
-    <section class="container hidden md:block">
+    <section class="py-12 bg-gray-100 hidden md:block">
 
+        <div class="container">
         <div class="flex items-center text-2xl text-gray-700 mb-4 dark:text-secondary font-bold gap-2">
             <div class="border-4 h-1 w-12 border-secondary"></div> Social Media & Reviews
         </div>
@@ -544,21 +545,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                    <div class="border">
-                        <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank"><img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
-                    </div>
-                    <div class="border">
-                        <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank"><img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
-                    </div>
-                    <div class="border">
-                        <a href="https://www.trustpilot.com/review/gotoperu.com"><img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
+                <div class="w-full">
+                    <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
+                        <div class="border p-4 w-full">
+                            <p class="block text-4xl font-bold">30 000</p>
+                            <p class="text-xs">FACEBOOK FANS</p>
+                        </div>
+                        <div class="border p-4 w-full">
+                            <p class="block text-3xl font-bold">#gotoperu</p>
+                            <p class="text-xs">INSTAGRAM HASHTAG</p>
+                        </div>
                     </div>
                 </div>
+{{--                <div class="grid grid-cols-2 items-center text-2xl text-gray-700 font-bold gap-3">--}}
 
+{{--                        <div class="border">--}}
+{{--                            <p class="block text-4xl font-bold">#gotoperu</p>--}}
+{{--                            <p class="text-xs">FACEBOOK FANS</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="border">--}}
+{{--                            <p class="block text-3xl font-bold">#gotoperu</p>--}}
+{{--                            <p class="text-xs">INSTAGRAM HASHTAG</p>--}}
+{{--                        </div>--}}
+
+{{--                    <div class="border">--}}
+{{--                        <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank"><img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
+{{--                    </div>--}}
+{{--                    <div class="border">--}}
+{{--                        <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank"><img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
+{{--                    </div>--}}
+{{--                    <div class="border">--}}
+{{--                        <a href="https://www.trustpilot.com/review/gotoperu.com"><img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
             </div>
-            <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url('{{asset('images/banners/redes.jpg')}}')">
+            <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url('https://p4.wallpaperbetter.com/wallpaper/694/91/785/earth-the-world-continents-grey-background-world-map-hd-wallpaper-preview.jpg')">
                 {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
 
                 {{--            <div class="absolute flex items-center inset-0 ">--}}
@@ -566,7 +588,7 @@
                     <div class="w-full swiper-container mySwiper">
                         <div class="swiper-wrapper">
                             @foreach($testinomials as $testinomial)
-                                <div class="swiper-slide p-12">
+                                <div class="swiper-slide p-4">
                                     <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-gray-100 dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">
                                         <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
                                             <a href="#" class="block relative">
@@ -607,71 +629,104 @@
                 </div>
             </div>
         </div>
-
+        </div>
+        <section class="container block mt-4">
+            <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+                <div class="border">
+                    <a href="https://www.instagram.com/go.to.peru/" target="_blank">
+                        <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-6 py-4">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
+                        <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-6 py-4">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
+                        <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-6 py-4">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.tiktok.com/@gotoperu" target="_blank">
+                        <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-6 py-4">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank">
+                        <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank">
+                        <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.trustpilot.com/review/gotoperu.com">
+                        <img src="{{asset('images/logos/trust2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    </a>
+                </div>
+            </div>
+        </section>
     </section>
 
-    <section class="container mt-6 mb-12 ">
-{{--        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">--}}
-{{--            <div class="">--}}
-{{--                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
-{{--                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
-{{--                <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
-{{--            </div> Social Media--}}
+
+{{--    <section class="container mt-6 mb-12 ">--}}
+
+{{--        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">--}}
+{{--            <div class="col-span-3 grid grid-cols-1 items-center relative filter grayscale bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
+{{--                <div class="flex relative">--}}
+{{--                    <div class="elfsight-app-ba7c9526-9468-4d5b-b378-68ec76259e00"></div>--}}
+{{--                    <img src="{{asset('images/banners/social.jpg')}}" alt="" class="object-cover h-full w-full">--}}
+{{--                    <div class="absolute inset-0 gradient-cicle-gray"></div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-span-2 flex gap-4 flex-col justify-between content-between overflow-hidden">--}}
+{{--                <div class="">--}}
+{{--                    <div class="flex items-center text-center text-gray-700 dark:text-gray-300 gap-2">--}}
+{{--                        <div class="border p-4 w-1/2">--}}
+{{--                            <p class="block text-4xl font-bold">30 000</p>--}}
+{{--                            <p class="text-xs">FACEBOOK FANS</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="border p-4 w-1/2">--}}
+{{--                            <p class="block text-3xl font-bold">#gotoperu</p>--}}
+{{--                            <p class="text-xs">INSTAGRAM HASHTAG</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="">--}}
+{{--                    --}}{{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
+
+{{--                    <div class="bg-gray-500 bg-opacity-10 text-center p-12">--}}
+{{--                        <img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="mx-auto py-4">--}}
+{{--                        <h3>PHOTOS FROM OUR TRAVELERS</h3>--}}
+{{--                        <p>Get inspired by photos and videos from fellow travelers in Peru, or share your favorite @go.to.peru experiences with us.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="grid grid-cols-4 items-center text-2xl text-gray-700 font-bold gap-3">--}}
+{{--                    <div class="border">--}}
+{{--                        <a href="https://www.instagram.com/go.to.peru/" target="_blank"><img src="{{asset('images/logos/instagram.png')}}" alt="" class="p-6"></a>--}}
+{{--                    </div>--}}
+{{--                    <div class="border">--}}
+{{--                        <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank"><img src="{{asset('images/logos/facebook.png')}}" alt="" class="p-6"></a>--}}
+{{--                    </div>--}}
+{{--                    <div class="border">--}}
+{{--                        <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank"><img src="{{asset('images/logos/youtube.png')}}" alt="" class="p-6"></a>--}}
+{{--                    </div>--}}
+{{--                    <div class="border">--}}
+{{--                        <a href="https://www.tiktok.com/@gotoperu" target="_blank"><img src="{{asset('images/logos/tiktok.png')}}" alt="" class="p-6"></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+
+{{--            </div>--}}
 {{--        </div>--}}
 
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <div class="col-span-3 grid grid-cols-1 items-center relative bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('images/hotels-t.jpg')}})">
-                <div class="flex relative">
-{{--                    <div class="elfsight-app-ba7c9526-9468-4d5b-b378-68ec76259e00"></div>--}}
-                    <img src="{{asset('images/banners/social.jpg')}}" alt="" class="object-cover h-full w-full">
-                    <div class="absolute inset-0 gradient-cicle-gray"></div>
-                </div>
-            </div>
-            <div class="col-span-2 flex gap-4 flex-col justify-between content-between overflow-hidden">
-                <div class="">
-                    <div class="flex items-center text-center text-gray-700 dark:text-gray-300 gap-2">
-                        <div class="border p-4 w-1/2">
-                            <p class="block text-4xl font-bold">30 000</p>
-                            <p class="text-xs">FACEBOOK FANS</p>
-                        </div>
-                        <div class="border p-4 w-1/2">
-                            <p class="block text-3xl font-bold">#gotoperu</p>
-                            <p class="text-xs">INSTAGRAM HASHTAG</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
-
-                    <div class="bg-gray-500 bg-opacity-10 text-center p-12">
-                        <img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="mx-auto py-4">
-                        <h3>PHOTOS FROM OUR TRAVELERS</h3>
-                        <p>Get inspired by photos and videos from fellow travelers in Peru, or share your favorite @go.to.peru experiences with us.</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-4 items-center text-2xl text-gray-700 font-bold gap-3">
-                    <div class="border">
-                        <a href="https://www.instagram.com/go.to.peru/" target="_blank"><img src="{{asset('images/logos/instagram.png')}}" alt="" class="p-6"></a>
-                    </div>
-                    <div class="border">
-                        <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank"><img src="{{asset('images/logos/facebook.png')}}" alt="" class="p-6"></a>
-                    </div>
-                    <div class="border">
-                        <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank"><img src="{{asset('images/logos/youtube.png')}}" alt="" class="p-6"></a>
-                    </div>
-                    <div class="border">
-                        <a href="https://www.tiktok.com/@gotoperu" target="_blank"><img src="{{asset('images/logos/tiktok.png')}}" alt="" class="p-6"></a>
-                    </div>
-                </div>
+{{--    </section>--}}
 
 
-            </div>
-        </div>
-
-    </section>
-
-
-    <div class="flex mb-3 container mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+    <div class="flex mb-3 container block md:mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
         <div class="">
             <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
             <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>

@@ -1,16 +1,16 @@
 <div class="bg-gray-100 py-12" x-data="{data: false}" id="form-dream-adventure">
-    <div class="w-11/12 md:w-1/3 mx-auto mb-10 text-center">
+    <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mb-6 text-center">
         <img src="{{asset('images/logos/logo-gotoperu-black.png')}}" alt="" class="mx-auto w-52">
         <h3 class="text-2xl font-semibold mt-2 text-gray-600">Book With Confidence</h3>
         <p class="text-gray-500 tracking-tighter text-sm">We're flexible! Postpone your tour with zero cost up to 10 days prior to departure.</p>
-        <h4 class="font-medium">Vacation:</h4>
+        <h4 class="font-medium mt-6">Vacation:</h4>
         <div class="border bg-white bg-gray-100 text-center p-2 mb-3">
             <p class="text-lg font-medium">{{$paquete}}</p>
         </div>
     </div>
     <form wire:submit.prevent="store">
         <div x-show="!data">
-            <div class="w-11/12 md:w-1/3 mx-auto grid grid-cols-6 gap-2">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto grid grid-cols-6 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
                     <h2 class="text-lg font-bold text-gray-500">HOTEL QUALITY</h2>
                     <p class="text-xs text-gray-500 font-semibold">(Optional. YOU MAY CHOOSE MORE THAN ONE)</p>
@@ -42,9 +42,9 @@
                 </div>
             </div>
 
-            <div class="w-11/12 md:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 gap-2">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
-                    <h2 class="text-lg font-bold text-gray-500">NUMBER OF TRAVELERS</h2>
+                    <h2 class="text-lg font-bold text-gray-500">NUMBERsd OF TRAVELERS</h2>
                 </div>
                 <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-            <div class="w-11/12 md:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 gap-2">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
                     <h2 class="text-lg font-bold text-gray-500">TRIP LENGTH</h2>
                 </div>
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="w-11/12 md:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-6 gap-2">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-6 gap-2">
                 <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400  flex items-center justify-center bg-gray-100 text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -130,7 +130,7 @@
         </div>
 
         <div x-show="data">
-            <div class="w-11/12 md:w-1/3 mx-auto mt-3 grid grid-cols-6 gap-2 flex">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 gap-2 flex">
                 <div class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -141,7 +141,7 @@
                 <p class="text-xs col-span-6 text-right text-gray-400 font-bold">TIP: Tell us the destinations you have in mind.</p>
             </div>
 
-            <div class="w-11/12 md:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
                 <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -155,7 +155,7 @@
                 </div>
             </div>
 
-            <div class="w-11/12 md:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
                 <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -169,7 +169,7 @@
                 </div>
             </div>
 
-            <div class="w-11/12 md:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
                 <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -182,7 +182,7 @@
         </div>
 
 
-        <div class="w-11/12 md:w-1/3 mx-auto mt-3 flex justify-between">
+        <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 flex justify-between">
             <button type="button" class="btn-next" x-show="data" @click="data = !data">Previous</button>
             <button type="button" class="btn-secondary ml-auto" x-show="!data" @click="data = !data">Next</button>
             <button type="submit" class="btn-primary" x-show="data" wire:click="load_submit">
@@ -191,7 +191,7 @@
         </div>
 
         @if ($success)
-            <div class="w-11/12 md:w-1/3 mx-auto mt-3 flex justify-between" x-data="{dataopen: true}" x-show="dataopen">
+            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 flex justify-between" x-data="{dataopen: true}" x-show="dataopen">
                 <div class="inline-flex w-full overflow-hidden bg-white shadow-sm">
                     <div class="flex items-center justify-center w-12 bg-green-500">
                     </div>

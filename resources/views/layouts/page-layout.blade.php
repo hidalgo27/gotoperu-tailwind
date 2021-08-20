@@ -400,38 +400,38 @@
 {{--    @yield('content')--}}
     {{$slot}}
 
-    <section class="grid grid-cols-4 md:grid-cols-10 gap-8  py-12 bg-gray-500 bg-opacity-10"><!--.row -->
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-        <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale dark:invert">
-        </div>
-    </section>
+<section class="grid gap-12 bg-gray-100 py-6 grid-cols-8 hidden md:inline-flex"><!--.row -->
+    <div>
+        <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full dark:filter dark:grayscale">
+    </div>
+    <div>
+        <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full dark:filter dark:grayscale">
+    </div>
+    <div>
+        <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full dark:filter dark:grayscale">
+    </div>
+    <div>
+        <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full dark:filter dark:grayscale">
+    </div>
+    <div>
+        <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full dark:filter dark:grayscale">
+    </div>
+    <div>
+        <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full dark:filter dark:grayscale">
+    </div>
+    <div>
+        <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full dark:filter dark:grayscale">
+    </div>
+    <div>
+        <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full dark:filter dark:grayscale">
+    </div>
+    {{--        <div>--}}
+    {{--            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">--}}
+    {{--        </div>--}}
+    {{--        <div>--}}
+    {{--            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale">--}}
+    {{--        </div>--}}
+</section>
 
     <footer class="relative bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-50 pb-16">
         {{--        <svg class="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-gray-200 dark:text-gray-800" preserveAspectRatio="none" viewBox="0 0 1440 54">--}}
