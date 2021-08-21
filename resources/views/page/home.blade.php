@@ -396,7 +396,7 @@
         <div class="md:col-span-2 flex flex-col gap-4 content-between overflow-hidden">
 
             <div class="overflow-hidden relative group">
-                <a href={{route('packages.detail', 'lake-titicaca-from-cusco')}}"">
+                    <a href="{{route('packages.detail', 'lake-titicaca-from-cusco')}}">
                     <div class="relative">
                         <img src="{{asset('images/banners/packages/lake-titicaca-from-cusco.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
                         <div class="absolute inset-0 gradient-cicle-gray"></div>
