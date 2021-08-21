@@ -580,7 +580,7 @@
 {{--                </div>--}}
 
             </div>
-            <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url('https://p4.wallpaperbetter.com/wallpaper/694/91/785/earth-the-world-continents-grey-background-world-map-hd-wallpaper-preview.jpg')">
+            <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url('{{asset('images/earth-the-world.jpg')}}')">
                 {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
 
                 {{--            <div class="absolute flex items-center inset-0 ">--}}
