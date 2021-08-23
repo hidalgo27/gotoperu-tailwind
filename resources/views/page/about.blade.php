@@ -50,14 +50,45 @@
         </div>
     </section>
 
-    <section class="container py-12 text-gray-500 text-center">
+    <section class="py-12 text-gray-500 text-center bg-gray-100">
+        <div class="container">
         <h2 class="text-3xl font-semibold mb-2">OUR TEAM</h2>
         <p class="">Each of our travel local professionals who know our country inside and out as we live and work on each peruvian destination we cover.</p>
         <p><p>GOTOPERU representatives </p></p>
 
+        <div class="grid grid-cols-3 gap-8 mt-12">
+            @foreach($teams as $team)
+            <div class="text-center mb-8 md:mb-0">
+                @if($team->imagen_perfil)
+                    <img class="w-48 h-48 rounded-full mx-auto -mb-24" src="{{$team->imagen_perfil}}" alt="{{$team->nombre}}"/>
+                @else
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 rounded-full mx-auto bg-white -mb-24" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                    </svg>
+                @endif
+                <div class="bg-white shadow-lg rounded-lg px-8 pt-32 pb-10 text-gray-400">
+                    <h3 class="font-title text-gray-800 text-xl mb-3">
+                        {{$team->nombre}}
+                    </h3>
+                    <p class="font-body mb-4">
+                        {{$team->cargo}}
+                    </p>
+{{--                    <p class="font-body text-sm mb-4">--}}
+{{--                        {{$team->actividad}}--}}
+{{--                    </p>--}}
+{{--                    <a class="font-body text-blue-500 hover:text-gray-800" href="#">--}}
+{{--                        {{$team->email}}--}}
+{{--                    </a>--}}
+                </div>
+            </div>
+            @endforeach
+        </div>
+        </div>
+
+
     </section>
 
-    <section class="mt-12">
+    <section class="">
         @livewire('page.form-footer')
     </section>
 

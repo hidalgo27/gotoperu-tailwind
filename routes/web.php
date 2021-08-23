@@ -41,5 +41,8 @@ Route::get('/social-responsability', [HomeController::class, 'responsability'])-
 Route::get('/reviews', [HomeController::class, 'reviews'])->name('reviews');
 Route::get('/peru-tours', [HomeController::class, 'tours'])->name('tours');
 
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/blog/{post}', [HomeController::class, 'blog_show'])->name('blog.show');
+
 //form inquire
 Route::post('/formulario-diseno', [FormpageController::class, 'formulario_diseno'])->name('formulario_diseno');

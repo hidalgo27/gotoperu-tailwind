@@ -8,6 +8,8 @@ use App\Models\TDestino;
 use App\Models\THotel;
 use App\Models\TPaquete;
 use App\Models\TPaqueteDestino;
+use App\Models\TPost;
+use App\Models\TTeam;
 use App\Models\TTestimonio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -87,7 +89,8 @@ class HomeController extends Controller
     }
 
     public function about(){
-        return view('page.about');
+        $teams = TTeam::all();
+        return view('page.about', compact('teams'));
     }
     public function book(){
         return view('page.book');
@@ -126,5 +129,13 @@ class HomeController extends Controller
             compact(
                 'paquetes'
             ));
+    }
+    public function blog(){
+        $blogs = TPost::latest('id')->get();
+        $blogs_first = TPost::latest('id')->first();
+        return view('page.blog', compact('blogs_first','blogs'));
+    }
+    public function blog_show(TPost $post){
+        return view('page.blog-show', compact('post'));
     }
 }
