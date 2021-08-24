@@ -56,7 +56,7 @@
         <p class="">Each of our travel local professionals who know our country inside and out as we live and work on each peruvian destination we cover.</p>
         <p><p>GOTOPERU representatives </p></p>
 
-        <div class="grid grid-cols-3 gap-8 mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             @foreach($teams as $team)
             <div class="text-center mb-8 md:mb-0">
                 @if($team->imagen_perfil)
