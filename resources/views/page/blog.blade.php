@@ -13,8 +13,18 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg></a>
             </div>
-            <div class="col-span-2 order-1 md:order-2">
-                <img src="{{$blogs_first->imagen_miniatura}}" alt="" class="h-full w-full object-cover object-top">
+            <div class="col-span-2 order-1 md:order-2 h-96">
+                <div class="w-full swiper-container mySwiper h-full">
+                    <div class="swiper-wrapper">
+                        @foreach($blogs_first->imagenes as $imagen)
+                            <div class="swiper-slide">
+                                <img src="{{$imagen->nombre}}" alt="{{$blogs_first->titulo}}" class="h-full w-full object-cover object-top">
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-button-next btn-next"></div>
+                    <div class="swiper-button-prev btn-prev"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -53,5 +63,26 @@
     <section class="">
         @livewire('page.form-footer')
     </section>
+    @push('css')
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    @endpush
+    @push('scripts')
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+            var swiper = new Swiper(".slider-featured", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
+
+    @endpush
 </x-page-layout>

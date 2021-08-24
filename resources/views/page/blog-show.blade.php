@@ -14,10 +14,20 @@
 {{--                    </svg></a>--}}
             </div>
             <div class="col-span-2 h-96">
-                <img src="{{$post->imagen_miniatura}}" alt="" class="h-full w-full object-cover object-center">
+                <div class="w-full swiper-container mySwiper h-full">
+                    <div class="swiper-wrapper">
+                        @foreach($post->imagenes as $imagen)
+                            <div class="swiper-slide">
+                                <img src="{{$imagen->nombre}}" alt="{{$post->titulo}}" class="h-full w-full object-cover object-top">
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-button-next btn-next"></div>
+                    <div class="swiper-button-prev btn-prev"></div>
+                </div>
             </div>
         </div>
-        <div class="w-full md:w-3/5 mx-auto mt-6 px-6 md:px-0 unreset">
+        <div class="w-full md:w-3/5 mx-auto mt- px-6 md:px-0 unreset">
             <div class="text-gray-600 w-full block">{!! $post->detalle !!}</div>
         </div>
     </section>
@@ -28,5 +38,25 @@
     </section>
     @push('css')
         <link rel="stylesheet" href="{{asset('css/unreset.css')}}" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    @endpush
+    @push('scripts')
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+            var swiper = new Swiper(".slider-featured", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
+
     @endpush
 </x-page-layout>
