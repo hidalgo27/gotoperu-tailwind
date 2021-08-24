@@ -832,8 +832,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg></a>
             </div>
-            <div class="col-span-2 order-1 md:order-2">
-                <img src="{{$blogs_first->imagen_miniatura}}" alt="" class="h-full w-full object-cover object-top">
+            <div class="col-span-2 order-1 md:order-2 h-30r">
+                <img src="{{$blogs_first->imagen_miniatura}}" alt="" class="h-full w-full object-cover object-center">
             </div>
         </div>
     </section>

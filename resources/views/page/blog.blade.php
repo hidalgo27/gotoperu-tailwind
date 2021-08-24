@@ -13,7 +13,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg></a>
             </div>
-            <div class="col-span-2 order-1 md:order-2 h-96">
+            <div class="col-span-2 order-1 md:order-2 h-30r">
                 <div class="w-full swiper-container mySwiper h-full">
                     <div class="swiper-wrapper">
                         @foreach($blogs_first->imagenes as $imagen)
