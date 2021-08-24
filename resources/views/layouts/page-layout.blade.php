@@ -297,18 +297,53 @@
                 @endif
 
             @endforeach
-            <div class="cursor-pointer" @click="menu = !menu">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto py-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4 8h16M4 16h16" />
-                    </svg>
-
+            <div class="cursor-pointer flex items-center" @click="menu = !menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                </svg>
             </div>
         </div>
     </div>
 
-    <div class="fixed bottom-0 right-0 mb-16 w-9/12 mr-1 rounded-lg bg-gray-50 z-50" x-show="menu" x-transition x-on:click.away="menu = false">
+    <div class="fixed bottom-0 right-0 mb-16 w-9/12 mr-1 rounded-lg bg-gray-50 z-50" x-show="menu" x-transition x-on:click.away="menu = false" x-data="{menu2 : false}">
         @foreach($nav_links as $nav_link)
+            @if($nav_link['nav_sub_links'])
+
+                <span @click="menu2 = !menu2" class="w-full text-sm flex inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-700 hover:text-secondary menu-pop  {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+                    <span class="mr-2">
+                    {!! $nav_link['icon'] !!}
+                </span>
+                                        {{ $nav_link['name'] }}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </span>
+
+                <div class="bg-gray-200 absolute top-0 rounded-lg mt-16 w-72 z-50 shadow-lg" x-show="menu2" x-on:click.away="menu2 = false" x-transition>
+                    <div class="font-bold text-gray-500 flex justify-between text-xs px-5 py-3">INFORMATION
+                        <span class="ml-auto cursor-pointer" @click="menu2 = !menu2">X</span>
+                    </div>
+
+
+                    @foreach($nav_link['nav_sub_links'] as $nav_sub)
+
+                        @foreach($sub_data as $sub_data_item)
+
+                            <a href="{{ $sub_data_item['route'] }}" class="w-full text-sm flex items-center inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-500 rounded hover:bg-gray-700 hover:text-secondary menu-pop {{ $sub_data_item['active'] == 1 ? 'active' : '' }}">
+                                                    <span class="mr-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </span>
+                                <span class="">
+                                                        {{ $sub_data_item['name'] }}
+                                                    </span>
+                            </a>
+                        @endforeach
+
+                    @endforeach
+                </div>
+            @else
             <a href="{{ $nav_link['route'] }}" class="w-full text-sm flex inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-700 hover:text-secondary menu-pop {{ $nav_link['active'] == 1 ? 'active' : '' }}">
                 <span class="mr-2">
                     {!! $nav_link['icon'] !!}
@@ -317,6 +352,7 @@
                     {{ $nav_link['name'] }}
                 </span>
             </a>
+            @endif
         @endforeach
     </div>
 
@@ -361,7 +397,7 @@
                         @if($nav_link['state'] > 1)
                             <div class="relative">
 
-                            @if($nav_link['nav_sub_links'])
+                             @if($nav_link['nav_sub_links'])
                                     <span @click="menu = !menu" class="dark:text-gray-400 flex items-center menu-list block cursor-pointer {{ $nav_link['active'] == 1 ? 'active' : '' }}">
                                         {{ $nav_link['name'] }}
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -397,7 +433,7 @@
 
 
                                     </a>
-                            @endif
+                                @endif
                             </div>
 
                         @endif
