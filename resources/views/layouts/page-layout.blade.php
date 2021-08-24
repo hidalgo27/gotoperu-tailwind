@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peru Travel Packages</title>
+    @livewireStyles
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins.css') }}" rel="stylesheet">
 
@@ -20,7 +21,7 @@
     <meta name="google-site-verification" content="RKqlAT_PUqYYY0MkFZc-h48BgcRpUvekk7ZGAojEjHA" />
     <meta name="p:domain_verify" content="da6ce019431809801f9c598831381786"/>
 
-    @livewireStyles
+
 
     @stack('css')
 

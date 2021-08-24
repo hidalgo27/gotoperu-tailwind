@@ -17,7 +17,7 @@
                 <img src="{{$post->imagen_miniatura}}" alt="" class="h-full w-full object-cover object-center">
             </div>
         </div>
-        <div class="w-full md:w-3/5 mx-auto mt-6 px-6 md:px-0">
+        <div class="w-full md:w-3/5 mx-auto mt-6 px-6 md:px-0 unreset">
             <div class="text-gray-600 w-full block">{!! $post->detalle !!}</div>
         </div>
     </section>
@@ -26,5 +26,7 @@
     <section class="">
         @livewire('page.form-footer')
     </section>
-
+    @push('css')
+        <link rel="stylesheet" href="{{asset('css/unreset.css')}}" />
+    @endpush
 </x-page-layout>

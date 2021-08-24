@@ -16,6 +16,10 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
+    ])
+    .postCss('resources/css/unreset.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
     ]);
 // webpack.mix.js
 // ...
