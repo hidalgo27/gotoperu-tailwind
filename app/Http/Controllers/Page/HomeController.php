@@ -29,12 +29,14 @@ class HomeController extends Controller
             ->where('offers_home', '1')
             ->get();
 
+        $blogs_first = TPost::latest('id')->first();
 
         return view('page.home',
             compact(
                 'paquete_recommended',
                 'testinomials',
                 'paquetes_features',
+                'blogs_first'
 
             ));
     }

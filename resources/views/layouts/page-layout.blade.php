@@ -18,6 +18,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <meta name="google-site-verification" content="RKqlAT_PUqYYY0MkFZc-h48BgcRpUvekk7ZGAojEjHA" />
+    <meta name="p:domain_verify" content="da6ce019431809801f9c598831381786"/>
 
     @livewireStyles
 
