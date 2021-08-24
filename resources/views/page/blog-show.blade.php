@@ -18,7 +18,7 @@
                     <div class="swiper-wrapper">
                         @foreach($post->imagenes as $imagen)
                             <div class="swiper-slide">
-                                <img src="{{$imagen->nombre}}" alt="{{$post->titulo}}" class="h-full w-full object-cover object-top">
+                                <img src="{{$imagen->nombre}}" alt="{{$post->titulo}}" class="h-full w-full object-cover object-center">
                             </div>
                         @endforeach
                     </div>
