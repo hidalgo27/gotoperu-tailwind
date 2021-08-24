@@ -545,7 +545,7 @@
                             As an agent of change, you have the power to change the world.
                         </p>
 {{--                        <a href="" class="btn-primary lg:px-4 block text-center mt-4">Contact Us</a>--}}
-                                                    @livewire('page.form-inquire')
+{{--                                                    @livewire('page.form-inquire')--}}
                     </div>
                 </div>
 

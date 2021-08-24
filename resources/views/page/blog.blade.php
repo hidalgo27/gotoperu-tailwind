@@ -33,7 +33,7 @@
                             <span class="text-sm font-light">{{$blogs_first->categoria->nombre}}</span>
 
                             <h2 class="my-4 font-semibold text-gray-600 text-xl"><a href="{{route('blog.show', $blog)}}">{{$blog->titulo}}</a></h2>
-                            <span class="text-sm">{!! Str::limit($blog->detalle, 150) !!}</span>
+                            <span class="text-sm font-normal">{!! Str::limit($blog->detalle, 150) !!}</span>
                         </div>
                         <div class="mt-auto px-4">
                             <a href="{{route('blog.show', $blog)}}" class="text-secondary flex">

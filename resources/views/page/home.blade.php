@@ -825,7 +825,7 @@
                 _____
                 <span class="text-sm font-light">{{$blogs_first->categoria->nombre}}</span>
 
-                <h2 class="my-6 font-semibold text-gray-600 text-3xl">{{$blogs_first->titulo}}</h2>
+                <h2 class="my-6 font-semibold text-gray-600 text-3xl"><a href="{{route('blog.show', $blogs_first)}}">{{$blogs_first->titulo}}</a></h2>
                 <span class="text-sm mb-6">{!! Str::limit($blogs_first->detalle, 300) !!}</span>
 
                 <a href="{{route('blog.show', $blogs_first)}}" class="text-secondary mt-4 flex">read <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
