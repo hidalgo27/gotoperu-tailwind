@@ -48,30 +48,30 @@
 
 
 
-    <section class="grid gap-12 bg-gray-100 py-6 grid-cols-8 hidden md:inline-flex"><!--.row -->
+    <section class="grid gap-12 bg-gray-100 p-6 grid-cols-8 hidden md:inline-flex"><!--.row -->
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full dark:filter dark:grayscale">
+            <img src="{{asset('images/logos/apavit.png')}}" alt="logo apavit" class="px-3 w-full dark:filter dark:grayscale">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full dark:filter dark:grayscale">
+            <img src="{{asset('images/logos/apotur.png')}}" alt="logo apotur" class="px-3 w-full dark:filter dark:grayscale">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full dark:filter dark:grayscale">
+            <img src="{{asset('images/logos/asta.png')}}"  alt="logo asta" class="px-3 w-full dark:filter dark:grayscale">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full dark:filter dark:grayscale">
+            <img src="{{asset('images/logos/expedia.png')}}"  alt="logo expedia" class="px-3 w-full dark:filter dark:grayscale">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full dark:filter dark:grayscale">
+            <img src="{{asset('images/logos/meetup.png')}}" alt="logo meetup" class="px-3 w-full dark:filter dark:grayscale">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full dark:filter dark:grayscale">
+            <img src="{{asset('images/logos/new.png')}}" alt="logo the new york times" class="px-3 w-full dark:filter dark:grayscale">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full dark:filter dark:grayscale">
+            <img src="{{asset('images/logos/peru.png')}}"  alt="logo marca peru" class="px-3 w-full dark:filter dark:grayscale">
         </div>
         <div>
-            <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full dark:filter dark:grayscale">
+            <img src="{{asset('images/logos/prom-peru.png')}}" alt="logo prom peru" class="px-3 w-full dark:filter dark:grayscale">
         </div>
 {{--        <div>--}}
 {{--            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">--}}
@@ -196,13 +196,13 @@
     </section>
 
 
-    <section class="py-12 my-12  bg-gray-100 dark:bg-gray-800 bg-fixed">
+    <section class="py-12 my-12  bg-gray-100 dark:bg-gray-800 relative">
         <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
             <div class="border-4 h-1 w-12 border-secondary"></div> Featured Perú Itineraries
         </div>
 
         <div class="container">
-        <div class="swiper-container slider-featured">
+        <div class="swiper-container slider-featured overflow-hidden">
             <div class="swiper-wrapper">
                 @foreach($paquetes_features as $feature)
                     <div class="swiper-slide grid grid-cols-1 md:grid-cols-3">

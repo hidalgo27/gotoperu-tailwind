@@ -23,7 +23,6 @@
     <meta name="p:domain_verify" content="da6ce019431809801f9c598831381786"/>
 
 
-
     @stack('css')
 
 
@@ -450,28 +449,28 @@
 
 <section class="grid gap-12 bg-gray-100 py-6 grid-cols-8 hidden md:inline-flex"><!--.row -->
     <div>
-        <img src="https://www.gotoperu.com.pe/images/logos/apavit.png" alt="logo apavit" class="w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/apavit.png')}}" alt="logo apavit" class="px-3 w-full dark:filter dark:grayscale">
     </div>
     <div>
-        <img src="https://www.gotoperu.com.pe/images/logos/apotur.png" alt="logo apotur" class="w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/apotur.png')}}" alt="logo apotur" class="px-3 w-full dark:filter dark:grayscale">
     </div>
     <div>
-        <img src="https://www.gotoperu.com.pe/images/logos/asta.png"  alt="logo asta" class="w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/asta.png')}}"  alt="logo asta" class="px-3 w-full dark:filter dark:grayscale">
     </div>
     <div>
-        <img src="https://www.gotoperu.com.pe/images/logos/expedia.png"  alt="logo expedia" class="w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/expedia.png')}}"  alt="logo expedia" class="px-3 w-full dark:filter dark:grayscale">
     </div>
     <div>
-        <img src="https://www.gotoperu.com.pe/images/logos/meetup.png" alt="logo meetup" class="w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/meetup.png')}}" alt="logo meetup" class="px-3 w-full dark:filter dark:grayscale">
     </div>
     <div>
-        <img src="https://www.gotoperu.com.pe/images/logos/new.png" alt="logo the new york times" class="w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/new.png')}}" alt="logo the new york times" class="px-3 w-full dark:filter dark:grayscale">
     </div>
     <div>
-        <img src="https://www.gotoperu.com.pe/images/logos/peru.png"  alt="logo marca peru" class="w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/peru.png')}}"  alt="logo marca peru" class="px-3 w-full dark:filter dark:grayscale">
     </div>
     <div>
-        <img src="https://www.gotoperu.com.pe/images/logos/prom-peru.png" alt="logo prom peru" class="w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/prom-peru.png')}}" alt="logo prom peru" class="px-3 w-full dark:filter dark:grayscale">
     </div>
     {{--        <div>--}}
     {{--            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">--}}
@@ -628,9 +627,10 @@
     </footer>
 @livewireScripts
 
-<script src="{{asset('js/plugins.js')}}"></script>
+
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('vendor/intl-tel-input/build/js/utils.js')}}"></script>
+<script src="{{asset('js/plugins.js')}}"></script>
 @stack('scripts')
 <script>
     (() => {
