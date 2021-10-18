@@ -122,7 +122,7 @@
     @php
         $nav_links = [
             [
-                'name' => 'Peru Travel Packages',
+                'name' => 'Paquetes turísticos',
                 'route' => route('packages'),
                 'active' => request()->routeIs('packages.*')
             ],

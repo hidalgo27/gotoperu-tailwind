@@ -16,7 +16,7 @@
                         <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
                         <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
                         <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                    </div> Overview
+                    </div> {{__('message.pack_deta_par1')}}
                 </div>
                 <div class="">
                     {!! $paquete['descripcion'] !!}
@@ -27,7 +27,7 @@
 {{--                        <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
 {{--                        <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
                         <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                    </div> Destinations
+                    </div> {{__('message.pack_deta_par2')}}
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-1 ">
@@ -70,7 +70,7 @@
                         <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
                         <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
                         <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                    </div> itinerary
+                    </div> {{__('message.pack_deta_par3')}}
                 </div>
 
                 <div class="grid">
@@ -115,24 +115,24 @@
                                 <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
                                 <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
                                 <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                            </div> Prices
+                            </div> {{__('message.pack_deta_par4')}}
                         </div>
-                        <p>Los precios estan basados en doble acomodación.</p>
+                        <p>{{__('message.pack_deta_par5')}}</p>
                         <div class="overflow-hidden">
                             <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
                                 <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                        Economic
+                                        {{__('message.pack_deta_par9')}}
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                        Tourist
+                                        {{__('message.pack_deta_par10')}}
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                        Superior
+                                        {{__('message.pack_deta_par11')}}
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                        Luxury
+                                        {{__('message.pack_deta_par12')}}
                                     </th>
                                 </tr>
                                 </thead>
@@ -142,14 +142,14 @@
                                         @if($precio['precio_d'] > 0)
                                             <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_d']}}<small>USD</small></td>
                                         @else
-                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">Inquire</td>
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
                                         @endif
                                     @endforeach
 
                                 </tr>
                                 <tr>
                                     <td colspan="4">
-                                        <p class="text-sm text-gray-500">*Si tiene algún hotel en especifico con gusto lo prepararemos una cotización personalizada.</p>
+                                        <p class="text-sm text-gray-500">{{__('message.pack_deta_par6')}}</p>
                                     </td>
                                 </tr>
 
@@ -168,7 +168,7 @@
                             <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
                             <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
                             <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                        </div> Included
+                        </div> {{__('message.pack_deta_par7')}}
                     </div>
                     <div class="">
                         {!! $paquete['incluye'] !!}
@@ -182,7 +182,7 @@
                             <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
                             <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
                             <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                        </div> Not Included
+                        </div> {{__('message.pack_deta_par8')}}
                     </div>
                     <div class="">
                         {!! $paquete['noincluye'] !!}
@@ -195,19 +195,19 @@
                 <div class="flex flex-col gap-3 sticky top-0 top-12">
                     <div class="flex gap-3">
                         <div class="flex-1 border p-3 flex text-xl items-center justify-center">
-                            {{ $paquete['duracion'] }} days
+                            {{ $paquete['duracion'] }} {{__('message.pack_par4')}}
                         </div>
                         <div class="flex-1 border p-3 flex items-center">
                             @foreach($paquete['precio_paquetes'] as $precio)
                                 @if($precio['estrellas'] == 2)
                                     @if($precio['precio_d'] > 0)
                                         <div class="text-xl font-semibold text-gray-600">
-                                            <span> from </span>
+                                            <span> {{__('message.pack_par5')}} </span>
                                             <span>${{$precio['precio_d']}}</span>
                                             <span class="text-xs"> usd</span>
                                         </div>
                                     @else
-                                        <span class="text-red-500 font-bold">Consulte</span>
+                                        <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span>
                                     @endif
                                 @endif
                             @endforeach
@@ -224,7 +224,7 @@
                     </div>
 
                     <div class="">
-                        <a href="#form-dream-adventure" class="btn-secondary font-bold text-center w-full block">Inquire Now</a>
+                        <a href="#form-dream-adventure" class="btn-secondary font-bold text-center w-full block">{{__('message.button_inquire')}}</a>
                         @if($paquete['codigo_f'])
                             <button class="wtrvl-checkout_button btn-primary block mt-2 w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
                         @endif

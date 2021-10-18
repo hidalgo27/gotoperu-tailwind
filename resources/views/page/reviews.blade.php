@@ -2,24 +2,24 @@
     <section class="-mt-32 h-80vh -z-1 relative">
         <img src="{{asset('images/banners/mapi.jpg')}}" alt="" class="h-full w-full object-cover object-top">
         <div class="absolute bottom-0 left-0 p-12">
-            <h1 class="text-5xl font-semibold text-gray-50">Reviews and Testimonials</h1>
+            <h1 class="text-5xl font-semibold text-gray-50">{{__('message.revi_title1')}}</h1>
         </div>
     </section>
 {{--    <div class="hidden md:inline-block">--}}
 {{--        @livewire('page.form-home')--}}
 {{--    </div>--}}
     <section class="container py-12 text-gray-500 text-center">
-        <p class="">Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
+        <p class="">{{__('message.revi_par1')}}</p>
 {{--        <p class="my-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet beatae commodi doloremque est eveniet expedita id ipsam labore magnam maxime, minima nemo nihil porro quaerat rem ullam. A, earum?</p>--}}
         <div class="text-gray-600 text-xl font-medium">
-            Trabajaremos de acuerdo con su agenda y sus intereses de viaje para construir juntos los planes de viaje más exclusivos.
+            {{__('message.revi_par2')}}
         </div>
     </section>
 
     <section class="container hidden md:block">
 
         <div class="flex items-center text-2xl text-gray-700 mb-4 dark:text-secondary font-bold gap-2">
-            <div class="border-4 h-1 w-12 border-secondary"></div> Social Media & Reviews
+            <div class="border-4 h-1 w-12 border-secondary"></div> {{__('message.subtitle5')}}
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
@@ -27,11 +27,11 @@
                     <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
                         <div class="border p-4 w-full">
                             <p class="block text-4xl font-bold">97%</p>
-                            <p class="text-xs">GUEST SATISFACTION RATE</p>
+                            <p class="text-xs">{{__('message.social_con1')}}</p>
                         </div>
                         <div class="border p-4 w-full">
                             <p class="block text-3xl font-bold">9000 +</p>
-                            <p class="text-xs">GOTOPERU GUESTS</p>
+                            <p class="text-xs">{{__('message.social_con2')}}</p>
                         </div>
                     </div>
                 </div>
@@ -44,31 +44,31 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                100% Tailor Made, Private Tours
+                                {{__('message.social_li1')}}
                             </p>
                             <p class="mb-2 flex inline-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                Authentic & Unique Experiences
+                                {{__('message.social_li2')}}
                             </p>
                             <p class="mb-2 flex inline-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                24/7 Local Support While You Travel
+                                {{__('message.social_li3')}}
                             </p>
                             <p class="mb-2 flex inline-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                Travel with an Award-Winning Team
+                                {{__('message.social_li4')}}
                             </p>
                             <p class="mb-2 flex inline-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                100% Financial Protection
+                                {{__('message.social_li5')}}
                             </p>
                         </div>
                     </div>
@@ -173,8 +173,8 @@
 
                     <div class="bg-gray-500 bg-opacity-10 text-center p-12">
                         <img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="mx-auto py-4">
-                        <h3>PHOTOS FROM OUR TRAVELERS</h3>
-                        <p>Get inspired by photos and videos from fellow travelers in Peru, or share your favorite @go.to.peru experiences with us.</p>
+                        <h3>{{__('message.revi_subtitle1')}}</h3>
+                        <p>{{__('message.revi_par3')}}</p>
                     </div>
                 </div>
                 <div class="grid grid-cols-4 items-center text-2xl text-gray-700 font-bold gap-3">

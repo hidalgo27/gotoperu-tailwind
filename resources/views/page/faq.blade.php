@@ -2,14 +2,14 @@
     <section class="-mt-32 h-80vh -z-1 relative">
         <img src="{{asset('images/banners/mapi.jpg')}}" alt="" class="h-full w-full object-cover object-top">
         <div class="absolute bottom-0 left-0 p-12">
-            <h1 class="text-5xl font-semibold text-gray-50">frequently asked questions</h1>
+            <h1 class="text-5xl font-semibold text-gray-50">{{__('message.faq_title1')}}</h1>
         </div>
     </section>
 {{--    <div class="hidden md:inline-block">--}}
 {{--        @livewire('page.form-home')--}}
 {{--    </div>--}}
     <section class="container py-12 text-gray-500 text-center">
-        <p class="text-gray-600 text-xl font-medium">A trip to Peru is an exciting adventure! There are a number of common questions first-time travelers to Peru frequently ask.</p>
+        <p class="text-gray-600 text-xl font-medium">{{__('message.faq_par1')}}</p>
     </section>
 
     <section class="container">

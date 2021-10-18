@@ -2,12 +2,12 @@
     <section class="-mt-32 h-80vh -z-1 relative">
         <img src="{{asset('images/destinations/arequipa.jpg')}}" alt="" class="h-full w-full object-cover object-top">
         <div class="absolute bottom-0 left-0 p-12">
-            <h1 class="text-5xl font-semibold text-gray-50">Our Hotels</h1>
+            <h1 class="text-5xl font-semibold text-gray-50">{{__('message.hote_title1')}}</h1>
         </div>
     </section>
 
     <section class="container py-12 text-gray-500 text-center">
-        <p class="">GOTOPERU have handpicked the best hotels in each category, taking the following factors: great location, prime facilities and excellent service. Also if you have a preferred hotel we can consider it too, our volume lets us have special deals with them, savings that we translate to our travel packages.</p>
+        <p class="">{{__('message.hote_par1')}}</p>
 {{--        <p class="my-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet beatae commodi doloremque est eveniet expedita id ipsam labore magnam maxime, minima nemo nihil porro quaerat rem ullam. A, earum?</p>--}}
 {{--        <div class="text-gray-600 text-xl font-medium">--}}
 {{--            Trabajaremos de acuerdo con su agenda y sus intereses de viaje para construir juntos los planes de viaje más exclusivos.--}}
@@ -45,7 +45,7 @@
                 </div>
 
                 @php $services = explode(',', $hotel->servicios); @endphp
-                <p class="text-gray-500"><b>Services:</b></p>
+                <p class="text-gray-500"><b>{{__('message.hote_subtitle1')}}:</b></p>
 
                     @foreach($services as $service)
                         <div class="flex items-center text-gray-500">

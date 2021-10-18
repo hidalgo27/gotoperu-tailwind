@@ -118,7 +118,7 @@
 {{--    <div class="pulse"></div>--}}
 {{--</div>--}}
 @php
-
+ 
     $nav_links = [
         [
             'name' => 'Home',
@@ -132,7 +132,7 @@
 
         ],
         [
-            'name' => 'Peru Travel Packages',
+            'name' => __('message.nav_item1'),
             'state' => '2',
             'route' => route('packages.all'),
             'active' => request()->routeIs('packages.*'),
@@ -143,7 +143,7 @@
 
         ],
         [
-            'name' => 'Only Tours',
+            'name' => __('message.nav_item2'),
             'state' => '2',
             'route' => route('tours'),
             'active' => request()->routeIs('tours'),
@@ -153,7 +153,7 @@
                     'nav_sub_links' => []
         ],
         [
-            'name' => 'Destinations',
+            'name' => __('message.nav_item3'),
             'state' => '2',
             'route' => route('destinations.all'),
             'active' => request()->routeIs('destinations.*'),
@@ -164,7 +164,7 @@
                     'nav_sub_links' =>[]
         ],
         [
-            'name' => 'Hotels',
+            'name' => __('message.nav_item4'),
             'state' => '3',
             'route' => route('hotels'),
             'active' => request()->routeIs('hotels'),
@@ -174,7 +174,7 @@
                     'nav_sub_links' => []
         ],
         [
-            'name' => 'Travel Info',
+            'name' => __('message.nav_item5'),
             'state' => '3',
             'route' => route('about'),
             'active' => request()->routeIs('about'),
@@ -186,7 +186,7 @@
                     $sub_data =
                     [
                         [
-                            'name' => 'Why book with us',
+                            'name' =>__('message.nav_sub_item1'),
                             'state' => '1',
                             'route' => route('book'),
                             'active' => request()->routeIs('book'),
@@ -195,7 +195,7 @@
                             </svg>'
                         ],
                         [
-                            'name' => 'Travel with confidence',
+                            'name' => __('message.nav_sub_item2'),
                             'state' => '3',
                             'route' => route('confidence'),
                             'active' => request()->routeIs('confidence'),
@@ -204,7 +204,7 @@
                             </svg>'
                         ],
                         [
-                            'name' => 'Booking terms',
+                            'name' => __('message.nav_sub_item3'),
                             'state' => '3',
                             'route' => route('conditions'),
                             'active' => request()->routeIs('conditions'),
@@ -213,7 +213,7 @@
                             </svg>'
                         ],
                         [
-                            'name' => 'About us',
+                            'name' => __('message.nav_sub_item4'),
                             'state' => '3',
                             'route' => route('about'),
                             'active' => request()->routeIs('about'),
@@ -222,7 +222,7 @@
                             </svg>'
                         ],
                         [
-                            'name' => 'Blog',
+                            'name' => __('message.nav_sub_item5'),
                             'state' => '3',
                             'route' => route('blog'),
                             'active' => request()->routeIs('blog'),
@@ -231,7 +231,7 @@
                             </svg>'
                         ],
                         [
-                            'name' => 'FAQ',
+                            'name' => __('message.nav_sub_item6'),
                             'state' => '3',
                             'route' => route('faq'),
                             'active' => request()->routeIs('faq'),
@@ -244,7 +244,7 @@
 
         ],
         [
-            'name' => 'Reviews',
+            'name' => __('message.nav_item6'),
             'state' => '3',
             'route' => route('reviews'),
             'active' => request()->routeIs('reviews'),
@@ -254,7 +254,7 @@
                     'nav_sub_links' => []
         ],
         [
-            'name' => 'Social Responsability',
+            'name' => __('message.nav_item7'),
             'state' => '3',
             'route' => route('responsability'),
             'active' => request()->routeIs('responsability'),
@@ -284,7 +284,7 @@
 <div x-data="{menu: false}">
     <div class="fixed bg-12 bottom-0 w-full z-30 sm:hidden">
 {{--        @livewire('page.form-inquire')--}}
-        <a href="#form-dream-adventure" class="btn-primary text-center w-full block">Inquire Now</a>
+        <a href="#form-dream-adventure" class="btn-primary text-center w-full block">{{__('message.button_book')}}</a>
         <div class="menu-movil bg-gray-50 dark:bg-gray-800 flex gap-4 w-full mx-auto grid grid-cols-5 gap-3 text-center">
             @foreach($nav_links as $nav_link_m)
                 @if($nav_link_m['state'] == 1 OR $nav_link_m['state'] == 2)
@@ -375,7 +375,7 @@
 
 {{--                @livewire('page.form-inquire')--}}
 {{--                @livewire('page.form-subscribe')--}}
-                <a href="#form-dream-adventure" class="btn-secondary text-center">Inquire Now</a>
+                <a href="#form-dream-adventure" class="btn-secondary text-center">{{__('message.button_inquire')}}</a>
                 <div class="dark:text-gray-400">
                     <span class="text-xs block text-right">PE/Peru</span>
                     +51 960 106076
@@ -495,14 +495,14 @@
             <div class="grid grid-cols-2 gap-4 dark:text-gray-300 md:grid-cols-5 mb-24">
                 <div>
                     <p class="font-semibold tracking-wide text-secondary mb-6">
-                        Peru Travel Packages
+                        {{__('message.nav_item1')}}
                     </p>
                     <ul class="mt-2 space-y-2">
                         <li>
-                            <a href="{{route('packages.all')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Multi days</a>
+                            <a href="{{route('packages.all')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">{{__('message.foorer_li1')}}</a>
                         </li>
                         <li>
-                            <a href="{{route('tours')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Days Tours</a>
+                            <a href="{{route('tours')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">{{__('message.foorer_li2')}}</a>
                         </li>
                         <li>
 {{--                            @livewire('page.form-inquire')--}}
@@ -512,7 +512,7 @@
                 </div>
                 <div>
                     <p class="font-semibold tracking-wide text-secondary mb-6">
-                        Destinations
+                        {{__('message.nav_item3')}}
                     </p>
                     <ul class="mt-2 space-y-2">
                         <li>
@@ -533,42 +533,42 @@
                     </ul>
                 </div>
                 <div>
-                    <p class="font-semibold tracking-wide text-secondary mb-6">Hotels</p>
+                    <p class="font-semibold tracking-wide text-secondary mb-6">{{__('message.nav_item4')}}</p>
                     <ul class="mt-2 space-y-2">
                         <li>
-                            <a href="{{route('hotels')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">2 stars</a>
+                            <a href="{{route('hotels')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">2 {{__('message.foorer_par2')}}</a>
                         </li>
                         <li>
-                            <a href="{{route('hotels')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">3 stars</a>
+                            <a href="{{route('hotels')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">3 {{__('message.foorer_par2')}}</a>
                         </li>
                         <li>
-                            <a href="{{route('hotels')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">4 stars</a>
+                            <a href="{{route('hotels')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">4 {{__('message.foorer_par2')}}</a>
                         </li>
                         <li>
-                            <a href="{{route('hotels')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">5 stars</a>
+                            <a href="{{route('hotels')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">5 {{__('message.foorer_par2')}}</a>
                         </li>
                     </ul>
                 </div>
 
                 <div>
                     <p class="font-semibold tracking-wide text-secondary mb-6">
-                        Travel Info
+                        {{__('message.nav_item8')}}
                     </p>
                     <ul class="mt-2 space-y-2">
                         <li>
-                            <a href="{{route('book')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Why book with us</a>
+                            <a href="{{route('book')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">{{__('message.nav_sub_item1')}}</a>
                         </li>
                         <li>
-                            <a href="{{route('confidence')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Travel with confidence</a>
+                            <a href="{{route('confidence')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">{{__('message.nav_sub_item2')}}</a>
                         </li>
                         <li>
-                            <a href="{{route('conditions')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Booking Team</a>
+                            <a href="{{route('conditions')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">{{__('message.nav_sub_item3')}}</a>
                         </li>
                         <li>
-                            <a href="{{route('about')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">About US</a>
+                            <a href="{{route('about')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">{{__('message.nav_sub_item4')}}</a>
                         </li>
                         <li>
-                            <a href="{{route('faq')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">FAQ</a>
+                            <a href="{{route('faq')}}" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">{{__('message.nav_sub_item6')}}</a>
                         </li>
                     </ul>
                 </div>
@@ -578,7 +578,7 @@
                     </p>
                     <div class="bg-gray-900 p-4 rounded-lg shadow-inner">
                         <p class="mb-2 text-gray-300">
-                            As an agent of change, you have the power to change the world.
+                            {{__('message.footer_par1')}}
                         </p>
 {{--                        <a href="" class="btn-primary lg:px-4 block text-center mt-4">Contact Us</a>--}}
 {{--                                                    @livewire('page.form-inquire')--}}

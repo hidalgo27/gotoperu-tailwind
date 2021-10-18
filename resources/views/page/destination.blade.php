@@ -2,7 +2,7 @@
     <section class="-mt-32 h-80vh -z-1 relative">
         <img src="{{asset('images/400/1700/machu-picchu-full-day.jpg')}}" alt="" class="h-full w-full object-cover object-top">
         <div class="absolute bottom-0 left-0 p-12">
-            <h1 class="text-5xl font-semibold text-gray-50">Peru Destinations</h1>
+            <h1 class="text-5xl font-semibold text-gray-50">{{__('message.dest_title1')}}</h1>
         </div>
     </section>
 {{--    <div class="hidden md:inline-block">--}}
@@ -10,7 +10,7 @@
 {{--    </div>--}}
     <section class="container py-12 text-gray-500 text-center">
 
-        <p>Peru is a unique south american country, there is not a simple way to describe all the highlights that this destination offers; you will feel the magic of this land, you will see history, delicious food ( Peruvian Gastronomy is known worldwide) , rich culture, plenty of adventure and more. It’s a country with over 5000 years of history, and proudly one of the most diverse countries in the world that create practically infinite vacation destinations from Amazon national parks, ancient Inca ruins to the mysterious Nazca Lines and beautiful mountains for amazing treks as the Inca trail.</p>
+        <p>{{__('message.dest_para1')}}</p>
 
     </section>
 
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="w-full">
-                    <a href="{{ route('destinations.show', $destination) }}" class="btn-secondary block text-center mt-2">View All</a>
+                    <a href="{{ route('destinations.show', $destination) }}" class="btn-secondary block text-center mt-2">{{__('message.button_all')}}</a>
                 </div>
             </article>
 

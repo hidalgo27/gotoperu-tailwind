@@ -19,7 +19,7 @@ class FormFooter extends Component
         $hotels = [
             [
                 'star'=>'5',
-                'category'=>'Luxury'
+                'category'=>'Lujoso'
             ],
             [
                 'star'=>'4',
@@ -27,11 +27,11 @@ class FormFooter extends Component
             ],
             [
                 'star'=>'3',
-                'category'=>'Best Value'
+                'category'=>'Turista'
             ],
             [
                 'star'=>'2',
-                'category'=>'Budget'
+                'category'=>'Económico'
             ]
         ];
 

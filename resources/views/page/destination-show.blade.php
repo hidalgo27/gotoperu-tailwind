@@ -5,7 +5,7 @@
         @endforeach
 
         <div class="absolute bottom-0 left-0 p-12">
-            <h1 class="text-5xl font-semibold text-gray-50">Peru Travel Packages</h1>
+            <h1 class="text-5xl font-semibold text-gray-50">{{__('message.dest_deta_title')}}</h1>
         </div>
     </section>
 
@@ -14,7 +14,7 @@
 {{--    </div>--}}
 
     <section class="container py-12 text-gray-500 text-center mx-auto">
-        <p>Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
+        <p>{{__('message.dest_deta_par1')}}</p>
 
     </section>
 
@@ -47,19 +47,19 @@
             </div>
             <div class="border p-6 block group-hover:border-primary text-center transition duration-500">
                 <div class="font-bold text-gray-500 text-lg mb-4">
-                    {{ $paquete['paquetes']['duracion'] }} days /
+                    {{ $paquete['paquetes']['duracion'] }} {{__('message.pack_par4')}} /
                     @foreach($paquete['paquetes']['precio_paquetes'] as $precio)
                         @if($precio['estrellas'] == 2)
                             @if($precio['precio_d'] > 0)
-                                <span class="text-xs align-top">from</span> $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
+                                <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
                             @else
-                                <span class="text-red-500">Consulte</span>
+                                <span class="text-red-500">{{__('message.button_inquire')}}</span>
                             @endif
                         @endif
                     @endforeach
 
                 </div>
-                <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary">View details</a>
+                <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary">{{__('message.button_detail')}}</a>
             </div>
         </div>
     @endforeach

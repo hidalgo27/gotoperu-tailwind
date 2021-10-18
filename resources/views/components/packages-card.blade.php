@@ -21,21 +21,21 @@
     </div>
     <div class="border p-6 block group-hover:border-primary text-center transition duration-500">
         <div class="font-bold text-gray-500 dark:text-gray-300 text-lg mb-4">
-            {{ $paquete['duracion'] }} days /
+            {{ $paquete['duracion'] }} {{__('message.pack_par4')}} /
             @foreach($paquete['precio_paquetes'] as $precio)
                 @if($precio['estrellas'] == 2)
                     @if($precio['precio_d'] > 0)
-                        <span class="text-xs align-top">from</span> $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
+                        <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
                     @else
-                        <span class="text-red-500">Consulte</span>
+                        <span class="text-red-500">{{__('message.pack_par6')}}</span>
                     @endif
                 @endif
             @endforeach
 
         </div>
         @if($paquete['codigo_f'] AND $paquete['is_p_t'] == 0)
-            <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
+            <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >{{__('message.button_book')}}</button>
         @endif
-        <a href="{{route('packages.detail', $paquete['url'])}}" class="btn-secondary block">View details</a>
+        <a href="{{route('packages.detail', $paquete['url'])}}" class="btn-secondary block">{{__('message.button_detail')}}</a>
     </div>
 </div>

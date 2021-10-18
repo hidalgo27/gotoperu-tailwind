@@ -23,8 +23,8 @@
 
         <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
             <div class="mx-auto">
-                <h1 class="text-5xl text-center  mb-6 font-bold font-cinzel text-secondary">Expertise in Peru travel matters</h1>
-                <h3 class="text-2xl text-gray-50">Explore our favorite Peru crafted itineraries to help inspire your next adventure</h3>
+                <h1 class="text-5xl text-center  mb-6 font-bold font-cinzel text-secondary">{{__('message.title1')}}</h1>
+                <h3 class="text-2xl text-gray-50">{{__('message.subtitle1')}}</h3>
             </div>
         </div>
 
@@ -82,8 +82,8 @@
     </section>
 
     <section class="container my-20 text-gray-500 text-center mx-auto relative">
-        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-6 xl:text-5xl dark:text-secondary">Your Peru Vacation <span class="text-secondary">Worry-Free</span></h2>
-        <p>Peru travel packages with an award-winning team on a completely customized, private or group tour for an authentic Peru trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore MachuPicchu, Cusco, Lima, Lake Titicaca, the Amazon and many more unique Peruvian destinations safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.</p>
+        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-6 xl:text-5xl dark:text-secondary">{{__('message.title2_a')}} <span class="text-secondary">{{__('message.title2_b')}}</span></h2>
+        <p>{{__('message.parrafo1')}}</p>
 
 
     </section>
@@ -183,7 +183,7 @@
 
 
     <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-        <div class="border-4 h-1 w-12 border-primary"></div> Perú Recommended Itineraries
+        <div class="border-4 h-1 w-12 border-primary"></div> {{__('message.subtitle2')}}
     </div>
 
     <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -198,7 +198,7 @@
 
     <section class="py-12 my-12  bg-gray-100 dark:bg-gray-800 relative">
         <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
-            <div class="border-4 h-1 w-12 border-secondary"></div> Featured Perú Itineraries
+            <div class="border-4 h-1 w-12 border-secondary"></div> {{__('message.subtitle3')}}
         </div>
 
         <div class="container">
@@ -224,9 +224,9 @@
                                     @foreach($feature['precio_paquetes'] as $precio)
                                         @if($precio['estrellas'] == 2)
                                             @if($precio['precio_d'] > 0)
-                                                {{ $feature->duracion }} days from $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
+                                                {{ $feature->duracion }} {{__('message.pack_par4')}} {{__('message.pack_par5')}} $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
                                             @else
-                                                <span class="text-red-500">Inquire</span>
+                                                <span class="text-red-500">{{__('message.button_inquire')}}</span>
                                             @endif
                                         @endif
                                     @endforeach
@@ -236,7 +236,7 @@
                                     {!! Str::limit($feature->descripcion, 150) !!}
 
                                 </div>
-                                <a href="{{route('packages.detail', $feature->url)}}" class="btn btn-primary">See full itinerary</a>
+                                <a href="{{route('packages.detail', $feature->url)}}" class="btn btn-primary">{{__('message.button_see')}}</a>
                             </div>
                         </div>
 
@@ -254,7 +254,7 @@
 
 
     <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
-        <div class="border-4 h-1 w-12 border-secondary dark:border-secondary"></div> Destinations
+        <div class="border-4 h-1 w-12 border-secondary dark:border-secondary"></div> {{__('message.subtitle4')}}
 {{--        <div class="text-center mb-10">--}}
 {{--            <span class="inline-block w-1 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
 {{--            <span class="inline-block w-3 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
@@ -491,7 +491,7 @@
 
         <div class="container">
         <div class="flex items-center text-2xl text-gray-700 mb-4 dark:text-secondary font-bold gap-2">
-            <div class="border-4 h-1 w-12 border-secondary"></div> Social Media & Reviews
+            <div class="border-4 h-1 w-12 border-secondary"></div> {{__('message.subtitle5')}}
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
@@ -499,11 +499,11 @@
                     <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
                         <div class="border p-4 w-full">
                             <p class="block text-4xl font-bold">97%</p>
-                            <p class="text-xs">GUEST SATISFACTION RATE</p>
+                            <p class="text-xs">{{__('message.social_con1')}}</p>
                         </div>
                         <div class="border p-4 w-full">
                             <p class="block text-3xl font-bold">9000 +</p>
-                            <p class="text-xs">GOTOPERU GUESTS</p>
+                            <p class="text-xs">{{__('message.social_con2')}}</p>
                         </div>
                     </div>
                 </div>
@@ -516,31 +516,31 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                100% Tailor Made, Private Tours
+                                {{__('message.social_li1')}}
                             </p>
                             <p class="mb-2 flex inline-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                Authentic & Unique Experiences
+                                {{__('message.social_li2')}}
                             </p>
                             <p class="mb-2 flex inline-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                24/7 Local Support While You Travel
+                                {{__('message.social_li3')}}
                             </p>
                             <p class="mb-2 flex inline-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                Travel with an Award-Winning Team
+                                {{__('message.social_li4')}}
                             </p>
                             <p class="mb-2 flex inline-flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                100% Financial Protection
+                                {{__('message.social_li5')}}
                             </p>
                         </div>
                     </div>
@@ -731,7 +731,7 @@
             <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
             <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
             <span class="hidden md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span>
-        </div> Peru Travel Information
+        </div> {{__('message.subtitle6')}}
     </div>
     <section class="grid grid-cols-1 md:grid-cols-5 container gap-4">
         <div class="md:col-span-3 relative">
@@ -740,7 +740,7 @@
         </div>
         <div class="md:col-span-2 bg-secondary bg-opacity-20 dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
             <div class="">
-                <h3 class="font-semibold text-2xl">Hotels</h3>
+                <h3 class="font-semibold text-2xl">{{__('message.info_sub1')}}</h3>
                 <div class=" mb-10">
                     <span class="inline-block w-1 h-2 bg-secondary dark:bg-primary ml-1"></span>
                     <span class="inline-block w-3 h-2 bg-secondary dark:bg-primary ml-1"></span>
@@ -749,11 +749,9 @@
                     <span class="inline-block w-1 h-2 bg-secondary dark:bg-primary ml-1"></span>
                 </div>
                 <p class="block my-12">
-                    At GOTOPERU our expert local team handpicked the best Peru hotels at each category.
-                    All feature excellent locations and facilities for a comfortable stay, plus the best service and warm peruvian hospitality. Our hotels will be a great part of an unforgettable Peru vacation!
-                    Select your preferred Hotel category for all our Peru travel packages.
+                    {{__('message.info_par1')}}
                 </p>
-                <a href="{{route('hotels')}}" class="btn-primary">View all</a>
+                <a href="{{route('hotels')}}" class="btn-primary">{{__('message.button_all')}}</a>
             </div>
         </div>
     </section>
