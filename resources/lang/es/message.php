@@ -3,7 +3,7 @@ return [
     'seo_title' => 'Paquetes turísticos a Perú',
     'msg_email' => '¡Gracias por contactar con nosotros!',
     'msc_client_email' => 'Gracias por contactar con nosotros, un representante de GOTOPERU se pondrá en contacto con usted en breve.',
-    'msg_default' => 'LAS MEJORES VACACIONES EN PERÚ CON EL MEJOR OPERADOR PERUANO'
+    'msg_default' => 'LAS MEJORES VACACIONES EN PERÚ CON EL MEJOR OPERADOR PERUANO',
 
     'nav_item1' => 'Paquetes turísticos',
     'nav_item2' => 'Tours',

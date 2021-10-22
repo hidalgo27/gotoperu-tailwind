@@ -3,7 +3,7 @@ return [
     'seo_title' => 'Peru Travel Packages',
     'msg_email' => 'Thank you for reaching out to us!',
     'msc_client_email' => 'Thank you for contacting us, a GOTOPERU representative will contact you shortly.',
-    'msg_default' => 'THE BEST VACATIONS IN PERU WITH THE BEST PERUVIAN OPERATOR'
+    'msg_default' => 'THE BEST VACATIONS IN PERU WITH THE BEST PERUVIAN OPERATOR',
 
     'nav_item1' => 'Peru Travel Packages',
     'nav_item2' => 'Only Tours',
