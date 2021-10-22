@@ -1,5 +1,10 @@
 <?php
 return [
+    'seo_title' => 'Paquetes turísticos a Perú',
+    'msg_email' => '¡Gracias por contactar con nosotros!',
+    'msc_client_email' => 'Gracias por contactar con nosotros, un representante de GOTOPERU se pondrá en contacto con usted en breve.',
+    'msg_default' => 'LAS MEJORES VACACIONES EN PERÚ CON EL MEJOR OPERADOR PERUANO'
+
     'nav_item1' => 'Paquetes turísticos',
     'nav_item2' => 'Tours',
     'nav_item3' => 'Destinos',
@@ -52,6 +57,23 @@ return [
     'pack_par4' =>  'días',
     'pack_par5' =>  'Desde',
     'pack_par6' =>  'Consultar',
+    'pack_item1' =>'Paquetes de viaje a Machu Picchu con paisajes impresionantes, visite el más alto logro arqueológico de los Incas, y se sintonizará con el misterio corazón de las montañas andinas. Si está planeando un viaje a Machu Picchu, aproveche nuestro servicio turístico de primera clase desde la ciudad de Cusco hasta Ollantaytambo y Aguas Calientes.',
+    'pack_item2' =>  'Valle Sagrado & Machupicchu',
+    'pack_item3' =>  'Cusco, Machupicchu, Montaña de 7 Colores, Fotografía',
+    'pack_item4' =>'Descubiertas por primera vez en 1927, las Líneas de Nazca están consideradas como uno de los mayores misterios de la antigua América del Sur, este destino se encuentra también cerca de las Islas Ballestas, de la Reserva Nacional de Paracas y de las dunas de arena únicas, por ejemplo la Huacachina, el único oasis desértico de América del Sur, ¡y también el punto ideal para hacer sandboarding y buggy en Perú!',
+    'pack_item5' =>  'Lo mejor de Perú',
+    'pack_item6' =>  'Puno & Lago Titicaca',
+    'pack_item7' =>  'Explore el gigantesco lago Titicaca, mitad peruano y mitad boliviano, que se encuentra a 3.500 metros sobre el nivel del mar y es el  lago de mayor altitud del mundo. Los incas creían que en estas aguas nacieron los fundadores del imperio (Mama Ocllo y Manco Capac). Hoy en día, muchas comunidades siguen teniendo su hogar en el lago, manteniendo vivas sus antiguas tradiciones.',
+    'pack_item8' => 'Lago Titicaca de Cusco',
+    
+    'serv_item2' =>  'Asistencia',
+    'serv_item3' =>  'Desayuno',
+    'serv_item4' =>  'Entradas',
+    'serv_item5' =>  'Vuelos',
+    'serv_item6' =>  'Hoteles',
+    'serv_item7' =>  'Tours',
+    'serv_item8' =>  'Trenes',
+    'serv_item9' =>  'Traslados',
     
     'button_detail' => 'Ver detalles',
     'button_all' => 'Ver más',
@@ -61,6 +83,7 @@ return [
     'button_prev' => 'Atrás',
     'button_send' => 'Enviar',
     'button_see' => 'Ver itinerario completo',
+    'button_read' => 'leer',
 
     'tour_title1' => 'Tours a perú',
     'tour_par1' =>  'GOTOPERU ofrece los mejores paquetes de viajes a Perú cubriendo los principales destinos del Perú como Machu Picchu, Montaña 7 Colores, Cusco, Lima, Valle Sagrado, Lago Titicaca, Puno, Arequipa, Nazca, Amazonas y muchos más. Nuestros paquetes de viaje van desde 2 días hasta 20 días.',
@@ -218,6 +241,10 @@ return [
     'form_footer_par12' => ' Número de celular',
     'form_footer_par13' => 'SUGERENCIA: Cuéntanos los destinos que tienes en mente.',
     'form_footer_par14' => 'Paquete',
+    'form_footer_par15' => 'Lujoso',
+    'form_footer_par16' => 'Superior',
+    'form_footer_par17' => 'Turista',
+    'form_footer_par18' => 'Económico',
 
     'pack_deta_par1' => 'Resumen',
     'pack_deta_par2' => 'Destinos',

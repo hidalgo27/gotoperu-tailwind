@@ -1,5 +1,10 @@
 <?php
 return [
+    'seo_title' => 'Peru Travel Packages',
+    'msg_email' => 'Thank you for reaching out to us!',
+    'msc_client_email' => 'Thank you for contacting us, a GOTOPERU representative will contact you shortly.',
+    'msg_default' => 'THE BEST VACATIONS IN PERU WITH THE BEST PERUVIAN OPERATOR'
+
     'nav_item1' => 'Peru Travel Packages',
     'nav_item2' => 'Only Tours',
     'nav_item3' => 'Destination',
@@ -53,6 +58,24 @@ return [
     'pack_par4' =>  'days',
     'pack_par5' =>  'from',
     'pack_par6' =>  'Inquire',
+    'pack_item1' =>'Travel Packages to Machu Picchu with breathtaking scenery, visit the Incas highest archeological achievement, and you will tune in to the mystery that is at the heart of the Andean Mountains. If you are planning a trip to Machu Picchu, take advantage of our first-class tour service from the city of Cusco to Ollantaytambo and Aguas Calientes.',
+    'pack_item2' =>  'Sacred Valley & Machupicchu',
+    'pack_item3' =>  'Cusco, Machupicchu, Rainbow, Photography',
+    'pack_item4' =>  'First discovered in 1927 the Nazca Lines are widely considered among the greatest mysteries of ancient South America, this destination is also near the Ballestas Islands, the Paracas National Reserve and unique sand dunes, for example the Huacachina, the only desert oasis in South America, and also the ideal hotspot for sandboarding and buggy in Peru!.',
+    'pack_item5' =>  'Best of Peru',
+    'pack_item6' =>  'Puno & Titicaca Lake',
+    'pack_item7' => 'Explore the gigantic Lake Titicaca which is Half Peruvian and Half Bolivian, sitting at 12,500 feet above sea level is the world’s largest high-altitude lake. The Incas believed that these waters birthed the founders of the empire ( Mama Ocllo & Manco Capac  ) . Nowadays many communities still make their home on the lake keeping their ancient traditions alive!',
+    'pack_item8' => 'Lake Titicaca from Cusco',
+    
+    'serv_item2' =>  'Assistances',
+    'serv_item3' =>  'Breakfast',
+    'serv_item4' =>  'Entrances',
+    'serv_item5' =>  'Flight',
+    'serv_item6' =>  'Hotels',
+    'serv_item7' =>  'Tours',
+    'serv_item8' =>  'Trains',
+    'serv_item9' =>  'Transfers',
+    
     
     'button_detail' => 'View details',
     'button_all' => 'View All',
@@ -62,6 +85,7 @@ return [
     'button_prev' => 'Previous',
     'button_send' => 'Send',
     'button_see' => 'See full itinerary',
+    'button_read' => 'read',
 
     'tour_title1' => 'Peru Tours',
     'tour_par1' => 'GOTOPERU offers the best Peru travel packages covering the main Peru destinations such as Machu Picchu, Rainbow Mountain, Cusco, Lima, Sacred Valley, Titicaca Lake, Puno, Arequipa, Nazca, the Amazon and many more. Our travel packages range from 2 days to 20 days.',
@@ -219,6 +243,10 @@ return [
     'form_footer_par12' => ' Phone number',
     'form_footer_par13' => 'TIP: Tell us the destinations you have in mind.',
     'form_footer_par14' => 'Vacation',
+    'form_footer_par15' => 'Luxury',
+    'form_footer_par16' => 'Superior',
+    'form_footer_par17' => 'Best Value',
+    'form_footer_par18' => 'Budget',
 
     'pack_deta_par1' => 'Overview',
     'pack_deta_par2' => 'Destinations',

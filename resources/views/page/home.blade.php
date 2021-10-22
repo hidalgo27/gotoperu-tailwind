@@ -218,7 +218,7 @@
                         </div>
                         <div class="flex md:col-span-1 md:-ml-24 flex items-center relative z-50">
                             <div class="p-12 w-full  bg-white dark:bg-gray-800 rounded-lg shadow-xl ">
-                            <!--                        <h4 class="text-2xl text-secondary font-semibold">{{ $feature->duracion }} days $999</h4>-->
+                            <!--                        <h4 class="text-2xl text-secondary font-semibold">{{ $feature->duracion }} {{__('message.pack_par4')}} $999</h4>-->
                                 <h3 class="text-2xl my-3 font-bold text-gray-500 dark:text-gray-300">{{ $feature->titulo }}</h3>
                                 <div class="font-bold text-secondary text-lg mb-4">
                                     @foreach($feature['precio_paquetes'] as $precio)
@@ -269,8 +269,8 @@
             <img src="{{asset('images/cua2.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
             <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-primary bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-2xl">Cusco & Machu Picchu</h3>
-                <p class="mt-3 mb-6 text-sm block">Travel Packages to Machu Picchu with breathtaking scenery, visit the Incas highest archeological achievement, and you will tune in to the mystery that is at the heart of the Andean Mountains. If you are planning a trip to Machu Picchu, take advantage of our first-class tour service from the city of Cusco to Ollantaytambo and Aguas Calientes.</p>
-                <a href="{{route('destinations.show', 'machu-picchu')}}" class="btn-white hidden md:inline-flex">All destinations</a>
+                <p class="mt-3 mb-6 text-sm block">{{__('message.pack_item1')}}</p>
+                <a href="{{route('destinations.show', 'machu-picchu')}}" class="btn-white hidden md:inline-flex">{{__('message.button_all')}}</a>
             </div>
 
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -290,9 +290,9 @@
                 <div class="absolute w-full bottom-0 inset-x-0 p-3">
                     <div class="py-2 px-4 text-gray-100 bg-primary bg-opacity-95 shadow-lg rounded-lg">
                         <div class="font-normal text-sm">
-                            2 days / <span class="text-xs align-top">from</span> $ 359 <span class="text-xs">usd</span>
+                            2 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 359 <span class="text-xs">usd</span>
                         </div>
-                        <h2 class="text-lg font-semibold">Sacred Valley & Machupicchu</h2>
+                        <h2 class="text-lg font-semibold">{{__('message.pack_item2')}}</h2>
                     </div>
                 </div>
                 </a>
@@ -307,9 +307,9 @@
                 <div class="absolute w-full bottom-0 inset-x-0 p-3">
                     <div class="py-2 px-4 text-gray-100 bg-primary bg-opacity-95 shadow-lg rounded-lg">
                         <div class="font-normal text-sm">
-                            7 days / <span class="text-xs align-top">from</span> $ 899 <span class="text-xs">usd</span>
+                            7 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 899 <span class="text-xs">usd</span>
                         </div>
-                        <h2 class="text-lg font-semibold">Cusco, Machupicchu, Rainbow, Photography</h2>
+                        <h2 class="text-lg font-semibold">{{__('message.pack_item3')}}</h2>
                     </div>
                 </div>
                 </a>
@@ -332,9 +332,9 @@
                     <div class="absolute w-full inset-x-0 bottom-0 p-3">
                         <div class="py-2 px-4 text-gray-100 bg-secondary bg-opacity-95 shadow-lg rounded-lg">
                             <div class="font-normal text-sm">
-                                12 days / <span class="text-xs align-top">from</span> $ 1699 <span class="text-xs">usd</span>
+                                12 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 1699 <span class="text-xs">usd</span>
                             </div>
-                            <h2 class="text-lg font-semibold">Best of Peru</h2>
+                            <h2 class="text-lg font-semibold">{{__('message.pack_item5')}}</h2>
                         </div>
                     </div>
                 </a>
@@ -349,7 +349,7 @@
                 <div class="absolute w-full bottom-0 inset-x-0 p-3">
                     <div class="py-2 px-4 text-gray-100 bg-secondary bg-opacity-95 shadow-lg rounded-lg">
                         <div class="font-normal text-sm">
-                            2 days / <span class="text-xs align-top">from</span> $ 299 <span class="text-xs">usd</span>
+                            2 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 299 <span class="text-xs">usd</span>
                         </div>
                         <h2 class="text-lg font-semibold">Paracas & Nazca</h2>
                     </div>
@@ -367,8 +367,8 @@
             </div>
             <div class="md:absolute md:inset-y-0 md:right-0 w-full md:w-64 p-6 bg-secondary bg-opacity-95 text-gray-50">
                 <h3 class="font-bold text-right text-2xl">Nazca, Ballestas & Huacachina</h3>
-                <p class="mt-3 md:mb-6 block text-sm">First discovered in 1927 the Nazca Lines are widely considered among the greatest mysteries of ancient South America, this destination is also near the Ballestas Islands, the Paracas National Reserve and unique sand dunes, for example the Huacachina, the only desert oasis in South America, and also the ideal hotspot for sandboarding and buggy in Peru!.</p>
-                <a href="{{route('destinations.show', 'lineas-de-nazca')}}" class="btn-white hidden md:inline-flex">All destinations</a>
+                <p class="mt-3 md:mb-6 block text-sm">{{__('message.pack_item4')}}</p>
+                <a href="{{route('destinations.show', 'lineas-de-nazca')}}" class="btn-white hidden md:inline-flex">{{__('message.button_all')}}</a>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 left-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -383,9 +383,9 @@
         <div class="md:col-span-3 overflow-hidden group relative">
             <img src="{{asset('images/titicaca.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
             <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-gray-700 bg-opacity-95 text-gray-50">
-                <h3 class="font-bold text-2xl">Puno & Titicaca Lake</h3>
-                <p class="mt-3 mb-6 text-sm block">Explore the gigantic Lake Titicaca which is Half Peruvian and Half Bolivian, sitting at 12,500 feet above sea level is the world’s largest high-altitude lake. The Incas believed that these waters birthed the founders of the empire ( Mama Ocllo & Manco Capac  ) . Nowadays many communities still make their home on the lake keeping their ancient traditions alive!</p>
-                <a href="{{route('destinations.show', 'puno')}}" class="btn-white hidden md:inline-flex">All destinations</a>
+                <h3 class="font-bold text-2xl">{{__('message.pack_item6')}}</h3>
+                <p class="mt-3 mb-6 text-sm block">{{__('message.pack_item7')}}</p>
+                <a href="{{route('destinations.show', 'puno')}}" class="btn-white hidden md:inline-flex">{{__('message.button_all')}}</a>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -404,9 +404,9 @@
                     <div class="absolute w-full bottom-0 inset-x-0 p-3">
                         <div class="py-2 px-4 text-gray-100 bg-gray-700 bg-opacity-95 shadow-lg rounded-lg">
                             <div class="font-normal text-sm">
-                                3 days / <span class="text-xs align-top">from</span> $ 219 <span class="text-xs">usd</span>
+                                3 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 219 <span class="text-xs">usd</span>
                             </div>
-                            <h2 class="text-lg font-semibold">Lake Titicaca from Cusco</h2>
+                            <h2 class="text-lg font-semibold">{{__('message.pack_item8')}}</h2>
                         </div>
                     </div>
                 </a>
@@ -421,9 +421,9 @@
                     <div class="absolute w-full bottom-0 inset-x-0 p-3">
                         <div class="py-2 px-4 text-gray-100 bg-gray-700 bg-opacity-95 shadow-lg rounded-lg">
                             <div class="font-normal text-sm">
-                                12 days / <span class="text-xs align-top">from</span> $ 1699 <span class="text-xs">usd</span>
+                                12 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 1699 <span class="text-xs">usd</span>
                             </div>
-                            <h2 class="text-lg font-semibold">Best of Peru</h2>
+                            <h2 class="text-lg font-semibold">{{__('message.pack_item5')}}</h2>
                         </div>
                     </div>
                 </a>
@@ -438,36 +438,36 @@
             <div class="col-start-2 col-span-4">
                 <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
                     <div class="">
-                        <img src="{{asset('images/include/assistances.png')}}" alt="" class="object-contain px-4 text-center">
-                        <p class="text-xs">Assistances</p>
+                        <img src="{{asset('images/include/assistances.png')}}" alt="{{__('message.serv_item2')}}" class="object-contain px-4 text-center">
+                        <p class="text-xs">{{__('message.serv_item2')}}</p>
                     </div>
                     <div class="">
-                        <img src="{{asset('images/include/breakfast.png')}}" alt="" class="object-contain px-4 text-center">
-                        <p class="text-xs">Breakfast</p>
+                        <img src="{{asset('images/include/breakfast.png')}}" alt="{{__('message.serv_item3')}}" class="object-contain px-4 text-center">
+                        <p class="text-xs">{{__('message.serv_item3')}}</p>
                     </div>
                     <div class="">
-                        <img src="{{asset('images/include/entrances.png')}}" alt="" class="object-contain px-4 text-center">
-                        <p class="text-xs">Entrances</p>
+                        <img src="{{asset('images/include/entrances.png')}}" alt="{{__('message.serv_item4')}}" class="object-contain px-4 text-center">
+                        <p class="text-xs">{{__('message.serv_item4')}}</p>
                     </div>
                     <div class="">
-                        <img src="{{asset('images/include/flight.png')}}" alt="" class="object-contain px-4 text-center">
-                        <p class="text-xs">Flight</p>
+                        <img src="{{asset('images/include/flight.png')}}" alt="{{__('message.serv_item5')}}" class="object-contain px-4 text-center">
+                        <p class="text-xs">{{__('message.serv_item5')}}</p>
                     </div>
                     <div class="">
-                        <img src="{{asset('images/include/hotels.png')}}" alt="" class="object-contain px-4 text-center">
-                        <p class="text-xs">Hotels</p>
+                        <img src="{{asset('images/include/hotels.png')}}" alt="{{__('message.serv_item6')}}" class="object-contain px-4 text-center">
+                        <p class="text-xs">{{__('message.serv_item6')}}</p>
                     </div>
                     <div class="">
-                        <img src="{{asset('images/include/tours.png')}}" alt="" class="object-contain px-4 text-center">
-                        <p class="text-xs">Tours</p>
+                        <img src="{{asset('images/include/tours.png')}}" alt="{{__('message.serv_item7')}}" class="object-contain px-4 text-center">
+                        <p class="text-xs">{{__('message.serv_item7')}}</p>
                     </div>
                     <div class="">
-                        <img src="{{asset('images/include/trains.png')}}" alt="" class="object-contain px-4 text-center">
-                        <p class="text-xs">Trains</p>
+                        <img src="{{asset('images/include/trains.png')}}" alt="{{__('message.serv_item8')}}" class="object-contain px-4 text-center">
+                        <p class="text-xs">{{__('message.serv_item8')}}</p>
                     </div>
                     <div class="">
-                        <img src="{{asset('images/include/transfers.png')}}" alt="" class="object-contain px-4 text-center">
-                        <p class="text-xs">Transfers</p>
+                        <img src="{{asset('images/include/transfers.png')}}" alt="{{__('message.serv_item9')}}" class="object-contain px-4 text-center">
+                        <p class="text-xs">{{__('message.serv_item9')}}</p>
                     </div>
                 </div>
             </div>
@@ -826,7 +826,7 @@
                 <h2 class="my-6 font-semibold text-gray-600 text-3xl"><a href="{{route('blog.show', $blogs_first)}}">{{$blogs_first->titulo}}</a></h2>
                 <span class="text-sm mb-6">{!! Str::limit($blogs_first->detalle, 300) !!}</span>
 
-                <a href="{{route('blog.show', $blogs_first)}}" class="text-secondary mt-4 flex">read <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="{{route('blog.show', $blogs_first)}}" class="text-secondary mt-4 flex">{{__('message.button_read')}} <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg></a>
             </div>

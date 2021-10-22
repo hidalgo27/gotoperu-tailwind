@@ -40,6 +40,7 @@ class HomeController extends Controller
 
             ));
     }
+    
 
     public function packages() {
         $paquetes = TPaquete::where('is_p_t', '1')->get();

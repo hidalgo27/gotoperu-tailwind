@@ -55,7 +55,7 @@ class FormDetail extends Component
         $this->reset('comment');
 
 
-        $this->success = 'Thank you for reaching out to us!';
+        $this->success = __('message.msg_email');
 
     }
 

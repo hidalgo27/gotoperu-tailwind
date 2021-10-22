@@ -46,3 +46,4 @@ Route::get('/blog/{post}', [HomeController::class, 'blog_show'])->name('blog.sho
 
 //form inquire
 Route::post('/formulario-diseno', [FormpageController::class, 'formulario_diseno'])->name('formulario_diseno');
+

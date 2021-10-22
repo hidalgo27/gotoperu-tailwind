@@ -25,7 +25,7 @@
             <tr>
                 <td style="text-align:center;font-size:12px;padding:5px 15px;color:#999999">
                     <p>
-                        LAS MEJORES VACACIONES EN PERÚ CON EL MEJOR OPERADOR PERUANO
+                        {{__('message.msg_default')}}
                     </p>
                     <p><a href="https://gotoperu.com" style="color:blue" target="_blank">GotoPeru</a></p>
                 </td>

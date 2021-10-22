@@ -19,19 +19,19 @@ class FormFooter extends Component
         $hotels = [
             [
                 'star'=>'5',
-                'category'=>'Lujoso'
+                'category'=>__('message.form_footer_par15')
             ],
             [
                 'star'=>'4',
-                'category'=>'Superior'
+                'category'=>__('message.form_footer_par16')
             ],
             [
                 'star'=>'3',
-                'category'=>'Turista'
+                'category'=>__('message.form_footer_par17')
             ],
             [
                 'star'=>'2',
-                'category'=>'Económico'
+                'category'=>__('message.form_footer_par18')
             ]
         ];
 
@@ -96,7 +96,7 @@ class FormFooter extends Component
         $this->reset('phone');
         $this->reset('phonecountry');
 
-        $this->success = 'Thank you for reaching out to us!';
+        $this->success = __('message.msg_email');
 
     }
 
