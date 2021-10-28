@@ -12,7 +12,27 @@ Document
 Use a better box model (opinionated).
 */
 
-
+.box_holder0 .front, .box_holder0 .back,
+.box_holder1 .front, .box_holder1 .back,
+.box_holder2 .front, .box_holder2 .back {
+  transition: 1s;
+  backface-visibility: hidden;
+}
+.box_holder0 .back,
+.box_holder1 .back,
+.box_holder2 .back {
+  transform: rotateY(180deg);
+}
+.box_holder0.show_info0 .back,
+.box_holder1.show_info1 .back,
+.box_holder2.show_info2 .back {
+  transform: rotateY(0deg);
+}
+.box_holder0.show_info0 .front,
+.box_holder1.show_info1 .front,
+.box_holder2.show_info2 .front {
+  transform: rotateY(-180deg);
+}
 
 *,
 ::before,
