@@ -238,7 +238,7 @@
             input.addEventListener('blur', function () {
                 @this.set('phone', this.value);
             });
-            
+
             var picker = new Pikaday({ field: document.getElementById('datepicker') });
     </script>
 

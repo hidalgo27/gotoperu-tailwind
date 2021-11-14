@@ -118,7 +118,7 @@
 {{--    <div class="pulse"></div>--}}
 {{--</div>--}}
 @php
- 
+
     $nav_links = [
         [
             'name' => 'Home',
@@ -730,6 +730,7 @@
             sessionStorage.theme = 'dark';
         }
     });
+
 </script>
 
 

@@ -46,7 +46,7 @@ class FormFooter extends Component
             'phone' => 'required'
         ]);
 
-        $from = 'martin@gotoperu.com';
+        $from = 'info@gotoperu.com';
 
         if ($this->values_number == '6'){
             $travellers = $this->values_number_input;
@@ -63,7 +63,7 @@ class FormFooter extends Component
             $messaje->to($this->email, $this->name)
                 ->subject('GotoPeru')
                 /*->attach('ruta')*/
-                ->from('martin@gotoperu.com', 'GotoPeru');
+                ->from('info@gotoperu.com', 'GotoPeru');
         });
         Mail::send(['html' => 'notifications.page.admin-form-footer'], [
 
@@ -82,7 +82,7 @@ class FormFooter extends Component
                 ->subject('GotoPeru')
 //                    ->cc($from2, 'GotoPeru')
                 /*->attach('ruta')*/
-                ->from('martin@gotoperu.com', 'GotoPeru');
+                ->from('info@gotoperu.com', 'GotoPeru');
         });
 
         $this->reset('values_categories');
