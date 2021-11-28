@@ -1,6 +1,6 @@
 <x-page-layout>
 
-    <div class="absolute inset-0 h-screen overflow- w-full -z-1 overflow-hidden">
+    <div class="absolute inset-0 h-screen overflow- w-full bg-gray-100 -z-1 overflow-hidden">
 {{--        <video autoplay loop muted class="object-cover h-full w-full">--}}
 {{--            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.--}}
             {{--            <source src="{{asseDestinationst('media/intro.mp4')}}" type="video/mp4" />Your browser does not support the video tag.--}}
@@ -48,44 +48,118 @@
 
 
 
-    <section class="grid gap-12 bg-gray-100 p-6 grid-cols-8 hidden md:inline-flex"><!--.row -->
-        <div>
-            <img src="{{asset('images/logos/apavit.png')}}" alt="logo apavit" class="px-3 w-full dark:filter dark:grayscale">
-        </div>
-        <div>
-            <img src="{{asset('images/logos/apotur.png')}}" alt="logo apotur" class="px-3 w-full dark:filter dark:grayscale">
-        </div>
-        <div>
-            <img src="{{asset('images/logos/asta.png')}}"  alt="logo asta" class="px-3 w-full dark:filter dark:grayscale">
-        </div>
-        <div>
-            <img src="{{asset('images/logos/expedia.png')}}"  alt="logo expedia" class="px-3 w-full dark:filter dark:grayscale">
-        </div>
-        <div>
-            <img src="{{asset('images/logos/meetup.png')}}" alt="logo meetup" class="px-3 w-full dark:filter dark:grayscale">
-        </div>
-        <div>
-            <img src="{{asset('images/logos/new.png')}}" alt="logo the new york times" class="px-3 w-full dark:filter dark:grayscale">
-        </div>
-        <div>
-            <img src="{{asset('images/logos/peru.png')}}"  alt="logo marca peru" class="px-3 w-full dark:filter dark:grayscale">
-        </div>
-        <div>
-            <img src="{{asset('images/logos/prom-peru.png')}}" alt="logo prom peru" class="px-3 w-full dark:filter dark:grayscale">
-        </div>
+{{--    <section class="grid gap-12 bg-gray-100 p-6 grid-cols-8 hidden md:inline-flex"><!--.row -->--}}
+{{--        <div>--}}
+{{--            <img src="{{asset('images/logos/apavit.png')}}" alt="logo apavit" class="px-3 w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
+{{--        <div>--}}
+{{--            <img src="{{asset('images/logos/apotur.png')}}" alt="logo apotur" class="px-3 w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
+{{--        <div>--}}
+{{--            <img src="{{asset('images/logos/asta.png')}}"  alt="logo asta" class="px-3 w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
+{{--        <div>--}}
+{{--            <img src="{{asset('images/logos/expedia.png')}}"  alt="logo expedia" class="px-3 w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
+{{--        <div>--}}
+{{--            <img src="{{asset('images/logos/meetup.png')}}" alt="logo meetup" class="px-3 w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
+{{--        <div>--}}
+{{--            <img src="{{asset('images/logos/new.png')}}" alt="logo the new york times" class="px-3 w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
+{{--        <div>--}}
+{{--            <img src="{{asset('images/logos/peru.png')}}"  alt="logo marca peru" class="px-3 w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
+{{--        <div>--}}
+{{--            <img src="{{asset('images/logos/prom-peru.png')}}" alt="logo prom peru" class="px-3 w-full dark:filter dark:grayscale">--}}
+{{--        </div>--}}
 {{--        <div>--}}
 {{--            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">--}}
 {{--        </div>--}}
 {{--        <div>--}}
 {{--            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale">--}}
 {{--        </div>--}}
+{{--    </section>--}}
+
+
+    <section class="bg-gray-100">
+    <div class="container">
+        <div class="w-full swiper-container slider-brands overflow-hidden relative">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="font-bold text-sm">Book swith confidence</h3>
+                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="font-bold text-sm">Book with confidence</h3>
+                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="font-bold text-sm">Book with confidence</h3>
+                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="font-bold text-sm">Book with confidence</h3>
+                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="font-bold text-sm">Book with confidence</h3>
+                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-button-next btn-next"></div>
+            <div class="swiper-button-prev btn-prev"></div>
+        </div>
+    </div>
     </section>
 
-    <section class="container my-20 text-gray-500 text-center mx-auto relative">
-        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-6 xl:text-5xl dark:text-secondary">{{__('message.title2_a')}} <span class="text-secondary">{{__('message.title2_b')}}</span></h2>
-        <p>{{__('message.parrafo1')}}</p>
 
-
+    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
+        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+            BOOK & TRAVEL WITH CONFIDENCE <br>Deposits from 10% : Free cancellation insurance available with 20% deposit
+            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
+        <div class="col-span-4 text-center mt-4">
+            <a href="" class="text-secondary font-medium hover:text-gray-500 block">Book With Confidence - view flexible terms</a>
+            <a href="" class="text-secondary font-medium hover:text-gray-500 block">Travel With Confidence - view Health & Safety guarantees</a>
+        </div>
     </section>
 
 
@@ -180,161 +254,21 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-
-
-    <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-        <div class="border-4 h-1 w-12 border-primary"></div> {{__('message.subtitle2')}}
-    </div>
-
-    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
-        @foreach($paquete_recommended as $paquete)
-            <x-packages-card :paquete="$paquete"></x-packages-card>
-        @endforeach
-
-
-    </section>
-
-
-    <section class="py-12 my-12  bg-gray-100 dark:bg-gray-800 relative">
-        <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
-            <div class="border-4 h-1 w-12 border-secondary"></div> {{__('message.subtitle3')}}
-        </div>
-
-        <div class="container">
-        <div class="swiper-container slider-featured overflow-hidden">
-            <div class="swiper-wrapper">
-                @foreach($paquetes_features as $feature)
-                    <div class="swiper-slide grid grid-cols-1 md:grid-cols-3">
-
-                        <!--                    <div class="" v-for="imagen in slide.imagen_paquetes">-->
-                        <!--                        <img :src="imagen.nombre" alt="" class="object-cover">-->
-                        <!--                    </div>-->
-                        <div class=" md:col-span-2 mb:6 md:mb-0 relative z-0">
-                            @foreach($feature->imagen_paquetes as $imagen)
-                            <img src="{{$imagen->nombre}}" alt="" class="object-cover">
-                            @endforeach
-                                <div class="absolute inset-0 gradient-cicle-gray"></div>
-                        </div>
-                        <div class="flex md:col-span-1 md:-ml-24 flex items-center relative z-50">
-                            <div class="p-12 w-full  bg-white dark:bg-gray-800 rounded-lg shadow-xl ">
-                            <!--                        <h4 class="text-2xl text-secondary font-semibold">{{ $feature->duracion }} {{__('message.pack_par4')}} $999</h4>-->
-                                <h3 class="text-2xl my-3 font-bold text-gray-500 dark:text-gray-300">{{ $feature->titulo }}</h3>
-                                <div class="font-bold text-secondary text-lg mb-4">
-                                    @foreach($feature['precio_paquetes'] as $precio)
-                                        @if($precio['estrellas'] == 2)
-                                            @if($precio['precio_d'] > 0)
-                                                {{ $feature->duracion }} {{__('message.pack_par4')}} {{__('message.pack_par5')}} $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
-                                            @else
-                                                <span class="text-red-500">{{__('message.button_inquire')}}</span>
-                                            @endif
-                                        @endif
-                                    @endforeach
-
-                                </div>
-                                <div class="mb-6">
-                                    {!! Str::limit($feature->descripcion, 150) !!}
-
-                                </div>
-                                <a href="{{route('packages.detail', $feature->url)}}" class="btn btn-primary">{{__('message.button_see')}}</a>
-                            </div>
-                        </div>
-
-                    </div>
-                @endforeach
-            </div>
-            <div class="swiper-button-next btn-next"></div>
-            <div class="swiper-button-prev btn-prev"></div>
-        </div>
-        </div>
-
-    </section>
-
-
-
-
-    <div class="flex container mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">
-        <div class="border-4 h-1 w-12 border-secondary dark:border-secondary"></div> {{__('message.subtitle4')}}
-{{--        <div class="text-center mb-10">--}}
-{{--            <span class="inline-block w-1 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
-{{--            <span class="inline-block w-3 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
-{{--            <span class="inline-block w-40 h-1 rounded-full bg-blue-500"></span>--}}
-{{--            <span class="inline-block w-3 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
-{{--            <span class="inline-block w-1 h-1 rounded-full bg-blue-500 ml-1"></span>--}}
-{{--        </div>--}}
-    </div>
-
-    <section class="grid grid-cols-1 md:grid-cols-5 mb-4 container gap-4">
-        <div class="md:col-span-3 overflow-hidden group relative">
-            <img src="{{asset('images/cua2.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-            <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-primary bg-opacity-95 text-gray-50">
-                <h3 class="font-bold text-2xl">Cusco & Machu Picchu</h3>
-                <p class="mt-3 mb-6 text-sm block">{{__('message.pack_item1')}}</p>
-                <a href="{{route('destinations.show', 'machu-picchu')}}" class="btn-white hidden md:inline-flex">{{__('message.button_all')}}</a>
-            </div>
-
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        </div>
-
-        <div class="md:col-span-2 flex flex-col gap-4 content-between overflow-hidden">
-
-            <div class="overflow-hidden relative group">
-                <a href="{{route('packages.detail', 'sacred-valley-machu-picchu')}}">
-                    <div class="relative">
-                        <img src="{{asset('images/banners/packages/sacred-valley.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                        <div class="absolute inset-0 gradient-cicle-gray"></div>
-                    </div>
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-primary bg-opacity-95 shadow-lg rounded-lg">
-                        <div class="font-normal text-sm">
-                            2 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 359 <span class="text-xs">usd</span>
-                        </div>
-                        <h2 class="text-lg font-semibold">{{__('message.pack_item2')}}</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
-
-            <div class="overflow-hidden relative group">
-                <a href="{{route('packages.detail', 'cusco-machu-picchu-rainbows-photography')}}">
-                <div class="relative">
-                    <img src="{{asset('images/banners/packages/rainbow.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                    <div class="absolute inset-0 gradient-cicle-gray"></div>
-                </div>
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-primary bg-opacity-95 shadow-lg rounded-lg">
-                        <div class="font-normal text-sm">
-                            7 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 899 <span class="text-xs">usd</span>
-                        </div>
-                        <h2 class="text-lg font-semibold">{{__('message.pack_item3')}}</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="grid grid-cols-1 md:grid-cols-5 mb-4 container gap-4">
-
-        <div class="md:col-span-2 order-2 md:order-1 flex flex-col gap-4 content-between overflow-hidden">
+    <section class="grid grid-cols-2 mx-auto gap-0">
 
             <div class="overflow-hidden relative group">
                 <a href="{{route('packages.detail', 'best-of-peru')}}">
                     <div class="relative">
-                        <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full h-20r transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
                         <div class="absolute inset-0 gradient-cicle-gray"></div>
                     </div>
                     <div class="absolute w-full inset-x-0 bottom-0 p-3">
-                        <div class="py-2 px-4 text-gray-100 bg-secondary bg-opacity-95 shadow-lg rounded-lg">
+                        <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-30 shadow-lg rounded-lg mb-4">
+                            <h2 class="text-lg font-semibold">Self Drive</h2>
                             <div class="font-normal text-sm">
-                                12 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 1699 <span class="text-xs">usd</span>
+                                Drive famous scenic routes and see the continent at your own pace.
                             </div>
-                            <h2 class="text-lg font-semibold">{{__('message.pack_item5')}}</h2>
+{{--                            <a href="" class="float-right ">View self-drive tours</a>--}}
                         </div>
                     </div>
                 </a>
@@ -343,95 +277,554 @@
             <div class="overflow-hidden relative group">
                 <a href="{{route('packages.detail', 'paracas-nazca')}}">
                     <div class="relative">
-                        <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
                         <div class="absolute inset-0 gradient-cicle-gray"></div>
                     </div>
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-secondary bg-opacity-95 shadow-lg rounded-lg">
-                        <div class="font-normal text-sm">
-                            2 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 299 <span class="text-xs">usd</span>
+                    <div class="absolute w-full inset-x-0 bottom-0 p-3">
+                        <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-30 shadow-lg rounded-lg mb-4">
+                            <h2 class="text-lg font-semibold">Self Drive</h2>
+                            <div class="font-normal text-sm">
+                                Drive famous scenic routes and see the continent at your own pace.
+                            </div>
+{{--                            <a href="" class="float-right ">View self-drive tours</a>--}}
                         </div>
-                        <h2 class="text-lg font-semibold">Paracas & Nazca</h2>
+                    </div>
+                </a>
+            </div>
+
+    </section>
+
+    <section class="grid grid-cols-5">
+        <div class="overflow-hidden relative group">
+            <a href="{{route('packages.detail', 'paracas-nazca')}}">
+                <div class="relative">
+                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                    <div class="absolute inset-0 gradient-cicle-gray"></div>
+                </div>
+                <div class="absolute w-full bottom-0 inset-x-0 p-3">
+                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
+                        <h2 class="text-lg font-semibold">Self Drive</h2>
+                        <div class="font-normal text-sm">
+                            Drive famous scenic routes and see the continent at your own pace.
+                        </div>
+{{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
                     </div>
                 </div>
-                </a>
+            </a>
+        </div>
+        <div class="overflow-hidden relative group">
+            <a href="{{route('packages.detail', 'paracas-nazca')}}">
+                <div class="relative">
+                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                    <div class="absolute inset-0 gradient-cicle-gray"></div>
+                </div>
+                <div class="absolute w-full bottom-0 inset-x-0 p-3">
+                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
+                        <h2 class="text-lg font-semibold">Self Drive</h2>
+                        <div class="font-normal text-sm">
+                            Drive famous scenic routes and see the continent at your own pace.
+                        </div>
+                        {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="overflow-hidden relative group">
+            <a href="{{route('packages.detail', 'paracas-nazca')}}">
+                <div class="relative">
+                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                    <div class="absolute inset-0 gradient-cicle-gray"></div>
+                </div>
+                <div class="absolute w-full bottom-0 inset-x-0 p-3">
+                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
+                        <h2 class="text-lg font-semibold">Self Drive</h2>
+                        <div class="font-normal text-sm">
+                            Drive famous scenic routes and see the continent at your own pace.
+                        </div>
+                        {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="overflow-hidden relative group">
+            <a href="{{route('packages.detail', 'paracas-nazca')}}">
+                <div class="relative">
+                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                    <div class="absolute inset-0 gradient-cicle-gray"></div>
+                </div>
+                <div class="absolute w-full bottom-0 inset-x-0 p-3">
+                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
+                        <h2 class="text-lg font-semibold">Self Drive</h2>
+                        <div class="font-normal text-sm">
+                            Drive famous scenic routes and see the continent at your own pace.
+                        </div>
+                        {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="overflow-hidden relative group">
+            <a href="{{route('packages.detail', 'paracas-nazca')}}">
+                <div class="relative">
+                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                    <div class="absolute inset-0 gradient-cicle-gray"></div>
+                </div>
+                <div class="absolute w-full bottom-0 inset-x-0 p-3">
+                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
+                        <h2 class="text-lg font-semibold">Self Drive</h2>
+                        <div class="font-normal text-sm">
+                            Drive famous scenic routes and see the continent at your own pace.
+                        </div>
+                        {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+
+    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
+        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+            Recomended Travel Packages
+            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
+    </section>
+
+    <section class="px-6 mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+
+        @foreach($paquete_recommended as $paquete)
+            <x-packages-card-default :paquete="$paquete"></x-packages-card-default>
+        @endforeach
+
+
+    </section>
+
+    <div class="bg-gray-100 py-12 mt-12">
+    <section class="px-6 container grid grid-cols-1 md:grid-cols-4">
+        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+            Recomended Travel Packages
+            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
+    </section>
+    <section class="px-6 mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-12">
+        @foreach($paquete_recommended as $paquete)
+            <x-packages-card-default :paquete="$paquete"></x-packages-card-default>
+        @endforeach
+
+
+    </section>
+    </div>
+
+{{--    <div class="flex mb-3 px-6 block md:mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">--}}
+{{--        <div class="">--}}
+{{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
+{{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
+{{--            <span class="hidden md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span>--}}
+{{--        </div> {{__('message.subtitle6')}}--}}
+{{--    </div>--}}
+    <section class="grid grid-cols-1 md:grid-cols-5">
+        <div class="md:col-span-3 relative">
+            <img src="{{asset('images/destinations/puno-l.jpg')}}" alt="" class="object-cover h-full w-full">
+            <div class="absolute inset-0 gradient-cicle-gray flex items-center text-white text-center w-full">
+                <div class="w-full text-center">
+                    <h3 class="font-semibold block text-4xl">POPULAR: ICELAND DEALS</h3>
+                    <p class="block mb-6">Check out these 2022 early bird offers and save up to 15% on selected Iceland tours.</p>
+                    <div class="font-semibold text-white dark:text-gray-700 text-5xl mt-auto">
+                        <div class="text-xs ">Price p.p. from</div>
+                        $1200 <span class="text-sm text-secondary">usd</span>
+                    </div>
+
+                    <div class="block mt-6">
+                        <a href="#" class="btn-secondary">View Tours</a>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+            <div class="">
+                <h3 class="font-semibold text-2xl">
+                    GET IN TOUCH WITH ONE OF OUR LOCAL TRAVEL EXPERTS
+                </h3>
+                <p class="block my-12">
+                    Whatever your needs, we are here to help. If you have any questions about our packages or services, please do not hesitate to contact us.
+                </p>
+                <div class="flex justify-center gap-12">
+                    <div class="text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                        Chat
+                    </div>
+                    <div class="text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        Email
+                    </div>
+                    <div class="text-center">
+                        <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="mx-auto w-14 h-10">
+                        Whatsapp
+                    </div>
+                </div>
+{{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
+            </div>
+        </div>
+    </section>
 
-
+    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
+        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+            Recomended Travel Packages
+            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
+        <div class="col-span-4 text-center mt-4">
+            See and learn about our tours from our valued Nordic Visitor customers.
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-gray-100 border p-4">
+                    <div class="flex items-center">
+                        <div class="w-10">
+                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="font-bold text-sm">Amy Woods</h3>
+                            <p class="text-sm">United States</p>
+                        </div>
+                    </div>
+                    <div class="text-sm">
+                        <p>I have already recommend Nordic Visitor to several friends and family members! We had an absolutely amazing trip and...</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 border p-4">
+                    <div class="flex items-center">
+                        <div class="w-10">
+                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="font-bold text-sm">Amy Woods</h3>
+                            <p class="text-sm">United States</p>
+                        </div>
+                    </div>
+                    <div class="text-sm">
+                        <p>I have already recommend Nordic Visitor to several friends and family members! We had an absolutely amazing trip and...</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 border p-4">
+                    <div class="flex items-center">
+                        <div class="w-10">
+                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="font-bold text-sm">Amy Woods</h3>
+                            <p class="text-sm">United States</p>
+                        </div>
+                    </div>
+                    <div class="text-sm">
+                        <p>I have already recommend Nordic Visitor to several friends and family members! We had an absolutely amazing trip and...</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="md:col-span-3 order-1 md:order-2 overflow-hidden group relative">
-            <div class="relative h-full w-full">
-                <img src="{{asset('images/pa.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                <div class="absolute inset-0 gradient-cicle-gray"></div>
+        <div class="container mt-12">
+            <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+                <div class="border">
+                    <a href="https://www.instagram.com/go.to.peru/" target="_blank">
+                        <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-6 py-4">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
+                        <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-6 py-4">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
+                        <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-6 py-4">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.tiktok.com/@gotoperu" target="_blank">
+                        <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-6 py-4">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank">
+                        <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank">
+                        <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    </a>
+                </div>
+                <div class="border">
+                    <a href="https://www.trustpilot.com/review/gotoperu.com">
+                        <img src="{{asset('images/logos/trust2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    </a>
+                </div>
             </div>
-            <div class="md:absolute md:inset-y-0 md:right-0 w-full md:w-64 p-6 bg-secondary bg-opacity-95 text-gray-50">
-                <h3 class="font-bold text-right text-2xl">Nazca, Ballestas & Huacachina</h3>
-                <p class="mt-3 md:mb-6 block text-sm">{{__('message.pack_item4')}}</p>
-                <a href="{{route('destinations.show', 'lineas-de-nazca')}}" class="btn-white hidden md:inline-flex">{{__('message.button_all')}}</a>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 left-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-
         </div>
 
     </section>
 
-    <section class="grid col-span-1 md:grid-cols-5 mb-4 container gap-4">
-        <div class="md:col-span-3 overflow-hidden group relative">
-            <img src="{{asset('images/titicaca.jpg')}}" alt="" class="hidden md:inline-flex object-cover h-full min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-            <div class="md:absolute md:inset-y-0 md:left-0 w-full md:w-64 p-6 bg-gray-700 bg-opacity-95 text-gray-50">
-                <h3 class="font-bold text-2xl">{{__('message.pack_item6')}}</h3>
-                <p class="mt-3 mb-6 text-sm block">{{__('message.pack_item7')}}</p>
-                <a href="{{route('destinations.show', 'puno')}}" class="btn-white hidden md:inline-flex">{{__('message.button_all')}}</a>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 hidden md:inline-flex absolute bottom-0 right-0 m-6 cursor-pointer text-gray-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        </div>
 
-        <div class="md:col-span-2 flex flex-col gap-4 content-between overflow-hidden">
+    <section class="grid grid-cols-1 md:grid-cols-6 my-12">
+        <div class="md:col-span-4 relative bg-gray-700">
+            <div class="inset-0 flex items-center text-white w-full">
+                <div class="w-full grid grid-cols-6 items-center">
+                    <div class="p-6 col-span-4">
+                        <h3 class="font-semibold block text-xl">YOUR NORTHERN EUROPE TRAVEL AGENCY</h3>
+                        <p class="block my-6">
+                            Trust our team of travel experts to plan an unforgettable trip full of must-see attractions and our favourite hidden gems. Our experts have all travelled down the same roads, trains and cruises and know what you’re about to experience.
+                        </p>
+                        <p>
+                            Every tour offered is regularly inspected to ensure our customers have an amazing experience.
+                        </p>
 
-            <div class="overflow-hidden relative group">
-                    <a href="{{route('packages.detail', 'lake-titicaca-from-cusco')}}">
-                    <div class="relative">
-                        <img src="{{asset('images/banners/packages/lake-titicaca-from-cusco.jpg')}}" alt="" class=" object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                        <div class="absolute inset-0 gradient-cicle-gray"></div>
-                    </div>
-                    <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                        <div class="py-2 px-4 text-gray-100 bg-gray-700 bg-opacity-95 shadow-lg rounded-lg">
-                            <div class="font-normal text-sm">
-                                3 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 219 <span class="text-xs">usd</span>
-                            </div>
-                            <h2 class="text-lg font-semibold">{{__('message.pack_item8')}}</h2>
+                        <div class="block mt-6">
+                            <a href="#" class="btn-secondary">View Tours</a>
                         </div>
                     </div>
-                </a>
-            </div>
-
-            <div class="overflow-hidden relative group">
-                <a href="{{route('packages.detail', 'best-of-peru')}}">
-                    <div class="relative">
-                        <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                        <div class="absolute inset-0 gradient-cicle-gray"></div>
+                    <div class="col-span-2">
+                        <img src="{{asset('images/banners/yohana.jpeg')}}" alt="">
                     </div>
-                    <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                        <div class="py-2 px-4 text-gray-100 bg-gray-700 bg-opacity-95 shadow-lg rounded-lg">
-                            <div class="font-normal text-sm">
-                                12 {{__('message.pack_par4')}} / <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ 1699 <span class="text-xs">usd</span>
-                            </div>
-                            <h2 class="text-lg font-semibold">{{__('message.pack_item5')}}</h2>
-                        </div>
-                    </div>
-                </a>
+                </div>
             </div>
-
         </div>
-
+        <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+            <div class="">
+                <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Experts in tailor-made Nordic travel</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Based in Iceland, Sweden & Scotland</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Local staff with first-hand Northern Europe travel experience</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Dedicated to providing personalized, quality service</p>
+                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
+                <div class="block mt-6">
+                    <a href="#" class="btn-primary">View More</a>
+                </div>
+            </div>
+        </div>
     </section>
+
+
+    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
+        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+            NORTHERN EUROPE HIGHLIGHTS
+            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
+        <div class="col-span-4 text-center mt-4">
+            With our fantastic destinations, ways to travel and vacation ideas, you’re spoilt when choosing from our tours. To give you a taste of what’s to come, here are some of our favourite sights and activities:
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="">
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Experts in tailor-made Nordic travel</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Based in Iceland, Sweden & Scotland</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Local staff with first-hand Northern Europe travel experience</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Dedicated to providing personalized, quality service</p>
+                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
+
+
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Discover Iceland's Golden Circle, with its vast lava fields, explosive Geysir, Gullfoss waterfall and more
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Sail through the magical Jökulsárlón glacier lagoon  in Iceland and cast your eyes on the largest icecap in Europe, Vatnajökull
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Pamper yourself on your tour with a trip to the renowned Icelandic Blue Lagoon with its milky mineral-rich waters
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Voyage along the peaceful waters of Norway’s wondrous Geirangerfjord and feel the mist from the Seven Sisters waterfall
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Ride the legendary Flåm Railway through deep fjords of Norway
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Visit the Norwegian UNESCO World Heritage site of Bryggen in the beautiful coastal city of Bergen
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Explore the colourful capitals of Sweden, Denmark and Norway, and discover what makes Scandinavia special
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Drive through the lush rolling hills of Scotland’s Cairngorms National Park
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Explore the capital city of Scotland, Edinburgh, and walk up the historic Royal Mile to Edinburgh Castle
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>Roam the Scottish Highlands and discover the famous mountain valley of Glencoe
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-gray-100 py-5 mt-12">
+    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
+        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+            FREQUENTLY ASKED QUESTIONS ABOUT NORTHERN EUROPE
+            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
+        <div class="col-span-4 text-center mt-4">
+            Before you choose a destination, we thought you may have a few questions about the services and tours offered. For your convenience we’ve collected and answered the most common ones. If you want more information on our payment policy, check out our FAQs.
+        </div>
+    </section>
+
+    <section class="container">
+        @foreach($faqs as $faq)
+            <article class="mb-4"
+                     @if($loop->first)
+                     x-data="{ open: true }"
+                     @else
+                     x-data="{ open: false }"
+                @endif
+            >
+                <header class="border border-gray-200 px-4 py-2 flex justify-between cursor-pointer bg-gray-100" x-on:click="open = !open">
+                    <h1 class="font-semibold text-sm text-gray-600 "><span class="capitalize">{{$loop->iteration}}:</span> {{ucfirst(strtolower($faq->titulo))}}</h1>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </header>
+                <div class="bg-white py-2 px-4 border mt-1" x-show="open" x-transition>
+                    <div class="grid grid-cols-1 gap-2 text-sm">
+                        {!! $faq->descripcion !!}
+                    </div>
+                </div>
+            </article>
+        @endforeach
+    </section>
+    </div>
+
+
+    <section class="grid grid-cols-2">
+        <div class="bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+            <div class="py-12">
+                <h3 class="font-semibold text-2xl">
+                    ABOUT NORDIC VISITOR TOURS
+                </h3>
+                <p class="block my-12">
+                    Nordic Visitor has been creating amazing travel experiences for customers across Northern Europe since 2002. We now have multi country tours and regional offices, but still retain our core values of providing great value packages and amazing service, before, during and after your trip. Reasons to choose us include:
+                </p>
+
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Tailor-made itinerary: you deserve to have the vacation of a lifetime, so trust our tour operators to grant your travel wishes.</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Quality checked accommodation: wherever you stay is guaranteed to be tried and tested by our local specialists to ensure you have an excellent stay.</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Travel guide: your journey will be extra special with our team's insider travel tips and hidden gem attractions.</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    24/7 helpline: for peace of mind, there’s always a travel consultant on the other end of our 24/7 helpline.</p>
+            </div>
+        </div>
+        <div class="bg-secondary text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+            <div class="text-center">
+                <h3 class="font-semibold text-2xl">
+                    GET SOCIAL WITH US
+                </h3>
+                <p class="block my-12">
+                    Follow our Nordic adventures and share your own with us.
+                </p>
+                <div class="w-1/2 mx-auto mt-12">
+                    <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+                        <div class="">
+                            <a href="https://www.instagram.com/go.to.peru/" target="_blank">
+                                <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-2">
+                            </a>
+                        </div>
+                        <div class="">
+                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
+                                <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-2">
+                            </a>
+                        </div>
+                        <div class="">
+                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
+                                <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-2">
+                            </a>
+                        </div>
+                        <div class="">
+                            <a href="https://www.tiktok.com/@gotoperu" target="_blank">
+                                <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-2">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
+            </div>
+        </div>
+    </section>
+
+
 
     <section class="container mb-12">
         <div class="grid grid-cols-6 gap-4 mt-12">
@@ -487,189 +880,6 @@
 
 {{--    </section>--}}
 
-    <section class="py-12 bg-gray-100 hidden md:block">
-
-        <div class="container">
-        <div class="flex items-center text-2xl text-gray-700 mb-4 dark:text-secondary font-bold gap-2">
-            <div class="border-4 h-1 w-12 border-secondary"></div> {{__('message.subtitle5')}}
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
-                <div class="w-full">
-                    <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
-                        <div class="border p-4 w-full">
-                            <p class="block text-4xl font-bold">97%</p>
-                            <p class="text-xs">{{__('message.social_con1')}}</p>
-                        </div>
-                        <div class="border p-4 w-full">
-                            <p class="block text-3xl font-bold">9000 +</p>
-                            <p class="text-xs">{{__('message.social_con2')}}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
-                    {{--                <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-                    <div class="flex items-center justify-center">
-                        <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-300">
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                {{__('message.social_li1')}}
-                            </p>
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                {{__('message.social_li2')}}
-                            </p>
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                {{__('message.social_li3')}}
-                            </p>
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                {{__('message.social_li4')}}
-                            </p>
-                            <p class="mb-2 flex inline-flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                {{__('message.social_li5')}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full">
-                    <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
-                        <div class="border p-4 w-full">
-                            <p class="block text-4xl font-bold">30 000</p>
-                            <p class="text-xs">FACEBOOK FANS</p>
-                        </div>
-                        <div class="border p-4 w-full">
-                            <p class="block text-3xl font-bold">#gotoperu</p>
-                            <p class="text-xs">INSTAGRAM HASHTAG</p>
-                        </div>
-                    </div>
-                </div>
-{{--                <div class="grid grid-cols-2 items-center text-2xl text-gray-700 font-bold gap-3">--}}
-
-{{--                        <div class="border">--}}
-{{--                            <p class="block text-4xl font-bold">#gotoperu</p>--}}
-{{--                            <p class="text-xs">FACEBOOK FANS</p>--}}
-{{--                        </div>--}}
-{{--                        <div class="border">--}}
-{{--                            <p class="block text-3xl font-bold">#gotoperu</p>--}}
-{{--                            <p class="text-xs">INSTAGRAM HASHTAG</p>--}}
-{{--                        </div>--}}
-
-{{--                    <div class="border">--}}
-{{--                        <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank"><img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
-{{--                    </div>--}}
-{{--                    <div class="border">--}}
-{{--                        <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank"><img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
-{{--                    </div>--}}
-{{--                    <div class="border">--}}
-{{--                        <a href="https://www.trustpilot.com/review/gotoperu.com"><img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-            </div>
-            <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url('{{asset('images/earth-the-world.jpg')}}')">
-                {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-
-                {{--            <div class="absolute flex items-center inset-0 ">--}}
-                <div class="md:mx-16">
-                    <div class="w-full swiper-container mySwiper">
-                        <div class="swiper-wrapper">
-                            @foreach($testinomials as $testinomial)
-                                <div class="swiper-slide p-4">
-                                    <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-gray-100 dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">
-                                        <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
-                                            <a href="#" class="block relative">
-                                                <img alt="profil" src="https://gotoperu.com.mx/images/video-testimonial/2.jpg" class="mx-auto object-cover rounded-full h-20 w-20 z-30"/>
-                                            </a>
-                                        </div>
-                                        <div class="w-full mb-6">
-                                            <div class="text-3xl text-indigo-500 text-left leading-tight h-3">
-                                                “
-                                            </div>
-                                            <p class="text-sm text-gray-600 dark:text-gray-100 text-center px-5">
-                                                {{ Str::limit($testinomial->contenido, 150) }}
-                                            </p>
-                                            <div class="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
-                                                ”
-                                            </div>
-                                        </div>
-                                        <div class="w-full text-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto cursor-pointer text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
-
-                                            <p class="text-md text-indigo-500 font-bold text-center">
-                                                {{ $testinomial->nombre }}
-                                            </p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-300 text-center">
-                                                {{ $testinomial->ciudad }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="swiper-button-next btn-next"></div>
-                        <div class="swiper-button-prev btn-prev"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        <section class="container block mt-4">
-            <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                <div class="border">
-                    <a href="https://www.instagram.com/go.to.peru/" target="_blank">
-                        <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-6 py-4">
-                    </a>
-                </div>
-                <div class="border">
-                    <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
-                        <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-6 py-4">
-                    </a>
-                </div>
-                <div class="border">
-                    <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
-                        <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-6 py-4">
-                    </a>
-                </div>
-                <div class="border">
-                    <a href="https://www.tiktok.com/@gotoperu" target="_blank">
-                        <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-6 py-4">
-                    </a>
-                </div>
-                <div class="border">
-                    <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank">
-                        <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
-                    </a>
-                </div>
-                <div class="border">
-                    <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank">
-                        <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
-                    </a>
-                </div>
-                <div class="border">
-                    <a href="https://www.trustpilot.com/review/gotoperu.com">
-                        <img src="{{asset('images/logos/trust2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
-                    </a>
-                </div>
-            </div>
-        </section>
-    </section>
 
 
 {{--    <section class="container mt-6 mb-12 ">--}}
@@ -854,6 +1064,13 @@
             },
         });
         var swiper = new Swiper(".slider-featured", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+        var swiper = new Swiper(".slider-brands", {
+            slidesPerView: 4,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",

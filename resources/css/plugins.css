@@ -42,6 +42,12 @@
 .h-30r{
     height: 30rem;
 }
+.h-20r{
+    height: 20rem;
+}
+.h-16r{
+    height: 16rem;
+}
 .-z-1{
     z-index: -1;
 }

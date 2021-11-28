@@ -31,16 +31,18 @@ class HomeController extends Controller
 
         $blogs_first = TPost::latest('id')->first();
 
+        $faqs = Faq::all();
+
         return view('page.home',
             compact(
                 'paquete_recommended',
                 'testinomials',
                 'paquetes_features',
-                'blogs_first'
-
+                'blogs_first',
+                'faqs'
             ));
     }
-    
+
 
     public function packages() {
         $paquetes = TPaquete::where('is_p_t', '1')->get();
