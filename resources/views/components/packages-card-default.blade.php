@@ -1,15 +1,17 @@
 @props(['paquete'])
 <a href="{{route('packages.detail', $paquete['url'])}}" class="group flex flex-col">
-    <div class="overflow-hidden relative h-16r">
-        <div class="relative">
-            <img src="{{$paquete->imagen}}" alt="{{ $paquete['titulo'] }}" class="object-cover transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105"/>
+    <div class="overflow-hidden relative ">
+
+            <img src="{{$paquete->imagen}}" alt="{{ $paquete['titulo'] }}" class="h-16r object-cover w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105"/>
             <div class="absolute inset-0 gradient-cicle-gray"></div>
-        </div>
+
     </div>
-    <div class="border p-3 relative bg-white block group-hover:border-primary text-center transition duration-500 flex-1 flex flex-col">
-        <div class="absolute inset-x-0 -top-12 w-3/5 mx-auto p-6">
-            <div class="bg-secondary text-sm font-semibold shadow-lg p-3 text-white group-hover:bg-opacity-100 transition duration-500 rounded-lg">
-                SMALL GROUPS
+    <div class="border p-3 relative bg-gray-50 block group-hover:border-primary text-center transition duration-500 flex-1 flex flex-col">
+        <div class="absolute inset-x-0 -top-11 w-3/5 mx-auto p-6">
+            <div class="bg-secondary text-sm font-semibold shadow-lg p-2 text-white group-hover:bg-opacity-100 transition duration-500 rounded-lg">
+                @foreach($paquete->paquetes_categoria as $category)
+                    {{$category->categoria->nombre}}
+                @endforeach
 {{--                <p class="text-xs my-2">--}}
 
 {{--                    @foreach($paquete['paquetes_destinos'] as $paquete_destino)--}}

@@ -380,7 +380,7 @@
         </div>
     </section>
     <section class="px-6 mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-12">
-        @foreach($paquete_recommended as $paquete)
+        @foreach($paquetes_features as $paquete)
             <x-packages-card-default :paquete="$paquete"></x-packages-card-default>
         @endforeach
 
