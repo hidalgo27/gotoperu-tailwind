@@ -22,9 +22,17 @@
 {{--        </div>--}}
 
         <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
-            <div class="mx-auto">
-                <h1 class="text-5xl text-center  mb-6 font-bold font-cinzel text-secondary">{{__('message.title1')}}</h1>
-                <h3 class="text-2xl text-gray-50">{{__('message.subtitle1')}}</h3>
+            <div class="mx-auto w-3/4">
+                <h1 class="text-5xl text-center  mb-6 font-bold font-cinzel text-secondary">PLAN YOUR PERU VACATION</h1>
+                <h3 class="text-xl text-gray-50">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>
+
+                <h4 class="font-bold text-secondary mt-6">Destinations</h4>
+                @foreach($destination as $destinations)
+                <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>
+                @endforeach
+                <span class="my-5 block"></span>
+                @livewire('page.form-inquire')
+
             </div>
         </div>
 
@@ -82,7 +90,7 @@
 {{--    </section>--}}
 
 
-    <section class="bg-gray-100">
+    <section class="bg-gray-50">
     <div class="container">
         <div class="w-full swiper-container slider-brands overflow-hidden relative">
             <div class="swiper-wrapper">
@@ -90,62 +98,107 @@
                 <div class="swiper-slide">
                     <div class="grid items-center grid-cols-5">
                         <div class="">
-                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                            <img src="{{asset('images/icons/shield.png')}}" alt="" class="w-full">
                         </div>
                         <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Book swith confidence</h3>
-                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                            <h3 class="truncate font-bold text-sm">Book with Confidence</h3>
+                            <p class="text-xs">Plan your travels with peace of mind</p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="grid items-center grid-cols-5">
                         <div class="">
-                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                            <img src="{{asset('images/icons/trusted.jpg')}}" alt="" class="w-full">
                         </div>
                         <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Book with confidence</h3>
-                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                            <h3 class="truncate font-bold text-sm">Trusted local Peru travel experts</h3>
+                            <p class="text-xs">Professional service from trusted local experts</p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="grid items-center grid-cols-5">
                         <div class="">
-                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                            <img src="{{asset('images/icons/tripadvisor.png')}}" alt="" class="w-full">
                         </div>
                         <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Book with confidence</h3>
-                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                            <h3 class="truncate font-bold text-sm">Great Reviews</h3>
+                            <p class="text-xs">We are proud of our service quality and great reviews</p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="grid items-center grid-cols-5">
                         <div class="">
-                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                            <img src="{{asset('images/icons/good.png')}}" alt="" class="w-full">
                         </div>
                         <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Book with confidence</h3>
-                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                            <h3 class="truncate font-bold text-sm">You are in good hands</h3>
+                            <p class="text-xs">While on your journey help is never out of reach</p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="grid items-center grid-cols-5">
                         <div class="">
-                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                            <img src="{{asset('images/icons/hassle.png')}}" alt="" class="w-full">
                         </div>
                         <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Book with confidence</h3>
-                            <p class="text-sm">Plan your travels with peaceof mind</p>
+                            <h3 class="truncate font-bold text-sm">Hassle-free experience</h3>
+                            <p class="text-xs">We plan and book your entire Peru trip before you arrive.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="{{asset('images/icons/tours.png')}}" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="truncate font-bold text-sm">Flexible tour options</h3>
+                            <p class="text-xs">Our vacation packages are customisable to your needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="{{asset('images/icons/good.png')}}" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="truncate font-bold text-sm">Hospitality at its finest</h3>
+                            <p class="text-xs">Peruvian hospitality is worldwide known and we are proof of that.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="{{asset('images/icons/secure.png')}}" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="truncate font-bold text-sm">Full Financial Protection</h3>
+                            <p class="text-xs">Your payments are protected with financial safety as standard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="grid items-center grid-cols-5">
+                        <div class="">
+                            <img src="{{asset('images/icons/guarantee.png')}}" alt="" class="w-full">
+                        </div>
+                        <div class="col-span-4 p-3 text-gray-500">
+                            <h3 class="truncate font-bold text-sm">Value for Money</h3>
+                            <p class="text-xs">Exceptional quality for your Money, no intermediaries.</p>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="swiper-button-next btn-next"></div>
-            <div class="swiper-button-prev btn-prev"></div>
+{{--            <div class="swiper-button-next btn-next"></div>--}}
+{{--            <div class="swiper-button-prev btn-prev"></div>--}}
         </div>
     </div>
     </section>
@@ -256,136 +309,56 @@
 
     <section class="grid grid-cols-2 mx-auto gap-0">
 
+        @foreach($category_block as $category_b)
             <div class="overflow-hidden relative group">
-                <a href="{{route('packages.detail', 'best-of-peru')}}">
+                <a href="{{ route('category.show', $category_b) }}">
                     <div class="relative">
-                        <img src="{{asset('images/asc.jpg')}}" alt="" class="object-cover min-w-full h-20r transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <img src="{{$category_b->imagen_banner}}" alt="" class="object-cover min-w-full h-20r transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
                         <div class="absolute inset-0 gradient-cicle-gray"></div>
                     </div>
                     <div class="absolute w-full inset-x-0 bottom-0 p-3">
-                        <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-30 shadow-lg rounded-lg mb-4">
-                            <h2 class="text-lg font-semibold">Self Drive</h2>
+                        <div class="py-2 px-4 text-gray-100 shadow-lg rounded-lg mb-4">
+                            <h2 class="text-lg font-semibold">{{$category_b->nombre}}</h2>
                             <div class="font-normal text-sm">
-                                Drive famous scenic routes and see the continent at your own pace.
+                                {!! $category_b->resumen !!}
                             </div>
 {{--                            <a href="" class="float-right ">View self-drive tours</a>--}}
                         </div>
                     </div>
                 </a>
             </div>
+        @endforeach
 
-            <div class="overflow-hidden relative group">
-                <a href="{{route('packages.detail', 'paracas-nazca')}}">
-                    <div class="relative">
-                        <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                        <div class="absolute inset-0 gradient-cicle-gray"></div>
-                    </div>
-                    <div class="absolute w-full inset-x-0 bottom-0 p-3">
-                        <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-30 shadow-lg rounded-lg mb-4">
-                            <h2 class="text-lg font-semibold">Self Drive</h2>
-                            <div class="font-normal text-sm">
-                                Drive famous scenic routes and see the continent at your own pace.
-                            </div>
-{{--                            <a href="" class="float-right ">View self-drive tours</a>--}}
-                        </div>
-                    </div>
-                </a>
-            </div>
+
 
     </section>
 
     <section class="grid grid-cols-5">
+        @foreach($category_footer as $category_f)
         <div class="overflow-hidden relative group">
-            <a href="{{route('packages.detail', 'paracas-nazca')}}">
+            <a href="{{ route('category.show', $category_f) }}">
                 <div class="relative">
-                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                    <img src="{{$category_f->imagen}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
                     <div class="absolute inset-0 gradient-cicle-gray"></div>
                 </div>
                 <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
-                        <h2 class="text-lg font-semibold">Self Drive</h2>
+                    <div class="py-2 px-4 text-gray-100 shadow-lg rounded-lg">
+                        <h2 class="text-lg font-semibold">{{$category_f->nombre}}</h2>
                         <div class="font-normal text-sm">
-                            Drive famous scenic routes and see the continent at your own pace.
+                            {!! $category_f->resumen !!}
                         </div>
 {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
                     </div>
                 </div>
             </a>
         </div>
-        <div class="overflow-hidden relative group">
-            <a href="{{route('packages.detail', 'paracas-nazca')}}">
-                <div class="relative">
-                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                    <div class="absolute inset-0 gradient-cicle-gray"></div>
-                </div>
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
-                        <h2 class="text-lg font-semibold">Self Drive</h2>
-                        <div class="font-normal text-sm">
-                            Drive famous scenic routes and see the continent at your own pace.
-                        </div>
-                        {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="overflow-hidden relative group">
-            <a href="{{route('packages.detail', 'paracas-nazca')}}">
-                <div class="relative">
-                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                    <div class="absolute inset-0 gradient-cicle-gray"></div>
-                </div>
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
-                        <h2 class="text-lg font-semibold">Self Drive</h2>
-                        <div class="font-normal text-sm">
-                            Drive famous scenic routes and see the continent at your own pace.
-                        </div>
-                        {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="overflow-hidden relative group">
-            <a href="{{route('packages.detail', 'paracas-nazca')}}">
-                <div class="relative">
-                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                    <div class="absolute inset-0 gradient-cicle-gray"></div>
-                </div>
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
-                        <h2 class="text-lg font-semibold">Self Drive</h2>
-                        <div class="font-normal text-sm">
-                            Drive famous scenic routes and see the continent at your own pace.
-                        </div>
-                        {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="overflow-hidden relative group">
-            <a href="{{route('packages.detail', 'paracas-nazca')}}">
-                <div class="relative">
-                    <img src="{{asset('images/banners/packages/paracas-nazca.jpg')}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                    <div class="absolute inset-0 gradient-cicle-gray"></div>
-                </div>
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 bg-gray-600 bg-opacity-50 shadow-lg rounded-lg">
-                        <h2 class="text-lg font-semibold">Self Drive</h2>
-                        <div class="font-normal text-sm">
-                            Drive famous scenic routes and see the continent at your own pace.
-                        </div>
-                        {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
-                    </div>
-                </div>
-            </a>
-        </div>
+        @endforeach
     </section>
 
 
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-            Recomended Travel Packages
+            Most Popular Travel Packages
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
         </div>
     </section>
@@ -427,15 +400,15 @@
             <img src="{{asset('images/destinations/puno-l.jpg')}}" alt="" class="object-cover h-full w-full">
             <div class="absolute inset-0 gradient-cicle-gray flex items-center text-white text-center w-full">
                 <div class="w-full text-center">
-                    <h3 class="font-semibold block text-4xl">POPULAR: ICELAND DEALS</h3>
-                    <p class="block mb-6">Check out these 2022 early bird offers and save up to 15% on selected Iceland tours.</p>
+                    <h3 class="font-semibold block text-4xl">POPULAR: MACHUPICCHU FULL DAY</h3>
+                    <p class="block mb-6">Book online and save up to 20%. All included: trains, entrances, buses, guide, transfers</p>
                     <div class="font-semibold text-white dark:text-gray-700 text-5xl mt-auto">
                         <div class="text-xs ">Price p.p. from</div>
-                        $1200 <span class="text-sm text-secondary">usd</span>
+                        $299 <span class="text-sm text-secondary">usd</span>
                     </div>
 
                     <div class="block mt-6">
-                        <a href="#" class="btn-secondary">View Tours</a>
+                        <a href="peru-travel-packages/machu-picchu-full-day" class="btn-secondary">View Tours</a>
                     </div>
                 </div>
             </div>
@@ -450,20 +423,26 @@
                 </p>
                 <div class="flex justify-center gap-12">
                     <div class="text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                        Chat
+                        <a href="https://api.whatsapp.com/send?phone=51960106076" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                            Chat
+                        </a>
                     </div>
                     <div class="text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                        Email
+                        <a href="mailto:info@gotoperu.com">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Email
+                        </a>
                     </div>
                     <div class="text-center">
-                        <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="mx-auto w-14 h-10">
-                        Whatsapp
+                        <a href="https://api.whatsapp.com/send?phone=51960106076" target="_blank">
+                            <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="mx-auto w-14 h-10">
+                            Whatsapp
+                        </a>
                     </div>
                 </div>
 {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
@@ -486,43 +465,43 @@
                 <div class="bg-gray-100 border p-4">
                     <div class="flex items-center">
                         <div class="w-10">
-                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                            <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">Z</div>
                         </div>
                         <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Amy Woods</h3>
-                            <p class="text-sm">United States</p>
+                            <h3 class="font-bold text-sm">Zeeshan B.</h3>
+                            <p class="text-sm">Toronto - Canada</p>
                         </div>
                     </div>
                     <div class="text-sm">
-                        <p>I have already recommend Nordic Visitor to several friends and family members! We had an absolutely amazing trip and...</p>
+                        <p>...I would recommend Gotoperu 100%. You will not regret it!!!</p>
                     </div>
                 </div>
                 <div class="bg-gray-100 border p-4">
                     <div class="flex items-center">
                         <div class="w-10">
-                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                            <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">M</div>
                         </div>
                         <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Amy Woods</h3>
-                            <p class="text-sm">United States</p>
+                            <h3 class="font-bold text-sm">Mike T</h3>
+                            <p class="text-sm">Bryan, Texas</p>
                         </div>
                     </div>
                     <div class="text-sm">
-                        <p>I have already recommend Nordic Visitor to several friends and family members! We had an absolutely amazing trip and...</p>
+                        <p>Great service, great communication, and everything was just as promised...!</p>
                     </div>
                 </div>
                 <div class="bg-gray-100 border p-4">
                     <div class="flex items-center">
                         <div class="w-10">
-                            <img src="https://www.nordicvisitor.com/images/1/about-us/selling-points/clean-shield-grey.png" alt="" class="w-full">
+                            <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">K</div>
                         </div>
                         <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Amy Woods</h3>
-                            <p class="text-sm">United States</p>
+                            <h3 class="font-bold text-sm">Kavitabhagia</h3>
+                            <p class="text-sm">Dubai, United</p>
                         </div>
                     </div>
                     <div class="text-sm">
-                        <p>I have already recommend Nordic Visitor to several friends and family members! We had an absolutely amazing trip and...</p>
+                        <p>...our experience with this tour company was very satisfying!</p>
                     </div>
                 </div>
             </div>
@@ -589,7 +568,7 @@
                         </div>
                     </div>
                     <div class="col-span-2">
-                        <img src="{{asset('images/banners/yohana.jpeg')}}" alt="">
+                        <img src="{{asset('images/banners/joana.png')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -1071,10 +1050,10 @@
         });
         var swiper = new Swiper(".slider-brands", {
             slidesPerView: 4,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
+            // navigation: {
+            //     nextEl: ".swiper-button-next",
+            //     prevEl: ".swiper-button-prev",
+            // },
         });
     </script>
 

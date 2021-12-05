@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
+use App\Models\TCategoria;
 use App\Models\TDestino;
 use App\Models\THotel;
 use App\Models\TPaquete;
+use App\Models\TPaqueteCategoria;
 use App\Models\TPaqueteDestino;
 use App\Models\TPost;
 use App\Models\TTeam;
@@ -33,13 +35,21 @@ class HomeController extends Controller
 
         $faqs = Faq::all();
 
+        $category_block = TCategoria::where('estado', 1)->get();
+        $category_footer = TCategoria::where('orden_block', 1)->get();
+
+        $destination = TDestino::all();
+
         return view('page.home',
             compact(
                 'paquete_recommended',
                 'testinomials',
                 'paquetes_features',
                 'blogs_first',
-                'faqs'
+                'faqs',
+                'category_block',
+                'category_footer',
+                'destination'
             ));
     }
 
@@ -91,6 +101,31 @@ class HomeController extends Controller
 
 
         return view('page.destination-show', compact('paquetes_api', 'destinations'));
+    }
+
+    public function category() {
+        $category = TCategoria::all();
+        return view('page.category', compact('category'));
+    }
+    public function category_show(TCategoria $categories) {
+//        return $destinations->id;
+//        $paquetes_api = Http::get(env('APP_URL').'/api/packages/destinations/'.$destinations->id);
+//        $paquetes_api = $paquetes_api->json();
+
+//        $paquetes = TPaquete::where('is_p_t', 1)
+//            ->paquetes_destinos($destinations->id)
+////            ->latest('id')
+//            ->paginate(8);
+//
+//
+//        return $paquetes;
+        $paquetes_api = TPaqueteCategoria::
+        with('paquetes.precio_paquetes','categoria', 'paquetes.paquetes_categoria.categoria')
+            ->where('idcategoria', $categories->id)
+            ->get();
+
+
+        return view('page.category-show', compact('paquetes_api', 'categories'));
     }
 
     public function about(){

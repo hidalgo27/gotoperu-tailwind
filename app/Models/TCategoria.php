@@ -10,6 +10,11 @@ class TCategoria extends Model
     use HasFactory;
     protected $table = "tcategoria";
 
+    public function getRouteKeyName()
+    {
+        return "url";
+    }
+
     public function paquetes_categorias()
     {
         return $this->hasMany(TPaqueteCategoria::class, 'idcategoria');

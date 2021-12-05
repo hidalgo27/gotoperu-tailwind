@@ -30,6 +30,9 @@ Route::get('/'.__('message.url_1').'/{url}', [HomeController::class, 'packages_d
 Route::get('/'.__('message.url_2'), [HomeController::class, 'destinations'])->name('destinations.all');
 Route::get('/'.__('message.url_2').'/{destinations}', [HomeController::class, 'destinations_show'])->name('destinations.show');
 
+Route::get('/category', [HomeController::class, 'category'])->name('category.all');
+Route::get('/category/{categories}', [HomeController::class, 'category_show'])->name('category.show');
+
 Route::get('/'.__('message.url_3'), [HomeController::class, 'about'])->name('about');
 Route::get('/'.__('message.url_4'), [HomeController::class, 'book'])->name('book');
 Route::get('/'.__('message.url_5'), [HomeController::class, 'confidence'])->name('confidence');
