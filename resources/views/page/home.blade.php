@@ -23,8 +23,8 @@
 
         <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
             <div class="mx-auto w-3/4">
-                <h1 class="text-5xl text-center  mb-6 font-bold font-cinzel text-secondary">PLAN YOUR PERU VACATION</h1>
-                <h3 class="text-xl text-gray-50">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>
+                <h1 class="text-center text-3xl md:text-5xl mb-6 font-bold font-cinzel text-secondary">PLAN YOUR PERU VACATION</h1>
+                <h3 class="text-xl text-gray-50 hidden sm:block">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>
 
                 <h4 class="font-bold text-secondary mt-6">Destinations</h4>
                 @foreach($destination as $destinations)
@@ -90,7 +90,7 @@
 {{--    </section>--}}
 
 
-    <section class="bg-gray-50">
+    <section class="bg-gray-50 hidden sm:flex">
     <div class="container">
         <div class="w-full swiper-container slider-brands overflow-hidden relative">
             <div class="swiper-wrapper">
@@ -307,7 +307,7 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-    <section class="grid grid-cols-2 mx-auto gap-0">
+    <section class="grid md:grid-cols-2 sm:grid-cols-1 mx-auto gap-0">
 
         @foreach($category_block as $category_b)
             <div class="overflow-hidden relative group">
@@ -333,7 +333,7 @@
 
     </section>
 
-    <section class="grid grid-cols-5">
+    <section class="grid md:grid-cols-5 sm:grid-cols-1">
         @foreach($category_footer as $category_f)
         <div class="overflow-hidden relative group">
             <a href="{{ route('category.show', $category_f) }}">
@@ -400,9 +400,9 @@
             <img src="{{asset('images/destinations/puno-l.jpg')}}" alt="" class="object-cover h-full w-full">
             <div class="absolute inset-0 gradient-cicle-gray flex items-center text-white text-center w-full">
                 <div class="w-full text-center">
-                    <h3 class="font-semibold block text-4xl">POPULAR: MACHUPICCHU FULL DAY</h3>
+                    <h3 class="font-semibold block text-lg md:text-4xl">POPULAR: MACHUPICCHU FULL DAY</h3>
                     <p class="block mb-6">Book online and save up to 20%. All included: trains, entrances, buses, guide, transfers</p>
-                    <div class="font-semibold text-white dark:text-gray-700 text-5xl mt-auto">
+                    <div class="font-semibold text-white dark:text-gray-700 text-xs md:text-5xl mt-auto">
                         <div class="text-xs ">Price p.p. from</div>
                         $299 <span class="text-sm text-secondary">usd</span>
                     </div>
@@ -461,7 +461,7 @@
     </section>
     <section>
         <div class="container">
-            <div class="grid grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-gray-100 border p-4">
                     <div class="flex items-center">
                         <div class="w-10">
@@ -507,7 +507,7 @@
             </div>
         </div>
 
-        <div class="container mt-12">
+        <div class="container mt-12 hidden sm:flex">
             <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
                 <div class="border">
                     <a href="https://www.instagram.com/go.to.peru/" target="_blank">
@@ -553,7 +553,7 @@
     <section class="grid grid-cols-1 md:grid-cols-6 my-12">
         <div class="md:col-span-4 relative bg-gray-700">
             <div class="inset-0 flex items-center text-white w-full">
-                <div class="w-full grid grid-cols-6 items-center">
+                <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
                     <div class="p-6 col-span-4">
                         <h3 class="font-semibold block text-xl">YOUR NORTHERN EUROPE TRAVEL AGENCY</h3>
                         <p class="block my-6">
@@ -734,7 +734,7 @@
     </div>
 
 
-    <section class="grid grid-cols-2">
+    <section class="grid grid-cols-1 md:grid-cols-2">
         <div class="bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
             <div class="py-12">
                 <h3 class="font-semibold text-2xl">
@@ -774,7 +774,7 @@
                 <p class="block my-12">
                     Follow our Nordic adventures and share your own with us.
                 </p>
-                <div class="w-1/2 mx-auto mt-12">
+                <div class="w-full md:w-1/2 mx-auto mt-12">
                     <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
                         <div class="">
                             <a href="https://www.instagram.com/go.to.peru/" target="_blank">
@@ -1054,6 +1054,24 @@
             //     nextEl: ".swiper-button-next",
             //     prevEl: ".swiper-button-prev",
             // },
+            breakpoints: {
+                320: {
+                    slidesPerView: 2,
+                    // spaceBetween: 20,
+                },
+                640: {
+                    slidesPerView: 1,
+                    // spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    // spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    // spaceBetween: 50,
+                },
+            },
         });
     </script>
 
