@@ -23,7 +23,7 @@
 {{--                @if($hotel->imagen)--}}
 {{--                    <img src="{{$hotel->imagen}}" alt="{{$hotel->nombre}}" class="object-cover w-full h-full">--}}
 {{--                @else--}}
-                    <img src="https://picsum.photos/400/400" alt="" class="object-cover w-full h-full">
+                    <img src="{{$hotel->imagen}}" alt="" class="object-cover w-full h-full">
 {{--                @endif--}}
 
             </div>
