@@ -1,17 +1,17 @@
-<div class="bg-gray-100 py-12" x-data="{data: false}" id="form-dream-adventure">
+<div class="bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 text-gray-500 dark:text-gray-100 py-12" x-data="{data: false}" id="form-dream-adventure">
     <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mb-10 text-center">
         <img src="{{asset('images/logos/logo-gotoperu-black.png')}}" alt="" class="mx-auto w-52">
-        <h3 class="text-2xl font-semibold mt-2 text-gray-600">{{__('message.form_footer_title')}}</h3>
-        <p class="text-gray-500 tracking-tighter text-sm">{{__('message.form_footer_par1')}}</p>
+        <h3 class="text-2xl font-semibold mt-2 text-gray-600 dark:text-gray-300">{{__('message.form_footer_title')}}</h3>
+        <p class=" tracking-tighter text-sm">{{__('message.form_footer_par1')}}</p>
     </div>
     <form wire:submit.prevent="store">
         <div x-show="!data">
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto grid grid-cols-6 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
-                    <h2 class="text-lg font-bold text-gray-500">{{__('message.form_footer_subtitle1')}}</h2>
-                    <p class="text-xs text-gray-500 font-semibold">{{__('message.form_footer_par2')}}</p>
+                    <h2 class="text-lg font-bold">{{__('message.form_footer_subtitle1')}}</h2>
+                    <p class="text-xs  font-semibold">{{__('message.form_footer_par2')}}</p>
                 </div>
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
@@ -19,7 +19,7 @@
                 <div class="col-span-6 md:col-span-5 grid grid-cols-4 gap-2">
                     @foreach($hotels as $index => $hotel)
 
-                        <label class="cursor-pointer btn-check-form text-gray-500 flex justify-start items-start relative bg-gray-50 border border-gray-400 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-700">
+                        <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-700">
                             <input wire:model="values_categories.{{ $index }}" type="checkbox" value="{{$hotel['star'].','}}" class="opacity-0 absolute">
                             <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                             <span class="flex flex-col text-center">
@@ -39,16 +39,16 @@
 
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
-                    <h2 class="text-lg font-bold text-gray-500">{{__('message.form_footer_subtitle2')}}</h2>
+                    <h2 class="text-lg font-bold ">{{__('message.form_footer_subtitle2')}}</h2>
                 </div>
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                 </label>
                 <div class="col-span-6 md:col-span-5 grid grid-cols-7 gap-2">
                     @foreach($number as $index => $numbers)
-                        <label class="cursor-pointer btn-check-form text-gray-500 flex justify-start items-start relative bg-gray-50 border border-gray-400 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
+                        <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
                             <input wire:model="values_number" type="radio" value="{{$numbers}}" class="hidden absolute">
                             <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                             <span class="flex flex-col text-center">
@@ -56,7 +56,7 @@
                             </span>
                         </label>
                     @endforeach
-                        <label x-data="{open: false}" class="cursor-pointer btn-check-form text-gray-500 flex justify-start items-start relative bg-gray-50 border border-gray-400 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500" x-on:click="open = true" x-on:click.away="open = false">
+                        <label x-data="{open: false}" class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500" x-on:click="open = true" x-on:click.away="open = false">
                             <input wire:model="values_number" type="radio" value="6" class="hidden absolute" >
                             <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                             <span class="flex flex-col text-center">
@@ -66,7 +66,7 @@
                                 </div>
                             </span>
                         </label>
-                        <label class="cursor-pointer btn-check-form text-gray-500 flex justify-start items-start relative bg-gray-50 border border-gray-400 px-4 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
+                        <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 px-4 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
                             <input wire:model="values_number" type="radio" value="Undecided" class="hidden absolute">
                             <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                             <span class="flex flex-col text-center">
@@ -78,16 +78,16 @@
 
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
-                    <h2 class="text-lg font-bold text-gray-500">{{__('message.form_footer_subtitle3')}}</h2>
+                    <h2 class="text-lg font-bold ">{{__('message.form_footer_subtitle3')}}</h2>
                 </div>
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
                 </label>
                 <div class="col-span-6 md:col-span-5 grid grid-cols-6 gap-2">
                     @foreach($trip_lengths as $index => $trip_length)
-                        <label class="cursor-pointer btn-check-form text-gray-500 flex justify-start items-start relative bg-gray-50 border border-gray-400 px-2 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
+                        <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 px-2 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
                             <input wire:model="values_trip_length" type="radio" value="{{$trip_length}}" class="hidden absolute">
                             <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                             <span class="flex flex-col text-center">
@@ -96,7 +96,7 @@
                             </span>
                         </label>
                     @endforeach
-                    <label class="cursor-pointer btn-check-form text-gray-500 flex justify-start items-start relative bg-gray-50 border border-gray-400 px-4 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
+                    <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 px-4 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
                         <input wire:model="values_trip_length" type="radio" value="Undecided" class="hidden absolute">
                         <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                         <span class="flex flex-col text-center">
@@ -107,7 +107,7 @@
             </div>
 
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-6 gap-2">
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400  flex items-center justify-center bg-gray-100 text-gray-500">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400  flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -118,7 +118,7 @@
                 >
                     <input
                         x-ref="input"
-                        id="datepicker" wire:model.lazy="travel_day" type="text" class="bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full"  placeholder="{{__('message.form_footer_par7')}}">
+                        id="datepicker" wire:model.lazy="travel_day" type="text" class="bg-gray-50 dark:bg-gray-700 border border-gray-400 p-3 md:p-5 bg-gray-50 dark:bg-gray-700  w-full"  placeholder="{{__('message.form_footer_par7')}}">
                 </div>
             </div>
 
@@ -126,24 +126,24 @@
 
         <div x-show="data">
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 gap-2 flex">
-                <div class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
+                <div class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                 </div>
-                <textarea wire:model="comment" class="col-span-6 md:col-span-5 bg-gray-50 border border-gray-400 p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" rows="4" placeholder="{{__('message.form_footer_par9')}}"></textarea>
+                <textarea wire:model="comment" class="col-span-6 md:col-span-5 bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 bg-gray-50 dark:bg-gray-700  w-full focus:outline-none" rows="4" placeholder="{{__('message.form_footer_par9')}}"></textarea>
     {{--            <textarea name="" id="" cols="30" rows="10"></textarea>--}}
                 <p class="text-xs col-span-6 text-right text-gray-400 font-bold">{{__('message.form_footer_par13')}}</p>
             </div>
 
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                 </label>
                 <div class="col-span-6 md:col-span-5">
-                    <input wire:model="name" type="text" class="bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder="{{__('message.form_footer_par10')}}">
+                    <input wire:model="name" type="text" class="bg-gray-50 dark:bg-gray-700 border border-gray-400 p-3 md:p-5 bg-gray-50 dark:bg-gray-700  w-full focus:outline-none" placeholder="{{__('message.form_footer_par10')}}">
                     @error('name')
                     <span class="text-xs text-red-500">{{$message}}</span>
                     @enderror
@@ -151,13 +151,13 @@
             </div>
 
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                 </label>
                 <div class="col-span-6 md:col-span-5">
-                    <input wire:model="email" type="text" class="bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder="{{__('message.form_footer_par11')}}">
+                    <input wire:model="email" type="text" class="bg-gray-50 dark:bg-gray-700 border border-gray-400 p-3 md:p-5 bg-gray-50 dark:bg-gray-700  w-full focus:outline-none" placeholder="{{__('message.form_footer_par11')}}">
                     @error('email')
                     <span class="text-xs text-red-500">{{$message}}</span>
                     @enderror
@@ -165,13 +165,13 @@
             </div>
 
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 text-gray-500">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                 </label>
                 <div class="col-span-6 md:col-span-5" wire:ignore>
-                    <input wire:model="phone" id="phone" type="text" class="phone_number bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder=" {{__('message.form_footer_par12')}}">
+                    <input wire:model="phone" id="phone" type="text" class="phone_number bg-gray-50 dark:bg-gray-700 border border-gray-400 p-3 md:p-5 bg-gray-50 dark:bg-gray-700  w-full focus:outline-none" placeholder=" {{__('message.form_footer_par12')}}">
                 </div>
             </div>
         </div>
@@ -193,7 +193,7 @@
                     <div class="px-3 py-2 text-left w-full flex justify-between items-center">
                         <div>
                             <span class="font-semibold text-green-500">{{__('message.form_footer_par8')}}</span>
-                            <p class="mb-1 text-sm leading-none text-gray-500">{{$success}}</p>
+                            <p class="mb-1 text-sm leading-none ">{{$success}}</p>
                         </div>
                         <div class="">
                             <span @click="dataopen = !dataopen" class="p-2 py-1 rounded text-green-500 text-sm bg-green-200 border border-green-300 cursor-pointer">OK</span>

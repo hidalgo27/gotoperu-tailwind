@@ -90,7 +90,7 @@
 {{--    </section>--}}
 
 
-    <section class="bg-gray-50 hidden sm:flex">
+    <section class="bg-gray-50 hidden sm:flex dark:bg-gray-700">
     <div class="container">
         <div class="w-full swiper-container slider-brands overflow-hidden relative">
             <div class="swiper-wrapper">
@@ -100,7 +100,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/shield.png')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">Book with Confidence</h3>
                             <p class="text-xs">Plan your travels with peace of mind</p>
                         </div>
@@ -111,7 +111,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/trusted.jpg')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">Trusted local Peru travel experts</h3>
                             <p class="text-xs">Professional service from trusted local experts</p>
                         </div>
@@ -122,7 +122,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/tripadvisor.png')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">Great Reviews</h3>
                             <p class="text-xs">We are proud of our service quality and great reviews</p>
                         </div>
@@ -133,7 +133,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/good.png')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">You are in good hands</h3>
                             <p class="text-xs">While on your journey help is never out of reach</p>
                         </div>
@@ -144,7 +144,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/hassle.png')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">Hassle-free experience</h3>
                             <p class="text-xs">We plan and book your entire Peru trip before you arrive.</p>
                         </div>
@@ -156,7 +156,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/tours.png')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">Flexible tour options</h3>
                             <p class="text-xs">Our vacation packages are customisable to your needs.</p>
                         </div>
@@ -167,7 +167,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/good.png')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">Hospitality at its finest</h3>
                             <p class="text-xs">Peruvian hospitality is worldwide known and we are proof of that.</p>
                         </div>
@@ -178,7 +178,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/secure.png')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">Full Financial Protection</h3>
                             <p class="text-xs">Your payments are protected with financial safety as standard.</p>
                         </div>
@@ -189,7 +189,7 @@
                         <div class="">
                             <img src="{{asset('images/icons/guarantee.png')}}" alt="" class="w-full">
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500">
+                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
                             <h3 class="truncate font-bold text-sm">Value for Money</h3>
                             <p class="text-xs">Exceptional quality for your Money, no intermediaries.</p>
                         </div>
@@ -356,6 +356,7 @@
     </section>
 
 
+    <div class="dark:bg-gray-700 py-12">
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
             Most Popular Travel Packages
@@ -371,8 +372,9 @@
 
 
     </section>
+    </div>
 
-    <div class="bg-gray-100 py-12 mt-12">
+    <div class="bg-gray-100 py-12 mt-12 dark:bg-gray-800">
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
             Recomended Travel Packages
@@ -462,7 +464,7 @@
     <section>
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-gray-100 border p-4">
+                <div class="bg-gray-100 dark:bg-gray-700 dark:border-gray-700 border p-4">
                     <div class="flex items-center">
                         <div class="w-10">
                             <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">Z</div>
@@ -476,7 +478,7 @@
                         <p>...I would recommend Gotoperu 100%. You will not regret it!!!</p>
                     </div>
                 </div>
-                <div class="bg-gray-100 border p-4">
+                <div class="bg-gray-100 border p-4 dark:bg-gray-700 dark:border-gray-700">
                     <div class="flex items-center">
                         <div class="w-10">
                             <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">M</div>
@@ -490,7 +492,7 @@
                         <p>Great service, great communication, and everything was just as promised...!</p>
                     </div>
                 </div>
-                <div class="bg-gray-100 border p-4">
+                <div class="bg-gray-100 border p-4 dark:bg-gray-700 dark:border-gray-700">
                     <div class="flex items-center">
                         <div class="w-10">
                             <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">K</div>
@@ -509,37 +511,37 @@
 
         <div class="container mt-12 hidden sm:flex">
             <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                <div class="border">
+                <div class="border dark:border-gray-700">
                     <a href="https://www.instagram.com/go.to.peru/" target="_blank">
                         <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-6 py-4">
                     </a>
                 </div>
-                <div class="border">
+                <div class="border dark:border-gray-700">
                     <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
                         <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-6 py-4">
                     </a>
                 </div>
-                <div class="border">
+                <div class="border dark:border-gray-700">
                     <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
                         <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-6 py-4">
                     </a>
                 </div>
-                <div class="border">
+                <div class="border dark:border-gray-700">
                     <a href="https://www.tiktok.com/@gotoperu" target="_blank">
                         <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-6 py-4">
                     </a>
                 </div>
-                <div class="border">
+                <div class="border dark:border-gray-700">
                     <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank">
                         <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
                     </a>
                 </div>
-                <div class="border">
+                <div class="border dark:border-gray-700">
                     <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank">
                         <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
                     </a>
                 </div>
-                <div class="border">
+                <div class="border dark:border-gray-700">
                     <a href="https://www.trustpilot.com/review/gotoperu.com">
                         <img src="{{asset('images/logos/trust2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
                     </a>
@@ -739,7 +741,7 @@
         </div>
     </section>
 
-    <div class="bg-gray-100 py-5 mt-12">
+    <div class="bg-gray-100 dark:bg-gray-700 py-5 mt-12">
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
             FREQUENTLY ASKED QUESTIONS
@@ -778,7 +780,7 @@
 
 
     <section class="grid grid-cols-1 md:grid-cols-2">
-        <div class="bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+        <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
             <div class="py-12">
                 <h3 class="font-semibold text-2xl">
                     ABOUT GOTOPERU
@@ -803,7 +805,7 @@
                 </p>
             </div>
         </div>
-        <div class="bg-secondary text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+        <div class="bg-secondary text-white dark:bg-gray-800 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
             <div class="text-center">
                 <h3 class="font-semibold text-2xl">
                     GET SOCIAL WITH US
@@ -842,7 +844,8 @@
 
 
 
-    <section class="container mb-12">
+    <div class="dark:bg-gray-700 pt-1">
+    <section class="container mb-12 ">
         <div class="grid grid-cols-6 gap-4 mt-12">
             <div class="col-start-2 col-span-4">
                 <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
@@ -882,6 +885,7 @@
             </div>
         </div>
     </section>
+
 
 {{--    <section class="container hidden md:block">--}}
 {{--        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 mt-24">--}}
@@ -954,8 +958,8 @@
 
     <div class="flex mb-3 container block md:mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
         <div class="">
-            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
-            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>
+{{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
+{{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
             <span class="hidden md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span>
         </div> {{__('message.subtitle6')}}
     </div>
@@ -968,11 +972,7 @@
             <div class="">
                 <h3 class="font-semibold text-2xl">{{__('message.info_sub1')}}</h3>
                 <div class=" mb-10">
-                    <span class="inline-block w-1 h-2 bg-secondary dark:bg-primary ml-1"></span>
-                    <span class="inline-block w-3 h-2 bg-secondary dark:bg-primary ml-1"></span>
                     <span class="inline-block w-10 h-2 bg-secondary dark:bg-primary"></span>
-                    <span class="inline-block w-3 h-2 bg-secondary dark:bg-primary ml-1"></span>
-                    <span class="inline-block w-1 h-2 bg-secondary dark:bg-primary ml-1"></span>
                 </div>
                 <p class="block my-12">
                     {{__('message.info_par1')}}
@@ -981,7 +981,7 @@
             </div>
         </div>
     </section>
-
+    </div>
     <section class="grid hidden grid-cols-1 md:grid-cols-3 my-4 container gap-4">
         <div class="md:col-span-1 relative flex items-center">
             <div class="relative w-full">
@@ -1044,12 +1044,12 @@
 
     <section class="mt-4">
         <div class="container grid grid-cols-1 md:grid-cols-3 flex items-center">
-            <div class="bg-gray-100 h-full col-span-1  justify-between p-6 text-gray-500 order-2 md:order-1">
+            <div class="bg-gray-100 dark:bg-gray-700 dark:text-gray-100 h-full col-span-1  justify-between p-6 text-gray-500 order-2 md:order-1">
                 <span class="text-sm font-light">{{$blogs_first->created_at}}</span>
                 _____
                 <span class="text-sm font-light">{{$blogs_first->categoria->nombre}}</span>
 
-                <h2 class="my-6 font-semibold text-gray-600 text-3xl"><a href="{{route('blog.show', $blogs_first)}}">{{$blogs_first->titulo}}</a></h2>
+                <h2 class="my-6 font-semibold text-gray-600 dark:text-gray-100 text-3xl"><a href="{{route('blog.show', $blogs_first)}}">{{$blogs_first->titulo}}</a></h2>
                 <span class="text-sm mb-6">{!! Str::limit($blogs_first->detalle, 300) !!}</span>
 
                 <a href="{{route('blog.show', $blogs_first)}}" class="text-secondary mt-4 flex">{{__('message.button_read')}} <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

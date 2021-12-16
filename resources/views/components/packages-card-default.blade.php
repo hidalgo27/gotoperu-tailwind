@@ -6,7 +6,7 @@
             <div class="absolute inset-0 gradient-cicle-gray"></div>
 
     </div>
-    <div class="border p-3 relative bg-gray-50 block group-hover:border-primary text-center transition duration-500 flex-1 flex flex-col">
+    <div class="border p-3 relative bg-gray-50 dark:bg-gray-800 dark:border-gray-700 block group-hover:border-primary text-center transition duration-500 flex-1 flex flex-col">
         <div class="absolute inset-x-0 -top-11 w-3/5 mx-auto p-6">
             <div class="bg-secondary text-sm font-semibold shadow-lg p-2 text-white group-hover:bg-opacity-100 transition duration-500 rounded-lg">
                 @foreach($paquete->paquetes_categoria as $category)
@@ -31,7 +31,7 @@
 
         <h2 class="text-xl text-gray-500 font-bold mt-2 mb-6">{{ $paquete['titulo'] }}</h2>
 
-        <div class="font-semibold text-gray-600 dark:text-gray-700 text-3xl mt-auto">
+        <div class="font-semibold text-gray-600 dark:text-gray-300 text-3xl mt-auto">
             <div class="text-xs text-gray-400">Price p.p. from</div>
             @foreach($paquete['precio_paquetes'] as $precio)
                 @if($precio['estrellas'] == 2)

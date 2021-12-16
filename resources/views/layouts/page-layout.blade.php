@@ -447,30 +447,30 @@
 {{--    @yield('content')--}}
     {{$slot}}
 
-<section class="grid gap-12 bg-gray-100 py-6 grid-cols-8 hidden md:inline-flex"><!--.row -->
+<section class="grid gap-12 bg-gray-100 py-6 grid-cols-8 dark:bg-gray-600 hidden md:inline-flex"><!--.row -->
     <div>
-        <img src="{{asset('images/logos/apavit.png')}}" alt="logo apavit" class="px-3 w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/apavit.png')}}" alt="logo apavit" class="px-3 w-full">
     </div>
     <div>
-        <img src="{{asset('images/logos/apotur.png')}}" alt="logo apotur" class="px-3 w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/apotur.png')}}" alt="logo apotur" class="px-3 w-full">
     </div>
     <div>
-        <img src="{{asset('images/logos/asta.png')}}"  alt="logo asta" class="px-3 w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/asta.png')}}"  alt="logo asta" class="px-3 w-full">
     </div>
     <div>
-        <img src="{{asset('images/logos/expedia.png')}}"  alt="logo expedia" class="px-3 w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/expedia.png')}}"  alt="logo expedia" class="px-3 w-full">
     </div>
     <div>
-        <img src="{{asset('images/logos/meetup.png')}}" alt="logo meetup" class="px-3 w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/meetup.png')}}" alt="logo meetup" class="px-3 w-full">
     </div>
     <div>
-        <img src="{{asset('images/logos/new.png')}}" alt="logo the new york times" class="px-3 w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/new.png')}}" alt="logo the new york times" class="px-3 w-full">
     </div>
     <div>
-        <img src="{{asset('images/logos/peru.png')}}"  alt="logo marca peru" class="px-3 w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/peru.png')}}"  alt="logo marca peru" class="px-3 w-full">
     </div>
     <div>
-        <img src="{{asset('images/logos/prom-peru.png')}}" alt="logo prom peru" class="px-3 w-full dark:filter dark:grayscale">
+        <img src="{{asset('images/logos/prom-peru.png')}}" alt="logo prom peru" class="px-3 w-full">
     </div>
     {{--        <div>--}}
     {{--            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">--}}
@@ -594,7 +594,7 @@
                 {{--                </div>--}}
             </div>
 
-            <div class="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
+            <div class="flex flex-col justify-between pt-5 pb-10 border-t border-gray-500 sm:flex-row">
                 <p class="text-sm dark:text-gray-300">
                     © Copyright 2021 GotoPeru. All rights reserved.
                 </p>
