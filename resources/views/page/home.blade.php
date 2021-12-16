@@ -555,16 +555,14 @@
             <div class="inset-0 flex items-center text-white w-full">
                 <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
                     <div class="p-6 col-span-4">
-                        <h3 class="font-semibold block text-xl">YOUR NORTHERN EUROPE TRAVEL AGENCY</h3>
+                        <h3 class="font-semibold block text-xl">Your Peruvian Travel Operator</h3>
                         <p class="block my-6">
-                            Trust our team of travel experts to plan an unforgettable trip full of must-see attractions and our favourite hidden gems. Our experts have all travelled down the same roads, trains and cruises and know what you’re about to experience.
-                        </p>
-                        <p>
-                            Every tour offered is regularly inspected to ensure our customers have an amazing experience.
+                            Trust our team of local travel experts to plan an unforgettable trip full of must-see attractions and our favorite hidden gems of the land of the Incas. Our peruvian experts have all traveled down the same roads, trains and treks and know what you’re about to experience.
+                            Every Peru tour offered is regularly inspected to ensure our travelers have an amazing experience.
                         </p>
 
                         <div class="block mt-6">
-                            <a href="#" class="btn-secondary">View Tours</a>
+                            <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>
                         </div>
                     </div>
                     <div class="col-span-2">
@@ -580,17 +578,17 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Experts in tailor-made Nordic travel</p>
+                    Experts in tailor-made Peru travel</p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Based in Iceland, Sweden & Scotland</p>
+                    Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Local staff with first-hand Northern Europe travel experience</p>
+                    Local staff with first-hand South America travel experience</p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -598,7 +596,7 @@
                     Dedicated to providing personalized, quality service</p>
                 {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
                 <div class="block mt-6">
-                    <a href="#" class="btn-primary">View More</a>
+                    <a href="{{route('book')}}" class="btn-primary">View More</a>
                 </div>
             </div>
         </div>
@@ -607,11 +605,11 @@
 
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-            NORTHERN EUROPE HIGHLIGHTS
+            PERU HIGHLIGHTS
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
         </div>
         <div class="col-span-4 text-center mt-4">
-            With our fantastic destinations, ways to travel and vacation ideas, you’re spoilt when choosing from our tours. To give you a taste of what’s to come, here are some of our favourite sights and activities:
+            Peru is a country of history, culture, beauty, and adventure, with a full spectrum of possibilities for travelers. The ancient Inca City of Machu Picchu is one of the highlights of any trip to South America, but there is much more to discover throughout Peru, for example:
         </div>
     </section>
 
@@ -622,74 +620,119 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Experts in tailor-made Nordic travel</p>
+                    Peruvian Hospitality, whether quietly reserved or smilingly helpful, Peruvians, we are always happy to welcome travelers to our proud nation
+                </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Based in Iceland, Sweden & Scotland</p>
+                    Vibrant Cultural Festivals, the Peruvian year is dotted with colorful festivals, the majority with a fascinating blend of colonial and indigenous traditions.
+                </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Local staff with first-hand Northern Europe travel experience</p>
+                    Visit Peru's Wonderful Wildlife, with eight national parks, eight national reserves and seven national sanctuaries, nature lovers paradise.
+                </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Dedicated to providing personalized, quality service</p>
+                    Hike to Rainbow Mountain
+                </p>
                 {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
 
 
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Discover Iceland's Golden Circle, with its vast lava fields, explosive Geysir, Gullfoss waterfall and more
+                    </svg>
+                    Buggy Ride through the Sand dunes at Huacachina Oasis.
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Sail through the magical Jökulsárlón glacier lagoon  in Iceland and cast your eyes on the largest icecap in Europe, Vatnajökull
+                    </svg>
+                    Food Tour in Lima, our main city is one of the gastronomic capitals of the world. Here, you can try some of the most unique and tasty dishes
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Pamper yourself on your tour with a trip to the renowned Icelandic Blue Lagoon with its milky mineral-rich waters
+                    </svg>
+                    One of the best things to do in Peru is drinking Pisco Sours – and lots of them!
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Voyage along the peaceful waters of Norway’s wondrous Geirangerfjord and feel the mist from the Seven Sisters waterfall
+                    </svg>
+                    Swimming with the sea lions is another wildlife activity. Believe it or not, this is a tour you actually do from Lima!
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Ride the legendary Flåm Railway through deep fjords of Norway
+                    </svg>
+                    Explore Cusco,  the former Inca capital, this high-altitude city of terracotta rooftops is a boom town with a cosmopolitan feel
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Visit the Norwegian UNESCO World Heritage site of Bryggen in the beautiful coastal city of Bergen
+                    </svg>
+                    Hike The world famous Inca Trail to Machu Picchu, make sure to book in advance for this trek, permits are limited.
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Explore the colourful capitals of Sweden, Denmark and Norway, and discover what makes Scandinavia special
+                    </svg>
+                    Go to the Amazon Rainforest and their amazing natural lodges
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Drive through the lush rolling hills of Scotland’s Cairngorms National Park
+                    </svg>
+                    Fly Over the Nazca Lines, especially if you’re into history, archeology or even Ancient Aliens.
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Explore the capital city of Scotland, Edinburgh, and walk up the historic Royal Mile to Edinburgh Castle
+                    </svg>
+                    Mystic Peru, Peru has a rich tradition of healers and spiritual advisors
                 </p>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>Roam the Scottish Highlands and discover the famous mountain valley of Glencoe
+                    </svg>
+                    A little-known attraction that is a lot of fun: swimming with the sea turtles! north of Peru at the town of Mancora.
+                </p>
+
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Close experience with alpacas or llamas for a truly unforgettable Peru experience, you will enjoy these super adorable creatures!
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Spot a Sea lion on the Ballestas Islands, 4hrs south of Lima.
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Take off on a 4×4 ATV through the hillsides of the Sacred Valley to visit the Salt Mines of Maras and archeological site of Moray
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Visit the Lake Titicaca, the highest navigable lake in the world and their floating islands called Uros.
+                </p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Explore the neighborhood of Barranco at Lima, the area has long been popular with artists and poets, giving it a Bohemian feel.
                 </p>
 
             </div>
@@ -699,7 +742,7 @@
     <div class="bg-gray-100 py-5 mt-12">
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-            FREQUENTLY ASKED QUESTIONS ABOUT NORTHERN EUROPE
+            FREQUENTLY ASKED QUESTIONS
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
         </div>
         <div class="col-span-4 text-center mt-4">
@@ -738,32 +781,26 @@
         <div class="bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
             <div class="py-12">
                 <h3 class="font-semibold text-2xl">
-                    ABOUT NORDIC VISITOR TOURS
+                    ABOUT GOTOPERU
                 </h3>
                 <p class="block my-12">
-                    Nordic Visitor has been creating amazing travel experiences for customers across Northern Europe since 2002. We now have multi country tours and regional offices, but still retain our core values of providing great value packages and amazing service, before, during and after your trip. Reasons to choose us include:
+                    We are a travel operator with Headquarters in Cusco City and offices in the main destinations of Peru catering to travelers who want an original, authentic and unforgettable experience at the land of the Incas.
                 </p>
 
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <h3 class="font-medium">Personalized Service</h3>
+                <p class="flex my-4 items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Tailor-made itinerary: you deserve to have the vacation of a lifetime, so trust our tour operators to grant your travel wishes.</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    First name basis always, since your own custom-made itinerary our dedicated local team, including representatives, guides, drivers will be always there for you on each day of your vacation. Plus a truly local assistance 24/7 on each destination.
+                </p>
+                <h3 class="font-medium">Confidence</h3>
+                <p class="flex my-4 items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    Quality checked accommodation: wherever you stay is guaranteed to be tried and tested by our local specialists to ensure you have an excellent stay.</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Travel guide: your journey will be extra special with our team's insider travel tips and hidden gem attractions.</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    24/7 helpline: for peace of mind, there’s always a travel consultant on the other end of our 24/7 helpline.</p>
+                    GOTOPERU is certified by the Peruvian Government, by the Ministry of Foreign Trade and Tourism of Peru (MINCETUR) . In addition we are also highly rated on Tripadvisor, Trustpilot and diverse well known travel forums.
+                </p>
             </div>
         </div>
         <div class="bg-secondary text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
@@ -774,7 +811,7 @@
                 <p class="block my-12">
                     Follow our Nordic adventures and share your own with us.
                 </p>
-                <div class="w-full md:w-1/2 mx-auto mt-12">
+                <div class="w-full md:w-1/2 mx-auto mt-12 bg-gray-100 bg-opacity-50 p-6 rounded">
                     <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
                         <div class="">
                             <a href="https://www.instagram.com/go.to.peru/" target="_blank">
