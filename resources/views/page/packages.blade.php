@@ -16,14 +16,14 @@
 </section>
 
 <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
     @foreach($paquetes as $paquete)
         <x-packages-card :paquete="$paquete"></x-packages-card>
     @endforeach
-
-
 </section>
     <section class="mt-12">
         @livewire('page.form-footer')
     </section>
+    @push('scripts')
+        <script src="https://cdn.wetravel.com/master/core-app/assets/embed_checkout.js"></script>
+    @endpush
 </x-page-layout>
