@@ -11,7 +11,7 @@
 
         </div>
 
-        <img src="{{asset('images/400/sacred-valley-machu-picchu.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
+        <img src="{{asset('images/banners/confidence/experienced-tour-guides.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
 
 
 {{--        </video>--}}
@@ -32,7 +32,6 @@
                 @endforeach
                 <span class="my-5 block"></span>
                 @livewire('page.form-inquire')
-
             </div>
         </div>
 
@@ -399,7 +398,7 @@
 {{--    </div>--}}
     <section class="grid grid-cols-1 md:grid-cols-5">
         <div class="md:col-span-3 relative">
-            <img src="{{asset('images/destinations/puno-l.jpg')}}" alt="" class="object-cover h-full w-full">
+            <img src="{{asset('images/banners/confidence/experienced-tour-guides.jpg')}}" alt="" class="object-cover h-full w-full">
             <div class="absolute inset-0 gradient-cicle-gray flex items-center text-white text-center w-full">
                 <div class="w-full text-center">
                     <h3 class="font-semibold block text-lg md:text-4xl">POPULAR: MACHUPICCHU FULL DAY</h3>

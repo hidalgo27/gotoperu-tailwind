@@ -28,12 +28,12 @@ return [
 
     'title1' => 'Expertise in Peru travel matters',
     'subtitle1' => 'Explore our favorite Peru crafted itineraries to help inspire your next adventure',
-    
+
     'title2_a' => 'Your Peru Vacation',
     'title2_b' => 'Worry-Free',
-    
+
     'parrafo1' => 'Peru travel packages with an award-winning team on a completely customized, private or group tour for an authentic Peru trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore MachuPicchu, Cusco, Lima, Lake Titicaca, the Amazon and many more unique Peruvian destinations safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.',
-    
+
     'subtitle2' => 'Perú Recommended Itineraries',
     'subtitle3' => 'Featured Perú Itineraries',
     'subtitle4' => 'Destinations',
@@ -66,7 +66,7 @@ return [
     'pack_item6' =>  'Puno & Titicaca Lake',
     'pack_item7' => 'Explore the gigantic Lake Titicaca which is Half Peruvian and Half Bolivian, sitting at 12,500 feet above sea level is the world’s largest high-altitude lake. The Incas believed that these waters birthed the founders of the empire ( Mama Ocllo & Manco Capac  ) . Nowadays many communities still make their home on the lake keeping their ancient traditions alive!',
     'pack_item8' => 'Lake Titicaca from Cusco',
-    
+
     'serv_item2' =>  'Assistances',
     'serv_item3' =>  'Breakfast',
     'serv_item4' =>  'Entrances',
@@ -75,11 +75,11 @@ return [
     'serv_item7' =>  'Tours',
     'serv_item8' =>  'Trains',
     'serv_item9' =>  'Transfers',
-    
-    
+
+
     'button_detail' => 'View details',
     'button_all' => 'View All',
-    'button_book' => 'Book Now',
+    'button_book' => 'Local Travel Advisors',
     'button_inquire' => 'Inquire Now',
     'button_next' => 'Next',
     'button_prev' => 'Previous',
@@ -147,7 +147,7 @@ return [
     'confi_subtitle7' => '24/7 support',
     'confi_par12' => 'We live at each destination, there will always be an agent ready to assist you. If you urgently need to contact us, you can access our assistance line at any time of day.',
     'confi_par13' => 'Our Headquarters are located in Cusco but we have remote offices in Arequipa, Lima and Puno, plus GOTOPERU representatives in MachuPicchu, Nazca, Paracas, Urubamba, Puerto Maldonado and Chiclayo.',
-    
+
     'book_title1' => 'BOOKING TERMS',
     'book_title2' => 'BOOKING TERMS AND CONDITIONS',
     'book_subtitle1' => 'BOOKING CONDITIONS',
@@ -161,7 +161,7 @@ return [
     'book_par7' => 'Payments: GOTOPERU will require an initial deposit payment , depending of the program could be 20% - 30% - 50% or the full amount at the time of booking, depending on when the booking is made, your destination, number of travellers, and what type of tour package is booked.',
     'book_par8' => 'Payment processing: Once payment has been received, your travel advisor will send you a payment receipt.',
     'book_par9' => 'Delayed payments: GOTOPERU reserves the right to treat cases of delayed payment as a cancellation of the booking, and the company can withdraw its confirmation of services. Please note that this applies if no agreement has been made for paying the remaining balance.',
-    
+
     'abou_title1' => 'About',
     'abou_title2' => 'YOUR LOCAL PERU TRAVEL EXPERTS',
     'abou_par1' => 'GOTOPERU is a specialist travel agency catering to travellers who want an original, authentic and unforgettable experience at the land of the Incas.',
@@ -215,16 +215,16 @@ return [
     'faq_subtitle9' => ' Do travelers from the uk need a visa to travel to peru?',
     'faq_par34' => 'No prior visa is required for UK nationals to enter Peru. A visa valid for six months (183 days) will be issued upon entry.',
     'faq_subtitle10' => 'The best piece of advice is to take half the clothing you think you will need, and two times the money. In a pinch, there are many markets to buy clothing and ample laundromats. Only bring one formal outfit if you plan to go all out at a fine restaurant. The lighter your pack the better—leave space for souvenirs when you travel Peru!.',
-    
+
     'revi_title1' => 'Reviews and Testimonials',
     'revi_par1' => 'Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.',
     'revi_par2' => 'We will work according to your agenda and travel interests to build together the most exclusive travel plans.',
     'revi_subtitle1' => 'PHOTOS FROM OUR TRAVELERS',
     'revi_par3' => ' Get inspired by photos and videos from fellow travelers in Peru, or share your favorite @go.to.peru experiences with us.',
-    
+
     'resp_title1' => 'Social Responsability',
     'resp_part1' => 'Experience Peru with an award-winning team on a completely customized, private or small group tour for an authentic trip of a lifetime. With our 97% satisfaction rate, round-the-clock local support and 100% financial protection, explore 20+ enchanting destinations around the land of the Incas safely and seamlessly. Our 9,000+ enchanted guests will vouch for us.',
-    
+
     'form_footer_title' => 'Book With Confidence',
     'form_footer_par1' => "We're flexible! Postpone your tour with zero cost up to 10 days prior to departure.",
     'form_footer_subtitle1' => 'HOTEL QUALITY',
@@ -235,7 +235,7 @@ return [
     'form_footer_par4' => 'Undecided',
     'form_footer_par5' => 'days',
     'form_footer_par6' => 'Undecided',
-    'form_footer_par7' => 'Tentative orsd set travel date',
+    'form_footer_par7' => 'Tentative travel date',
     'form_footer_par8' => 'Success',
     'form_footer_par9' => 'What can we do for you? We have it all. Just ask!',
     'form_footer_par10' => 'Full Name *',
@@ -260,10 +260,10 @@ return [
     'pack_deta_par10' => 'Tourist',
     'pack_deta_par11' => 'Superior',
     'pack_deta_par12' => 'Luxury',
-    
+
     'dest_deta_title' => 'Peru Travel Packages',
     'dest_deta_par1' => 'Experimente Perú con un equipo galardonado en un tour completamente personalizado, privado o en grupos pequeños para un viaje auténtico de su vida. Con nuestra tasa de satisfacción del 97%, soporte local las 24 horas del día y protección financiera del 100%, explore más de 20 destinos encantadores en la tierra de los incas de manera segura y sin problemas. Nuestros más de 9.000 invitados encantados responderán por nosotros.',
-    
+
     'url_1' => 'peru-travel-packages',
     'url_2' => 'destinations',
     'url_3' => 'about-us',
