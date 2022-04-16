@@ -378,7 +378,7 @@
                 <a href="#form-dream-adventure" class="btn-secondary text-center">{{__('message.button_inquire')}}</a>
                 <div class="dark:text-gray-400">
                     <span class="text-xs block text-right">PE/Peru</span>
-                    +51 960 106076
+                    001 (202) 491-1478
                 </div>
             </div>
         </div>
