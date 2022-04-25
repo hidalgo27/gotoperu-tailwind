@@ -31,7 +31,7 @@
                 <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>
                 @endforeach
                 <span class="my-5 block"></span>
-                @livewire('page.form-inquire')
+{{--                @livewire('page.form-inquire')--}}
             </div>
         </div>
 
@@ -203,7 +203,7 @@
     </section>
 
 
-    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
+    <section class="container grid grid-cols-1 md:grid-cols-4 py-12 bg-white">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
             BOOK & TRAVEL WITH CONFIDENCE <br>Deposits from 10% : Free cancellation insurance available with 20% deposit
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
