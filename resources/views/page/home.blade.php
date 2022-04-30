@@ -1,5 +1,5 @@
-<x-page-layout>
-
+@extends('layouts.page-layout')
+@section('content')
     <div class="absolute inset-0 h-screen overflow- w-full bg-gray-100 -z-1 overflow-hidden">
 {{--        <video autoplay loop muted class="object-cover h-full w-full">--}}
 {{--            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.--}}
@@ -28,7 +28,7 @@
 
                 <h4 class="font-bold text-secondary mt-6">Destinations</h4>
                 @foreach($destination as $destinations)
-                <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>
+                    <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>
                 @endforeach
                 <span class="my-5 block"></span>
 {{--                @livewire('page.form-inquire')--}}
@@ -327,8 +327,6 @@
                 </a>
             </div>
         @endforeach
-
-
 
     </section>
 
@@ -1112,4 +1110,5 @@
     </script>
 
 @endpush
-</x-page-layout>
+
+@endsection

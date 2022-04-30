@@ -35,6 +35,7 @@ class HomeController extends Controller
 
         $faqs = Faq::all();
 
+        $category = TCategoria::all();
         $category_block = TCategoria::where('estado', 1)->get();
         $category_footer = TCategoria::where('orden_block', 1)->get();
 
@@ -47,6 +48,7 @@ class HomeController extends Controller
                 'paquetes_features',
                 'blogs_first',
                 'faqs',
+                'category',
                 'category_block',
                 'category_footer',
                 'destination'
@@ -56,9 +58,11 @@ class HomeController extends Controller
 
     public function packages() {
         $paquetes = TPaquete::where('is_p_t', '1')->get();
+        $category = TCategoria::all();
         return view('page.packages',
             compact(
-                'paquetes'
+                'paquetes',
+                'category'
             ));
     }
 
@@ -124,8 +128,9 @@ class HomeController extends Controller
             ->where('idcategoria', $categories->id)
             ->get();
 
+        $category = TCategoria::all();
 
-        return view('page.category-show', compact('paquetes_api', 'categories'));
+        return view('page.category-show', compact('paquetes_api', 'categories', 'category'));
     }
 
     public function about(){
