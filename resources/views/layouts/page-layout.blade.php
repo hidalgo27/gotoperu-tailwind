@@ -281,7 +281,7 @@
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
-<div x-data="{menu: true}">
+<div x-data="{menu: false}">
     <div class="fixed bg-12 bottom-0 w-full z-30 sm:hidden">
 {{--        @livewire('page.form-inquire')--}}
         <a href="#form-dream-adventure" class="btn-primary text-center w-full block">{{__('message.button_book')}}</a>
