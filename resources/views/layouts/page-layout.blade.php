@@ -281,7 +281,7 @@
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
-<div x-data="{menu: false}">
+<div x-data="{menu: true}">
     <div class="fixed bg-12 bottom-0 w-full z-30 sm:hidden">
 {{--        @livewire('page.form-inquire')--}}
         <a href="#form-dream-adventure" class="btn-primary text-center w-full block">{{__('message.button_book')}}</a>
@@ -378,6 +378,11 @@
                 <div class="dark:text-gray-400">
                     <span class="text-xs block text-right">US</span>
                     (202) 491-1478
+                </div>
+                <div class="cursor-pointer flex items-center" @click="menu = !menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                    </svg>
                 </div>
             </div>
         </div>
