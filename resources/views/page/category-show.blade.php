@@ -55,13 +55,11 @@
                                 @endif
                             @endif
                         @endforeach
-
-                        @if($paquete['codigo_f'])
-                            <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="{{$paquete['codigo_f']}}" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >{{__('message.button_book')}}</button>
-                        @endif
-
                     </div>
-                    <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary">{{__('message.button_detail')}}</a>
+                    @if($paquete['paquetes']['codigo_f'])
+                        <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="{{$paquete['paquetes']['codigo_f']}}" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['paquetes']['codigo_f']}}" >Book Now</button>
+                    @endif
+                    <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary block">{{__('message.button_detail')}}</a>
                 </div>
             </div>
         @endforeach
@@ -71,4 +69,6 @@
         @livewire('page.form-footer')
     </section>
 @endsection
-
+@push('scripts')
+    <script src="https://cdn.wetravel.com/master/core-app/assets/embed_checkout.js"></script>
+@endpush

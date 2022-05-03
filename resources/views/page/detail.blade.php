@@ -227,7 +227,7 @@
                     <div class="">
                         <a href="#form-dream-adventure" class="btn-secondary font-bold text-center w-full block">{{__('message.button_inquire')}}</a>
                         @if($paquete['codigo_f'])
-                            <button class="wtrvl-checkout_button btn-primary block mt-2 w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
+                            <button class="wtrvl-checkout_button btn-primary block mt-2 w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="{{$paquete['codigo_f']}}" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
                         @endif
                     </div>
 
