@@ -198,21 +198,36 @@
                         <div class="flex-1 border p-3 flex text-xl items-center justify-center">
                             {{ $paquete['duracion'] }} {{__('message.pack_par4')}}
                         </div>
-                        <div class="flex-1 border p-3 flex items-center">
-                            @foreach($paquete['precio_paquetes'] as $precio)
-                                @if($precio['estrellas'] == 2)
-                                    @if($precio['precio_d'] > 0)
-                                        <div class="text-xl font-semibold text-gray-600">
-                                            <span> {{__('message.pack_par5')}} </span>
-                                            <span>${{$precio['precio_d']}}</span>
-                                            <span class="text-xs"> usd</span>
-                                        </div>
-                                    @else
-                                        <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span>
+                        @if($paquete['is_p_t'] == 1)
+                            <div class="flex-1 border p-3 flex items-center">
+                                @foreach($paquete['precio_paquetes'] as $precio)
+                                    @if($precio['estrellas'] == 2)
+                                        @if($precio['precio_d'] > 0)
+                                            <div class="text-xl font-semibold text-gray-600">
+                                                <span> {{__('message.pack_par5')}} </span>
+                                                <span>${{$precio['precio_d']}}</span>
+                                                <span class="text-xs"> usd</span>
+                                            </div>
+                                        @else
+                                            <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span>
+                                        @endif
                                     @endif
-                                @endif
-                            @endforeach
-                        </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="flex-1 border p-3 flex items-center text-center">
+                                @if($paquete['precio_tours'])
+                                            <div class="text-xl font-semibold text-gray-600">
+{{--                                                <span> {{__('message.pack_par5')}} </span>--}}
+                                                <span>${{$paquete['precio_tours']}}</span>
+                                                <span class="text-xs"> usd</span>
+                                            </div>
+                                        @else
+                                            <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span>
+                                        @endif
+
+                            </div>
+                        @endif
                     </div>
                     <div class="p-6 border">
                         <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2>
