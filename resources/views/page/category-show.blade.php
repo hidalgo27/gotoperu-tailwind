@@ -3,7 +3,7 @@
     <section class="-mt-32 h-80vh -z-1 relative">
         <img src="{{$categories->imagen_banner}}" alt="" class="h-full w-full object-cover">
         <div class="absolute bottom-0 left-0 p-12">
-            <h1 class="text-5xl font-semibold text-gray-50">{{$categories->nombre}} Packages</h1>
+            <h1 class="text-5xl font-semibold text-gray-50">{{ucwords(strtolower($categories->nombre))}} Packages</h1>
         </div>
     </section>
 
