@@ -49,15 +49,34 @@
             <div class="border p-6 block group-hover:border-primary text-center transition duration-500">
                 <div class="font-bold text-gray-500 text-lg mb-4">
                     {{ $paquete['paquetes']['duracion'] }} {{__('message.pack_par4')}} /
-                    @foreach($paquete['paquetes']['precio_paquetes'] as $precio)
-                        @if($precio['estrellas'] == 2)
-                            @if($precio['precio_d'] > 0)
-                                <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ {{$precio['precio_d']}} <span class="text-xs">usd</span>
-                            @else
-                                <span class="text-red-500">{{__('message.button_inquire')}}</span>
-                            @endif
+                    @if($paquete['paquetes']['is_p_t'] == 0)
+
+                        @if($paquete['paquetes']['precio_tours'] > 0)
+                            ${{$paquete['paquetes']['precio_tours']}} <span class="text-sm text-secondary">usd</span>
+                        @else
+                            <span class="text-red-500">{{__('message.pack_par6')}}</span>
                         @endif
-                    @endforeach
+
+                    @else
+                        @foreach($paquete['paquetes']['precio_paquetes'] as $precio)
+                            @if($precio['estrellas'] == 2)
+                                @if($precio['precio_d'] > 0)
+                                    ${{$precio['precio_d']}} <span class="text-sm text-secondary">usd</span>
+                                @else
+                                    <span class="text-red-500">{{__('message.pack_par6')}}</span>
+                                @endif
+                            @endif
+                        @endforeach
+                    @endif
+{{--                    @foreach($paquete['paquetes']['precio_paquetes'] as $precio)--}}
+{{--                        @if($precio['estrellas'] == 2)--}}
+{{--                            @if($precio['precio_d'] > 0)--}}
+{{--                                <span class="text-xs align-top">{{__('message.pack_par5')}}</span> $ {{$precio['precio_d']}} <span class="text-xs">usd</span>--}}
+{{--                            @else--}}
+{{--                                <span class="text-red-500">{{__('message.button_inquire')}}</span>--}}
+{{--                            @endif--}}
+{{--                        @endif--}}
+{{--                    @endforeach--}}
 
                 </div>
                 <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary">{{__('message.button_detail')}}</a>

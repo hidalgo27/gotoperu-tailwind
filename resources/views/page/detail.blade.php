@@ -124,6 +124,9 @@
                                 <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
                                         {{__('message.pack_deta_par9')}}
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
@@ -139,9 +142,32 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
+                                    <td class="font-bold">Single</td>
+                                    @foreach($paquete['precio_paquetes'] as $precio)
+                                        @if($precio['precio_s'] > 0)
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_s']}}<small>USD</small></td>
+                                        @else
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
+                                        @endif
+                                    @endforeach
+
+                                </tr>
+                                <tr>
+                                    <td class="font-bold">Double</td>
                                     @foreach($paquete['precio_paquetes'] as $precio)
                                         @if($precio['precio_d'] > 0)
                                             <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_d']}}<small>USD</small></td>
+                                        @else
+                                            <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
+                                        @endif
+                                    @endforeach
+
+                                </tr>
+                                <tr>
+                                    <td class="font-bold">Triple</td>
+                                    @foreach($paquete['precio_paquetes'] as $precio)
+                                        @if($precio['precio_t'] > 0)
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_t']}}<small>USD</small></td>
                                         @else
                                             <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
                                         @endif

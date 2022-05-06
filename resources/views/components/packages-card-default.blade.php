@@ -25,23 +25,33 @@
         <div class="font-semibold text-primary pt-6">
             {{ $paquete['duracion'] }} {{__('message.pack_par4')}} / {{ $paquete['duracion'] -1  }} Nights
         </div>
-        @if($paquete['codigo_f'] AND $paquete['is_p_t'] == 0)
-            <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >{{__('message.button_book')}}</button>
-        @endif
+{{--        @if($paquete['codigo_f'] AND $paquete['is_p_t'] == 0)--}}
+{{--            <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="55228689" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >{{__('message.button_book')}}</button>--}}
+{{--        @endif--}}
 
         <h2 class="text-xl text-gray-500 font-bold mt-2 mb-6">{{ $paquete['titulo'] }}</h2>
 
         <div class="font-semibold text-gray-600 dark:text-gray-300 text-3xl mt-auto">
             <div class="text-xs text-gray-400">Price p.p. from</div>
-            @foreach($paquete['precio_paquetes'] as $precio)
-                @if($precio['estrellas'] == 2)
-                    @if($precio['precio_d'] > 0)
-                         ${{$precio['precio_d']}} <span class="text-sm text-secondary">usd</span>
-                    @else
-                        <span class="text-red-500">{{__('message.pack_par6')}}</span>
+            @if($paquete['is_p_t'] == 0)
+
+                        @if($paquete['precio_tours'] > 0)
+                             ${{$paquete['precio_tours']}} <span class="text-sm text-secondary">usd</span>sdsd
+                        @else
+                            <span class="text-red-500">{{__('message.pack_par6')}}</span>
+                        @endif
+
+            @else
+                @foreach($paquete['precio_paquetes'] as $precio)
+                    @if($precio['estrellas'] == 2)
+                        @if($precio['precio_d'] > 0)
+                            ${{$precio['precio_d']}} <span class="text-sm text-secondary">usd</span>
+                        @else
+                            <span class="text-red-500">{{__('message.pack_par6')}}</span>
+                        @endif
                     @endif
-                @endif
-            @endforeach
+                @endforeach
+            @endif
         </div>
 
 {{--        <a href="{{route('packages.detail', $paquete['url'])}}" class="block text-sm mt-5 font-semibold text-blue-500">{{__('message.button_detail')}}</a>--}}
