@@ -118,7 +118,7 @@
                                 <span class="inline-block w-5 h-2.5 bg-secondary"></span>
                             </div> {{__('message.pack_deta_par4')}}
                         </div>
-                        <p>{{__('message.pack_deta_par5')}}</p>
+{{--                        <p>{{__('message.pack_deta_par5')}}</p>--}}
                         <div class="overflow-hidden">
                             <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
                                 <thead class="bg-gray-50">
