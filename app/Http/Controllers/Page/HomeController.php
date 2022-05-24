@@ -75,12 +75,14 @@ class HomeController extends Controller
             ->where('url', $url)
             ->get();
 
+        $testinomials = TTestimonio::all();
         $category = TCategoria::all();
 
         return view('page.detail',
             compact(
                 'paquetes',
-                'category'
+                'category',
+                'testinomials'
             ));
     }
 
