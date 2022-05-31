@@ -7,6 +7,7 @@ use App\Models\Faq;
 use App\Models\TCategoria;
 use App\Models\TDestino;
 use App\Models\THotel;
+use App\Models\THotelDestino;
 use App\Models\TPaquete;
 use App\Models\TPaqueteCategoria;
 use App\Models\TPaqueteDestino;
@@ -66,23 +67,28 @@ class HomeController extends Controller
             ));
     }
 
-    public function packages_detail($url) {
+    public function packages_detail(TPaquete $paquete) {
 //        $paquetes_api = Http::get(env('APP_URL').'/api/packages/'.$url);
 //        $paquetes_api = $paquetes_api->json();
 
-        $paquetes = TPaquete::
-        with('imagen_paquetes','paquetes_destinos.destinos.destino_imagen','paquetes_categoria.categoria', 'precio_paquetes', 'paquete_itinerario')
-            ->where('url', $url)
-            ->get();
+//        $destinos_hoteles = TDestino::whereRelationx('hotel_destinos', 'idhotel', 25)->get();
+
+//        dd($destinos_hoteles);
+
+//        $paquetes = TPaquete::
+//        with('imagen_paquetes','paquetes_destinos.destinos.destino_imagen','paquetes_categoria.categoria', 'precio_paquetes', 'paquete_itinerario')->get();
 
         $testinomials = TTestimonio::all();
         $category = TCategoria::all();
 
+        $hoteles_destinos = THotelDestino::all();
+
         return view('page.detail',
             compact(
-                'paquetes',
+                'paquete',
                 'category',
-                'testinomials'
+                'testinomials',
+                'hoteles_destinos'
             ));
     }
 

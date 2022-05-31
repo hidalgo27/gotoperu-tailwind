@@ -1,5 +1,5 @@
 @props(['paquete'])
-<a href="{{route('packages.detail', $paquete['url'])}}" class="group flex flex-col">
+<a href="{{route('packages.detail', $paquete)}}" class="group flex flex-col">
     <div class="overflow-hidden relative ">
 
             <img src="{{$paquete->imagen}}" alt="{{ $paquete['titulo'] }}" class="h-16r object-cover w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105"/>

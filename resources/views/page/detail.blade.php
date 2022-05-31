@@ -1,6 +1,6 @@
 @extends('layouts.page-layout')
 @section('content')
-    @foreach($paquetes as $paquete)
+
         <section class="-mt-32 h-80vh -z-1 relative">
             @foreach($paquete['imagen_paquetes'] as $imagen)
                 <img src="{{$imagen['nombre']}}" alt="{{$paquete['titulo']}}" class="h-full w-full object-cover">
@@ -78,7 +78,7 @@
                         <a href="#prices" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openTab == 3 ? 'bg-primary text-white' : 'bg-white hover:text-primary'">Price</a>
                     </li>
                     <li>
-                        <a href="{{route('hotels')}}" target="_blank" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3">Hotels</a>
+                        <a href="#hotels"  class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3">Hotels</a>
                     </li>
                     <li>
                         <a href="#reviews" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3">Reviews</a>
@@ -273,131 +273,7 @@
                         </div>
                     </div>
 
-                    @if($paquete['is_p_t'] == 1)
-                        <section class="my-12 flex flex-col gap-4" id="prices">
 
-                            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
-                                <div class="">
-{{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
-{{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
-                                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                                </div> {{__('message.pack_deta_par4')}}
-                            </div>
-                            <p class="font-semibold text-secondary">{{__('message.pack_deta_par5')}}</p>
-                            <div class="overflow-hidden">
-                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
-                                    <thead class="bg-gray-50">
-                                    <tr>
-
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par9')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par10')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par11')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par12')}}
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="bg-secondary bg-opacity-10 divide-y divide-gray-200">
-                                    <tr>
-
-                                        @foreach($paquete['precio_paquetes'] as $precio)
-                                            @if($precio['precio_s'] > 0)
-                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_s']}}<small>USD</small></td>
-                                            @else
-                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
-                                            @endif
-                                        @endforeach
-
-                                    </tr>
-
-                                    <!-- More people... -->
-                                    </tbody>
-                                </table>
-                                <hr class="my-5">
-                                <p class="font-semibold text-primary mt-2">Prices are based on double occupancy.</p>
-                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
-                                    <thead class="bg-gray-200">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par9')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par10')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par11')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par12')}}
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="bg-primary bg-opacity-10 divide-y divide-gray-200">
-
-                                    <tr>
-
-                                        @foreach($paquete['precio_paquetes'] as $precio)
-                                            @if($precio['precio_d'] > 0)
-                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_d']}}<small>USD</small></td>
-                                            @else
-                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
-                                            @endif
-                                        @endforeach
-
-                                    </tr>
-
-
-                                    <!-- More people... -->
-                                    </tbody>
-                                </table>
-                                <hr class="my-5">
-                                <p class="font-semibold text-gray-500 mt-2">Prices are based on triple occupancy.</p>
-                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
-                                    <thead class="bg-gray-500">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par9')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par10')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par11')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par12')}}
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="bg-gray-50 divide-y divide-gray-200">
-
-                                    <tr>
-
-                                        @foreach($paquete['precio_paquetes'] as $precio)
-                                            @if($precio['precio_t'] > 0)
-                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_t']}}<small>USD</small></td>
-                                            @else
-                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
-                                            @endif
-                                        @endforeach
-
-                                    </tr>
-
-                                    <!-- More people... -->
-                                    </tbody>
-                                </table>
-
-                                <p class="text-sm mt-5 text-gray-500">{{__('message.pack_deta_par6')}}</p>
-                            </div>
-
-                        </section>
-                    @endif
 
 
 
@@ -471,8 +347,236 @@
 
 
                 </div>
+            </section>
+
+            <section>
+                @if($paquete['is_p_t'] == 1)
+                    <section class="my-12 flex flex-col gap-4" id="prices">
+
+                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                            <div class="">
+                                {{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+                                {{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+                                <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                            </div> {{__('message.pack_deta_par4')}}
+                        </div>
 
 
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="overflow-x-scroll">
+                                    <p class="font-semibold text-secondary text-center">{{__('message.pack_deta_par5')}}</p>
+                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
+                                    <thead class="bg-gray-50">
+                                    <tr>
+
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par9')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par10')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par11')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par12')}}
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-secondary bg-opacity-10 divide-y divide-gray-200">
+                                    <tr>
+
+                                        @foreach($paquete['precio_paquetes'] as $precio)
+                                            @if($precio['precio_s'] > 0)
+                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_s']}}<small>USD</small></td>
+                                            @else
+                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
+                                            @endif
+                                        @endforeach
+
+                                    </tr>
+
+                                    <!-- More people... -->
+                                    </tbody>
+                                </table>
+                                </div>
+                                <div class="overflow-x-scroll">
+                                    <p class="font-semibold text-primary text-center">Prices are based on double occupancy.</p>
+                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
+                                    <thead class="bg-gray-200">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par9')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par10')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par11')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-600 font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par12')}}
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-primary bg-opacity-10 divide-y divide-gray-200">
+
+                                    <tr>
+
+                                        @foreach($paquete['precio_paquetes'] as $precio)
+                                            @if($precio['precio_d'] > 0)
+                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_d']}}<small>USD</small></td>
+                                            @else
+                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
+                                            @endif
+                                        @endforeach
+
+                                    </tr>
+
+
+                                    <!-- More people... -->
+                                    </tbody>
+                                </table>
+                                </div>
+
+                            </div>
+                        <div class="grid md:grid-cols-2 gap-4 md:mt-5">
+                            <div class="overflow-x-scroll">
+                                <p class="font-semibold text-gray-500 text-center">Prices are based on triple occupancy.</p>
+                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
+                                    <thead class="bg-gray-500">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par9')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par10')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par11')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par12')}}
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-gray-50 divide-y divide-gray-200">
+
+                                    <tr>
+
+                                        @foreach($paquete['precio_paquetes'] as $precio)
+                                            @if($precio['precio_t'] > 0)
+                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-500">${{$precio['precio_t']}}<small>USD</small></td>
+                                            @else
+                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-500">{{__('message.button_inquire')}}</td>
+                                            @endif
+                                        @endforeach
+
+                                    </tr>
+
+                                    <!-- More people... -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                            <p class="text-sm mt-5 text-gray-500">{{__('message.pack_deta_par6')}}</p>
+
+
+                    </section>
+                @endif
+            </section>
+
+            <section x-data="{ openDes: 1 }" id="hotels">
+                <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                    <div class="">
+                        {{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+                        {{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                    </div> Recommended Hotels
+                </div>
+                <div class=" mt-6 ">
+                    <ul class="flex flex-nowrap overflow-x-scroll gap-3">
+                        @foreach($paquete['paquetes_destinos'] as $paquete_destino)
+{{--                            {{$loop->iteration}}--}}
+
+                        <li @click="openDes = {{$loop->iteration}}" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openDes == {{$loop->iteration}} ? 'bg-primary text-white' : 'bg-white hover:text-primary'">
+                            <div class="">{{$paquete_destino['destinos']['nombre']}}</div>
+                        </li>
+{{--                        <li @click="openDes = 2" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openDes == 2 ? 'bg-primary text-white' : 'bg-white hover:text-primary'">--}}
+{{--                            <div class="">Full Itinerary</div>--}}
+{{--                        </li>--}}
+                        @endforeach
+                    </ul>
+                </div>
+
+                <section class="mt-6 grid grid-cols-1  gap-4">
+                    <div class="col-span-2 order-2 md:order-1">
+                        @foreach($paquete['paquetes_destinos'] as $paquete_destino)
+                        <div x-show="openDes === {{$loop->iteration}}" x-transition:enter="transition duration-500 transform ease-in" x-transition:enter-start="opacity-0">
+{{--                            <div class="">{{$paquete_destino['destinos']['nombre']}}</div>--}}
+                            <div class="grid grid-cols-1">
+                                @foreach($hoteles_destinos->where('iddestinos', $paquete_destino->destinos->id) as $hoteles_destino)
+                                    <div class="grid grid-cols-3 gap-4 mb-4 border">
+                                        <div class="col-span-3 md:col-span-1">
+                                            {{--                @if($hotel->imagen)--}}
+                                            {{--                    <img src="{{$hotel->imagen}}" alt="{{$hotel->nombre}}" class="object-cover w-full h-full">--}}
+                                            {{--                @else--}}
+                                            <img src="{{$hoteles_destino->hotel->imagen}}" alt="" class="object-cover w-full h-full">
+                                            {{--                @endif--}}
+
+                                        </div>
+                                        <div class="col-span-3 md:col-span-2 p-6">
+                                            <h3 class="font-bold text-gray-500">{{$hoteles_destino->hotel->nombre}}</h3>
+                                            <div class="flex">
+                                                @for($i=0; $i < $hoteles_destino->hotel->estrellas; $i++)
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                    </svg>
+                                                @endfor
+                                            </div>
+                                            <div class="pt-2 flex text-sm mb-6">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                                <p class="ml-2">{{$hoteles_destino->hotel->direccion}}</p>
+                                            </div>
+
+                                            <div class="text-sm">
+                                                <p>{!! $hoteles_destino->hotel->descripcion !!}</p>
+                                            </div>
+
+                                            @php $services = explode(',', $hoteles_destino->hotel->servicios); @endphp
+{{--                                            <p class="text-gray-500"><b>{{__('message.hote_subtitle1')}}:</b></p>--}}
+
+                                            <div class="flex bg-blue-100 p-3 flex-wrap gap-4 mt-3 justify-center relative">
+                                            @foreach($services as $service)
+                                                <div class="inline-flex text-sm">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                    {{$service}}
+                                                </div>
+                                            @endforeach
+                                            </div>
+
+                                            <div class="flex mt-6 text-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                                <a href="{{$hoteles_destino->hotel->url}}" class="btn btn-outline-secondary text-blue-600 ml-2" target="_blank">{{ucfirst(strtolower($hoteles_destino->hotel->nombre))}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </section>
             </section>
 
         </section>
@@ -523,7 +627,7 @@
 {{--            </div>--}}
 {{--        </section>--}}
 
-        <section class="container hidden md:block" id="reviews">
+        <section class="container hidden md:block mt-4" id="reviews">
 
             <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
                 <span class="inline-block w-5 h-2.5 bg-secondary"></span> {{__('message.subtitle5')}}
@@ -708,7 +812,7 @@
 
 
         @livewire('page.form-footer-detail', ['paquete' => $paquete['titulo']], key('paquete'.$paquete['id']))
-    @endforeach
+
 
     @push('css')
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
