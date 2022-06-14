@@ -112,6 +112,16 @@
 
     </style>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E6CS6E9Z2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-0E6CS6E9Z2');
+    </script>
+    
 </head>
 <body class="bg-white dark:bg-gray-800 dark:text-gray-400 relative">
 {{--<div class="preload" id="preload">--}}
