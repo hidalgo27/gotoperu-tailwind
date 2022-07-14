@@ -24,10 +24,10 @@
         <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
             <div class="mx-auto w-3/4">
                 <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden">
-                    <h1 class="text-center text-3xl md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATIONS IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+                    <h1 class="text-center text-3xl md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
                 </div>
 
-                    <h1 class="text-center text-3xl hidden sm:inline-block md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATIONS IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+                    <h1 class="text-center text-3xl hidden sm:inline-block md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
 
 {{--                <h3 class="text-xl text-gray-50 hidden sm:block mb-6">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>--}}
 
@@ -245,14 +245,66 @@
             </div>
         </div>
     </section>
-    <section class="container grid grid-cols-1 md:grid-cols-4 py-12 bg-white dark:bg-gray-800 hidden sm:block">
-        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-            BOOK & TRAVEL WITH CONFIDENCE <br>Deposits from 10% : Free cancellation insurance available with 20% deposit
-            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+{{--    <section class="container grid grid-cols-1 md:grid-cols-4 py-12 bg-white dark:bg-gray-800 hidden sm:block">--}}
+{{--        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">--}}
+{{--            BOOK & TRAVEL WITH CONFIDENCE <br>Deposits from 10% : Free cancellation insurance available with 20% deposit--}}
+{{--            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>--}}
+{{--        </div>--}}
+{{--        <div class="col-span-4 text-center mt-4">--}}
+{{--            <a href="" class="text-secondary font-medium hover:text-gray-500 block">Book With Confidence - view flexible terms</a>--}}
+{{--            <a href="" class="text-secondary font-medium hover:text-gray-500 block">Travel With Confidence - view Health & Safety guarantees</a>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+
+    <section class="grid grid-cols-1 md:grid-cols-6">
+        <div class="md:col-span-4 relative bg-gray-700">
+            <div class="inset-0 flex items-center text-white w-full">
+                <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
+                    <div class="p-6 col-span-4">
+                        <h3 class="font-semibold block text-xl">Your Peruvian Travel Operator</h3>
+                        <p class="block my-6">
+                            Trust our team of local travel experts to plan an unforgettable trip full of must-see attractions and our favorite hidden gems of the land of the Incas. Our peruvian experts have all traveled down the same roads, trains and treks and know what you’re about to experience.
+                            Every Peru tour offered is regularly inspected to ensure our travelers have an amazing experience.
+                        </p>
+
+                        <div class="block mt-6">
+                            <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>
+                        </div>
+                    </div>
+                    <div class="col-span-2">
+                        <img src="{{asset('images/banners/joana.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-span-4 text-center mt-4">
-            <a href="" class="text-secondary font-medium hover:text-gray-500 block">Book With Confidence - view flexible terms</a>
-            <a href="" class="text-secondary font-medium hover:text-gray-500 block">Travel With Confidence - view Health & Safety guarantees</a>
+        <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+            <div class="">
+                <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Experts in tailor-made Peru travel</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Local staff with first-hand South America travel experience</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Dedicated to providing personalized, quality service</p>
+                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
+                <div class="block mt-6">
+                    <a href="{{route('book')}}" class="btn-primary">View More</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -591,58 +643,120 @@
     </section>
 
 
-    <section class="grid grid-cols-1 md:grid-cols-6 my-12">
-        <div class="md:col-span-4 relative bg-gray-700">
-            <div class="inset-0 flex items-center text-white w-full">
-                <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
-                    <div class="p-6 col-span-4">
-                        <h3 class="font-semibold block text-xl">Your Peruvian Travel Operator</h3>
-                        <p class="block my-6">
-                            Trust our team of local travel experts to plan an unforgettable trip full of must-see attractions and our favorite hidden gems of the land of the Incas. Our peruvian experts have all traveled down the same roads, trains and treks and know what you’re about to experience.
-                            Every Peru tour offered is regularly inspected to ensure our travelers have an amazing experience.
-                        </p>
+{{--    <section class="grid grid-cols-1 md:grid-cols-6 my-12">--}}
+{{--        <div class="md:col-span-4 relative bg-gray-700">--}}
+{{--            <div class="inset-0 flex items-center text-white w-full">--}}
+{{--                <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">--}}
+{{--                    <div class="p-6 col-span-4">--}}
+{{--                        <h3 class="font-semibold block text-xl">Your Peruvian Travel Operator</h3>--}}
+{{--                        <p class="block my-6">--}}
+{{--                            Trust our team of local travel experts to plan an unforgettable trip full of must-see attractions and our favorite hidden gems of the land of the Incas. Our peruvian experts have all traveled down the same roads, trains and treks and know what you’re about to experience.--}}
+{{--                            Every Peru tour offered is regularly inspected to ensure our travelers have an amazing experience.--}}
+{{--                        </p>--}}
 
-                        <div class="block mt-6">
-                            <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>
-                        </div>
-                    </div>
-                    <div class="col-span-2">
-                        <img src="{{asset('images/banners/joana.png')}}" alt="">
-                    </div>
-                </div>
+{{--                        <div class="block mt-6">--}}
+{{--                            <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-span-2">--}}
+{{--                        <img src="{{asset('images/banners/joana.png')}}" alt="">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">--}}
+{{--            <div class="">--}}
+{{--                <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>--}}
+{{--                <p class="flex my-4">--}}
+{{--                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                    </svg>--}}
+{{--                    Experts in tailor-made Peru travel</p>--}}
+{{--                <p class="flex my-4">--}}
+{{--                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                    </svg>--}}
+{{--                    Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>--}}
+{{--                <p class="flex my-4">--}}
+{{--                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                    </svg>--}}
+{{--                    Local staff with first-hand South America travel experience</p>--}}
+{{--                <p class="flex my-4">--}}
+{{--                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                    </svg>--}}
+{{--                    Dedicated to providing personalized, quality service</p>--}}
+{{--                --}}{{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
+{{--                <div class="block mt-6">--}}
+{{--                    <a href="{{route('book')}}" class="btn-primary">View More</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+
+    <section class="grid grid-cols-1 md:grid-cols-2 my-12">
+        <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+            <div class="py-12">
+                <h3 class="font-semibold text-2xl">
+                    ABOUT GOTOPERU
+                </h3>
+                <p class="block my-12">
+                    We are a travel operator with Headquarters in Cusco City and offices in the main destinations of Peru catering to travelers who want an original, authentic and unforgettable experience at the land of the Incas.
+                </p>
+
+                <h3 class="font-medium">Personalized Service</h3>
+                <p class="flex my-4 items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    First name basis always, since your own custom-made itinerary our dedicated local team, including representatives, guides, drivers will be always there for you on each day of your vacation. Plus a truly local assistance 24/7 on each destination.
+                </p>
+                <h3 class="font-medium">Confidence</h3>
+                <p class="flex my-4 items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    GOTOPERU is certified by the Peruvian Government, by the Ministry of Foreign Trade and Tourism of Peru (MINCETUR) . In addition we are also highly rated on Tripadvisor, Trustpilot and diverse well known travel forums.
+                </p>
             </div>
         </div>
-        <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
-            <div class="">
-                <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Experts in tailor-made Peru travel</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Local staff with first-hand South America travel experience</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Dedicated to providing personalized, quality service</p>
-                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
-                <div class="block mt-6">
-                    <a href="{{route('book')}}" class="btn-primary">View More</a>
+        <div class="bg-secondary text-white dark:bg-gray-800 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+            <div class="text-center">
+                <h3 class="font-semibold text-2xl">
+                    GET SOCIAL WITH US
+                </h3>
+                <p class="block my-12">
+                    Follow our Nordic adventures and share your own with us.
+                </p>
+                <div class="w-full md:w-1/2 mx-auto mt-12 bg-gray-100 bg-opacity-50 p-6 rounded">
+                    <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+                        <div class="">
+                            <a href="https://www.instagram.com/go.to.peru/" target="_blank">
+                                <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-2">
+                            </a>
+                        </div>
+                        <div class="">
+                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
+                                <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-2">
+                            </a>
+                        </div>
+                        <div class="">
+                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
+                                <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-2">
+                            </a>
+                        </div>
+                        <div class="">
+                            <a href="https://www.tiktok.com/@gotoperu" target="_blank">
+                                <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-2">
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
             </div>
         </div>
     </section>
-
 
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
@@ -653,6 +767,7 @@
             Peru is a country of history, culture, beauty, and adventure, with a full spectrum of possibilities for travelers. The ancient Inca City of Machu Picchu is one of the highlights of any trip to South America, but there is much more to discover throughout Peru, for example:
         </div>
     </section>
+
 
     <section>
         <div class="container">
@@ -818,68 +933,7 @@
     </div>
 
 
-    <section class="grid grid-cols-1 md:grid-cols-2">
-        <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
-            <div class="py-12">
-                <h3 class="font-semibold text-2xl">
-                    ABOUT GOTOPERU
-                </h3>
-                <p class="block my-12">
-                    We are a travel operator with Headquarters in Cusco City and offices in the main destinations of Peru catering to travelers who want an original, authentic and unforgettable experience at the land of the Incas.
-                </p>
 
-                <h3 class="font-medium">Personalized Service</h3>
-                <p class="flex my-4 items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    First name basis always, since your own custom-made itinerary our dedicated local team, including representatives, guides, drivers will be always there for you on each day of your vacation. Plus a truly local assistance 24/7 on each destination.
-                </p>
-                <h3 class="font-medium">Confidence</h3>
-                <p class="flex my-4 items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    GOTOPERU is certified by the Peruvian Government, by the Ministry of Foreign Trade and Tourism of Peru (MINCETUR) . In addition we are also highly rated on Tripadvisor, Trustpilot and diverse well known travel forums.
-                </p>
-            </div>
-        </div>
-        <div class="bg-secondary text-white dark:bg-gray-800 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
-            <div class="text-center">
-                <h3 class="font-semibold text-2xl">
-                    GET SOCIAL WITH US
-                </h3>
-                <p class="block my-12">
-                    Follow our Nordic adventures and share your own with us.
-                </p>
-                <div class="w-full md:w-1/2 mx-auto mt-12 bg-gray-100 bg-opacity-50 p-6 rounded">
-                    <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                        <div class="">
-                            <a href="https://www.instagram.com/go.to.peru/" target="_blank">
-                                <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-2">
-                            </a>
-                        </div>
-                        <div class="">
-                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
-                                <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-2">
-                            </a>
-                        </div>
-                        <div class="">
-                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
-                                <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-2">
-                            </a>
-                        </div>
-                        <div class="">
-                            <a href="https://www.tiktok.com/@gotoperu" target="_blank">
-                                <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-2">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
-            </div>
-        </div>
-    </section>
 
 
 
