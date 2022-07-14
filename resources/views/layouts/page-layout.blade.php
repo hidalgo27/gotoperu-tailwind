@@ -452,7 +452,7 @@
                         @endif
 
                     @endforeach
-                    <a href="https://gotolatam.com/" target="_blank" class="dark:text-gray-400 menu-list block relative font-bold"><span class="text-secondary">South America Travel</span></a>
+                    <a href="https://gotolatam.com/" target="_blank" class="dark:text-gray-400 menu-list block relative">South America Travel</a>
 
 
 {{--                    @foreach($category as $categories)--}}
