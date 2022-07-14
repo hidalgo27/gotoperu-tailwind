@@ -24,14 +24,14 @@ class FormDetail extends Component
             'email' => 'required|email'
         ]);
 
-        $from = 'english@gotoperu.com';
+        $from = 'info@gotoperu.com';
 
 
         Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
             $messaje->to($this->email, $this->name)
                 ->subject('GotoPeru')
                 /*->attach('ruta')*/
-                ->from('english@gotoperu.com', 'GotoPeru');
+                ->from('info@gotoperu.com', 'GotoPeru');
         });
         Mail::send(['html' => 'notifications.page.admin-form-contact-detail'], [
             'paquete' => $this->paquete,
@@ -45,7 +45,7 @@ class FormDetail extends Component
                 ->subject('GotoPeru')
 //                    ->cc($from2, 'GotoPeru')
                 /*->attach('ruta')*/
-                ->from('english@gotoperu.com', 'GotoPeru');
+                ->from('info@gotoperu.com', 'GotoPeru');
         });
 
 

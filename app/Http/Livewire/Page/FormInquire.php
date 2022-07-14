@@ -28,7 +28,7 @@ class FormInquire extends Component
             'email' => 'required|email'
         ]);
 
-        $from = 'english@gotoperu.com';
+        $from = 'info@gotoperu.com';
 
         $destinations_s = '';
         foreach ($this->values_destinations as $item) {
@@ -44,7 +44,7 @@ class FormInquire extends Component
             $messaje->to($this->email, $this->name)
                 ->subject('GotoPeru')
                 /*->attach('ruta')*/
-                ->from('english@gotoperu.com', 'GotoPeru');
+                ->from('info@gotoperu.com', 'GotoPeru');
         });
         Mail::send(['html' => 'notifications.page.admin-form-contact'], [
             'nombre' => $this->name,
@@ -62,7 +62,7 @@ class FormInquire extends Component
                 ->subject('GotoPeru')
 //                    ->cc($from2, 'GotoPeru')
                 /*->attach('ruta')*/
-                ->from('english@gotoperu.com', 'GotoPeru');
+                ->from('info@gotoperu.com', 'GotoPeru');
         });
 
         $this->reset('values_destinations');
