@@ -626,7 +626,7 @@
 
             <div class="flex flex-col justify-between pt-5 pb-10 border-t border-gray-500 sm:flex-row">
                 <p class="text-sm dark:text-gray-300">
-                    © Copyright 2021 GotoPeru. All rights reserved.
+                    © Copyright 2022 GotoPeru. All rights reserved.
                 </p>
 {{--                <div class="flex items-center mt-4 space-x-4 sm:mt-0">--}}
 {{--                    <a href="/" class="transition-colors duration-300 text-blue-100 hover:text-blue-400">--}}
