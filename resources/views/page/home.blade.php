@@ -256,7 +256,8 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-    <section class="grid grid-cols-1 md:grid-cols-6">
+    <div class="hidden sm:inline-flex ">
+    <section class="grid grid-cols-1 md:grid-cols-6  ">
         <div class="md:col-span-4 relative bg-gray-700">
             <div class="inset-0 flex items-center text-white w-full">
                 <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
@@ -307,7 +308,7 @@
             </div>
         </div>
     </section>
-
+    </div>
 
 
 {{--    <div class="w-4/5 mx-auto my-20 bg-white">--}}
