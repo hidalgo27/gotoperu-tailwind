@@ -23,8 +23,12 @@
 
         <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
             <div class="mx-auto w-3/4">
+                <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden">
+                    <h1 class="text-center text-3xl md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATIONS IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+                </div>
 
-                <h1 class="text-center text-3xl md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATIONS IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+                    <h1 class="text-center text-3xl hidden sm:inline-block md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATIONS IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+
 {{--                <h3 class="text-xl text-gray-50 hidden sm:block mb-6">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>--}}
 
 {{--                <h4 class="font-bold text-secondary mt-6">Destinations</h4>--}}
