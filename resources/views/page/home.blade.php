@@ -213,7 +213,39 @@
     </section>
 
 
-    <section class="container grid grid-cols-1 md:grid-cols-4 py-12 bg-white">
+    <section class="grid grid-cols-1 md:grid-cols-6 sm:hidden">
+        <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+            <div class="text-center">
+                <img src="{{asset('images/banners/joana.png')}}" alt="" class="w-1/2 mx-auto">
+                <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Experts in tailor-made Peru travel</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Local staff with first-hand South America travel experience</p>
+                <p class="flex my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Dedicated to providing personalized, quality service</p>
+                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
+{{--                <div class="block mt-6">--}}
+{{--                    <a href="{{route('book')}}" class="btn-primary">View More</a>--}}
+{{--                </div>--}}
+            </div>
+        </div>
+    </section>
+    <section class="container grid grid-cols-1 md:grid-cols-4 py-12 bg-white dark:bg-gray-800 hidden sm:block">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
             BOOK & TRAVEL WITH CONFIDENCE <br>Deposits from 10% : Free cancellation insurance available with 20% deposit
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
