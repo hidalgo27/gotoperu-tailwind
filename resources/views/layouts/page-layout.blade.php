@@ -606,8 +606,9 @@
 
                     </p>
                     <div class="bg-gray-900 p-4 rounded-lg shadow-inner">
-                        <p class="mb-2 text-gray-300">
-                            {{__('message.footer_par1')}}
+                        <p class="mb-2 text-gray-300 text-sm">
+{{--                            {{__('message.footer_par1')}}--}}
+                            CONTACT US: <br> SALES: <br>info@gotoperu.com <br> OPERATIONS 24/7: <br> +51 933358040
                         </p>
 {{--                        <a href="" class="btn-primary lg:px-4 block text-center mt-4">Contact Us</a>--}}
 {{--                                                    @livewire('page.form-inquire')--}}
