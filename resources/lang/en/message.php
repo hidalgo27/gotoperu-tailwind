@@ -8,7 +8,7 @@ return [
     'nav_item1' => 'Peru Travel Packages',
     'nav_item2' => 'Only Tours',
     'nav_item3' => 'Destination',
-    'nav_item4' => 'Holels',
+    'nav_item4' => 'Hotels',
     'nav_item5' => 'About Us',
     'nav_item6' => 'Reviews',
     'nav_item7' => 'Social Responsability',
