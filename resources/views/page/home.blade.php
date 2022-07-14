@@ -11,7 +11,7 @@
 
         </div>
 
-        <img src="{{asset('images/banners/confidence/experienced-tour-guides.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
+        <img src="{{asset('images/p-cusco-1.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
 
 
 {{--        </video>--}}
@@ -32,7 +32,7 @@
 {{--                    <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>--}}
 {{--                @endforeach--}}
 {{--                <br>--}}
-                <div class="fixed left-0 ml-3 bottom-0 z-10">
+                <div class="fixed left-0 ml-3 bottom-0 z-10 hidden sm:inline-block">
                     <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">
                     <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>
                     <span class="my-5 block"></span>
