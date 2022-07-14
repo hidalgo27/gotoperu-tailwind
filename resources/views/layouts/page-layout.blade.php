@@ -121,7 +121,7 @@
 
         gtag('config', 'G-0E6CS6E9Z2');
     </script>
-    
+
 </head>
 <body class="bg-white dark:bg-gray-800 dark:text-gray-400 relative">
 {{--<div class="preload" id="preload">--}}
@@ -263,21 +263,22 @@
                     </svg>',
                     'nav_sub_links' => []
         ],
-        [
-            'name' => __('message.nav_item7'),
-            'state' => '3',
-            'route' => route('responsability'),
-            'active' => request()->routeIs('responsability'),
-            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>',
-                'nav_sub_links' => []
-        ],
+
 
     ];
 
 @endphp
 
+{{--[--}}
+{{--'name' => __('message.nav_item7'),--}}
+{{--'state' => '3',--}}
+{{--'route' => route('responsability'),--}}
+{{--'active' => request()->routeIs('responsability'),--}}
+{{--'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />--}}
+{{--</svg>',--}}
+{{--'nav_sub_links' => []--}}
+{{--],--}}
 
     <div class="fixed bottom-0 right-0 z-40 py-6 px-7 mb-24 sm:mb-0 sm:inline-flex">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
@@ -287,7 +288,7 @@
         </a>
     </div>
     <div class="fixed bottom-0 right-0 z-40 py-5 px-4 mb-24 sm:mb-0 sm:inline-flex">
-        <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=51960680005" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
@@ -406,55 +407,59 @@
             <div class="bg-gray-50 opacity-90 shadow-lg dark:bg-gray-800 hidden md:inline-flex">
                 <div class="container flex items-center justify-center mx-auto text-gray-600 capitalize " x-data="{menu : false}">
                     {{--                    <a href="#" class="text-gray-800 text-sm dark:text-gray-200 border-b border-transparent transition duration-500 hover:border-blue-500 mx-1.5 sm:mx-6">Peru Travel Packages</a>--}}
-{{--                    @foreach($nav_links as $nav_link)--}}
-{{--                        @if($nav_link['state'] > 1)--}}
-{{--                            <div class="relative">--}}
+                    @foreach($nav_links as $nav_link)
+                        @if($nav_link['state'] > 1)
+                            <div class="relative">
 
-{{--                             @if($nav_link['nav_sub_links'])--}}
-{{--                                    <span @click="menu = !menu" class="dark:text-gray-400 flex items-center menu-list block cursor-pointer {{ $nav_link['active'] == 1 ? 'active' : '' }}">--}}
-{{--                                        {{ $nav_link['name'] }}--}}
-{{--                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />--}}
-{{--                                        </svg>--}}
-{{--                                    </span>--}}
-{{--                                <div class="bg-gray-50 absolute top-0 rounded-lg mt-16 w-72 z-50 shadow" x-show="menu" x-on:click.away="menu = false" x-transition>--}}
-{{--                                    <p class="font-bold text-gray-500 text-xs px-5 py-3">INFORMATION</p>--}}
-
-
-{{--                                    @foreach($nav_link['nav_sub_links'] as $nav_sub)--}}
-
-{{--                                        @foreach($sub_data as $sub_data_item)--}}
-
-{{--                                            <a href="{{ $sub_data_item['route'] }}" class="w-full text-sm flex items-center inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-500 rounded hover:bg-gray-700 hover:text-secondary menu-pop {{ $sub_data_item['active'] == 1 ? 'active' : '' }}">--}}
-{{--                                                    <span class="mr-1">--}}
-{{--                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />--}}
-{{--                                                        </svg>--}}
-{{--                                                    </span>--}}
-{{--                                                <span class="">--}}
-{{--                                                        {{ $sub_data_item['name'] }}--}}
-{{--                                                    </span>--}}
-{{--                                            </a>--}}
-{{--                                        @endforeach--}}
-
-{{--                                    @endforeach--}}
-{{--                                </div>--}}
-{{--                                @else--}}
-{{--                                    <a href="{{ $nav_link['route'] }}" class="dark:text-gray-400 menu-list block relative {{ $nav_link['active'] == 1 ? 'active' : '' }}">--}}
-{{--                                        {{ $nav_link['name'] }}--}}
-{{--                                    </a>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-
-{{--                        @endif--}}
-{{--                    @endforeach--}}
+                             @if($nav_link['nav_sub_links'])
+                                    <span @click="menu = !menu" class="dark:text-gray-400 flex items-center menu-list block cursor-pointer {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+                                        {{ $nav_link['name'] }}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </span>
+                                <div class="bg-gray-50 absolute top-0 rounded-lg mt-16 w-72 z-50 shadow" x-show="menu" x-on:click.away="menu = false" x-transition>
+                                    <p class="font-bold text-gray-500 text-xs px-5 py-3">INFORMATION</p>
 
 
-                    @foreach($category as $categories)
-                    <a href="{{ route('category.show', $categories) }}" class="dark:text-gray-400 menu-list block relative {{ $nav_link['active'] == 1 ? 'active' : '' }}">
-                        {{ $categories->nombre }}
-                    </a>
+                                    @foreach($nav_link['nav_sub_links'] as $nav_sub)
+
+                                        @foreach($sub_data as $sub_data_item)
+
+                                            <a href="{{ $sub_data_item['route'] }}" class="w-full text-sm flex items-center inline-flex transition-colors duration-200 block px-4 py-2 text-normal text-gray-500 rounded hover:bg-gray-700 hover:text-secondary menu-pop {{ $sub_data_item['active'] == 1 ? 'active' : '' }}">
+                                                    <span class="mr-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </span>
+                                                <span class="">
+                                                        {{ $sub_data_item['name'] }}
+                                                    </span>
+                                            </a>
+                                        @endforeach
+
+                                    @endforeach
+
+                                </div>
+                                @else
+                                    <a href="{{ $nav_link['route'] }}" class="dark:text-gray-400 menu-list block relative {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+                                        {{ $nav_link['name'] }}
+                                    </a>
+                                @endif
+
+                            </div>
+
+                        @endif
+
                     @endforeach
+                    <a href="https://gotolatam.com/" target="_blank" class="dark:text-gray-400 menu-list block relative font-bold"><span class="text-secondary">South America Travel</span></a>
+
+
+{{--                    @foreach($category as $categories)--}}
+{{--                    <a href="{{ route('category.show', $categories) }}" class="dark:text-gray-400 menu-list block relative {{ $nav_link['active'] == 1 ? 'active' : '' }}">--}}
+{{--                        {{ $categories->nombre }}--}}
+{{--                    </a>--}}
+{{--                    @endforeach--}}
                 </div>
             </div>
 

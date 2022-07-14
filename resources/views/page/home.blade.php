@@ -23,14 +23,20 @@
 
         <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
             <div class="mx-auto w-3/4">
-                <h1 class="text-center text-3xl md:text-5xl mb-6 font-bold font-cinzel text-secondary">PLAN YOUR PERU VACATION</h1>
-                <h3 class="text-xl text-gray-50 hidden sm:block">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>
 
-                <h4 class="font-bold text-secondary mt-6">Destinations</h4>
-                @foreach($destination as $destinations)
-                    <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>
-                @endforeach
-                <span class="my-5 block"></span>
+                <h1 class="text-center text-3xl md:text-4xl my-6 font-normal font-cinzel text-white">My dream vacation to Peru!</h1>
+{{--                <h3 class="text-xl text-gray-50 hidden sm:block mb-6">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>--}}
+
+{{--                <h4 class="font-bold text-secondary mt-6">Destinations</h4>--}}
+{{--                @foreach($destination as $destinations)--}}
+{{--                    <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>--}}
+{{--                @endforeach--}}
+{{--                <br>--}}
+                <div class="fixed left-0 ml-3 bottom-0 z-10">
+                    <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">
+                    <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>
+                    <span class="my-5 block"></span>
+                </div>
 {{--                @livewire('page.form-inquire')--}}
             </div>
         </div>
