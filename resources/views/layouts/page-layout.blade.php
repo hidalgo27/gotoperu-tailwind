@@ -299,7 +299,7 @@
         </a>
     </div>
     <div class="fixed bottom-0 right-0 z-40 py-5 px-4 mb-12 sm:mb-20 sm:inline-flex">
-        <a href="https://api.whatsapp.com/send?phone=51960680005" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
@@ -469,7 +469,7 @@
                         @endif
 
                     @endforeach
-                    <a href="https://gotolatam.com/" target="_blank" class="dark:text-gray-400 menu-list block relative">South America Travel</a>
+                    <a href="https://gotolatam.com/" target="_blank" class="dark:text-gray-400 menu-list block relative">South America Packages</a>
 
 
 {{--                    @foreach($category as $categories)--}}
