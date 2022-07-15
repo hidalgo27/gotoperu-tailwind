@@ -24,10 +24,10 @@
         <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
             <div class="mx-auto w-3/4">
                 <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden">
-                    <h1 class="text-center text-3xl md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+                    <h1 class="text-center text-lg md:text-3xl my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
                 </div>
 
-                    <h1 class="text-center text-3xl hidden sm:inline-block md:text-lg my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+                    <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
 
 {{--                <h3 class="text-xl text-gray-50 hidden sm:block mb-6">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>--}}
 
@@ -36,7 +36,7 @@
 {{--                    <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>--}}
 {{--                @endforeach--}}
 {{--                <br>--}}
-                <div class="fixed left-0 ml-3 bottom-0 z-10 hidden sm:inline-block">
+                <div class="fixed left-0 ml-3 bottom-0 mb-2 z-10 hidden sm:inline-block">
                     <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">
                     <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>
                     <span class="my-5 block"></span>
@@ -97,6 +97,7 @@
 {{--            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale">--}}
 {{--        </div>--}}
 {{--    </section>--}}
+
 
 
     <section class="bg-gray-50 hidden sm:flex dark:bg-gray-700">
@@ -212,6 +213,15 @@
     </div>
     </section>
 
+    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
+        <div class="text-center w-full col-span-4 items-center text-3xl text-secondary dark:text-secondary font-bold gap-2">
+            PERU TRAVEL PACKAGES
+            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
+        <div class="col-span-4 text-center mt-4">
+            GOTOPERU is a family-owned company committed to offering the highest level of customer service possible. The personnel at GOTOPERU will ensure that you have an unforgettable vacation. Peru is one of the world's most diversified nations, boasting stunning old cultures and breathtaking natural beauty. Explore the world with GOTOPERU.
+        </div>
+    </section>
 
     <section class="grid grid-cols-1 md:grid-cols-6 sm:hidden">
         <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
@@ -401,6 +411,26 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
+
+
+    <div class="dark:bg-gray-700">
+    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
+        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+            Most Popular Travel Packages
+            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
+    </section>
+
+    <section class="px-6 mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+
+        @foreach($paquete_recommended as $paquete)
+            <x-packages-card :paquete="$paquete"></x-packages-card>
+        @endforeach
+
+
+    </section>
+    </div>
+
     <section class="grid md:grid-cols-2 sm:grid-cols-1 mx-auto gap-0">
 
         @foreach($category_block as $category_b)
@@ -416,7 +446,7 @@
                             <div class="font-normal text-sm">
                                 {!! $category_b->resumen !!}
                             </div>
-{{--                            <a href="" class="float-right ">View self-drive tours</a>--}}
+                            {{--                            <a href="" class="float-right ">View self-drive tours</a>--}}
                         </div>
                     </div>
                 </a>
@@ -427,46 +457,28 @@
 
     <section class="grid md:grid-cols-5 sm:grid-cols-1">
         @foreach($category_footer as $category_f)
-        <div class="overflow-hidden relative group">
-            <a href="{{ route('category.show', $category_f) }}">
-                <div class="relative">
-                    <img src="{{$category_f->imagen}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
-                    <div class="absolute inset-0 gradient-cicle-gray"></div>
-                </div>
-                <div class="absolute w-full bottom-0 inset-x-0 p-3">
-                    <div class="py-2 px-4 text-gray-100 shadow-lg rounded-lg">
-                        <h2 class="text-lg font-semibold">{{$category_f->nombre}}</h2>
-                        <div class="font-normal text-sm">
-                            {!! $category_f->resumen !!}
-                        </div>
-{{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
+            <div class="overflow-hidden relative group">
+                <a href="{{ route('category.show', $category_f) }}">
+                    <div class="relative">
+                        <img src="{{$category_f->imagen}}" alt="" class="h-20r object-cover min-w-full  transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105">
+                        <div class="absolute inset-0 gradient-cicle-gray"></div>
                     </div>
-                </div>
-            </a>
-        </div>
+                    <div class="absolute w-full bottom-0 inset-x-0 p-3">
+                        <div class="py-2 px-4 text-gray-100 shadow-lg rounded-lg">
+                            <h2 class="text-lg font-semibold">{{$category_f->nombre}}</h2>
+                            <div class="font-normal text-sm">
+                                {!! $category_f->resumen !!}
+                            </div>
+                            {{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
+                        </div>
+                    </div>
+                </a>
+            </div>
         @endforeach
     </section>
 
 
-    <div class="dark:bg-gray-700 py-12">
-    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
-        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-            Most Popular Travel Packages
-            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
-        </div>
-    </section>
-
-    <section class="px-6 mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-
-        @foreach($paquete_recommended as $paquete)
-            <x-packages-card-default :paquete="$paquete"></x-packages-card-default>
-        @endforeach
-
-
-    </section>
-    </div>
-
-    <div class="bg-gray-100 py-12 mt-12 dark:bg-gray-800">
+    <div class="bg-gray-100 pt-12  dark:bg-gray-800">
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
             Recomended Travel Packages
@@ -475,7 +487,7 @@
     </section>
     <section class="px-6 mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-12">
         @foreach($paquetes_features as $paquete)
-            <x-packages-card-default :paquete="$paquete"></x-packages-card-default>
+            <x-packages-card :paquete="$paquete"></x-packages-card>
         @endforeach
 
 

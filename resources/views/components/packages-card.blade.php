@@ -2,7 +2,7 @@
 <div class="group">
     <div class="overflow-hidden relative">
         <div class="relative">
-            <img src="{{$paquete->imagen}}" alt="{{ $paquete['titulo'] }}" class="object-cover transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105"/>
+            <img src="{{$paquete->imagen}}" alt="{{ $paquete['titulo'] }}" class="object-cover h-96 w-full transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105"/>
             <div class="absolute inset-0 gradient-cicle-gray"></div>
         </div>
         <div class="absolute inset-x-0 bottom-0 w-full p-6">

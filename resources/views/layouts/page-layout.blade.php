@@ -291,14 +291,14 @@
 {{--'nav_sub_links' => []--}}
 {{--],--}}
 
-    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 mb-12 sm:mb-0 sm:inline-flex">
+    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 mb-12 sm:mb-20 sm:inline-flex">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <span class="flex relative h-10 w-10">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
             </span>
         </a>
     </div>
-    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 mb-12 sm:mb-0 sm:inline-flex">
+    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 mb-12 sm:mb-20 sm:inline-flex">
         <a href="https://api.whatsapp.com/send?phone=51960680005" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
@@ -407,11 +407,11 @@
                     <span class="text-xs block text-right">US</span>
                     (202) 491-1478
                 </div>
-                <div class="cursor-pointer flex items-center" @click="menu = !menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
-                    </svg>
-                </div>
+{{--                <div class="cursor-pointer flex items-center" @click="menu = !menu">--}}
+{{--                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />--}}
+{{--                    </svg>--}}
+{{--                </div>--}}
             </div>
         </div>
     </header>

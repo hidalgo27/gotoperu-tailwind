@@ -36,7 +36,7 @@
             @if($paquete['is_p_t'] == 0)
 
                         @if($paquete['precio_tours'] > 0)
-                             ${{$paquete['precio_tours']}} <span class="text-sm text-secondary">usd</span>sdsd
+                             ${{$paquete['precio_tours']}} <span class="text-sm text-secondary">usd</span>
                         @else
                             <span class="text-red-500">{{__('message.pack_par6')}}</span>
                         @endif
