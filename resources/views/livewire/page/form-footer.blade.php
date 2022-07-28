@@ -187,7 +187,7 @@
 {{--            </button>--}}
 
 
-            <button type="submit" class="btn-primary">
+            <button type="submit" class="btn-primary"  wire:click="load_submit">
                 {{__('message.button_send')}} <span wire:loading wire:target="load_submit"><div class="lds-hourglass"></div></span>
             </button>
         </div>
