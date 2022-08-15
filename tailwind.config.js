@@ -1,5 +1,6 @@
 // const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors')
+const {color} = require("tailwindcss/lib/util/dataTypes");
 module.exports = {
 
     purge: [
@@ -18,6 +19,8 @@ module.exports = {
             gray: colors.gray,
             white: colors.white,
             yellow: colors.yellow,
+            fuchsia: colors.fuchsia,
+            cyan: colors.cyan,
             primary: '#7F8429',
             secondary: '#f9a825',
         },

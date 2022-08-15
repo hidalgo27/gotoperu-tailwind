@@ -127,16 +127,6 @@
 
 {{--        <div x-show="data">--}}
 
-            <div class=" mx-auto mt-3 grid grid-cols-6 gap-2 flex">
-                <div class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                    </svg>
-                </div>
-                <textarea wire:model="comment" class="col-span-6 md:col-span-5 bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 bg-gray-50 dark:bg-gray-700  w-full focus:outline-none" rows="4" placeholder="{{__('message.form_footer_par9')}}"></textarea>
-    {{--            <textarea name="" id="" cols="30" rows="10"></textarea>--}}
-                <p class="text-xs col-span-6 text-right text-gray-400 font-bold">{{__('message.form_footer_par13')}}</p>
-            </div>
 
             <div class=" mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
                 <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
@@ -176,6 +166,18 @@
                     <input wire:model="phone" id="phone" type="text" class="phone_number bg-gray-50 dark:bg-gray-700 border border-gray-400 p-3 md:p-5 bg-gray-50 dark:bg-gray-700  w-full focus:outline-none" placeholder=" {{__('message.form_footer_par12')}}">
                 </div>
             </div>
+
+            <div class=" mx-auto mt-3 grid grid-cols-6 gap-2 flex">
+                <div class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                </div>
+                <textarea wire:model="comment" class="col-span-6 md:col-span-5 bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 bg-gray-50 dark:bg-gray-700  w-full focus:outline-none" rows="4" placeholder="{{__('message.form_footer_par9')}}"></textarea>
+                {{--            <textarea name="" id="" cols="30" rows="10"></textarea>--}}
+                <p class="text-xs col-span-6 text-right text-gray-400 font-bold">{{__('message.form_footer_par13')}}</p>
+            </div>
+
 {{--        </div>--}}
         </div>
 
@@ -222,7 +224,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
-        
+
 
             let input = document.querySelector(".phone_number");
 

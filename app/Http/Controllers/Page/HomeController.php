@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Http;
 class HomeController extends Controller
 {
     public function index(){
+
+//        $pipedrive = new Pipedrive(config('services.pipedrive.token'));
+//        $organizations = $pipedrive->organizations()->all();
+
         $paquete_recommended = TPaquete::
         with('imagen_paquetes','paquetes_destinos.destinos','paquetes_categoria.categoria', 'precio_paquetes')
             ->where('estado', '1')
@@ -79,6 +83,7 @@ class HomeController extends Controller
 //        with('imagen_paquetes','paquetes_destinos.destinos.destino_imagen','paquetes_categoria.categoria', 'precio_paquetes', 'paquete_itinerario')->get();
 
         $testinomials = TTestimonio::all();
+        $testinomials_r = TTestimonio::inRandomOrder()->limit(1)->get();
         $category = TCategoria::all();
 
         $hoteles_destinos = THotelDestino::all();
@@ -88,7 +93,8 @@ class HomeController extends Controller
                 'paquete',
                 'category',
                 'testinomials',
-                'hoteles_destinos'
+                'hoteles_destinos',
+                'testinomials_r'
             ));
     }
 
