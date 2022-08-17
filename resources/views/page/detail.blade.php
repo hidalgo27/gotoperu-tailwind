@@ -5,7 +5,7 @@
             @foreach($paquete['paquetes_destinos'] as $paquete_destino)
                 @foreach($paquete_destino['destinos']['destino_imagen'] as $destino_imagen)
                     <div class="swiper-slide">
-                        <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-60vh w-full object-top bg-yellow-300">
+                        <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">
                     </div>
                 @endforeach
             @endforeach
@@ -24,7 +24,7 @@
 {{--            <div class="swiper-slide">Slide 9</div>--}}
         </div>
 {{--        <div class="swiper-pagination"></div>--}}
-        <div class="absolute bottom-0 right-0 m-6 z-10">
+{{--        <div class="absolute bottom-0 right-0 m-6 z-10">--}}
 {{--            <h1 class="text-3xl md:text-5xl font-semibold mb-3 text-gray-50">{{ $paquete['titulo'] }}</h1>--}}
 
 
@@ -63,26 +63,26 @@
 {{--                                </div>--}}
 {{--                            @endif--}}
 {{--                        </div>--}}
-                        <div class="p-6 bg-white border">
-                            <h5>{{ $paquete['duracion'] }} {{__('message.pack_par4')}}</h5>
-                            <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2>
-                            <div class="flex -space-x-1 overflow-hidden">
-                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
-                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                            </div>
-                            <div class="mt-3 text-sm text-gray-600">
-                                <p>Get a travel expert to plan your dram vacation</p>
-                                <a href="#form-dream-adventure" class="btn btn-secondary inline-flex mt-3">Inquire</a>
+{{--                        <div class="p-6 bg-white border">--}}
+{{--                            <h5>{{ $paquete['duracion'] }} {{__('message.pack_par4')}}</h5>--}}
+{{--                            <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2>--}}
+{{--                            <div class="flex -space-x-1 overflow-hidden">--}}
+{{--                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">--}}
+{{--                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">--}}
+{{--                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">--}}
+{{--                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="mt-3 text-sm text-gray-600">--}}
+{{--                                <p>Get a travel expert to plan your dream vacation</p>--}}
+{{--                                <a href="#form-dream-adventure" class="btn btn-secondary inline-flex mt-3">Inquire</a>--}}
 {{--                                @foreach($paquete['paquetes_destinos'] as $paquete_destino)--}}
 {{--                                    {{$paquete_destino['destinos']['nombre']}}--}}
 {{--                                    @if ($loop->iteration < count($paquete['paquetes_destinos'])) , @else . @endif--}}
 {{--                                @endforeach--}}
-                            </div>
-                        </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-        </div>
+{{--        </div>--}}
     </div>
 {{--        <section class="relative">--}}
 {{--            @foreach($paquete['imagen_paquetes'] as $imagen)--}}
@@ -392,7 +392,15 @@
                                                 <div class="text-4xl font-semibold text-gray-600">
                                                     {{--                                                                            <span> {{__('message.pack_par5')}} </span>--}}
                                                     <span class="text-base block">{{ $paquete['duracion'] }} {{__('message.pack_par4')}}</span>
-                                                    <p class="text-xs font-light mt-3">Price p.p. from</p>
+                                                    <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2>
+                                                    <div class="flex -space-x-1 overflow-hidden">
+                                                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
+                                                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                                    </div>
+                                                    <p class="text-sm font-normal mt-2">Get a travel expert to plan your dream vacation</p>
+                                                    <p class="text-xs font-light mt-2">Price p.p. from</p>
                                                     <span>${{$precio['precio_d']}}</span>
                                                     <span class="text-sm"> usd</span>
                                                     <span class="block text-red-500 mt-3 text-xs font-normal">See book With Confidence terms</span>
@@ -708,49 +716,49 @@
                                 </div>
 
                             </div>
-                        <div class="grid md:grid-cols-2 gap-4 md:mt-5">
-                            <div class="overflow-x-scroll">
-                                <p class="font-semibold text-gray-500 text-center">Prices are based on triple occupancy.</p>
-                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
-                                    <thead class="bg-gray-700 text-white">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par9')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par10')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par11')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par12')}}
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="bg-gray-50 divide-y divide-gray-200">
+{{--                        <div class="grid md:grid-cols-2 gap-4 md:mt-5">--}}
+{{--                            <div class="overflow-x-scroll">--}}
+{{--                                <p class="font-semibold text-gray-500 text-center">Prices are based on triple occupancy.</p>--}}
+{{--                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">--}}
+{{--                                    <thead class="bg-gray-700 text-white">--}}
+{{--                                    <tr>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par9')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par10')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par11')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par12')}}--}}
+{{--                                        </th>--}}
+{{--                                    </tr>--}}
+{{--                                    </thead>--}}
+{{--                                    <tbody class="bg-gray-50 divide-y divide-gray-200">--}}
 
-                                    <tr>
+{{--                                    <tr>--}}
 
-                                        @foreach($paquete['precio_paquetes'] as $precio)
-                                            @if($precio['precio_t'] > 0)
-                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">${{$precio['precio_t']}}<small>USD</small></td>
-                                            @else
-                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td>
-                                            @endif
-                                        @endforeach
+{{--                                        @foreach($paquete['precio_paquetes'] as $precio)--}}
+{{--                                            @if($precio['precio_t'] > 0)--}}
+{{--                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">${{$precio['precio_t']}}<small>USD</small></td>--}}
+{{--                                            @else--}}
+{{--                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
 
-                                    </tr>
+{{--                                    </tr>--}}
 
-                                    <!-- More people... -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+{{--                                    <!-- More people... -->--}}
+{{--                                    </tbody>--}}
+{{--                                </table>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
 
-                            <p class="text-sm mt-5 text-gray-500">{{__('message.pack_deta_par6')}}</p>
+                            <p class="text-sm text-gray-500">{{__('message.pack_deta_par6')}}</p>
 
 
                     </section>
@@ -761,7 +769,7 @@
 
 
     <section class="bg-secondary bg-opacity-60 my-12 py-12">
-        <div class="container text-center  grid  grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="container text-center grid  grid-cols-1 md:grid-cols-2 gap-6">
             <div class="text-center">
 
                 <div class="flex mb-3 items-center text-center justify-center text-lg text-gray-700 font-bold gap-2">
@@ -771,7 +779,7 @@
 {{--                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
                     </div> {{__('message.pack_deta_par7')}}
                 </div>
-                <div class="">
+                <div class="dark:text-white">
                     {!! $paquete['incluye'] !!}
                 </div>
 
@@ -785,7 +793,7 @@
 {{--                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
                     </div> {{__('message.pack_deta_par8')}}
                 </div>
-                <div class="text-center">
+                <div class="dark:text-white">
                     {!! $paquete['noincluye'] !!}
                 </div>
             </section>

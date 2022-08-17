@@ -1612,6 +1612,8 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 80vh;
 }.h-60vh{
     height: 60vh;
+}.h-50vh{
+    height: 50vh;
 }.h-85vh{
     height: 85vh;
 }.h-75vh{
