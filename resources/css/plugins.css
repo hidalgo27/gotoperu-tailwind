@@ -214,3 +214,10 @@
     width: 100%;
 }
 
+.cdsROW.narrow{
+    text-align: center;
+    width: 100% !important;
+}
+.cdsROW.cx_brand_refresh .logo img{
+    margin: 0 auto;
+}

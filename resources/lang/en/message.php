@@ -227,7 +227,7 @@ return [
 
     'form_footer_title' => 'FREE QUOTE',
     'form_footer_par1' => "Select your travel preferences and we will send you a travel proposal.",
-    'form_footer_subtitle1' => 'HOTEL QUALITY',
+    'form_footer_subtitle1' => 'HOTEL CATEGORY',
     'form_footer_par2' => '(OPTIONAL. You may choose more than one)',
     'form_footer_subtitle2' => 'NUMBER OF TRAVELERS',
     'form_footer_subtitle3' => 'TRIP LENGTH',

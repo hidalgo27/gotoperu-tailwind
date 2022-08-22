@@ -7,6 +7,7 @@
                     <div class="swiper-slide">
                         <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">
                     </div>
+                    
                 @endforeach
             @endforeach
 {{--            <div class="swiper-slide">--}}
@@ -24,9 +25,8 @@
 {{--            <div class="swiper-slide">Slide 9</div>--}}
         </div>
 {{--        <div class="swiper-pagination"></div>--}}
-{{--        <div class="absolute bottom-0 right-0 m-6 z-10">--}}
+        <div class="absolute bottom-0  m-6 z-10">
 {{--            <h1 class="text-3xl md:text-5xl font-semibold mb-3 text-gray-50">{{ $paquete['titulo'] }}</h1>--}}
-
 
 {{--                        <div class="flex gap-3 mb-3">--}}
 {{--                            <div class="flex-1 border p-3 flex bg-white text-xl items-center justify-center">--}}
@@ -82,7 +82,7 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
 
-{{--        </div>--}}
+        </div>
     </div>
 {{--        <section class="relative">--}}
 {{--            @foreach($paquete['imagen_paquetes'] as $imagen)--}}
@@ -193,7 +193,7 @@
                     </div>
 
                     <div x-show="openTab === 1" x-transition:enter="transition duration-500 transform ease-in" x-transition:enter-start="opacity-0">
-                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
                             <div class="">
 {{--                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
 {{--                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
@@ -235,7 +235,7 @@
 
                         <div x-transition:enter="transition  duration-500 transform ease-in" x-transition:enter-start="opacity-0">
 
-                            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+                            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
                                 <div class="">
 
                                     <span class="inline-block w-5 h-2.5 bg-secondary"></span>
@@ -328,7 +328,7 @@
 
 
 {{--                    <div x-show="openTab === 2" x-transition:enter="transition duration-500 transform ease-in" x-transition:enter-start="opacity-0">--}}
-{{--                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">--}}
+{{--                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">--}}
 {{--                            <div class="">--}}
 {{--                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
 {{--                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
@@ -436,8 +436,8 @@
                             @endif
                         </div>
 
-                        <div class="grid grid-cols-2">
-                            <a href="#form-dream-adventure" class="btn-secondary font-bold text-center w-full">Inquire</a>
+                        <div class="flex">
+                            <a href="#form-dream-adventure" class="btn-secondary font-bold text-center w-full">Get a Quote</a>
                             @if($paquete['codigo_f'])
                                 <button class="wtrvl-checkout_button btn-primary w-full" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="{{$paquete['codigo_f']}}" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book</button>
                             @endif
@@ -526,7 +526,7 @@
                                 </div>
                                 <div class="leading-none">
                                     <span class="text-xs block">Travel Style</span>
-                                    <span class="text-sm font-medium">SELF DRIVE</span>
+                                    <span class="text-sm font-medium">ESCORTED TOURS</span>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
@@ -563,6 +563,15 @@
                             </div>
 
 
+
+
+
+
+                        </div>
+
+                        <div class="block">
+                            <div id="TA_cdsratingsonlynarrow522" class="TA_cdsratingsonlynarrow w-full"><ul id="8CdJuXhFL" class="TA_links ZrzN0Ffd"><li id="7JQHh6DaTf" class="SOH6nHQUMt"><a target="_blank" href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html"><img src="https://www.tripadvisor.com.pe/img/cdsi/img2/branding/v2/Tripadvisor_lockup_horizontal_secondary_registered-18034-2.svg" class="mx-auto" alt="TripAdvisor"/></a></li></ul></div>
+                            <script async src="https://www.jscache.com/wejs?wtype=cdsratingsonlynarrow&amp;uniq=522&amp;locationId=15202262&amp;lang=es_PE&amp;border=true&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
                         </div>
 
 {{--                            <div class="flex gap-3">--}}
@@ -625,97 +634,96 @@
                 </div>
             </section>
 
-            <section>
-                @if($paquete['is_p_t'] == 1)
-                    <section class="my-12 flex flex-col gap-4" id="prices">
+{{--            <section>--}}
+{{--                @if($paquete['is_p_t'] == 1)--}}
+{{--                    <section class="my-12 flex flex-col gap-4" id="prices">--}}
 
-                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
-                            <div class="">
-                                {{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
-                                {{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
-                                <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                            </div> {{__('message.pack_deta_par4')}}
-                        </div>
-
-
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div class="overflow-x-scroll">
-                                    <p class="font-semibold text-secondary text-center">{{__('message.pack_deta_par5')}}</p>
-                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
-                                    <thead class="bg-secondary">
-                                    <tr>
-
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par9')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par10')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par11')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par12')}}
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="bg-secondary bg-opacity-10 divide-y divide-gray-200">
-                                    <tr>
-
-                                        @foreach($paquete['precio_paquetes'] as $precio)
-                                            @if($precio['precio_s'] > 0)
-                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">${{$precio['precio_s']}}<small>USD</small></td>
-                                            @else
-                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td>
-                                            @endif
-                                        @endforeach
-
-                                    </tr>
-
-                                    <!-- More people... -->
-                                    </tbody>
-                                </table>
-                                </div>
-                                <div class="overflow-x-scroll">
-                                    <p class="font-semibold text-primary text-center">Prices are based on double occupancy.</p>
-                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
-                                    <thead class="bg-primary text-white">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par9')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par10')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par11')}}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{__('message.pack_deta_par12')}}
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="bg-primary bg-opacity-10 divide-y divide-gray-200">
-
-                                    <tr>
-
-                                        @foreach($paquete['precio_paquetes'] as $precio)
-                                            @if($precio['precio_d'] > 0)
-                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">${{$precio['precio_d']}}<small>USD</small></td>
-                                            @else
-                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td>
-                                            @endif
-                                        @endforeach
-
-                                    </tr>
+{{--                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">--}}
+{{--                            <div class="">--}}
+{{--                                --}}{{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+{{--                                --}}{{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+{{--                                <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
+{{--                            </div> {{__('message.pack_deta_par4')}}--}}
+{{--                        </div>--}}
 
 
-                                    <!-- More people... -->
-                                    </tbody>
-                                </table>
-                                </div>
+{{--                            <div class="grid md:grid-cols-2 gap-4">--}}
+{{--                                <div class="overflow-x-scroll">--}}
+{{--                                    <p class="font-semibold text-secondary text-center">{{__('message.pack_deta_par5')}}</p>--}}
+{{--                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">--}}
+{{--                                    <thead class="bg-secondary dark:text-white">--}}
+{{--                                    <tr>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par9')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par10')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par11')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par12')}}--}}
+{{--                                        </th>--}}
+{{--                                    </tr>--}}
+{{--                                    </thead>--}}
+{{--                                    <tbody class="bg-secondary bg-opacity-10 divide-y divide-gray-200">--}}
+{{--                                    <tr>--}}
 
-                            </div>
+{{--                                        @foreach($paquete['precio_paquetes'] as $precio)--}}
+{{--                                            @if($precio['precio_s'] > 0)--}}
+{{--                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800 dark:text-white">${{$precio['precio_s']}}<small>USD</small></td>--}}
+{{--                                            @else--}}
+{{--                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+
+{{--                                    </tr>--}}
+
+{{--                                    <!-- More people... -->--}}
+{{--                                    </tbody>--}}
+{{--                                </table>--}}
+{{--                                </div>--}}
+{{--                                <div class="overflow-x-scroll">--}}
+{{--                                    <p class="font-semibold text-primary text-center">Prices are based on double occupancy.</p>--}}
+{{--                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">--}}
+{{--                                    <thead class="bg-primary text-white">--}}
+{{--                                    <tr>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par9')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par10')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par11')}}--}}
+{{--                                        </th>--}}
+{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
+{{--                                            {{__('message.pack_deta_par12')}}--}}
+{{--                                        </th>--}}
+{{--                                    </tr>--}}
+{{--                                    </thead>--}}
+{{--                                    <tbody class="bg-primary bg-opacity-10 divide-y divide-gray-200">--}}
+
+{{--                                    <tr>--}}
+
+{{--                                        @foreach($paquete['precio_paquetes'] as $precio)--}}
+{{--                                            @if($precio['precio_d'] > 0)--}}
+{{--                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800 dark:text-white">${{$precio['precio_d']}}<small>USD</small></td>--}}
+{{--                                            @else--}}
+{{--                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+
+{{--                                    </tr>--}}
+
+
+{{--                                    <!-- More people... -->--}}
+{{--                                    </tbody>--}}
+{{--                                </table>--}}
+{{--                                </div>--}}
+
+{{--                            </div>--}}
 {{--                        <div class="grid md:grid-cols-2 gap-4 md:mt-5">--}}
 {{--                            <div class="overflow-x-scroll">--}}
 {{--                                <p class="font-semibold text-gray-500 text-center">Prices are based on triple occupancy.</p>--}}
@@ -758,12 +766,12 @@
 
 
 
-                            <p class="text-sm text-gray-500">{{__('message.pack_deta_par6')}}</p>
+{{--                            <p class="text-sm text-gray-500">{{__('message.pack_deta_par6')}}</p>--}}
 
 
-                    </section>
-                @endif
-            </section>
+{{--                    </section>--}}
+{{--                @endif--}}
+{{--            </section>--}}
 
         </section>
 
@@ -801,7 +809,7 @@
     </section>
 
     <section class="container" x-data="{ openDes: 1 }" id="hotels">
-        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
             <div class="">
                 {{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
                 {{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
@@ -941,7 +949,7 @@
 
         <section class="container hidden md:block mt-4" id="reviews">
 
-            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2">
+            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
                 <span class="inline-block w-5 h-2.5 bg-secondary"></span> {{__('message.subtitle5')}}
             </div>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
