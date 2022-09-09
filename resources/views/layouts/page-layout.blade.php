@@ -639,7 +639,7 @@
                 <p class="text-sm dark:text-gray-300">
                     © Copyright 2022 GotoPeru. All rights reserved.
                 </p>
-{{--                <div class="flex items-center mt-4 space-x-4 sm:mt-0">--}}
+                <div class="flex items-center mt-4 space-x-4 sm:mt-0">
 {{--                    <a href="/" class="transition-colors duration-300 text-blue-100 hover:text-blue-400">--}}
 {{--                        <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">--}}
 {{--                            <path--}}
@@ -662,7 +662,8 @@
 {{--                            ></path>--}}
 {{--                        </svg>--}}
 {{--                    </a>--}}
-{{--                </div>--}}
+                    <a href="{{asset('terms-and-condition.pdf')}}" target="_blank" class="text-secondary">Terms and conditions</a>
+                </div>
             </div>
         </div>
     </footer>
