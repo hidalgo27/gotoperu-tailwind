@@ -7,7 +7,7 @@
                     <div class="swiper-slide">
                         <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">
                     </div>
-                    
+
                 @endforeach
             @endforeach
 {{--            <div class="swiper-slide">--}}
@@ -388,26 +388,27 @@
                                 <div class="flex-1 border bg-white p-3 flex items-center">
                                     @foreach($paquete['precio_paquetes'] as $precio)
                                         @if($precio['estrellas'] == 2)
-                                            @if($precio['precio_d'] > 0)
-                                                <div class="text-4xl font-semibold text-gray-600">
-                                                    {{--                                                                            <span> {{__('message.pack_par5')}} </span>--}}
-                                                    <span class="text-base block">{{ $paquete['duracion'] }} {{__('message.pack_par4')}}</span>
-                                                    <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2>
-                                                    <div class="flex -space-x-1 overflow-hidden">
-                                                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
-                                                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                                    </div>
-                                                    <p class="text-sm font-normal mt-2">Get a travel expert to plan your dream vacation</p>
+                                            <div class="text-4xl font-semibold text-gray-600">
+                                                {{--                                                                            <span> {{__('message.pack_par5')}} </span>--}}
+                                                <span class="text-base block">{{ $paquete['duracion'] }} {{__('message.pack_par4')}}</span>
+                                                <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2>
+                                                <div class="flex -space-x-1 overflow-hidden">
+                                                    @foreach($teams->take(6) as $team)
+                                                        @if($team->imagen_perfil)
+                                                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="{{$team->imagen_perfil}}" alt="{{$team->nombre}}">
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <p class="text-sm font-normal mt-2">Get a travel expert to plan your dream vacation</p>
+                                                @if($precio['precio_d'] > 0)
                                                     <p class="text-xs font-light mt-2">Price p.p. from</p>
                                                     <span>${{$precio['precio_d']}}</span>
                                                     <span class="text-sm"> usd</span>
-                                                    <span class="block text-red-500 mt-3 text-xs font-normal">See book With Confidence terms</span>
-                                                </div>
-                                            @else
-                                                <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span>
-                                            @endif
+                                                @else
+                                                    <span class="text-red-500 text-sm font-bold">Price: {{__('message.button_inquire')}}</span>
+                                                @endif
+                                                <span class="block text-red-500 mt-3 text-xs font-normal">See book With Confidence terms</span>
+                                            </div>
                                         @endif
                                     @endforeach
                                 </div>
