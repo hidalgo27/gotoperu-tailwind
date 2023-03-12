@@ -14,6 +14,7 @@ use App\Models\TPaqueteDestino;
 use App\Models\TPost;
 use App\Models\TTeam;
 use App\Models\TTestimonio;
+use App\Models\TVideoTestimonio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -157,7 +158,9 @@ class HomeController extends Controller
     public function about(){
         $teams = TTeam::all();
         $category = TCategoria::all();
-        return view('page.about', compact('teams','category'));
+        $videos = TVideoTestimonio::all();
+        $testinomials = TTestimonio::all();
+        return view('page.about', compact('teams','category', 'videos', 'testinomials'));
     }
     public function book(){
         $category = TCategoria::all();

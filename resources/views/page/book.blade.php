@@ -1,7 +1,7 @@
 @extends('layouts.page-layout')
 @section('content')
     <section class="-mt-32 h-80vh -z-1 relative">
-        <img src="{{asset('images/400/1700/Best-of-Peru.jpg')}}" alt="" class="h-full w-full object-cover object-top">
+        <img src="{{asset('images/team/banner3.jpg')}}" alt="" class="h-full w-full object-cover object-top">
         <div class="absolute bottom-0 left-0 p-12">
             <h1 class="text-5xl font-semibold text-gray-50">{{__('message.info_title1')}}</h1>
         </div>
@@ -56,6 +56,15 @@
                 </p>
             </div>
 
+            <div class="border ">
+                <img src="{{asset('images/team/gotoperu-team1.jpg')}}" alt="" class="h-full w-full object-cover">
+            </div>
+
+            <div class="border ">
+                <img src="{{asset('images/team/gotoperu-team2.jpg')}}" alt="" class="h-full w-full object-cover">
+            </div>
+
+
             <div class="border p-6 relative">
                 <div class="text-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -70,6 +79,7 @@
                 </p>
             </div>
 
+
             <div class="border p-6 relative">
                 <div class="text-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -83,7 +93,12 @@
                     {{__('message.info_par10')}}
                 </p>
             </div>
-
+            <div class="border ">
+                <img src="{{asset('images/team/gotoperu-team3.jpg')}}" alt="" class="h-full w-full object-cover">
+            </div>
+            <div class="border ">
+                <img src="{{asset('images/team/gotoperu-team4.jpg')}}" alt="" class="h-full w-full object-cover">
+            </div>
             <div class="border p-6 relative">
                 <div class="text-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -112,6 +127,12 @@
                 </p>
             </div>
 
+            <div class="border ">
+                <img src="{{asset('images/team/gotoperu-team5.jpg')}}" alt="" class="h-full w-full object-cover">
+            </div>
+            <div class="border ">
+                <img src="{{asset('images/team/gotoperu-team6.jpg')}}" alt="" class="h-full w-full object-cover">
+            </div>
             <div class="border p-6 relative">
                 <div class="text-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
