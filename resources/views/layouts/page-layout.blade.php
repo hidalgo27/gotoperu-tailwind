@@ -291,14 +291,14 @@
 {{--'nav_sub_links' => []--}}
 {{--],--}}
 
-    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 mb-12 sm:mb-20 sm:inline-flex">
+    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 sm:inline-flex mb-24 md:mb-0">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <span class="flex relative h-10 w-10">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
             </span>
         </a>
     </div>
-    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 mb-12 sm:mb-20 sm:inline-flex">
+    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 sm:inline-flex mb-24 md:mb-0">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
@@ -682,7 +682,7 @@
 <script src="{{asset('vendor/intl-tel-input/build/js/utils.js')}}"></script>
 <script src="{{asset('js/plugins.js')}}"></script>
 @stack('scripts')
-<!-- begin olark code -->
+<!-- begin olark code
 <script type="text/javascript">
     ;(function(o,l,a,r,k,y){if(o.olark)return;
         r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0];
@@ -695,7 +695,7 @@
     })(window,document,"static.olark.com/jsclient/loader.js");
     /* Add configuration calls below this comment */
     olark.identify('2217-527-10-8230');</script>
-<!-- end olark code -->
+ end olark code -->
 <script>
     (() => {
         'use strict';
