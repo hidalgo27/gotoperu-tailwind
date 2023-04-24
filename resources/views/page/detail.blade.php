@@ -169,28 +169,9 @@
 {{--                </ul>--}}
 {{--            </div>--}}
 
-            <section class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <section class="mt-6 grid grid-cols-1 md:grid-cols-3 md:gap-6">
                 <div class="col-span-2 order-2 md:order-1">
-                    <div class="my-6 shadow-lg">
 
-                        <div class="px-4 py-3 flex rounded-t-lg dark:bg-gray-900">
-                            <img src="https://source.unsplash.com/50x50/?portrait?2" alt="" class="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500 mr-5">
-                            <p class="relative py-1 italic text-center dark:text-gray-100 ">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="absolute left-0-0 top-0 w-8 h-8 dark:text-violet-400">
-                                    <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
-                                    <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
-                                </svg>
-                            @foreach($testinomials_r as $testinomial)
-                                <span class="px-9 block">{{ Str::limit($testinomial->contenido, 150) }} <span class="text-right font-bold text-sm text-secondary">{{ $testinomial->nombre }} / {{ $testinomial->ciudad }}</span></span>
-                            @endforeach
-
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="absolute right-0 bottom-0 w-8 h-8 dark:text-violet-400">
-                                    <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
-                                    <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
-                                </svg>
-                            </p>
-                        </div>
-                    </div>
 
                     <div x-show="openTab === 1" x-transition:enter="transition duration-500 transform ease-in" x-transition:enter-start="opacity-0">
                         <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
@@ -377,7 +358,7 @@
 
                 </div>
 
-                <div class="flex flex-col gap-3 order-1 md:order-2">
+                <div class="flex flex-col gap-3 order-1 md:order-2 -mt-44 z-10">
                     <div class="flex flex-col gap-3">
 
                         <div class="flex gap-3 ">
@@ -437,11 +418,11 @@
                             @endif
                         </div>
 
-                        <div class="flex">
-                            <a href="#form-dream-adventure" class="btn-secondary font-bold text-center w-full">Get a Quote</a>
+                        <div class="mt-6">
                             @if($paquete['codigo_f'])
-                                <button class="wtrvl-checkout_button btn-primary w-full" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="{{$paquete['codigo_f']}}" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book</button>
+                                <button class="wtrvl-checkout_button btn-primary w-full" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="{{$paquete['codigo_f']}}" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['codigo_f']}}" >Book Now</button>
                             @endif
+                                <a href="#form-dream-adventure" class="btn-secondary mt-3  font-bold block text-center w-full">Get a Quote</a>
                         </div>
 
                         <div class="border my-3 bg-gray-600 text-white p-3 text-xs">
@@ -778,6 +759,13 @@
 
 
     <section class="container my-12 ">
+        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
+            <div class="">
+                {{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+                {{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+                <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+            </div> Included
+        </div>
         <div class="grid grid-cols-6 gap-4">
             <div class="col-start-2 col-span-4">
                 <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
@@ -820,37 +808,38 @@
         </div>
     </section>
 
-    <section class="bg-secondary bg-opacity-60 my-12 py-12">
-        <div class="container text-center grid  grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="text-center">
 
-                <div class="flex mb-3 items-center text-center justify-center text-lg text-gray-700 font-bold gap-2">
-                    <div class="text-center">
-                        {{--                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
-                        {{--                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+{{--    <section class="bg-secondary bg-opacity-60 my-12 py-12">--}}
+{{--        <div class="container text-center grid  grid-cols-1 md:grid-cols-2 gap-6">--}}
+{{--            <div class="text-center">--}}
+
+{{--                <div class="flex mb-3 items-center text-center justify-center text-lg text-gray-700 font-bold gap-2">--}}
+{{--                    <div class="text-center">--}}
+{{--                        --}}{{--                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+{{--                        --}}{{--                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
 {{--                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
-                    </div> {{__('message.pack_deta_par7')}}
-                </div>
-                <div class="dark:text-white">
-                    {!! $paquete['incluye'] !!}
-                </div>
+{{--                    </div> {{__('message.pack_deta_par7')}}--}}
+{{--                </div>--}}
+{{--                <div class="dark:text-white">--}}
+{{--                    {!! $paquete['incluye'] !!}--}}
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
 
-            <section class="text-center">
-                <div class="flex mb-3 items-center justify-center text-lg text-gray-700 font-bold gap-2">
-                    <div class="">
-                        {{--                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
-                        {{--                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+{{--            <section class="text-center">--}}
+{{--                <div class="flex mb-3 items-center justify-center text-lg text-gray-700 font-bold gap-2">--}}
+{{--                    <div class="">--}}
+{{--                        --}}{{--                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+{{--                        --}}{{--                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
 {{--                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
-                    </div> {{__('message.pack_deta_par8')}}
-                </div>
-                <div class="dark:text-white">
-                    {!! $paquete['noincluye'] !!}
-                </div>
-            </section>
-        </div>
-    </section>
+{{--                    </div> {{__('message.pack_deta_par8')}}--}}
+{{--                </div>--}}
+{{--                <div class="dark:text-white">--}}
+{{--                    {!! $paquete['noincluye'] !!}--}}
+{{--                </div>--}}
+{{--            </section>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <section class="container" x-data="{ openDes: 1 }" id="hotels">
         <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
@@ -946,6 +935,30 @@
         </section>
     </section>
 
+    <section class="my-12">
+        <div class="container">
+            <div class="grid bg-gray-100 py-3">
+                <div class="px-4 py-3 flex rounded-t-lg dark:bg-gray-900">
+                    <img src="https://source.unsplash.com/50x50/?portrait?2" alt="" class="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500 mr-5">
+                    <p class="relative py-1 italic text-center dark:text-gray-100 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="absolute left-0-0 top-0 w-8 h-8 dark:text-violet-400">
+                            <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
+                            <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
+                        </svg>
+                        @foreach($testinomials_r as $testinomial)
+                            <span class="px-9 block">{{ Str::limit($testinomial->contenido, 150) }} <span class="text-right font-bold text-sm text-secondary">{{ $testinomial->nombre }} / {{ $testinomial->ciudad }}</span></span>
+                        @endforeach
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="absolute right-0 bottom-0 w-8 h-8 dark:text-violet-400">
+                            <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
+                            <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
+                        </svg>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {{--        <div class="container mt-12 hidden mb-3">--}}
 {{--            <div class="flex items-center text-lg text-gray-700 font-bold gap-2">--}}
 {{--                <div class="c">--}}
@@ -991,187 +1004,187 @@
 {{--            </div>--}}
 {{--        </section>--}}
 
-        <section class="container hidden md:block mt-4" id="reviews">
+{{--        <section class="container hidden md:block mt-4" id="reviews">--}}
 
-            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
-                <span class="inline-block w-5 h-2.5 bg-secondary"></span> {{__('message.subtitle5')}}
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">
-                    <div class="w-full">
-                        <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">
-                            <div class="border p-4 w-full">
-                                <p class="block text-4xl font-bold">97%</p>
-                                <p class="text-xs">{{__('message.social_con1')}}</p>
-                            </div>
-                            <div class="border p-4 w-full">
-                                <p class="block text-3xl font-bold">9000 +</p>
-                                <p class="text-xs">{{__('message.social_con2')}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
-                        {{--                <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-                        <div class="flex items-center justify-center">
-                            <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-300">
-                                <p class="mb-2 flex inline-flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    {{__('message.social_li1')}}
-                                </p>
-                                <p class="mb-2 flex inline-flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    {{__('message.social_li2')}}
-                                </p>
-                                <p class="mb-2 flex inline-flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    {{__('message.social_li3')}}
-                                </p>
-                                <p class="mb-2 flex inline-flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    {{__('message.social_li4')}}
-                                </p>
-                                <p class="mb-2 flex inline-flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    {{__('message.social_li5')}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                        <div class="border">
-                            <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank"><img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
-                        </div>
-                        <div class="border">
-                            <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank"><img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
-                        </div>
-                        <div class="border">
-                            <a href="https://www.trustpilot.com/review/gotoperu.com"><img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url('{{asset('images/banners/redes.jpg')}}')">
-                    {{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
-
-                    {{--            <div class="absolute flex items-center inset-0 ">--}}
-                    <div class="md:mx-16">
-                        <div class="w-full swiper-container mySwiper">
-                            <div class="swiper-wrapper">
-                                @foreach($testinomials as $testinomial)
-                                    <div class="swiper-slide p-12">
-                                        <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-gray-100 dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">
-                                            <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
-                                                <a href="#" class="block relative">
-                                                    <img alt="profil" src="https://gotoperu.com.mx/images/video-testimonial/2.jpg" class="mx-auto object-cover rounded-full h-20 w-20 z-30"/>
-                                                </a>
-                                            </div>
-                                            <div class="w-full mb-6">
-                                                <div class="text-3xl text-indigo-500 text-left leading-tight h-3">
-                                                    “
-                                                </div>
-                                                <p class="text-sm text-gray-600 dark:text-gray-100 text-center px-5">
-                                                    {{ Str::limit($testinomial->contenido, 150) }}
-                                                </p>
-                                                <div class="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
-                                                    ”
-                                                </div>
-                                            </div>
-                                            <div class="w-full text-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto cursor-pointer text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-
-                                                <p class="text-md text-indigo-500 font-bold text-center">
-                                                    {{ $testinomial->nombre }}
-                                                </p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-300 text-center">
-                                                    {{ $testinomial->ciudad }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="swiper-button-next btn-next"></div>
-                            <div class="swiper-button-prev btn-prev"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <section class="container mt-6 mb-12 ">
-            {{--        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">--}}
-            {{--            <div class="">--}}
-            {{--                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
-            {{--                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
-            {{--                <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
-            {{--            </div> Social Media--}}
-            {{--        </div>--}}
-
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                <div class="col-span-3 grid grid-cols-1 items-center relative bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('images/hotels-t.jpg')}})">
-                    <div class="flex relative">
-                        {{--                    <div class="elfsight-app-ba7c9526-9468-4d5b-b378-68ec76259e00"></div>--}}
-                        <img src="{{asset('images/banners/social.jpg')}}" alt="" class="object-cover h-full w-full">
-                        <div class="absolute inset-0 gradient-cicle-gray"></div>
-                    </div>
-                </div>
-                <div class="col-span-2 flex gap-4 flex-col justify-between content-between overflow-hidden">
-                    <div class="">
-                        <div class="flex items-center text-center text-gray-700 dark:text-gray-300 gap-2">
-                            <div class="border p-4 w-1/2">
-                                <p class="block text-4xl font-bold">30 000</p>
-                                <p class="text-xs">FACEBOOK FANS</p>
-                            </div>
-                            <div class="border p-4 w-1/2">
-                                <p class="block text-3xl font-bold">#gotoperu</p>
-                                <p class="text-xs">INSTAGRAM HASHTAG</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="">
-                        {{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
-
-                        <div class="bg-gray-500 bg-opacity-10 text-center p-12">
-                            <img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="mx-auto py-4">
-                            <h3>{{__('message.revi_subtitle1')}}</h3>
-                            <p>{{__('message.revi_par3')}}</p>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-4 items-center text-2xl text-gray-700 font-bold gap-3">
-                        <div class="border">
-                            <a href="https://www.instagram.com/go.to.peru/" target="_blank"><img src="{{asset('images/logos/instagram.png')}}" alt="" class="p-6"></a>
-                        </div>
-                        <div class="border">
-                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank"><img src="{{asset('images/logos/facebook.png')}}" alt="" class="p-6"></a>
-                        </div>
-                        <div class="border">
-                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank"><img src="{{asset('images/logos/youtube.png')}}" alt="" class="p-6"></a>
-                        </div>
-                        <div class="border">
-                            <a href="https://www.tiktok.com/@gotoperu" target="_blank"><img src="{{asset('images/logos/tiktok.png')}}" alt="" class="p-6"></a>
-                        </div>
-                    </div>
+{{--            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">--}}
+{{--                <span class="inline-block w-5 h-2.5 bg-secondary"></span> {{__('message.subtitle5')}}--}}
+{{--            </div>--}}
+{{--            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">--}}
+{{--                <div class="col-span-2 flex gap-4 flex-wrap content-between overflow-hidden">--}}
+{{--                    <div class="w-full">--}}
+{{--                        <div class="grid grid-cols-2 w-full items-center text-center text-gray-700 dark:text-gray-300 gap-2">--}}
+{{--                            <div class="border p-4 w-full">--}}
+{{--                                <p class="block text-4xl font-bold">97%</p>--}}
+{{--                                <p class="text-xs">{{__('message.social_con1')}}</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="border p-4 w-full">--}}
+{{--                                <p class="block text-3xl font-bold">9000 +</p>--}}
+{{--                                <p class="text-xs">{{__('message.social_con2')}}</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="relative">--}}
+{{--                        --}}{{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
+{{--                        --}}{{--                <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
+{{--                        <div class="flex items-center justify-center">--}}
+{{--                            <div class="border bg-white p-6 dark:bg-gray-800 text-gray-800 dark:text-gray-300">--}}
+{{--                                <p class="mb-2 flex inline-flex">--}}
+{{--                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                                    </svg>--}}
+{{--                                    {{__('message.social_li1')}}--}}
+{{--                                </p>--}}
+{{--                                <p class="mb-2 flex inline-flex">--}}
+{{--                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                                    </svg>--}}
+{{--                                    {{__('message.social_li2')}}--}}
+{{--                                </p>--}}
+{{--                                <p class="mb-2 flex inline-flex">--}}
+{{--                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                                    </svg>--}}
+{{--                                    {{__('message.social_li3')}}--}}
+{{--                                </p>--}}
+{{--                                <p class="mb-2 flex inline-flex">--}}
+{{--                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                                    </svg>--}}
+{{--                                    {{__('message.social_li4')}}--}}
+{{--                                </p>--}}
+{{--                                <p class="mb-2 flex inline-flex">--}}
+{{--                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />--}}
+{{--                                    </svg>--}}
+{{--                                    {{__('message.social_li5')}}--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">--}}
+{{--                        <div class="border">--}}
+{{--                            <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank"><img src="https://gotoperu.com.mx/images/icons/tripadvisor.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
+{{--                        </div>--}}
+{{--                        <div class="border">--}}
+{{--                            <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank"><img src="https://gotoperu.com.mx/images/icons/yelp.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
+{{--                        </div>--}}
+{{--                        <div class="border">--}}
+{{--                            <a href="https://www.trustpilot.com/review/gotoperu.com"><img src="https://gotoperu.com.mx/images/icons/trust.png" alt="" class="p-4 dark:filter dark:grayscale dark:invert"></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
-                </div>
-            </div>
+{{--                </div>--}}
+{{--                <div class="col-span-3 grid grid-cols-1 items-center relative overflow-hidden bg-center bg-no-repeat bg-cover" style="background-image: url('{{asset('images/banners/redes.jpg')}}')">--}}
+{{--                    --}}{{--            <img src="{{asset('images/hotels-t.jpg')}}" alt="" class="h-full object-cover min-w-full transition duration-500 ease-in-out transform hover:-translate-x-0 hover:scale-105">--}}
 
-        </section>
+{{--                    --}}{{--            <div class="absolute flex items-center inset-0 ">--}}
+{{--                    <div class="md:mx-16">--}}
+{{--                        <div class="w-full swiper-container mySwiper">--}}
+{{--                            <div class="swiper-wrapper">--}}
+{{--                                @foreach($testinomials as $testinomial)--}}
+{{--                                    <div class="swiper-slide p-12">--}}
+{{--                                        <div class="my-10 mx-16 w-full mx-auto rounded-lg bg-gray-100 dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-300">--}}
+{{--                                            <div class="w-full pt-1 text-center pb-5 -mt-16 mx-auto">--}}
+{{--                                                <a href="#" class="block relative">--}}
+{{--                                                    <img alt="profil" src="https://gotoperu.com.mx/images/video-testimonial/2.jpg" class="mx-auto object-cover rounded-full h-20 w-20 z-30"/>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="w-full mb-6">--}}
+{{--                                                <div class="text-3xl text-indigo-500 text-left leading-tight h-3">--}}
+{{--                                                    “--}}
+{{--                                                </div>--}}
+{{--                                                <p class="text-sm text-gray-600 dark:text-gray-100 text-center px-5">--}}
+{{--                                                    {{ Str::limit($testinomial->contenido, 150) }}--}}
+{{--                                                </p>--}}
+{{--                                                <div class="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">--}}
+{{--                                                    ”--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="w-full text-center">--}}
+{{--                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto cursor-pointer text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
+{{--                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />--}}
+{{--                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />--}}
+{{--                                                </svg>--}}
+
+{{--                                                <p class="text-md text-indigo-500 font-bold text-center">--}}
+{{--                                                    {{ $testinomial->nombre }}--}}
+{{--                                                </p>--}}
+{{--                                                <p class="text-xs text-gray-500 dark:text-gray-300 text-center">--}}
+{{--                                                    {{ $testinomial->ciudad }}--}}
+{{--                                                </p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                            <div class="swiper-button-next btn-next"></div>--}}
+{{--                            <div class="swiper-button-prev btn-prev"></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--        </section>--}}
+{{--        <section class="container mt-6 mb-12 ">--}}
+{{--            --}}{{--        <div class="flex mb-3 items-center text-2xl text-gray-700 dark:text-primary font-bold gap-2">--}}
+{{--            --}}{{--            <div class="">--}}
+{{--            --}}{{--                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+{{--            --}}{{--                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+{{--            --}}{{--                <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
+{{--            --}}{{--            </div> Social Media--}}
+{{--            --}}{{--        </div>--}}
+
+{{--            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">--}}
+{{--                <div class="col-span-3 grid grid-cols-1 items-center relative bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
+{{--                    <div class="flex relative">--}}
+{{--                        --}}{{--                    <div class="elfsight-app-ba7c9526-9468-4d5b-b378-68ec76259e00"></div>--}}
+{{--                        <img src="{{asset('images/banners/social.jpg')}}" alt="" class="object-cover h-full w-full">--}}
+{{--                        <div class="absolute inset-0 gradient-cicle-gray"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-span-2 flex gap-4 flex-col justify-between content-between overflow-hidden">--}}
+{{--                    <div class="">--}}
+{{--                        <div class="flex items-center text-center text-gray-700 dark:text-gray-300 gap-2">--}}
+{{--                            <div class="border p-4 w-1/2">--}}
+{{--                                <p class="block text-4xl font-bold">30 000</p>--}}
+{{--                                <p class="text-xs">FACEBOOK FANS</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="border p-4 w-1/2">--}}
+{{--                                <p class="block text-3xl font-bold">#gotoperu</p>--}}
+{{--                                <p class="text-xs">INSTAGRAM HASHTAG</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="">--}}
+{{--                        --}}{{--            <div class="bg-fixed bg-cover bg-center bg-no-repeat" style="background-image: url({{asset('images/hotels-t.jpg')}})">--}}
+
+{{--                        <div class="bg-gray-500 bg-opacity-10 text-center p-12">--}}
+{{--                            <img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="mx-auto py-4">--}}
+{{--                            <h3>{{__('message.revi_subtitle1')}}</h3>--}}
+{{--                            <p>{{__('message.revi_par3')}}</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="grid grid-cols-4 items-center text-2xl text-gray-700 font-bold gap-3">--}}
+{{--                        <div class="border">--}}
+{{--                            <a href="https://www.instagram.com/go.to.peru/" target="_blank"><img src="{{asset('images/logos/instagram.png')}}" alt="" class="p-6"></a>--}}
+{{--                        </div>--}}
+{{--                        <div class="border">--}}
+{{--                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank"><img src="{{asset('images/logos/facebook.png')}}" alt="" class="p-6"></a>--}}
+{{--                        </div>--}}
+{{--                        <div class="border">--}}
+{{--                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank"><img src="{{asset('images/logos/youtube.png')}}" alt="" class="p-6"></a>--}}
+{{--                        </div>--}}
+{{--                        <div class="border">--}}
+{{--                            <a href="https://www.tiktok.com/@gotoperu" target="_blank"><img src="{{asset('images/logos/tiktok.png')}}" alt="" class="p-6"></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--        </section>--}}
 
 
 
