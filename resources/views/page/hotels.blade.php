@@ -19,16 +19,16 @@
 {{--    </div>--}}
     <div class="container">
     @foreach($hotels as $hotel)
-        <div class="grid grid-cols-3 gap-4 mb-4 border">
-            <div class="col-span-1">
+        <div class="grid md:grid-cols-3 gap-4 mb-4 border">
+            <div class="md:col-span-1">
 {{--                @if($hotel->imagen)--}}
 {{--                    <img src="{{$hotel->imagen}}" alt="{{$hotel->nombre}}" class="object-cover w-full h-full">--}}
 {{--                @else--}}
-                    <img src="{{$hotel->imagen}}" alt="" class="object-cover w-full h-full">
+                    <img src="{{$hotel->imagen}}" alt="" class="object-none object-center h-60 w-full">
 {{--                @endif--}}
 
             </div>
-            <div class="col-span-2 p-6">
+            <div class="md:col-span-2 p-6">
                 <h3 class="font-bold text-gray-500">{{$hotel->nombre}}</h3>
                 <div class="flex">
                     @for($i=0; $i < $hotel->estrellas; $i++)
@@ -48,6 +48,7 @@
                 @php $services = explode(',', $hotel->servicios); @endphp
                 <p class="text-gray-500"><b>{{__('message.hote_subtitle1')}}:</b></p>
 
+                <div class="md:flex md:gap-3">
                     @foreach($services as $service)
                         <div class="flex items-center text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -56,6 +57,7 @@
                             {{$service}}
                         </div>
                     @endforeach
+                </div>
 
                 <div class="flex mt-6 text-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

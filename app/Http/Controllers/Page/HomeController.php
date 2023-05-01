@@ -156,7 +156,7 @@ class HomeController extends Controller
     }
 
     public function about(){
-        $teams = TTeam::all();
+        $teams = TTeam::orderBy('nombre')->get();
         $category = TCategoria::all();
         $videos = TVideoTestimonio::all();
         $testinomials = TTestimonio::all();

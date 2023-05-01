@@ -61,7 +61,7 @@
             @foreach($teams as $team)
             <div class="text-center mb-8 md:mb-0">
                 @if($team->imagen_perfil)
-                    <img class="w-48 h-48 rounded-full mx-auto -mb-24" src="{{$team->imagen_perfil}}" alt="{{$team->nombre}}"/>
+                    <img class="w-48 h-48 rounded-full mx-auto -mb-24 grayscale brightness-125" src="{{$team->imagen_perfil}}" alt="{{$team->nombre}}"/>
                 @else
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-48 h-48 rounded-full mx-auto bg-white -mb-24" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
