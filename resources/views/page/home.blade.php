@@ -866,33 +866,37 @@
 {{--    </section>--}}
 
 
-    <div class="flex mb-3 container block md:mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 hidden md:block">
+    <div class="flex mb-3 container block md:mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 hidden md:flex">
         <div class="">
 {{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
 {{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
             <span class="hidden md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span>
         </div> {{__('message.subtitle6')}}
     </div>
-    <section class="grid grid-cols-1 md:grid-cols-5 container gap-4 hidden md:block">
-        <div class="md:col-span-3 relative">
-            <img src="{{asset('images/hotel.jpg')}}" alt="" class="object-cover h-full w-full">
-            <div class="absolute inset-0 gradient-cicle-gray"></div>
-        </div>
-        <div class="md:col-span-2 bg-secondary bg-opacity-20 dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
-            <div class="">
-                <h3 class="font-semibold text-2xl">{{__('message.info_sub1')}}</h3>
-                <div class=" mb-10">
-                    <span class="inline-block w-10 h-2 bg-secondary dark:bg-primary"></span>
+        <div class="hidden md:block">
+            <section class="grid grid-cols-1 md:grid-cols-5 container gap-4">
+                <div class="md:col-span-3 relative">
+                    <img src="{{asset('images/hotel.jpg')}}" alt="" class="object-cover h-full w-full">
+                    <div class="absolute inset-0 gradient-cicle-gray"></div>
                 </div>
-                <p class="block my-12">
-                    {{__('message.info_par1')}}
-                </p>
-                <a href="{{route('hotels')}}" class="btn-primary">{{__('message.button_all')}}</a>
-            </div>
+                <div class="md:col-span-2 bg-secondary bg-opacity-20 dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+                    <div class="">
+                        <h3 class="font-semibold text-2xl">{{__('message.info_sub1')}}</h3>
+                        <div class=" mb-10">
+                            <span class="inline-block w-10 h-2 bg-secondary dark:bg-primary"></span>
+                        </div>
+                        <p class="block my-12">
+                            {{__('message.info_par1')}}
+                        </p>
+                        <a href="{{route('hotels')}}" class="btn-primary">{{__('message.button_all')}}</a>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
     </div>
-    <section class="grid grid-cols-1 md:grid-cols-3 my-4 container gap-4 hidden md:block">
+
+    <div class="hidden md:block">
+    <section class="grid grid-cols-1 md:grid-cols-3 my-4 container gap-4 ">
         <div class="md:col-span-1 relative flex items-center">
             <div class="relative w-full">
                 <img src="{{asset('images/blog.jpg')}}" alt="" class="object-cover w-full h-full">
@@ -951,7 +955,7 @@
             </div>
         </div>
     </section>
-
+    </div>
     <section class="mt-4 hidden md:block">
         <div class="container grid grid-cols-1 md:grid-cols-3 flex items-center">
             <div class="bg-gray-100 dark:bg-gray-700 dark:text-gray-100 h-full col-span-1  justify-between p-6 text-gray-500 order-2 md:order-1">
