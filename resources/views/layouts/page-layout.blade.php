@@ -294,29 +294,30 @@
 {{--'nav_sub_links' => []--}}
 {{--],--}}
 
-    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 sm:inline-flex mb-24 md:mb-0">
+    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 sm:inline-flex md:mb-0">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <span class="flex relative h-10 w-10">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
             </span>
         </a>
     </div>
-    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 sm:inline-flex mb-24 md:mb-0">
+    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 sm:inline-flex md:mb-0">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
-<div class="fixed left-0 ml-3 bottom-0 z-10 sm:hidden mb-16">
-    <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">
-    <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>
-    <span class="my-5 block"></span>
-</div>
+{{--<div class="fixed left-0 ml-3 bottom-0 z-10 sm:hidden">--}}
+{{--    <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">--}}
+{{--    <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>--}}
+{{--    <span class="my-5 block"></span>--}}
+{{--</div>--}}
+
 <div x-data="{menu: false}">
-    <div class="fixed bg-12 bottom-0 w-full z-30 sm:hidden">
+    <div class="fixed  w-full z-30 sm:hidden">
 {{--        @livewire('page.form-inquire')--}}
 {{--        <a href="#form-dream-adventure" class="btn-primary text-center w-full block">{{__('message.button_book')}}</a>--}}
 
-        <div class="menu-movil bg-gray-50 dark:bg-gray-800 flex gap-4 w-full mx-auto grid grid-cols-5 gap-3 text-center">
+        <div class="menu-movil bg-gray-50 dark:bg-gray-800 flex gap-4 w-full mx-auto grid grid-cols-4 gap-3 text-center">
             @foreach($nav_links as $nav_link_m)
                 @if($nav_link_m['state'] == 1 OR $nav_link_m['state'] == 2)
                     <div class="{{ $nav_link_m['active'] == 1 ? 'active' : '' }}">
@@ -334,7 +335,7 @@
         </div>
     </div>
 
-    <div class="fixed bottom-0 right-0 mb-16 w-9/12 mr-1 rounded-lg bg-gray-50 z-50" x-show="menu" x-transition x-on:click.away="menu = false" x-data="{menu2 : false}">
+    <div class="fixed top-0 right-0 mt-16 w-9/12 mr-1 rounded-lg bg-gray-50 z-50" x-show="menu" x-transition x-on:click.away="menu = false" x-data="{menu2 : false}">
         @foreach($nav_links as $nav_link)
             @if($nav_link['nav_sub_links'])
 
@@ -389,9 +390,13 @@
 
     <header>
         <div class="border-b dark:border-gray-900 dark:border-opacity-40  shadow p-4 bg-gray-50 items-center flex flex-wrap">
-            <div class="mx-auto">
+            <div class="mx-auto hidden md:block">
                 <a href="/"><img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="w-full"></a>
             </div>
+{{--            <div class="mx-auto -mb-64 md:hidden">--}}
+
+{{--                <a href="/"><img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-white.png" alt="" class="w-full"></a>--}}
+{{--            </div>--}}
             <div class="flex-1 p-3 dark:text-gray-400 hidden sm:inline-block">
                 <div class='console-container'>
                     <span id='text'></span>

@@ -1,58 +1,39 @@
 @extends('layouts.page-layout')
 @section('content')
-    <div class="absolute inset-0 h-screen overflow- w-full bg-gray-100 -z-1 overflow-hidden">
-{{--        <video autoplay loop muted class="object-cover h-full w-full">--}}
-{{--            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4" />Your browser does not support the video tag.--}}
-            {{--            <source src="{{asseDestinationst('media/intro.mp4')}}" type="video/mp4" />Your browser does not support the video tag.--}}
-
-        <div class="vimeo-wrapper hidden sm:block">
+    <div class="h-80vh overflow-hidden relative hidden md:block">
+        <div class="vimeo-wrapper">
             <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
             <div class="absolute inset-0 gradient-cicle-gray"></div>
-
-        </div>
-
-        <img src="{{asset('images/p-cusco-1.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden">
-
-
-{{--        </video>--}}
-    </div>
-    <div class="flex h-83-5vh relative overflow-hidden">
-{{--        <div class="relative items-start grid grid-cols-3 justify-between ">--}}
-
-{{--        </div>--}}
-
-        <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">
-            <div class="mx-auto w-3/4">
-                <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden">
-                    <h1 class="text-center text-lg md:text-3xl my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
-                </div>
-
-                    <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
-
-{{--                <h3 class="text-xl text-gray-50 hidden sm:block mb-6">Take Advantage of affordable deposits and flexible terms to plan your Peru adventure with confidence, Free cancellation insurance offered with 25% deposit. T&C apply.</h3>--}}
-
-{{--                <h4 class="font-bold text-secondary mt-6">Destinations</h4>--}}
-{{--                @foreach($destination as $destinations)--}}
-{{--                    <a href="{{ route('destinations.show', $destinations) }}" class="font-bold  block text-sm hover:text-primary">{{$destinations->nombre}}</a>--}}
-{{--                @endforeach--}}
-{{--                <br>--}}
-                <div class="fixed left-0 ml-3 bottom-0 mb-2 z-10 hidden sm:inline-block">
-                    <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">
-                    <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>
-                    <span class="my-5 block"></span>
-                </div>
-{{--                @livewire('page.form-inquire')--}}
+            <div class="absolute bottom-0 text-center w-full z-10 mb-96">
+                <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
             </div>
         </div>
-
-{{--        <div class="relative z-50 p-5 flex justify-center">--}}
-{{--            <a href="#" class="text-gray-50">--}}
-{{--                <svg xmlns="http://www.w3.org/2000/svg" class="animate-bounce h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />--}}
-{{--                </svg>--}}
-{{--            </a>--}}
-{{--        </div>--}}
     </div>
+    <div class="relative w-full md:hidden">
+        <div class="text-center absolute w-full top-0 mt-12">
+            <a href="/" class="mx-auto"><img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-white.png" alt="" class="mx-auto"></a>
+        </div>
+        <img src="{{asset('images/p-cusco-1.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden z-0">
+        <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden absolute bottom-0 right-0">
+            <h1 class="text-center text-lg md:text-3xl my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+        </div>
+    </div>
+{{--    <div class="flex h-83-5vh relative overflow-hidden">--}}
+{{--        <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">--}}
+{{--            <div class="mx-auto w-3/4">--}}
+{{--                <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden">--}}
+{{--                    <h1 class="text-center text-lg md:text-3xl my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>--}}
+{{--                </div>--}}
+{{--                    <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>--}}
+{{--                <div class="fixed left-0 ml-3 bottom-0 mb-2 z-10 hidden sm:inline-block">--}}
+{{--                    <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">--}}
+{{--                    <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>--}}
+{{--                    <span class="my-5 block"></span>--}}
+{{--                </div>--}}
+{{--                @livewire('page.form-inquire')--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 {{--            <form-home-component></form-home-component>--}}
 {{--    <div class="hidden md:inline-block">--}}
@@ -102,7 +83,7 @@
 
     <section class="bg-gray-50 hidden sm:flex dark:bg-gray-700">
     <div class="container">
-        <div class="w-full swiper-container slider-brands overflow-hidden relative">
+        <div class="w-full swiper-container my-3 slider-brands overflow-hidden relative">
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide">
@@ -562,7 +543,7 @@
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
         </div>
         <div class="col-span-4 text-center mt-4">
-            See and learn about our tours from our valued Nordic Visitor customers.
+            See and learn about our tours from our valued Peruvian Visitor customers.
         </div>
     </section>
     <section>
@@ -708,8 +689,8 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-    <section class="grid grid-cols-1 md:grid-cols-2 my-12">
-        <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+    <section class="grid grid-cols-1 md:grid-cols-2 my-12 ">
+        <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center hidden md:block">
             <div class="py-12">
                 <h3 class="font-semibold text-2xl">
                     ABOUT GOTOPERU
@@ -740,7 +721,7 @@
                     GET SOCIAL WITH US
                 </h3>
                 <p class="block my-12">
-                    Follow our Nordic adventures and share your own with us.
+                    Follow our Peruvian adventures and share your own with us.
                 </p>
                 <div class="w-full md:w-1/2 mx-auto mt-12 bg-gray-100 bg-opacity-50 p-6 rounded">
                     <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
@@ -885,14 +866,14 @@
 {{--    </section>--}}
 
 
-    <div class="flex mb-3 container block md:mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+    <div class="flex mb-3 container block md:mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 hidden md:block">
         <div class="">
 {{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
 {{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
             <span class="hidden md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span>
         </div> {{__('message.subtitle6')}}
     </div>
-    <section class="grid grid-cols-1 md:grid-cols-5 container gap-4">
+    <section class="grid grid-cols-1 md:grid-cols-5 container gap-4 hidden md:block">
         <div class="md:col-span-3 relative">
             <img src="{{asset('images/hotel.jpg')}}" alt="" class="object-cover h-full w-full">
             <div class="absolute inset-0 gradient-cicle-gray"></div>
@@ -911,7 +892,7 @@
         </div>
     </section>
     </div>
-    <section class="grid hidden grid-cols-1 md:grid-cols-3 my-4 container gap-4">
+    <section class="grid grid-cols-1 md:grid-cols-3 my-4 container gap-4 hidden md:block">
         <div class="md:col-span-1 relative flex items-center">
             <div class="relative w-full">
                 <img src="{{asset('images/blog.jpg')}}" alt="" class="object-cover w-full h-full">
@@ -971,7 +952,7 @@
         </div>
     </section>
 
-    <section class="mt-4">
+    <section class="mt-4 hidden md:block">
         <div class="container grid grid-cols-1 md:grid-cols-3 flex items-center">
             <div class="bg-gray-100 dark:bg-gray-700 dark:text-gray-100 h-full col-span-1  justify-between p-6 text-gray-500 order-2 md:order-1">
                 <span class="text-sm font-light">{{$blogs_first->created_at}}</span>
