@@ -294,19 +294,28 @@
 {{--'nav_sub_links' => []--}}
 {{--],--}}
 
-    <div class="fixed bottom-0 right-0 z-40 py-6 px-7 sm:inline-flex md:mb-0">
+<div class="fixed bottom-0 right-0 z-40 py-2 px-4 sm:inline-flex md:mb-0 md:hidden">
+    <a href="#form-dream-adventure">
+        <div class="flex items-center">
+            <span class="bg-gray-800 text-white -mr-3 py-2 px-4 rounded-lg border-2 border-secondary">Start my quote</span>
+            <img src="{{asset('images/fiorella.jpg')}}" alt="" class="w-16 h-16 rounded-full border-2 border-secondary">
+        </div>
+    </a>
+</div>
+
+    <div class="fixed bottom-0 mb-20 right-0 z-40 py-6 px-7 sm:inline-flex md:mb-0">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <span class="flex relative h-10 w-10">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
             </span>
         </a>
     </div>
-    <div class="fixed bottom-0 right-0 z-40 py-5 px-4 sm:inline-flex md:mb-0">
+    <div class="fixed bottom-0 mb-20 right-0 z-40 py-5 px-4 sm:inline-flex md:mb-0">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
-{{--<div class="fixed left-0 ml-3 bottom-0 z-10 sm:hidden">--}}
+{{--<div class="fixed bottom-0 left-0 ml-3 bottom-0 z-10 sm:hidden">--}}
 {{--    <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">--}}
 {{--    <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>--}}
 {{--    <span class="my-5 block"></span>--}}
