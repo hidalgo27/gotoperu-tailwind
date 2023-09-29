@@ -5,6 +5,7 @@ use App\Http\Controllers\API\FormpageController;
 use App\Http\Controllers\API\HomeSliderController;
 use App\Http\Controllers\API\PackagesController;
 use App\Http\Controllers\API\TestimonialController;
+use App\Http\Controllers\Page\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,8 @@ Route::get('category', [CategoryController::class, 'category'])->name('api.categ
 
 Route::get('slider_home_featured', [HomeSliderController::class, 'slider_home_featured'])->name('api.slider_home_featured');
 Route::get('slider_home_recommended', [HomeSliderController::class, 'slider_home_recommended'])->name('api.slider_home_recommended');
+
+Route::get('/'.__('message.url_1').'/{paquete}', [HomeController::class, 'packages_detail'])->name('packages.detail');
 
 //Route::get('packages', [PackagesController::class, 'packages'])->name('api.packages');
 //Route::get('packages/{url}', [PackagesController::class, 'packages_detail'])->name('api.packages.detail');
