@@ -895,67 +895,67 @@
         </div>
     </div>
 
-    <div class="hidden md:block">
-    <section class="grid grid-cols-1 md:grid-cols-3 my-4 container gap-4 ">
-        <div class="md:col-span-1 relative flex items-center">
-            <div class="relative w-full">
-                <img src="{{asset('images/blog.jpg')}}" alt="" class="object-cover w-full h-full">
-            </div>
-            <div class="absolute inset-0 gradient-cicle-gray"></div>
-            <div class="absolute inset-x-0 bottom-0 p-6 m-6  rounded-lg shadow-lg text-gray-500 bg-gray-50 dark:bg-gray-800 dark:text-gray-300">
-                <h3 class="font-semibold text-2xl">Lugares Para Visitar en Perú en el 2021</h3>
-                <div class="flex inline-flex divide-x text-xs my-3 divide-gray-500 gap-1">
-                    <div class="flex inline-flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                        </svg>
-                        <span>Hidalgo</span>
-                    </div>
-                    <div class="flex inline-flex items-center gap-1 pl-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
-                            <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        </svg>
-                        <span>27 junio 2021</span>
-                    </div>
-                    <div class="flex inline-flex items-center gap-1 pl-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
-                            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
-                            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
-                        </svg>
-                        <span>Travel</span>
-                    </div>
-                </div>
-                <div class=" mb-10">
-                    <span class="inline-block w-1 h-2 bg-secondary ml-1"></span>
-                    <span class="inline-block w-3 h-2 bg-secondary ml-1"></span>
-                    <span class="inline-block w-10 h-2 bg-secondary"></span>
-                    <span class="inline-block w-3 h-2 bg-secondary ml-1"></span>
-                    <span class="inline-block w-1 h-2 bg-secondary ml-1"></span>
-                </div>
+{{--    <div class="hidden md:block">--}}
+{{--    <section class="grid grid-cols-1 md:grid-cols-3 my-4 container gap-4 ">--}}
+{{--        <div class="md:col-span-1 relative flex items-center">--}}
+{{--            <div class="relative w-full">--}}
+{{--                <img src="{{asset('images/blog.jpg')}}" alt="" class="object-cover w-full h-full">--}}
+{{--            </div>--}}
+{{--            <div class="absolute inset-0 gradient-cicle-gray"></div>--}}
+{{--            <div class="absolute inset-x-0 bottom-0 p-6 m-6  rounded-lg shadow-lg text-gray-500 bg-gray-50 dark:bg-gray-800 dark:text-gray-300">--}}
+{{--                <h3 class="font-semibold text-2xl">Lugares Para Visitar en Perú en el 2021</h3>--}}
+{{--                <div class="flex inline-flex divide-x text-xs my-3 divide-gray-500 gap-1">--}}
+{{--                    <div class="flex inline-flex items-center gap-1">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">--}}
+{{--                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>--}}
+{{--                        </svg>--}}
+{{--                        <span>Hidalgo</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="flex inline-flex items-center gap-1 pl-1">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">--}}
+{{--                            <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>--}}
+{{--                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>--}}
+{{--                        </svg>--}}
+{{--                        <span>27 junio 2021</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="flex inline-flex items-center gap-1 pl-1">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">--}}
+{{--                            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>--}}
+{{--                            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>--}}
+{{--                        </svg>--}}
+{{--                        <span>Travel</span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class=" mb-10">--}}
+{{--                    <span class="inline-block w-1 h-2 bg-secondary ml-1"></span>--}}
+{{--                    <span class="inline-block w-3 h-2 bg-secondary ml-1"></span>--}}
+{{--                    <span class="inline-block w-10 h-2 bg-secondary"></span>--}}
+{{--                    <span class="inline-block w-3 h-2 bg-secondary ml-1"></span>--}}
+{{--                    <span class="inline-block w-1 h-2 bg-secondary ml-1"></span>--}}
+{{--                </div>--}}
 
-                <a href="" class="btn-secondary">View all</a>
-            </div>
-        </div>
-        <div class="md:col-span-2 relative">
-            <img src="{{asset('images/cua4.jpg')}}" alt="" class="h-full w-full object-cover">
-            <div class="md:absolute md:inset-0 p-6 bg-gray-900 bg-opacity-50">
-                <div class="flex flex-col h-full justify-end">
-                    <div class="text-gray-50 text-right">
-                        <h3 class="font-semibold text-2xl">News and travel guides</h3>
-                        <div class=" mb-10">
-                            <span class="inline-block w-1 h-2 bg-white ml-1"></span>
-                            <span class="inline-block w-3 h-2 bg-white ml-1"></span>
-                            <span class="inline-block w-20 h-2 bg-white"></span>
-                        </div>
-                        <p class="block my-12">Welcome travelers to our Peru blog, you will find useful Peru travel information and much more to inspire you for your next vacation to the land of the Incas including travel tips for Lima, Cusco, the Inca Trail, Machu Picchu, the Amazon and many other peruvian amazing destinations.</p>
-                        <a href="" class="btn-secondary">View all</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    </div>
+{{--                <a href="" class="btn-secondary">View all</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="md:col-span-2 relative">--}}
+{{--            <img src="{{asset('images/cua4.jpg')}}" alt="" class="h-full w-full object-cover">--}}
+{{--            <div class="md:absolute md:inset-0 p-6 bg-gray-900 bg-opacity-50">--}}
+{{--                <div class="flex flex-col h-full justify-end">--}}
+{{--                    <div class="text-gray-50 text-right">--}}
+{{--                        <h3 class="font-semibold text-2xl">News and travel guides</h3>--}}
+{{--                        <div class=" mb-10">--}}
+{{--                            <span class="inline-block w-1 h-2 bg-white ml-1"></span>--}}
+{{--                            <span class="inline-block w-3 h-2 bg-white ml-1"></span>--}}
+{{--                            <span class="inline-block w-20 h-2 bg-white"></span>--}}
+{{--                        </div>--}}
+{{--                        <p class="block my-12">Welcome travelers to our Peru blog, you will find useful Peru travel information and much more to inspire you for your next vacation to the land of the Incas including travel tips for Lima, Cusco, the Inca Trail, Machu Picchu, the Amazon and many other peruvian amazing destinations.</p>--}}
+{{--                        <a href="" class="btn-secondary">View all</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    </div>--}}
     <section class="mt-4 hidden md:block">
         <div class="container grid grid-cols-1 md:grid-cols-3 flex items-center">
             <div class="bg-gray-100 dark:bg-gray-700 dark:text-gray-100 h-full col-span-1  justify-between p-6 text-gray-500 order-2 md:order-1">
