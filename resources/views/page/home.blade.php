@@ -1015,7 +1015,7 @@
                             </svg>
                         </button>
 
-                    <a href="https://gotolatam.com/peru-travel-packages/Brazil-Argentina-Peru-22-days"><img src="{{('images/banners/campaigns/black.jpg')}}" alt=""></a>
+                    <a href="https://gotoperu.com/peru-travel-packages/Amazing-Peru"><img src="{{('images/banners/campaigns/black.jpg')}}" alt=""></a>
                 </div>
             </div>
         </div>
