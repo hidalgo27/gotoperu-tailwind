@@ -200,7 +200,7 @@
         <div class="text-center w-full col-span-4 items-center text-3xl text-secondary dark:text-secondary font-bold gap-2">
             PERU TRAVEL PACKAGES
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
-            <button class="wtrvl-checkout_button" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.3" data-uid="239346" data-uuid="73545253" href="https://www.wetravel.com/checkout_embed?uuid=73545253" style="background-color:#33ae3f;color:#ffffff;border: 0px;border-radius: 5px;font-family: 'Poppins', sans-serif;font-weight: 400;font-size: 14px;-webkit-font-smoothing: antialiased;text-transform: capitalize;padding: 13px 24px;text-decoration: none;text-align: center;line-height: 14px;display: inline-block; cursor: pointer;">Book Now</button>
+            
         </div>
         <div class="col-span-4 text-center mt-4">
             GOTOPERU is a family-owned company committed to offering the highest level of customer service possible. The personnel at GOTOPERU will ensure that you have an unforgettable vacation. Peru is one of the world's most diversified nations, boasting stunning old cultures and breathtaking natural beauty. Explore the world with GOTOPERU.
