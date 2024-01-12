@@ -200,7 +200,7 @@
         <div class="text-center w-full col-span-4 items-center text-3xl text-secondary dark:text-secondary font-bold gap-2">
             PERU TRAVEL PACKAGES
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
-            
+
         </div>
         <div class="col-span-4 text-center mt-4">
             GOTOPERU is a family-owned company committed to offering the highest level of customer service possible. The personnel at GOTOPERU will ensure that you have an unforgettable vacation. Peru is one of the world's most diversified nations, boasting stunning old cultures and breathtaking natural beauty. Explore the world with GOTOPERU.
@@ -405,7 +405,7 @@
         </div>
     </section>
 
-    <section class="px-6 mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
         @foreach($paquete_recommended as $paquete)
             <x-packages-card :paquete="$paquete"></x-packages-card>
