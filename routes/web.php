@@ -44,8 +44,8 @@ Route::get('/'.__('message.url_9'), [HomeController::class, 'responsability'])->
 Route::get('/'.__('message.url_10'), [HomeController::class, 'reviews'])->name('reviews');
 Route::get('/'.__('message.url_11'), [HomeController::class, 'tours'])->name('tours');
 
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
-Route::get('/blog/{post}', [HomeController::class, 'blog_show'])->name('blog.show');
+Route::get('/travel-information', [HomeController::class, 'blog'])->name('blog');
+Route::get('/travel-information/{post}', [HomeController::class, 'blog_show'])->name('blog.show');
 
 //form inquire
 Route::post('/formulario-diseno', [FormpageController::class, 'formulario_diseno'])->name('formulario_diseno');

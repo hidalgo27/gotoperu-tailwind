@@ -979,6 +979,12 @@
         </div>
     </section>
 
+    <section class="block mt-6">
+        <div class="text-center">
+            <a href="{{route('blog')}}" class="btn-secondary">View all travel info</a>
+        </div>
+    </section>
+
 
 {{--    <div x-data="{ open: false, init() { setTimeout(() => this.open = true, 3000) } }" x-init="init()">--}}
 {{--        <button @click="open =!open" class="flex items-center justify-center px-3 py-2 space-x-2 text-sm tracking-wide  capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50">--}}
