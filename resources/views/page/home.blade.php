@@ -1078,6 +1078,10 @@
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 
     <script>
+        new VenoBox({
+            selector: '.venobox'
+        });
+
         var swiper = new Swiper(".mySwiper", {
             navigation: {
                 nextEl: ".swiper-button-next",
