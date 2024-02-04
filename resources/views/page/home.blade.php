@@ -629,9 +629,15 @@
                 </div>
             </div>
         </div>
-
-        <div class="container mt-12 hidden sm:flex">
-            <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+        <section class="py-12">
+            <div class="container md:mx-auto">
+                <div class="overflow-hidden bg-gray-500">
+                    <div class="elfsight-app-d1e14e4b-52d0-4ad9-9068-f94e0de6bf50" data-elfsight-app-lazy></div>
+                </div>
+            </div>
+        </section>
+        <div class="container hidden sm:flex">
+            <div class="inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
                 <div class="border dark:border-gray-700">
                     <a href="https://www.instagram.com/go.to.peru/" target="_blank">
                         <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-6 py-4">
