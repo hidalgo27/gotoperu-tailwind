@@ -213,6 +213,9 @@
 
 {{--                        </div>--}}
 
+                        <div class="">
+                            <a class="venobox" data-gall="myGallery" href="{{$paquete['mapa']}}"><img src="{{$paquete['mapa']}}" /></a>
+                        </div>
 
                         <div x-transition:enter="transition  duration-500 transform ease-in" x-transition:enter-start="opacity-0">
 
@@ -1199,6 +1202,9 @@
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script src="https://cdn.wetravel.com/master/core-app/assets/embed_checkout.js"></script>
         <script>
+            new VenoBox({
+                selector: '.venobox'
+            });
             var swiper = new Swiper(".mySwiper", {
                 navigation: {
                     nextEl: ".swiper-button-next",
