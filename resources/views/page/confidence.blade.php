@@ -1,9 +1,18 @@
 @extends('layouts.page-layout')
 @section('content')
-    <section class="-mt-32 h-80vh -z-1 relative">
-        <img src="{{asset('images/banners/mapi.jpg')}}" alt="" class="h-full w-full object-cover object-top">
-        <div class="absolute bottom-0 left-0 p-12">
-            <h1 class="text-5xl font-semibold text-gray-50">{{__('message.confi_title1')}}</h1>
+
+    <section class="bg-gray-100 -z-1 relative py-14">
+        <div class="container grid grid-cols-2 items-center">
+{{--        <img src="{{asset('images/banners/mapi.jpg')}}" alt="" class="h-full w-full object-cover object-top">--}}
+{{--        <div class="absolute bottom-0 left-0 p-12">--}}
+{{--            <h1 class="text-5xl font-semibold text-gray-50">{{__('message.confi_title1')}}</h1>--}}
+{{--        </div>--}}
+        <div class="">
+            <h1 class="md:text-5xl text-2xl font-semibold ">{{__('message.confi_title1')}}</h1>
+        </div>
+        <div class="">
+            <img src="{{asset('images/banners/banner-detail.png')}}" alt="" class="object-fill">
+        </div>
         </div>
     </section>
 {{--    <div class="hidden md:inline-block">--}}
@@ -13,7 +22,7 @@
         <h2 class="text-center font-bold text-gray-500 md:text-2xl mb-12 xl:text-4xl dark:text-secondary">{{__('message.confi_title2')}}</h2>
         <div class="grid grid-cols-1 md:grid-cols-5 border mb-6">
             <div class="col-span-2">
-                <img src="https://picsum.photos/700/450" alt="" class="object-cover h-full w-full">
+                <img src="{{asset('images/banners/confidence/angi.jpg')}}" alt="" class="object-cover h-full w-full">
             </div>
             <div class="col-span-3 p-12">
                 <h3 class="font-bold text-gray-500 pb-4 text-xl dark:text-white">{{__('message.confi_subtitle1')}}</h3>
@@ -67,7 +76,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-5 border mb-6">
             <div class="col-span-2">
-                <img src="https://picsum.photos/700/454" alt="" class="object-cover h-full w-full">
+                <img src="{{asset('images/banners/confidence/team-goto.jpg')}}" alt="" class="object-cover h-full w-full">
             </div>
             <div class="col-span-3 p-12">
                 <h3 class="font-bold text-gray-500 pb-4 text-xl dark:text-white">{{__('message.confi_subtitle6')}}</h3>

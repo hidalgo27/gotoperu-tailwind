@@ -39,9 +39,10 @@
                             <img src="{{$blog->imagen_miniatura}}" alt="" class="h-full w-full object-cover object-top">
                         </div>
                         <div class="p-4">
-                            <span class="text-sm font-light">{{$blogs_first->created_at}}</span>
+                            <span class="text-sm font-light">{{$blog->created_at}}</span>
+
                             _____
-                            <span class="text-sm font-light">{{$blogs_first->categoria->nombre}}</span>
+                            <span class="text-sm font-light">{{$blog->categoria->nombre}}</span>
 
                             <h2 class="my-4 font-semibold text-gray-600 text-xl"><a href="{{route('blog.show', $blog)}}">{{$blog->titulo}}</a></h2>
                             <span class="text-sm font-normal">{!! Str::limit($blog->detalle, 150) !!}</span>

@@ -1,7 +1,7 @@
 @extends('layouts.page-layout')
 @section('content')
     <section class="-mt-32 h-80vh -z-1 relative">
-        <img src="{{asset('images/destinations/arequipa.jpg')}}" alt="" class="h-full w-full object-cover object-top">
+        <img src="{{asset('images/hotels/banner.webp')}}" alt="" class="h-full w-full object-cover object-top">
         <div class="absolute bottom-0 left-0 p-12">
             <h1 class="text-5xl font-semibold text-gray-50">{{__('message.hote_title1')}}</h1>
         </div>
