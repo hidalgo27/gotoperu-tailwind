@@ -500,7 +500,7 @@
                         @endif
 
                     @endforeach
-                    <a href="https://gotolatam.com/" target="_blank" class="dark:text-gray-400 menu-list block relative">South America Packages</a>
+{{--                    <a href="https://gotolatam.com/" target="_blank" class="dark:text-gray-400 menu-list block relative">South America Packages</a>--}}
 
 
 {{--                    @foreach($category as $categories)--}}
