@@ -10,8 +10,8 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.5.2",
-        "@tailwindcss/typography": "^0.5.2",
+        "@tailwindcss/forms": "^0.5.7",
+        "@tailwindcss/typography": "^0.5.13",
         "alpinejs": "^3.10.2",
         "axios": "^0.27",
         "laravel-mix": "^6.0.43",
@@ -21,7 +21,7 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.52.1",
         "sass-loader": "^13.0.0",
-        "tailwindcss": "^3.0.24"
+        "tailwindcss": "^3.4.4"
     },
     "dependencies": {
         "@tailwindcss/aspect-ratio": "^0.4.0",

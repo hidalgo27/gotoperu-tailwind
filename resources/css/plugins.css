@@ -246,15 +246,20 @@
 /*}*/
 
 .departamento path {
-    /*fill: #d1d5db; !* Gris *!*/
+    fill: rgba(255, 255, 255, .2); /* Gris */
     /*transition: fill 1.3s;*/
     /*color: #4a5568;*/
     /*stroke: rgb(255, 255, 255);*/
     /*stroke-width: 0.910683px;*/
     /*transition: fill 0.3s;*/
-    @apply fill-gray-500 stroke-white stroke-1
+    @apply  stroke-white stroke-1
     /*transition delay-700 duration-300 ease-in-out*/
 
+}
+.departamento.exists path{
+    /*@apply hover:fill-primary hover:stroke-2 hover:transition-transform hover:duration-500 hover:transform hover:-translate-y-0.5 hover:origin-center hover:cursor-pointer*/
+    fill: rgba(94, 94, 94, .5);
+    @apply hover:fill-[#243c5a] hover:stroke-1 hover:transition-transform hover:duration-500 hover:transform hover:-translate-y-0.5 hover:origin-center hover:cursor-pointer
 }
 .departamento.active path{
     @apply stroke-white fill-primary stroke-2 transition-transform duration-500 transform -translate-y-0.5 origin-center cursor-pointer
@@ -274,5 +279,5 @@
 }
 
 .info-content.active {
-    display: block;
+        display: block;
 }

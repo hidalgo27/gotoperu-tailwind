@@ -45,7 +45,8 @@ class HomeController extends Controller
         $category_block = TCategoria::where('estado', 1)->get();
         $category_footer = TCategoria::where('orden_block', 1)->get();
 
-        $destination = TDestino::all();
+        $destination = TDestino::with('destino_imagen')->get();
+
 
         $videos = TVideoTestimonio::all();
 
