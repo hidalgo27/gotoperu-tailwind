@@ -276,7 +276,7 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-    <div class="bg-gray-700 ">
+    <div class="bg-gray-700 hidden md:block">
     <section class="container grid grid-cols-1 md:grid-cols-6  items-end">
         <div class="md:col-span-4 relative bg-gray-700">
             <div class="inset-0 flex items-center text-white w-full">
@@ -995,48 +995,48 @@
         <p class="font-light text-lg mt-2">Follow our Peruvian adventures and share your own with us.</p>
     </section>
 
-    <div class="container hidden sm:flex my-6">
-        <div class="inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+    <div class="container  my-6">
+        <div class="grid grid-cols-7 items-center text-2xl text-gray-700 font-bold gap-3">
             <div class="border dark:border-gray-700">
                 <a href="https://www.instagram.com/goto.peru/" target="_blank">
-                    <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-6 py-4">
+                    <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full">
                 </a>
             </div>
             <div class="border dark:border-gray-700">
                 <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
-                    <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-6 py-4">
+                    <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full">
                 </a>
             </div>
             <div class="border dark:border-gray-700">
                 <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
-                    <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-6 py-4">
+                    <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full">
                 </a>
             </div>
             <div class="border dark:border-gray-700">
                 <a href="https://www.tiktok.com/@gotoperu" target="_blank">
-                    <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-6 py-4">
+                    <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full">
                 </a>
             </div>
             <div class="border dark:border-gray-700">
                 <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank">
-                    <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full dark:filter dark:grayscale dark:invert">
                 </a>
             </div>
             <div class="border dark:border-gray-700">
                 <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank">
-                    <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full dark:filter dark:grayscale dark:invert">
                 </a>
             </div>
             <div class="border dark:border-gray-700">
                 <a href="https://www.trustpilot.com/review/gotoperu.com">
-                    <img src="{{asset('images/logos/trust2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                    <img src="{{asset('images/logos/trust2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full dark:filter dark:grayscale dark:invert">
                 </a>
             </div>
         </div>
     </div>
 
-    <section class="container grid grid-cols-1 md:grid-cols-2 mb-12 ">
-        <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center hidden md:block">
+    <section class="container grid grid-cols-1 md:grid-cols-2 md:mb-12 ">
+        <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-opacity-90 p-6 dark:text-gray-50  items-center  md:block">
             <div class="py-12 text-sm">
                 <h3 class="font-semibold text-2xl">
                     ABOUT GOTOPERU
@@ -1174,11 +1174,11 @@
 {{--    </section>--}}
 
 
-    <div class="flex mb-3 container sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2  md:flex">
+    <div class=" mb-3 container sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 hidden  md:flex">
         <div class="">
 {{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
 {{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
-            <span class="hidden md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span>
+            <span class="hidden md:inline-flex  w-5 h-2.5 bg-secondary dark:bg-primary"></span>
         </div> {{__('message.subtitle6')}}
     </div>
         <div class="hidden md:block">
