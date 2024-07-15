@@ -256,6 +256,9 @@
     /*transition delay-700 duration-300 ease-in-out*/
 
 }
+.departamento.exists{
+    cursor: pointer;
+}
 .departamento.exists path{
     /*@apply hover:fill-primary hover:stroke-2 hover:transition-transform hover:duration-500 hover:transform hover:-translate-y-0.5 hover:origin-center hover:cursor-pointer*/
     fill: rgba(94, 94, 94, .5);

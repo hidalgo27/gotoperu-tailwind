@@ -276,14 +276,14 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-    <div class="hidden sm:inline-flex ">
-    <section class="grid grid-cols-1 md:grid-cols-6  ">
+    <div class="bg-gray-700 ">
+    <section class="container grid grid-cols-1 md:grid-cols-6  items-end">
         <div class="md:col-span-4 relative bg-gray-700">
             <div class="inset-0 flex items-center text-white w-full">
                 <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
-                    <div class="p-6 col-span-4">
+                    <div class="p-6 col-span-3">
                         <h3 class="font-semibold block text-xl">Your Peruvian Travel Operator</h3>
-                        <p class="block my-6">
+                        <p class="block font-light text-sm leading-6 my-6">
                             Trust our team of local travel experts to plan an unforgettable trip full of must-see attractions and our favorite hidden gems of the land of the Incas. Our peruvian experts have all traveled down the same roads, trains and treks and know what you’re about to experience.
                             Every Peru tour offered is regularly inspected to ensure our travelers have an amazing experience.
                         </p>
@@ -292,13 +292,13 @@
                             <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>
                         </div>
                     </div>
-                    <div class="col-span-2">
-                        <img src="{{asset('images/banners/joana.png')}}" alt="">
+                    <div class="col-span-3 pt-12">
+                        <img src="{{asset('images/team/joana.png')}}" alt="">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+        <div class="md:col-span-2 bg-gray-800 p-9 font-light shadow-lg text-white dark:bg-gray-700 dark:bg-opacity-90 dark:text-gray-50 flex items-center">
             <div class="">
                 <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
                 <p class="flex my-4">
@@ -429,8 +429,47 @@
             Most Popular Travel Packages
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
         </div>
-    </section>
 
+    </section><section class="container mb-12 ">
+            <div class="grid grid-cols-6 gap-4">
+                <div class="col-start-2 col-span-4">
+                    <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
+                        <div class="">
+                            <img src="{{asset('images/include/assistances.png')}}" alt="{{__('message.serv_item2')}}" class="object-contain px-4 text-center">
+                            <p class="text-xs">{{__('message.serv_item2')}}</p>
+                        </div>
+                        <div class="">
+                            <img src="{{asset('images/include/breakfast.png')}}" alt="{{__('message.serv_item3')}}" class="object-contain px-4 text-center">
+                            <p class="text-xs">{{__('message.serv_item3')}}</p>
+                        </div>
+                        <div class="">
+                            <img src="{{asset('images/include/entrances.png')}}" alt="{{__('message.serv_item4')}}" class="object-contain px-4 text-center">
+                            <p class="text-xs">{{__('message.serv_item4')}}</p>
+                        </div>
+                        <div class="">
+                            <img src="{{asset('images/include/flight.png')}}" alt="{{__('message.serv_item5')}}" class="object-contain px-4 text-center">
+                            <p class="text-xs">{{__('message.serv_item5')}}</p>
+                        </div>
+                        <div class="">
+                            <img src="{{asset('images/include/hotels.png')}}" alt="{{__('message.serv_item6')}}" class="object-contain px-4 text-center">
+                            <p class="text-xs">{{__('message.serv_item6')}}</p>
+                        </div>
+                        <div class="">
+                            <img src="{{asset('images/include/tours.png')}}" alt="{{__('message.serv_item7')}}" class="object-contain px-4 text-center">
+                            <p class="text-xs">{{__('message.serv_item7')}}</p>
+                        </div>
+                        <div class="">
+                            <img src="{{asset('images/include/trains.png')}}" alt="{{__('message.serv_item8')}}" class="object-contain px-4 text-center">
+                            <p class="text-xs">{{__('message.serv_item8')}}</p>
+                        </div>
+                        <div class="">
+                            <img src="{{asset('images/include/transfers.png')}}" alt="{{__('message.serv_item9')}}" class="object-contain px-4 text-center">
+                            <p class="text-xs">{{__('message.serv_item9')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
         @foreach($paquete_recommended as $paquete)
@@ -655,52 +694,14 @@
                 </div>
             </div>
         </div>
-        <section class="py-12">
-            <div class="container md:mx-auto">
-                <div class="overflow-hidden bg-gray-500">
-                    <div class="elfsight-app-d1e14e4b-52d0-4ad9-9068-f94e0de6bf50" data-elfsight-app-lazy></div>
-                </div>
-            </div>
-        </section>
-        <div class="container hidden sm:flex">
-            <div class="inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                <div class="border dark:border-gray-700">
-                    <a href="https://www.instagram.com/goto.peru/" target="_blank">
-                        <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-6 py-4">
-                    </a>
-                </div>
-                <div class="border dark:border-gray-700">
-                    <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
-                        <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-6 py-4">
-                    </a>
-                </div>
-                <div class="border dark:border-gray-700">
-                    <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
-                        <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-6 py-4">
-                    </a>
-                </div>
-                <div class="border dark:border-gray-700">
-                    <a href="https://www.tiktok.com/@gotoperu" target="_blank">
-                        <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-6 py-4">
-                    </a>
-                </div>
-                <div class="border dark:border-gray-700">
-                    <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank">
-                        <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
-                    </a>
-                </div>
-                <div class="border dark:border-gray-700">
-                    <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank">
-                        <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
-                    </a>
-                </div>
-                <div class="border dark:border-gray-700">
-                    <a href="https://www.trustpilot.com/review/gotoperu.com">
-                        <img src="{{asset('images/logos/trust2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
-                    </a>
-                </div>
-            </div>
-        </div>
+{{--        <section class="py-12">--}}
+{{--            <div class="container md:mx-auto">--}}
+{{--                <div class="overflow-hidden bg-gray-500">--}}
+{{--                    <div class="elfsight-app-d1e14e4b-52d0-4ad9-9068-f94e0de6bf50" data-elfsight-app-lazy></div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
+
 
     </section>
 
@@ -756,11 +757,43 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    </section>--}}
+    <section class="bg-gray-100 pt-12 mt-12">
+        <div class="container">
+            <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
+                Discover Perú
+                <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+            </div>
+            <div class="flex flex-row gap-2 justify-center py-6">
+                {{--                        @foreach($destination as $destinos)--}}
+                <div class="text-center" onclick="showInfo('Puno')">
+                    <img src="http://gotoperu-20.s3-us-west-1.amazonaws.com/destinations/1627350452418puno_1627350453.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <h3 class="text-xs">Puno</h3>
+                </div>
+                <div class="text-center" onclick="showInfo('Arequipa')">
+                    <img src="http://gotoperu-20.s3-us-west-1.amazonaws.com/destinations/1627350428984arequipa-t_1627350429.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <h3 class="text-xs">Arequipa</h3>
+                </div>
+                <div class="text-center" onclick="showInfo('Ica')">
+                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574272273135ica2_1574272272.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <h3 class="text-xs">Ica</h3>
+                </div>
+                <div class="text-center" onclick="showInfo('Lima')">
+                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574356950633lima_1574356947.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <h3 class="text-xs">Lima</h3>
+                </div>
+                <div class="text-center" onclick="showInfo('Cusco')">
+                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574272016678cusco_1574272015.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <h3 class="text-xs">Cusco</h3>
+                </div>
+                {{--                        @endforeach--}}
+            </div>
+        </div>
+    </section>
 
-    <section class="h-[650px] mt-12 overflow-hidden relative w-full">
+    <section class="h-[650px] overflow-hidden relative w-full">
 {{--        @foreach($destination as $imagen)--}}
 {{--            @foreach($imagen->destino_imagen as $img)--}}
-        <img src="https://s3.us-west-1.amazonaws.com/gotoperu-com/destinations/slider/1709050239382Slider%20copia%203%20machupicchu_1709050241.jpg" id="Cusco"  alt="" class="h-[650px] w-full object-cover info-content Cusco">
+        <img src="https://s3.us-west-1.amazonaws.com/gotoperu-com/destinations/slider/1709050239382Slider%20copia%203%20machupicchu_1709050241.jpg" id="Cusco"  alt="" class="h-[650px] w-full object-cover info-content active Cusco">
         <img src="https://s3.us-west-1.amazonaws.com/gotoperu-com/destinations/slider/1708990714220Slider%20copia%20arequipa_1708990715.jpg" id="Arequipa"  alt="" class="h-[650px] w-full object-cover info-content Arequipa">
         <img src="https://s3.us-west-1.amazonaws.com/gotoperu-com/destinations/slider/1709049112218Slider%20copia%203%20puno_1709049112.jpg" id="Puno"  alt="" class="h-[650px] w-full object-cover info-content Puno">
         <img src="https://s3.us-west-1.amazonaws.com/gotoperu-com/destinations/slider/1709045914877Slider%20copia%203%20lima_1709045915.jpg" id="Lima"  alt="" class="h-[650px] w-full object-cover info-content Lima">
@@ -769,32 +802,9 @@
 
 {{--            @endforeach--}}
 {{--        @endforeach--}}
-        <div class="absolute bg-gray-950 bg-opacity-20 inset-0">
+        <div class="absolute bg-gray-950 bg-opacity-40 inset-0">
             <div class="container mt-12">
-                <div class="flex flex-row gap-2 justify-center text-white">
-                    {{--                        @foreach($destination as $destinos)--}}
-                    <div class="text-center" onclick="showInfo('Puno')">
-                        <img src="http://gotoperu-20.s3-us-west-1.amazonaws.com/destinations/1627350452418puno_1627350453.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
-                        <h3 class="text-xs">Puno</h3>
-                    </div>
-                    <div class="text-center" onclick="showInfo('Arequipa')">
-                        <img src="http://gotoperu-20.s3-us-west-1.amazonaws.com/destinations/1627350428984arequipa-t_1627350429.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
-                        <h3 class="text-xs">Arequipa</h3>
-                    </div>
-                    <div class="text-center" onclick="showInfo('Ica')">
-                        <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574272273135ica2_1574272272.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
-                        <h3 class="text-xs">Ica</h3>
-                    </div>
-                    <div class="text-center" onclick="showInfo('Lima')">
-                        <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574356950633lima_1574356947.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
-                        <h3 class="text-xs">Lima</h3>
-                    </div>
-                    <div class="text-center" onclick="showInfo('Cusco')">
-                        <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574272016678cusco_1574272015.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
-                        <h3 class="text-xs">Cusco</h3>
-                    </div>
-                    {{--                        @endforeach--}}
-                </div>
+
                 <div class="w-64 relative mx-auto m-6">
                     <svg
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 542.76703 792" class="w-full relative h-auto">
@@ -831,7 +841,7 @@
                             <path d="m 186.757,516.513 -0.593,1.054 -0.914,-1.005 -0.741,-0.91 -0.985,-0.537 -1.422,-0.698 -2.247,-0.286 1.477,-3.075 -0.144,-2.192 -0.361,-2.426 -1.405,-3.955 0.469,-2.864 -0.458,-1.307 4.419,0.327 0.224,7.819 1.564,2.682 2.01,3.128 0.671,2.234 z" />
                             {{--                        <text x="155" y="510" text-anchor="middle" dominant-baseline="central" class="text-xs font-semibold ">El Callao</text>--}}
                         </g>
-                        <g class="departamento exists Arequipa" id="PE-CUS" data-name="Cusco" onclick="showInfo('Cusco')">
+                        <g class="departamento exists Cusco active" id="PE-CUS" data-name="Cusco" onclick="showInfo('Cusco')">
                             <path d="m 360.674,481.224 1.149,0.949 3.368,1.814 5.94,0.673 3.001,1.31 2.122,0.559 1.678,-0.487 2.988,-1.947 2.371,-2.151 4.832,-1.67 0.501,0.076 0,3.765 -0.894,5.14 -2.01,3.35 -2.905,3.129 -1.34,1.564 2.904,3.351 0.789,1.334 -0.383,1.746 1.382,1.613 0.894,4.691 3.574,1.787 4.022,2.906 2.457,3.351 1.341,3.128 3.352,1.564 -1.131,2.261 0.276,0.073 0.24,0.184 -1.396,1.28 -3.128,2.457 1.117,1.789 1.787,2.457 1.565,1.564 0.446,4.021 0.224,2.682 2.458,1.787 1.69,-0.169 0.097,0.169 2.68,-0.893 3.576,-0.224 4.916,-1.341 2.01,-0.223 2.681,3.128 2.234,3.798 3.576,2.458 4.021,1.34 2.458,0.447 0.532,1.777 0.468,0.245 0.117,2.224 1.34,4.021 0.671,3.128 2.011,0.447 2.68,-1.787 1.789,-1.564 1.684,-1.992 0.419,0.071 0.577,-1.877 1.787,-0.671 3.352,1.341 5.139,0.447 4.246,1.34 2.922,-0.127 0.086,-0.12 3.47,0.694 -0.446,6.256 -0.224,4.692 -4.245,4.692 -3.575,4.021 -3.128,3.799 -1.34,2.458 -3.128,3.574 -3.575,1.565 -0.447,3.128 -0.224,2.68 0.895,4.023 -0.671,4.245 -0.67,4.021 -1.341,3.352 -2.458,4.021 -0.67,4.022 -1.117,2.904 -2.904,2.012 -1.118,1.787 0.982,0.982 -0.006,0.182 1.299,2.029 1.031,1.133 1.127,0.286 1.98,2.967 0.738,4.564 -0.572,1.106 -0.854,1.269 -0.249,0.903 0.309,4.752 0.414,0.781 0.759,1.081 0.267,0.928 0.143,1.355 0.017,0.891 -0.267,3.655 -2.009,1.097 0.224,1.98 -0.025,1.105 -2.85,0.356 -2.681,-0.669 -2.681,-3.128 0.446,-7.821 -0.334,-3.117 -0.691,-0.251 -1.037,0.262 -0.664,0.561 -0.984,1.142 -0.913,0.189 -0.949,-0.561 -1.321,-1.386 -1.56,-1.317 -4.455,-1.239 -0.087,0.989 -2.525,1.512 -4.103,1.916 -5.964,-1.598 -0.889,-0.318 -1.334,-0.814 -0.16,-1.053 0.557,-0.958 0.213,-6.542 -2.49,-3.449 -3.456,-4.355 -0.937,-0.574 -1.191,0.074 -0.641,1.315 0.445,0.999 0.575,0.98 0.077,1.744 -0.753,2.449 -1.066,1.652 -1.124,0.049 -0.75,-0.908 -4.381,-1.732 -4.56,0.903 -1.108,0.018 -2.508,-0.591 -0.718,-0.488 -0.954,-1.145 -1.637,-2.035 -0.559,-1.225 0.322,-1.906 0.214,-1.035 -0.06,-1.711 -0.693,-1.254 -0.278,-0.908 0.409,-1.071 1.2,-1.375 3.43,-1.802 2.525,-1.204 2.288,-1.047 0.629,-0.876 0.279,-1.252 0.462,-0.773 3.089,-3.259 0.712,-0.504 0.948,-0.559 0.717,-1.349 1.133,-3.695 0.325,-1.652 0.102,-5.587 -0.143,-1.056 -0.284,-0.91 -1.541,-2.966 -1.151,-2.168 -0.474,-0.74 -2.443,-2.39 -2.501,-1.6 -5.242,-1.829 -9.272,-4.682 -6.593,-4.278 -1.491,-0.785 -4.159,-1.528 -3.018,0.145 -1.389,0.563 -4.89,-0.132 -4.92,-0.144 -2.317,-1.716 -0.698,-0.883 0.227,-1.056 -2.012,-3.351 -2.904,-3.798 -1.117,-4.469 -2.011,-4.691 -2.681,-4.916 -3.127,-2.084 -0.329,-1.214 -1.404,-2.949 -0.557,-0.676 -2.311,-2.185 -0.727,0.526 -2.23,-2.558 -5.689,-11.242 -0.866,-1.9 0.359,0.023 0.104,-1.684 4.488,-1.204 2.905,-0.223 2.01,0.447 1.129,0.94 0.061,-0.019 1.045,2.207 1.341,1.117 3.127,-2.234 3.128,-2.458 3.352,-2.681 2.011,-2.682 -1.787,-4.245 -1.788,-2.68 -0.447,-1.565 -1.159,-1.685 -2.192,-0.549 -1.341,-0.894 -0.67,-3.574 0.552,-2.317 -0.335,-0.118 0.9,-3.151 0.828,-3.036 0.274,-0.285 0.805,-0.997 0.498,-0.71 0.688,-1.13 1.577,-3.245 0.498,-1.322 0.359,-1.32 0.916,0.373 6.717,-0.796 1.044,-0.143 3.082,-0.481 1.53,-0.264 1.387,-0.409 1.079,-0.39 0.916,-0.751 3.252,-0.607 z" />
                             {{--                        <text x="390" y="560" text-anchor="middle" dominant-baseline="central" class="text-xs font-semibold ">Cusco</text>--}}
                         </g>
@@ -861,7 +871,7 @@
                             <path d="m 76.394,249.261 1.184,1.405 0.176,-0.038 1.277,-0.299 3.063,1.16 0.631,1.362 0.913,-0.544 3.277,-2.586 0.791,2.085 0.631,0.672 0.264,-0.053 3.859,1.883 0.355,0.798 -1.428,7.004 -0.652,1.753 -1.032,1.528 -1.226,0 -1.468,-0.178 -1.96,0.853 -1.091,0.682 -1.008,0.853 -0.711,1.186 -0.177,0.947 0.675,5.72 5.745,6.827 3.409,0.543 2.666,0.655 0.512,0.97 -0.211,1.642 -3.587,3.624 -2.753,1.323 -0.244,2.332 0.167,1.311 -0.362,1.406 -0.941,0.351 -1.407,-1.169 -4.215,-1.051 -0.967,0.516 -1.724,1.537 -5.977,6.178 -1.125,1.301 -0.072,-1.241 -0.19,-1.531 -0.676,-1.093 -3.711,-4.486 -0.97,-0.679 -1.568,-0.97 -2.354,-2.433 -0.604,-0.848 -0.694,-2.509 -0.735,-1.851 -5.822,-5.26 -1.127,-0.67 -2.122,-0.913 -5.312,-2.514 -5.787,-3.189 -3.222,-2.033 -1.295,-1.416 -1.008,-0.77 -1.126,-0.7 0.438,-0.296 1.103,-1.505 2.229,-3.282 1.491,-2.376 0.438,-1.659 1.028,-2.008 2.378,-3.014 1.838,-2.067 0.961,-0.912 0.777,-0.545 1.512,-0.639 3.864,-1.193 0.785,-0.735 2.356,-1.886 1.98,-1.507 2.639,-3.3 0.848,-1.508 0.283,-3.393 0.746,-1.091 -0.061,-0.931 0.504,-0.858 0.818,0.503 1.009,0.751 4.783,3.823 2.064,3.824 0.83,2.438 1.749,0.778 1.508,0.471 1.131,0.849 z" />
                             {{--                        <text x="40" y="270" text-anchor="middle" dominant-baseline="central" class="text-xs font-semibold">Lambayeque</text>--}}
                         </g>
-                        <g class="departamento exists" id="PE-LIM" data-name="Lima" onclick="showInfo('Lima')">
+                        <g class="departamento exists Lima" id="PE-LIM" data-name="Lima" onclick="showInfo('Lima')">
                             <path d="m 247.682,524.406 -0.846,4.396 0.224,5.585 0.847,1.835 -0.08,0.452 0.382,1.116 0.677,0.456 -0.91,1.95 -0.447,2.905 0.671,2.01 -1.564,1.565 -1.341,2.457 -1.117,1.564 -1.117,2.458 -2.682,1.117 0.138,1.304 -0.199,0.032 -0.318,-1.113 -4.246,0 -2.457,-0.893 -2.681,1.117 -2.235,2.01 -3.128,2.235 -2.904,1.788 -1.787,4.021 -1.565,1.357 10e-4,-0.016 -1.723,-0.143 -3.455,-4.358 -1.085,-1.331 -1.138,-1.07 -1.369,-1.192 -0.593,-0.629 -0.606,-0.883 -0.545,-2.008 -0.332,-1.45 -0.308,-2.744 -3.522,-5.022 -1.482,-1.685 -4.838,-9.309 -1.556,-3.986 1.705,-1.28 -0.446,-4.021 2.234,-2.904 1.788,-3.352 0.223,-5.586 -2.011,-3.574 -2.904,-3.352 -3.129,-1.34 1.117,-3.352 1.788,-0.447 -1.117,-2.234 -3.352,-3.351 -3.351,-3.352 -2.905,-2.904 -2.904,-0.671 -2.234,2.234 -2.235,1.118 -1.553,2.108 -2.813,-4.173 -2.976,-2.597 -4.707,-2.866 -2.727,-1.526 -0.819,-0.385 -1.41,-0.433 -2.001,-1.415 -0.76,-1.961 0.701,-1.424 1.407,-0.149 0.222,-1.549 -2.925,-10.635 -1.72,-3.564 -2.715,-4.389 -1.886,-2.243 -2.863,-3.69 3.296,-2.377 0.742,-1.855 0.449,-3.845 0.244,-2.458 0.252,-0.087 -0.015,-0.1 1.788,-1.563 1.34,-1.565 2.681,-0.446 2.011,0.894 -0.223,2.904 -2.011,1.341 -1.117,1.563 -0.389,1.399 0.621,2.718 2.894,1.953 0.264,0.977 -0.507,1.888 0.747,4.532 3.699,-0.024 3.356,-1.235 7.731,-6.682 1.903,-1.996 0.806,-0.994 0.504,-1.025 0.266,-1.251 0.066,-1.488 0.617,-1.351 0.818,-0.689 6.516,-2.64 1.761,-0.545 -0.036,0.748 0.498,1.273 1.091,0.661 1.867,-0.425 0.952,0.655 0.388,2.106 0.445,0.748 0.824,0.683 1.109,0.407 0.61,-0.083 0.745,0.838 0.669,1.693 0.442,1.469 0.142,1.607 0.522,1.108 1.12,1.426 0.427,1.037 0.332,1.439 0.131,1.331 0.408,1.343 0.612,0.876 1.825,1.939 0.32,1.274 0.048,1.428 0.095,1.062 -0.048,1.673 -0.26,1.237 0.527,1.242 0.694,0.527 1.838,1.18 0.681,1.653 -0.1,0.843 -0.273,2.165 -0.024,1.213 0.528,5.314 4.115,8.365 1.44,2.435 1.873,0.793 1.542,0.049 0.937,-0.15 0.987,0.673 0.358,1.425 0.125,2.634 0.196,2.912 0.337,0.812 2.586,2.534 3.385,4.339 0.293,0.762 4.065,1.316 1.504,0.925 0.805,-0.163 1.272,0.345 1.445,0.66 1.23,-0.427 6.479,0 0.132,4.353 0.911,0.715 0.326,1.302 -0.694,1.049 -0.106,1 2.478,4.63 z" />
                             {{--                        <text x="189" y="480" text-anchor="middle" dominant-baseline="central" class="text-xs font-semibold">Lima</text>--}}
                         </g>
@@ -894,7 +904,7 @@
                                 d="m 11.212,258.505 -0.715,-1.33 -1.167,-2.665 0.667,-2.666 1.666,-1.999 2.832,0.166 1.999,-0.666 0.794,-1.587 0.026,0.007 0.519,-0.05 0.328,-1.036 1.166,-1 1.333,-3.665 -0.334,-4.332 -1.666,-3.832 -3.165,-4.998 -2.999,-1.833 -3.499,-1.666 -3.665,-2.999 0.333,-2.333 1.499,-2.499 1.239,-0.66 0.578,-2.989 1.088,-0.511 1.59,0.183 0.782,-0.243 -1.445,-1.445 L 9.33,208.858 4.999,205.526 0,200.028 l 0.167,-3.832 1.333,-6.997 1.166,-5.498 1.614,-2.186 0.531,-1.397 0.8,-1.252 5.992,-5.491 1.255,-0.826 0.948,2.845 2.765,2.262 5.656,0 6.158,-0.378 3.393,-1.256 0.37,-0.987 0.516,-0.09 2.49,-2.19 0.646,1.13 0.88,1.132 2.513,3.016 1.006,2.387 0.252,1.83 -1.645,2.445 -0.054,1.19 0.747,1.079 2.307,1.269 0.818,0.296 1.363,-0.555 1.044,-0.556 3.072,-2.339 1.529,-1.405 0.803,-0.867 1.201,-0.124 2.387,0.503 2.263,1.507 3.896,1.509 3.519,1.256 2.136,1.886 1.226,-0.865 0.103,0.059 1.36,0.133 1.433,-0.453 1.408,0.497 4.399,0.126 2.333,0.713 0.868,0.771 0.83,2.567 0.189,1.669 2.716,6.21 0.283,1.32 3.392,3.775 3.409,3.34 2.296,-0.031 -0.902,0.841 -2.491,2.766 -3.518,5.083 1.467,5.183 1.524,2.099 0.243,7.052 -0.93,-0.13 -2.579,3.142 -0.849,6.815 0.849,3.602 0.598,1.131 0.741,0.74 0.415,0.752 0.439,1.332 -3.451,2.724 -0.913,0.544 -0.631,-1.362 -3.063,-1.16 -1.277,0.299 -0.176,0.038 -1.183,-1.405 -1.038,-1.885 -1.13,-0.849 -1.509,-0.471 -1.749,-0.778 -0.83,-2.438 -2.064,-3.824 -4.783,-3.823 -1.009,-0.752 -0.818,-0.502 -0.504,0.858 0.061,0.931 -0.746,1.091 -0.283,3.393 -0.848,1.508 -2.639,3.3 -1.98,1.507 -2.356,1.886 -0.785,0.735 -3.864,1.193 -1.512,0.639 -0.777,0.545 -0.961,0.912 -1.838,2.067 -2.378,3.014 -1.028,2.008 -0.438,1.659 -1.491,2.376 -2.229,3.282 -1.103,1.505 -0.438,0.296 -0.261,-0.165 -1.911,0.359 -3.332,1.499 -3.499,-2.332 -3.832,-3.166 -2.166,-1.666 -0.728,-1.578 -3.967,-1.66 z" />
                             {{--                        <text x="189" y="480" text-anchor="middle" dominant-baseline="central" class="text-xs font-semibold">Piura</text>--}}
                         </g>
-                        <g class="departamento exists" id="PE-PUN" data-name="Puno" onclick="showInfo('Puno')">
+                        <g class="departamento exists Puno" id="PE-PUN" data-name="Puno" onclick="showInfo('Puno')">
                             <path
                                 d="m 500.119,685.159 1.767,0.936 4.565,0.913 0.61,1.826 -2.131,2.435 -1.218,3.348 2.435,2.435 3.957,-1.826 2.13,0 2.131,3.348 3.349,0.609 3.957,-1.522 1.826,-3.348 2.171,-1.336 0.365,0.268 1.521,1.901 0.463,0.007 0.473,1.22 1.117,2.457 0,4.023 -0.284,1.613 -0.086,0.037 -1.849,2.359 -0.309,3.3 0.4,2.699 0.756,0.918 0.082,1.224 -1.635,1.185 -2.43,1.234 -3.6,2.944 -5.495,6.57 -2.828,5.618 -0.83,0.857 -2.519,1.102 -2.823,1.457 -2.615,2.435 -1.114,1.332 -1.592,3.222 -0.887,0.27 -1.517,0.322 -0.877,-0.037 -4.448,-2.271 -3.627,-1.882 -4.055,-2.954 -0.724,-0.807 -4.387,-7.445 1.256,-1.508 0.224,-3.575 0.157,-3.307 3.529,-3.399 -1.175,-1.282 -2.492,-0.427 -1.303,-0.548 -2.958,-2.846 -4.536,-4.843 -0.397,-1.118 -1.507,-4.582 0.06,-1.203 0.225,-0.983 -0.426,-3.89 -1.915,-5.435 -0.83,-1.091 -6.445,-1.717 -0.271,0.078 -0.718,-0.719 -2.682,-0.224 -3.351,0.224 -2.457,0.433 -0.197,-0.233 -1.067,-0.681 -1.164,0.163 0.417,-1.431 0.237,-1.269 -0.492,-0.998 -1.657,-1.241 -2.249,-3.748 0.316,-1.733 1.112,-1.784 0.19,-0.972 -0.309,-0.901 -0.568,-0.667 -0.836,-0.673 -1.056,-0.77 -0.865,-0.942 -1.236,-1.676 -0.52,-4.464 0.083,-3.569 -0.224,-1.98 2.009,-1.097 0.267,-3.655 -0.017,-0.891 -0.143,-1.355 -0.267,-0.928 -0.759,-1.081 -0.414,-0.781 -0.309,-4.752 0.249,-0.903 0.854,-1.269 0.572,-1.106 -0.738,-4.564 -1.98,-2.967 -1.127,-0.286 -1.031,-1.133 -1.299,-2.029 0.006,-0.182 -0.982,-0.982 1.118,-1.787 2.904,-2.012 1.117,-2.904 0.67,-4.022 2.458,-4.021 1.341,-3.352 0.67,-4.021 0.671,-4.245 -0.895,-4.023 0.224,-2.68 0.447,-3.128 3.575,-1.565 3.128,-3.574 1.34,-2.458 3.128,-3.799 3.575,-4.021 4.245,-4.692 0.224,-4.692 0.427,-5.979 2.701,-0.5 6.256,0.669 5.586,2.458 4.915,2.682 8.6,1.525 0.914,0.446 4.785,-0.407 4.915,-1.118 2.458,-2.68 2.458,-1.117 4.468,-1.789 3.352,-0.893 3.575,-1.787 4.245,-1.565 3.281,-2.088 3.585,-2.596 -0.543,4.342 0.272,4.614 0.814,1.9 -1.357,5.971 -2.194,3.615 0.016,2.859 -0.077,2.356 -0.765,2.588 -1.875,3.313 -1.694,2.87 2.075,3.639 0.533,2.111 1.133,5.541 0.606,0.911 1.007,0.801 0.785,0.547 -0.364,3.454 0.814,2.986 -2.985,1.085 -2.171,1.629 -0.815,5.157 -2.714,3.257 -2.715,2.985 -3.256,4.071 -2.714,3.8 -1.9,4.071 0.131,1.443 -0.342,0.342 -0.708,7.205 3.688,5.036 4.15,3.478 1.15,1.283 1.44,1.751 -0.258,1.179 -1.14,0.391 -1.116,-0.073 -3.087,2.871 -2.741,4.924 -0.264,0.566 -1.544,-0.662 -1.826,-1.522 -4.262,-0.304 -1.522,-3.044 -2.435,-0.609 -3.044,0 -0.913,-3.652 -3.348,-2.739 -3.044,-0.913 -3.652,-0.914 -3.044,-0.914 -3.349,0 -3.347,0.305 -0.61,1.826 0.61,1.826 2.739,0 2.739,0.305 3.652,-0.305 1.827,0.914 0.609,4.261 -2.436,1.522 -1.521,1.522 0.608,3.044 2.131,1.217 0,3.957 -1.826,0.305 -0.913,2.739 -2.131,0.913 -3.044,1.218 0.913,3.348 0.61,3.348 0.913,2.739 2.434,-0.303 1.826,0 2.131,1.826 1.523,0.608 1.217,-2.434 1.217,-0.61 0.913,2.436 1.218,2.434 3.653,0 z" />
                             {{--                        <text x="480" y="630" text-anchor="middle" dominant-baseline="central" class="text-xs font-semibold">Puno (2)</text>--}}
@@ -919,7 +929,7 @@
                                 d="m 304.503,310.958 4.246,0.447 2.904,2.458 2.905,2.235 0.085,1.36 0.125,0.068 0.789,0.6 0.406,0.473 -0.641,0.069 -0.103,1.024 1.299,0.858 1.777,1.486 2.857,2.829 0.581,1.039 0.416,0.761 0.883,0.612 2.97,1.082 1.186,0.321 0.748,0.511 0.55,1.154 -0.189,1.834 -1.16,1.429 -2.204,-0.286 0.215,3.218 0.667,0.815 1.984,0.72 2.484,1.403 2.39,4.485 1.665,5.475 0.652,2.297 0.35,2.125 2.33,1.983 3.154,2.226 2.52,6.51 3.089,3.083 1.381,0.23 1.085,0.279 1.352,0.602 0.735,0.602 0.605,0.894 0.45,1.168 0.392,1.216 0.463,0.727 2.694,4.074 2.264,1.198 1.853,2.496 0.48,2.463 0.13,0.889 -0.046,1.014 -0.262,1.246 -0.474,1.026 -2.442,3.354 -4.091,3.963 -1.648,1.336 -1.062,0.883 -0.759,1.538 9.386,0.433 5.074,0.06 0.902,-0.025 4.731,0.061 5.253,1.421 8.738,1.612 1.305,0.388 2.994,1.744 2.093,5.322 -0.22,1.533 -0.498,1.634 0.383,1.231 1.443,0.801 1.975,1.103 0.663,1.347 0.597,2.252 -0.75,2.903 -0.748,2.069 1.791,0.096 3.913,0 1.791,-0.012 1.327,0 2.088,0 12.307,0 7.802,-0.012 3.89,-0.011 3.058,-0.366 4.951,-2.72 0.918,-1.819 0.87,-1.127 5.318,-1.849 1.221,-1.038 0.684,-1.413 3.73,-4.04 1.636,-1.052 2.751,-1.72 5.798,-4.934 2.336,-2.149 0.877,-0.317 -0.489,2.301 0.099,2.219 -0.582,4 -0.19,6.444 -0.74,0.748 -0.552,1.171 -0.143,3.007 0.012,2.268 -0.005,0.727 -6.653,10.561 -2.436,1.03 0,0.123 -3.263,3.121 -5.089,5.293 -4.682,1.831 -2.849,2.851 -1.426,1.832 -1.425,4.274 -0.071,2.014 -0.244,0.051 -0.295,3.839 -0.815,2.442 -2.646,2.443 -1.832,1.832 -11.603,0.407 -4.658,-0.249 -0.212,0.089 -1.28,0.21 -2.964,0.234 -1.198,0 -1.126,0 -1.636,-0.265 -0.207,-0.176 -2.8,0.361 -3.147,-0.492 0.013,0.018 -2.159,0.27 -0.406,2.036 1.628,1.425 -0.611,2.442 -1.017,3.664 -1.832,2.647 -1.297,1.111 -0.96,-0.146 -4.831,1.67 -2.372,2.151 -2.988,1.947 -1.678,0.487 -2.122,-0.559 -3,-1.31 -5.941,-0.673 -3.367,-1.815 -1.15,-0.949 -1.228,-2.901 -3.252,0.607 -0.916,0.751 -1.079,0.39 -1.387,0.409 -1.53,0.264 -3.082,0.48 -1.044,0.144 -6.717,0.796 -0.916,-0.373 -0.081,-0.054 0.364,-3.988 -0.895,-6.479 -1.867,-1.467 0.02,-0.107 -2.398,-0.661 -0.446,-3.798 -0.102,-2.947 -0.177,-0.28 -1.571,-2.045 -1.5,-1.193 -5.466,-1.662 -0.966,1.824 -0.89,1.775 -0.366,0.516 0.089,1.889 0,2.235 -0.223,4.021 -0.894,2.904 -2.01,1.118 -4.246,-0.894 -1.117,-3.351 -0.481,-2.729 -3.558,0.541 -1.533,0.437 -0.907,-0.26 -6.033,0.447 -4.468,0 -2.993,-1.069 -0.216,-0.635 -0.367,-1.896 -0.526,-2.765 1.699,-0.773 2.906,-2.506 0.533,-0.709 1.329,-1.546 2.976,-2.949 2.43,-1.258 1.304,-0.42 1.388,-0.504 0.202,-0.91 -0.137,-0.171 1.314,-0.658 0.223,-2.01 -0.671,-1.787 -1.117,-0.67 -2.011,-2.011 -1.117,-2.905 0.447,-2.905 1.118,-2.458 0.223,-3.351 -2.905,-0.446 -2.011,-1.565 -2.681,-3.574 -0.223,-3.799 -0.894,-3.352 -1.66,-0.76 -0.823,-2.288 -0.23,-0.614 0.255,-3.711 -1.34,-2.68 -0.894,-2.906 -2.234,-1.563 -1.787,-2.458 -0.224,-2.457 0.894,-2.458 1.787,-2.234 -0.893,-3.352 -1.788,-2.234 0,-4.469 -0.759,-3.252 0.68,-3.23 2.514,-4.889 2.04,-1.324 0.129,-1.106 -0.284,-1.442 -0.635,-1.457 -1.055,-1.028 -0.789,-0.411 -1.636,-0.202 -2.371,-0.167 -1.447,0.108 -0.96,0.238 -3.459,1.411 -0.432,0.297 -0.92,3.495 -1.564,4.246 -0.223,2.904 -1.118,2.011 -2.01,0 -1.118,-2.234 -3.128,0.446 -2.693,0.514 -0.34,0.478 -0.541,3.924 -2.235,2.681 0.224,4.469 -1.788,1.787 -2.234,2.011 -3.352,0.894 -2.416,-0.58 -4.162,2.171 -1.992,1.587 -0.811,0.425 -2.237,-0.699 -1.787,-2.457 -1.787,-3.128 -2.235,-4.022 -0.67,-1.341 -0.791,-0.692 -0.212,-1.19 -0.646,-1.431 -0.705,-0.763 -2.372,-5.295 -1.311,-4.901 0.675,-4.049 0.138,-3.463 1.518,-0.662 0.759,-0.62 0.782,-1 2.609,-2.776 5.632,-4.9 1.862,0 1.364,0.827 0.984,0.882 1.008,0.952 0.127,0.108 2.294,-0.574 1.478,-1.149 0,-2.595 0.223,-2.681 0,-3.798 0.986,-1.882 2.67,-2.011 2.763,0.476 1.428,0.16 1.09,-1.211 2.012,-1.788 2.233,-2.681 4.916,0.447 1.282,0.769 0.522,-0.155 0.43,0.503 4.469,0.447 5.586,-0.447 2.458,-1.341 1.066,-2.489 0.752,-0.422 1.34,-0.939 0.759,-1.124 0.213,-1.1 0.154,-3.769 -0.652,-8.469 -0.296,-1.776 -0.363,-1.929 0.825,-1.443 1.564,-1.563 1.715,-2.573 0.118,0.078 0.117,0.096 0.061,-0.283 0.893,-1.564 1.564,-0.447 2.235,0.224 1.563,1.787 z" />
                             {{--                        <text x="480" y="630" text-anchor="middle" dominant-baseline="central" class="text-xs font-semibold">Ucayali</text>--}}
                         </g>
-                        <g class="departamento exists" id="PE-LKT" data-name="Lake Titicaca" onclick="showInfo('Puno')">
+                        <g class="departamento exists Puno" id="PE-LKT" data-name="Lake Titicaca" onclick="showInfo('Puno')">
                             <path
                                 d="m 495.494,649.265 3.348,2.739 0.913,3.652 3.044,0 2.435,0.609 1.522,3.044 4.262,0.304 1.826,1.522 1.544,0.662 -3.512,7.476 3.478,9.294 3.439,9.186 1.537,0.8 3.352,2.234 2.986,2.19 -2.171,1.336 -1.826,3.348 -3.957,1.522 -3.349,-0.609 -2.131,-3.348 -2.13,0 -3.957,1.826 -2.435,-2.435 1.218,-3.348 2.131,-2.435 -0.61,-1.826 -4.565,-0.913 -1.767,-0.936 -0.059,0.326 -3.653,0 -1.218,-2.434 -0.913,-2.436 -1.217,0.61 -1.217,2.434 -1.523,-0.608 -2.131,-1.826 -1.826,0 -2.434,0.303 -0.913,-2.739 -0.61,-3.348 -0.913,-3.348 3.044,-1.218 2.131,-0.913 0.913,-2.739 1.826,-0.305 0,-3.957 -2.131,-1.217 -0.608,-3.044 1.521,-1.522 2.436,-1.522 -0.609,-4.261 -1.827,-0.914 -3.652,0.305 -2.739,-0.305 -2.739,0 -0.61,-1.826 0.61,-1.826 3.347,-0.305 3.349,0 3.044,0.914 3.652,0.914 z" />
                             {{--                        <text x="480" y="630" text-anchor="middle" dominant-baseline="central" class="text-xs font-semibold">Lake Titicaca</text>--}}
@@ -929,23 +939,105 @@
                 </div>
                 <div class="grid text-center text-white">
 
-                    @foreach($destination as $destinos)
-                        <div id="{{$destinos->nombre}}" class="info-content {{$destinos->nombre}}">
-                            <h3 class="text-5xl font-light leading-tight" style="font-family: Niconne, cursive;">{{$destinos->nombre}} </h3>
-                            <p class="mb-4">Información sobre el Amazonas...</p>
+{{--                    @foreach($destination as $destinos)--}}
+{{--                        <div id="{{$destinos->nombre}}" class="info-content {{$destinos->nombre}}">--}}
+{{--                            <h3 class="text-5xl font-light leading-tight" style="font-family: Niconne, cursive;">{{$destinos->nombre}} </h3>--}}
+{{--                            <p class="mb-4">Información sobre el Amazonas...</p>--}}
 
-                            <a href="" class="btn-secondary">View Amazon Packages</a>
-                        </div>
-                    @endforeach
+{{--                            <a href="" class="btn-secondary">View Amazon Packages</a>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
 
+                    <div id="Cusco" class="info-content Puno">
+                        <h3 class="text-5xl font-light leading-tight" style="font-family: Niconne, cursive;">Puno</h3>
+                        <p class="mb-4">Discover Puno and Lake Titicaca, cradle of ancient cultures.</p>
+                        <a href="{{ route('destinations.show', 'puno') }}" class="btn-secondary">View Puno Packages</a>
+                    </div>
+                    <div id="Cusco" class="info-content Arequipa">
+                        <h3 class="text-5xl font-light leading-tight" style="font-family: Niconne, cursive;">Arequipa</h3>
+                        <p class="mb-4">Discover Arequipa, the white city with impressive architecture.</p>
+                        <a href="{{ route('destinations.show', 'arequipa') }}" class="btn-secondary">View Arequipa Packages</a>
+                    </div>
+                    <div id="Cusco" class="info-content Ica">
+                        <h3 class="text-5xl font-light leading-tight" style="font-family: Niconne, cursive;">Ica</h3>
+                        <p class="mb-4">Explore Ica and Nazca, with their mysterious lines and vibrant dunes.</p>
+                        <a href="{{ route('destinations.show', 'ica') }}" class="btn-secondary">View Ica Packages</a>
+                    </div>
+                    <div id="Cusco" class="info-content Lima">
+                        <h3 class="text-5xl font-light leading-tight" style="font-family: Niconne, cursive;">Lima</h3>
+                        <p class="mb-4">Discover Lima, where history and modernity unite.</p>
+                        <a href="{{ route('destinations.show', 'lima') }}" class="btn-secondary">View Lima Packages</a>
+                    </div>
+                    <div id="Cusco" class="info-content Cusco active">
+                        <h3 class="text-5xl font-light leading-tight" style="font-family: Niconne, cursive;">Cusco</h3>
+                        <p class="mb-4">Discover Cusco and Machu Picchu, jewels of the Inca empire.</p>
+                        <a href="{{ route('destinations.show', 'cusco') }}" class="btn-secondary">View Cusco Packages</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="grid grid-cols-1 md:grid-cols-2 mb-12 ">
+{{--    <div class="container w-full col-span-4  text-2xl text-gray-700 dark:text-secondary font-bold gap-2 mt-12">--}}
+{{--        GET SOCIAL WITH US--}}
+{{--        <div class="border-4 h-1 w-12 border-primary mt-3"></div>--}}
+{{--        <p class="font-light text-lg mt-2">Follow our Peruvian adventures and share your own with us.</p>--}}
+{{--    </div>--}}
+
+    <section class="container mt-12">
+        <div class="flex mb-3 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary mt-12 font-bold gap-2  md:flex">
+
+            {{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
+            {{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
+            <span class="md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span> GET SOCIAL WITH US
+
+        </div>
+        <p class="font-light text-lg mt-2">Follow our Peruvian adventures and share your own with us.</p>
+    </section>
+
+    <div class="container hidden sm:flex my-6">
+        <div class="inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
+            <div class="border dark:border-gray-700">
+                <a href="https://www.instagram.com/goto.peru/" target="_blank">
+                    <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-6 py-4">
+                </a>
+            </div>
+            <div class="border dark:border-gray-700">
+                <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
+                    <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-6 py-4">
+                </a>
+            </div>
+            <div class="border dark:border-gray-700">
+                <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
+                    <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-6 py-4">
+                </a>
+            </div>
+            <div class="border dark:border-gray-700">
+                <a href="https://www.tiktok.com/@gotoperu" target="_blank">
+                    <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-6 py-4">
+                </a>
+            </div>
+            <div class="border dark:border-gray-700">
+                <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank">
+                    <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                </a>
+            </div>
+            <div class="border dark:border-gray-700">
+                <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank">
+                    <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                </a>
+            </div>
+            <div class="border dark:border-gray-700">
+                <a href="https://www.trustpilot.com/review/gotoperu.com">
+                    <img src="{{asset('images/logos/trust2.png')}}" alt="" class="px-6 py-4 dark:filter dark:grayscale dark:invert">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section class="container grid grid-cols-1 md:grid-cols-2 mb-12 ">
         <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center hidden md:block">
-            <div class="py-12">
+            <div class="py-12 text-sm">
                 <h3 class="font-semibold text-2xl">
                     ABOUT GOTOPERU
                 </h3>
@@ -969,38 +1061,39 @@
                 </p>
             </div>
         </div>
-        <div class="bg-secondary text-white dark:bg-gray-800 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
+        <div class="bg-primary text-white dark:bg-gray-800 dark:bg-opacity-90  dark:text-gray-50 flex items-end">
+            <img src="{{asset('images/team/fiore.png')}}" alt="" class="mx-auto">
             <div class="text-center">
-                <h3 class="font-semibold text-2xl">
-                    GET SOCIAL WITH US
-                </h3>
-                <p class="block my-12">
-                    Follow our Peruvian adventures and share your own with us.
-                </p>
-                <div class="w-full md:w-1/2 mx-auto mt-12 bg-gray-100 bg-opacity-50 p-6 rounded">
-                    <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">
-                        <div class="">
-                            <a href="https://www.instagram.com/goto.peru/" target="_blank">
-                                <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-2">
-                            </a>
-                        </div>
-                        <div class="">
-                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
-                                <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-2">
-                            </a>
-                        </div>
-                        <div class="">
-                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
-                                <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-2">
-                            </a>
-                        </div>
-                        <div class="">
-                            <a href="https://www.tiktok.com/@gotoperu" target="_blank">
-                                <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-2">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+{{--                <h3 class="font-semibold text-2xl">--}}
+{{--                    GET SOCIAL WITH US--}}
+{{--                </h3>--}}
+{{--                <p class="block my-12">--}}
+{{--                    Follow our Peruvian adventures and share your own with us.--}}
+{{--                </p>--}}
+{{--                <div class="w-full md:w-1/2 mx-auto mt-12 bg-gray-100 bg-opacity-50 p-6 rounded">--}}
+{{--                    <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">--}}
+{{--                        <div class="">--}}
+{{--                            <a href="https://www.instagram.com/goto.peru/" target="_blank">--}}
+{{--                                <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-2">--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                        <div class="">--}}
+{{--                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">--}}
+{{--                                <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-2">--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                        <div class="">--}}
+{{--                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">--}}
+{{--                                <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-2">--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                        <div class="">--}}
+{{--                            <a href="https://www.tiktok.com/@gotoperu" target="_blank">--}}
+{{--                                <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-2">--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
             </div>
         </div>
@@ -1009,46 +1102,7 @@
 
 
     <div class="dark:bg-gray-700 pt-1">
-    <section class="container mb-12 ">
-        <div class="grid grid-cols-6 gap-4">
-            <div class="col-start-2 col-span-4">
-                <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
-                    <div class="">
-                        <img src="{{asset('images/include/assistances.png')}}" alt="{{__('message.serv_item2')}}" class="object-contain px-4 text-center">
-                        <p class="text-xs">{{__('message.serv_item2')}}</p>
-                    </div>
-                    <div class="">
-                        <img src="{{asset('images/include/breakfast.png')}}" alt="{{__('message.serv_item3')}}" class="object-contain px-4 text-center">
-                        <p class="text-xs">{{__('message.serv_item3')}}</p>
-                    </div>
-                    <div class="">
-                        <img src="{{asset('images/include/entrances.png')}}" alt="{{__('message.serv_item4')}}" class="object-contain px-4 text-center">
-                        <p class="text-xs">{{__('message.serv_item4')}}</p>
-                    </div>
-                    <div class="">
-                        <img src="{{asset('images/include/flight.png')}}" alt="{{__('message.serv_item5')}}" class="object-contain px-4 text-center">
-                        <p class="text-xs">{{__('message.serv_item5')}}</p>
-                    </div>
-                    <div class="">
-                        <img src="{{asset('images/include/hotels.png')}}" alt="{{__('message.serv_item6')}}" class="object-contain px-4 text-center">
-                        <p class="text-xs">{{__('message.serv_item6')}}</p>
-                    </div>
-                    <div class="">
-                        <img src="{{asset('images/include/tours.png')}}" alt="{{__('message.serv_item7')}}" class="object-contain px-4 text-center">
-                        <p class="text-xs">{{__('message.serv_item7')}}</p>
-                    </div>
-                    <div class="">
-                        <img src="{{asset('images/include/trains.png')}}" alt="{{__('message.serv_item8')}}" class="object-contain px-4 text-center">
-                        <p class="text-xs">{{__('message.serv_item8')}}</p>
-                    </div>
-                    <div class="">
-                        <img src="{{asset('images/include/transfers.png')}}" alt="{{__('message.serv_item9')}}" class="object-contain px-4 text-center">
-                        <p class="text-xs">{{__('message.serv_item9')}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
 
 {{--    <section class="container hidden md:block">--}}
@@ -1120,7 +1174,7 @@
 {{--    </section>--}}
 
 
-    <div class="flex mb-3 container block md:mt-12 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 hidden md:flex">
+    <div class="flex mb-3 container sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2  md:flex">
         <div class="">
 {{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
 {{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
@@ -1358,6 +1412,9 @@
             console.log(departmentId)
             // Oculta todos los divs de información
             document.querySelectorAll('.info-content').forEach(div => {
+                div.classList.remove('active');
+            });
+            document.querySelectorAll('.departamento').forEach(div => {
                 div.classList.remove('active');
             });
 
