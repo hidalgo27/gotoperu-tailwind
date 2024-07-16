@@ -766,23 +766,23 @@
             <div class="flex flex-row gap-2 justify-center py-6">
                 {{--                        @foreach($destination as $destinos)--}}
                 <div class="text-center" onclick="showInfo('Puno')">
-                    <img src="http://gotoperu-20.s3-us-west-1.amazonaws.com/destinations/1627350452418puno_1627350453.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <img src="http://gotoperu-20.s3-us-west-1.amazonaws.com/destinations/1627350452418puno_1627350453.jpg" alt="" class="rounded-full cursor-pointer border-2 hover:border-secondary w-12 h-12 object-cover mx-auto">
                     <h3 class="text-xs">Puno</h3>
                 </div>
                 <div class="text-center" onclick="showInfo('Arequipa')">
-                    <img src="http://gotoperu-20.s3-us-west-1.amazonaws.com/destinations/1627350428984arequipa-t_1627350429.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <img src="http://gotoperu-20.s3-us-west-1.amazonaws.com/destinations/1627350428984arequipa-t_1627350429.jpg" alt="" class="rounded-full cursor-pointer border-2 hover:border-secondary w-12 h-12 object-cover mx-auto">
                     <h3 class="text-xs">Arequipa</h3>
                 </div>
                 <div class="text-center" onclick="showInfo('Ica')">
-                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574272273135ica2_1574272272.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574272273135ica2_1574272272.jpg" alt="" class="rounded-full cursor-pointer border-2 hover:border-secondary w-12 h-12 object-cover mx-auto">
                     <h3 class="text-xs">Ica</h3>
                 </div>
                 <div class="text-center" onclick="showInfo('Lima')">
-                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574356950633lima_1574356947.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574356950633lima_1574356947.jpg" alt="" class="rounded-full cursor-pointer border-2 hover:border-secondary w-12 h-12 object-cover mx-auto">
                     <h3 class="text-xs">Lima</h3>
                 </div>
                 <div class="text-center" onclick="showInfo('Cusco')">
-                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574272016678cusco_1574272015.jpg" alt="" class="rounded-full w-12 h-12 object-cover mx-auto">
+                    <img src="http://gotoperu-mx.s3-us-west-1.amazonaws.com/destinations/1574272016678cusco_1574272015.jpg" alt="" class="rounded-full cursor-pointer border-2 hover:border-secondary w-12 h-12 object-cover mx-auto">
                     <h3 class="text-xs">Cusco</h3>
                 </div>
                 {{--                        @endforeach--}}
@@ -1035,7 +1035,7 @@
         </div>
     </div>
 
-    <section class="container grid grid-cols-1 md:grid-cols-2 md:mb-12 ">
+    <section class="container grid grid-cols-1 md:grid-cols-2 md:mb-12">
         <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-opacity-90 p-6 dark:text-gray-50  items-center  md:block">
             <div class="py-12 text-sm">
                 <h3 class="font-semibold text-2xl">
@@ -1101,7 +1101,7 @@
 
 
 
-    <div class="dark:bg-gray-700 pt-1">
+    <div class="dark:bg-gray-700 pt-12">
 
 
 
