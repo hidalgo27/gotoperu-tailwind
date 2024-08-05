@@ -379,7 +379,7 @@
                                                 <div class="flex -space-x-1 overflow-hidden">
                                                     @foreach($teams->take(6) as $team)
                                                         @if($team->imagen_perfil)
-                                                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="{{$team->imagen_perfil}}" alt="{{$team->nombre}}">
+                                                                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="{{$team->imagen_perfil}}" alt="{{$team->nombre}}">
                                                         @endif
                                                     @endforeach
                                                 </div>
