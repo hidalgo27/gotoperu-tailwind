@@ -695,13 +695,13 @@
                 </div>
             </div>
         </div>
-{{--        <section class="py-12">--}}
-{{--            <div class="container md:mx-auto">--}}
-{{--                <div class="overflow-hidden bg-gray-500">--}}
-{{--                    <div class="elfsight-app-d1e14e4b-52d0-4ad9-9068-f94e0de6bf50" data-elfsight-app-lazy></div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </section>--}}
+        <section class="py-12">
+            <div class="container md:mx-auto">
+                <div class="overflow-hidden">
+                    <div class="elfsight-app-5eb4043b-fced-4876-890c-bcac70bb6720" data-elfsight-app-lazy></div>
+                </div>
+            </div>
+        </section>
 
 
     </section>
