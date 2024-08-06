@@ -1,10 +1,12 @@
 @extends('layouts.page-layout')
 @section('content')
     <div class="h-80vh overflow-hidden relative hidden md:block">
+
         <div class="vimeo-wrapper">
             <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
             <div class="absolute inset-0 gradient-cicle-gray"></div>
             <div class="absolute bottom-0 text-center w-full z-10 mb-96">
+
                 <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
             </div>
         </div>
@@ -15,6 +17,7 @@
         </div>
         <img src="{{asset('images/p-cusco-1.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden z-0">
         <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden absolute bottom-0 right-0">
+
             <h1 class="text-center text-lg md:text-3xl my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
 
         </div>
@@ -226,6 +229,7 @@
         <div class="text-center w-full col-span-4 items-center text-3xl text-secondary dark:text-secondary font-bold gap-2">
             PERU TRAVEL PACKAGES
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+            <div class="elfsight-app-1d94e47e-4771-4f33-b316-81fa2970c3fe" data-elfsight-app-lazy></div>
 
         </div>
         <div class="col-span-4 text-center mt-4">
