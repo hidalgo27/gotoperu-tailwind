@@ -21,7 +21,7 @@ class FormFooter extends Component
         } elseif ($agent->isTablet()) {
             $this->device = 'Tablet';
         } else {
-            $this->device = 'Computadora de escritorio';
+            $this->device = 'Desktop';
         }
 
         $this->browser = $agent->browser();
