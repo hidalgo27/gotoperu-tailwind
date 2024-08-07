@@ -6,22 +6,35 @@
     </div>
     <form wire:submit.prevent="store" class="grid grid-cols-1 gap-12 w-11/12 md:w-7/12 lg:w-1/2 xl:w-2/5 items-center mx-auto">
 {{--        <div x-show="!data">--}}
+        <div>
+            @if ($device == 'Móvil')
+                <input type="hidden" wire:model="device" value="Móvil" readonly>
+            @elseif ($device == 'Tablet')
+                <input type="hidden" wire:model="device" value="Tablet" readonly>
+            @else
+                <input type="hidden" wire:model="device" value="Computadora de escritorio" readonly>
+            @endif
+            <input type="hidden" wire:model="browser" value="{{ $browser }}" readonly>
+        </div>
+
         <div class="">
             <div class=" mx-auto grid grid-cols-6 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
                     <h2 class="text-lg font-bold">{{__('message.form_footer_subtitle1')}}</h2>
                     <p class="text-xs  font-semibold">{{__('message.form_footer_par2')}}</p>
                 </div>
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
                 </label>
-                <div class="col-span-6 md:col-span-5 grid grid-cols-4 gap-2">
+                <div class="col-span-6 md:col-span-5 grid grid-cols-3 gap-2">
                     @foreach($hotels as $index => $hotel)
 
                         <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-700">
+
                             <input wire:model="values_categories.{{ $index }}" type="checkbox" value="{{$hotel['star'].','}}" class="opacity-0 absolute">
+
                             <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                             <span class="flex flex-col text-center">
                                 <div class="select-none block text-xs md:text-base">{{ $hotel['category'] }}</div>
@@ -34,15 +47,16 @@
                                 </div>
                             </span>
                         </label>
+
                     @endforeach
                 </div>
             </div>
 
-            <div class=" mx-auto mt-3 grid grid-cols-6 mt-4 gap-2">
+            <div class=" mx-auto mt-3 grid grid-cols-6 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
                     <h2 class="text-lg font-bold ">{{__('message.form_footer_subtitle2')}}</h2>
                 </div>
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
@@ -195,7 +209,7 @@
         </div>
 
         @if ($success)
-            <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mt-3 flex justify-between" x-data="{dataopen: true}" x-show="dataopen">
+            <div class="w-full mx-auto mt-3 flex justify-between" x-data="{dataopen: true}" x-show="dataopen">
                 <div class="inline-flex w-full overflow-hidden bg-white shadow-sm">
                     <div class="flex items-center justify-center w-12 bg-green-500">
                     </div>
