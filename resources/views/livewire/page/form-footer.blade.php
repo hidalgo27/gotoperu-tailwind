@@ -6,7 +6,7 @@
     </div>
     <form wire:submit.prevent="store" class="grid grid-cols-1 gap-12 w-11/12 md:w-7/12 lg:w-1/2 xl:w-2/5 items-center mx-auto">
 {{--        <div x-show="!data">--}}
-        <div>
+        <div class="hidden">
             @if ($device == 'Móvil')
                 <input type="hidden" wire:model="device" value="Móvil" readonly>
             @elseif ($device == 'Tablet')
