@@ -9,6 +9,16 @@
         </div>
     </div>
     <form wire:submit.prevent="store">
+        <div class="hidden">
+            @if ($device == 'Móvil')
+                <input type="hidden" wire:model="device" value="Móvil" readonly>
+            @elseif ($device == 'Tablet')
+                <input type="hidden" wire:model="device" value="Tablet" readonly>
+            @else
+                <input type="hidden" wire:model="device" value="Computadora de escritorio" readonly>
+            @endif
+            <input type="hidden" wire:model="browser" value="{{ $browser }}" readonly>
+        </div>
         <div x-show="!data">
             <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto grid grid-cols-6 gap-2">
                 <div class="col-span-6 flex flex-col text-center">
@@ -21,7 +31,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
                 </label>
-                <div class="col-span-6 md:col-span-5 grid grid-cols-4 gap-2">
+                <div class="col-span-6 md:col-span-5 grid grid-cols-3 gap-2">
                     @foreach($hotels as $index => $hotel)
 
                         <label class="cursor-pointer btn-check-form text-gray-500 flex justify-start items-start relative bg-gray-50 border border-gray-400 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-700">
