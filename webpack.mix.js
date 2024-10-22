@@ -28,6 +28,7 @@ mix.js('resources/js/app.js', 'public/js')
 mix.scripts([
     'node_modules/pikaday/pikaday.js',
     'node_modules/venobox/dist/venobox.min.js',
+    'node_modules/moment/moment.js',
     // 'node_modules/intl-tel-input/build/js/intlTelInput-jquery.js',
 ], 'public/js/plugins.js');
 

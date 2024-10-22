@@ -1136,6 +1136,7 @@
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 
     <script>
+
         new VenoBox({
             selector: '.venobox'
         });

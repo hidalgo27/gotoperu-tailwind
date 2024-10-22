@@ -33,7 +33,7 @@
 
                         <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-700">
 
-                            <input wire:model="values_categories.{{ $index }}" type="checkbox" value="{{$hotel['star'].','}}" class="opacity-0 absolute">
+                            <input wire:model="values_categories.{{ $index }}" type="checkbox" value="{{$hotel['star']}}" class="opacity-0 absolute">
 
                             <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                             <span class="flex flex-col text-center">
@@ -103,7 +103,7 @@
                 <div class="col-span-6 md:col-span-5 grid grid-cols-6 gap-2">
                     @foreach($trip_lengths as $index => $trip_length)
                         <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 px-2 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
-                            <input wire:model="values_trip_length" type="radio" value="{{$trip_length}}" class="hidden absolute">
+                            <input wire:model="values_trip_length.{{ $index }}" type="checkbox" value="{{$trip_length}}" class="hidden absolute">
                             <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                             <span class="flex flex-col text-center">
                                 <div class="select-none block text-xs md:text-base">{{ $trip_length }}</div>
@@ -112,7 +112,7 @@
                         </label>
                     @endforeach
                     <label class="cursor-pointer btn-check-form  flex justify-start items-start relative bg-gray-50 dark:bg-gray-700 border border-gray-400 px-4 py-3 flex flex-shrink-0 justify-center items-center hover:bg-white  hover:border-secondary transition duration-500">
-                        <input wire:model="values_trip_length" type="radio" value="Undecided" class="hidden absolute">
+                        <input wire:model="values_trip_length.5" type="checkbox" value="Undecided" class="hidden absolute">
                         <svg class="fill-current hidden absolute left-0 top-0 p-1  w-7 h-7 text-secondary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                         <span class="flex flex-col text-center">
                                 <div class="select-none block text-xss tracking-tighter">{{__('message.form_footer_par6')}}</div>
@@ -127,15 +127,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                 </label>
-                <div class="col-span-6 md:col-span-5"
-                     x-data
-                     x-init="new Pikaday({ field: $refs.input })"
-                >
+                <div class="col-span-6 md:col-span-5">
                     <input
-                        x-ref="input"
-                        id="datepicker" wire:model.lazy="travel_day" autocomplete="off" type="text" class="bg-gray-50 dark:bg-gray-700 border border-gray-400 p-3 md:p-5 bg-gray-50 dark:bg-gray-700  w-full"  placeholder="{{__('message.form_footer_par7')}}">
+
+                        id="datepicker" wire:model.lazy="travel_day" autocomplete="off" type="text" class="bg-gray-50 dark:bg-gray-700 border border-gray-400 p-3 md:p-5  w-full"  placeholder="{{__('message.form_footer_par7')}}">
                 </div>
             </div>
+
+
 
 {{--        </div>--}}
 
@@ -143,7 +142,7 @@
 
 
             <div class=" mx-auto mt-3 grid grid-cols-6 mt-4 md:mt-6 gap-2">
-                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center bg-gray-100 dark:bg-gray-700 ">
+                <label class="md:col-span-1 hidden md:inline-flex bg-gray-50 dark:bg-gray-700 border border-gray-400 p-5 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
@@ -237,8 +236,8 @@
 @push('scripts')
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
 
+    <script>
 
             let input = document.querySelector(".phone_number");
 
@@ -263,7 +262,30 @@
                 @this.set('phone', this.value);
             });
 
-            var picker = new Pikaday({ field: document.getElementById('datepicker') });
+            // var picker = new Pikaday({ field: document.getElementById('datepicker2'), format: 'D MMM YYYY'});
+
+    </script>
+
+
+
+
+    <!-- Inicialización de Pikaday -->
+    <script>
+        var picker = new Pikaday({
+            field: document.getElementById('datepicker'),
+            format: 'D MMM YYYY',  // Especifica el formato correcto
+            toString(date, format) {
+                // Usa Moment.js para el formato de salida
+                return moment(date).format(format);
+            },
+            parse(dateString, format) {
+                // Usa Moment.js para el formato de entrada
+                return moment(dateString, format).toDate();
+            },
+            onSelect: function(date) {
+                console.log(this.getMoment().format('D MMM YYYY')); // Verificación en consola
+            }
+        });
     </script>
 
 @endpush
