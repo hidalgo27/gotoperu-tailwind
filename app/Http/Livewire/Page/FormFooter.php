@@ -111,7 +111,7 @@ class FormFooter extends Component
 //        dd($data);
 
         // Enviar los datos al servicio mediante una solicitud HTTP POST
-        $response = Http::post('https://api.machupicchu.company/api/store/inquire', $data);
+        $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
 
         if ($response->successful()) {
         Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
