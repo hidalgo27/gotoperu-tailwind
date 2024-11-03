@@ -117,7 +117,7 @@ class FormFooterDetail extends Component
 
 
         // Enviar los datos al servicio mediante una solicitud HTTP POST
-        $response = Http::post('http://localhost:8000/api/store/inquire', $data);
+        $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
 
         if ($response->successful()) {
 
