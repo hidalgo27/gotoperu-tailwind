@@ -96,6 +96,8 @@ class FormFooterDetail extends Component
 
 //        $formattedDate = Carbon::parse($this->travel_date)->format('Y-m-d H:i:s');
 
+        $inquireDate = Carbon::now('America/Lima')->format('Y-m-d H:i:s');
+
         // Preparar los datos que se enviarán al servicio
         $data = [
             'package' => $this->paquete,
@@ -112,7 +114,8 @@ class FormFooterDetail extends Component
             'device' => $this->device,
             'browser' => $this->browser,
             'origen' => "Web",
-            'producto' => "gotoperu.com"
+            'producto' => "gotoperu.com",
+            'inquire_date' => $inquireDate
         ];
 
 
