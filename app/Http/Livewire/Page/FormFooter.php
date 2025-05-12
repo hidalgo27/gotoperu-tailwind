@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class FormFooter extends Component
 {
-    public $values_categories = [], $values_number, $values_trip_length, $travel_day, $comment, $name, $email, $phone, $phonecountry, $values_number_input, $success, $device, $browser;
+    public $values_categories = [], $values_number, $values_trip_length, $travel_day, $comment, $name, $email, $phone, $country, $phonecountry, $values_number_input, $success, $device, $browser;
 
     public function mount()
     {
@@ -111,12 +111,38 @@ class FormFooter extends Component
             'inquire_date' => $inquireDate
         ];
 
-//        dd($data);
+        $data2 = [
+            "product_id" => 1,
+            "package"=>'',
+            "hotel_category" => array_values($this->values_categories),
+            "destinations" => [],
+            "passengers" => $travellers,
+            "duration" => array_values($this->values_trip_length),
+            "travel_date"=>$formattedDate,
+            "country"=>$this->country,
+            "country_code"=>$this->phonecountry,
+            "device"=>$this->device,
+            "origin"=>"Web",
+            "browser"=>$this->browser,
+            "name"=>$this->name,
+            "email"=>$this->email,
+            "phone"=>$this->phone,
+            "comment"=>$this->comment,
+            "initial_price"=>0,
+            "inquiry_date"=>$inquireDate,
+            "dialCode"=>'',
 
+        ];
+
+//        dd($data2);
+
+        $response2 = Http::post('https://app.g1.agency/api/v1/leads/', $data2);
+
+//        dd($response2->json());
         // Enviar los datos al servicio mediante una solicitud HTTP POST
         $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
 
-        if ($response->successful()) {
+        if ($response2->successful()) {
         Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
             $messaje->to($this->email, $this->name)
                 ->subject('GotoPeru')
