@@ -232,7 +232,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
 
-        let input = document.querySelector(".phone_number");
         document.addEventListener("DOMContentLoaded", function () {
             let input = document.querySelector('[data-intl-tel-input]');
             let countryInput = document.getElementById('country');
@@ -248,21 +247,37 @@
                         .then(data => {
                             const countryCode = data.country ? data.country : "US";
                             callback(countryCode);
-                        @this.set('phonecountry', countryCode);
+
+                            // Forzar la actualización del país y código telefónico
+                            setTimeout(() => {
+                                let countryData = iti.getSelectedCountryData();
+                                let countryDialCode = countryData.dialCode ? `+${countryData.dialCode}` : '';
+                                let phoneCountry = `${countryCode} ${countryDialCode}`;
+                                let countryName = extractCountryName(countryData.name);
+
+                                // Actualizar los valores
+                            @this.set('phonecountry', phoneCountry);
+                            @this.set('country', countryName);
+                                countryInput.value = countryName;
+                            }, 500); // Esperar medio segundo para asegurarnos de que `intlTelInput` haya actualizado los datos
+                        })
+                        .catch(() => {
+                            callback("US");
                         });
                 },
-                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js?1613236686837",
             });
 
+            // Evento `blur` para actualizar los datos cuando el input pierde el foco
             input.addEventListener('blur', function () {
-                let phoneNumber = iti.getNumber();
                 let countryData = iti.getSelectedCountryData();
                 let countryName = extractCountryName(countryData.name);
+                let countryDialCode = countryData.dialCode ? `+${countryData.dialCode}` : '';
+                let phoneCountry = `${countryData.iso2.toUpperCase()} ${countryDialCode}`;
 
-                // Establecer el número de teléfono
-            @this.set('phone', phoneNumber);
-
-                // Establecer solo el nombre del país en inglés
+                // Actualizar los valores
+            @this.set('phone', this.value);
+            @this.set('phonecountry', phoneCountry);
             @this.set('country', countryName);
                 countryInput.value = countryName;
             });
@@ -273,7 +288,6 @@
              * @returns {string}
              */
             function extractCountryName(fullCountryName) {
-                // Elimina el texto entre paréntesis, incluyendo el espacio antes del paréntesis
                 return fullCountryName.replace(/\s?\(.*?\)/, '');
             }
         });
