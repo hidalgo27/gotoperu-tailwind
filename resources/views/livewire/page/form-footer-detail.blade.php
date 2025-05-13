@@ -158,7 +158,7 @@
                     </svg>
                 </label>
                 <div class="col-span-6 md:col-span-5">
-                    <input wire:model="name" type="text" class="bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder="{{__('message.form_footer_par10')}}">
+                    <input autocomplete="new-password" wire:model="name" type="text" class="bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder="{{__('message.form_footer_par10')}}">
                     @error('name')
                     <span class="text-xs text-red-500">{{$message}}</span>
                     @enderror
@@ -172,7 +172,7 @@
                     </svg>
                 </label>
                 <div class="col-span-6 md:col-span-5">
-                    <input wire:model="email" type="text" class="bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder="{{__('message.form_footer_par11')}}">
+                    <input autocomplete="new-password" wire:model="email" type="text" class="bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder="{{__('message.form_footer_par11')}}">
                     @error('email')
                     <span class="text-xs text-red-500">{{$message}}</span>
                     @enderror
@@ -186,7 +186,7 @@
                     </svg>
                 </label>
                 <div class="col-span-6 md:col-span-5" wire:ignore>
-                    <input wire:model="phone" id="phone" type="text" class="phone_number bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder="{{__('message.form_footer_par12')}}" data-intl-tel-input>
+                    <input autocomplete="new-password" wire:model="phone" id="phone" type="text" class="phone_number bg-gray-50 border border-gray-400 p-3 md:p-5 bg-gray-50 text-gray-500 w-full focus:outline-none" placeholder="{{__('message.form_footer_par12')}}" data-intl-tel-input>
                     <input type="hidden" wire:model="country" id="country" />
                 </div>
             </div>
