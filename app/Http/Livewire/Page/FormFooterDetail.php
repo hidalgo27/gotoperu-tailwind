@@ -101,10 +101,10 @@ class FormFooterDetail extends Component
         // Preparar los datos que se enviarán al servicio
         $data = [
             'package' => $this->paquete,
-            "category_d" => $this->values_categories,
+            "category_d" => array_filter($this->values_categories),
             "destino_d" => [], // Aquí puedes agregar los destinos si los tienes
             "pasajeros_d" => $travellers,
-            "duracion_d" => $this->values_trip_length,
+            "duracion_d" => [],
             "el_nombre" => $this->name,
             "el_email" => $this->email,
             "el_fecha" => $formattedDate, // O puedes usar $this->travel_day si es relevante
@@ -121,10 +121,10 @@ class FormFooterDetail extends Component
         $data2 = [
             "product_id" => 1,
             "package"=>$this->paquete,
-            "hotel_category" => array_values($this->values_categories),
+            "hotel_category" => array_values(array_filter($this->values_categories)),
             "destinations" => [],
             "passengers" => $travellers,
-            "duration" => array_values($this->values_trip_length),
+            "duration" => [],
             "travel_date"=>$formattedDate,
             "country"=>$this->country,
             "country_code"=>$this->phonecountry,
