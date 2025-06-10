@@ -144,8 +144,8 @@ class FormFooter extends Component
 
 //        dd($response2->json());
             // Enviar los datos al servicio mediante una solicitud HTTP POST
-            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
-            if ($response2->successful() AND $response->successful()) {
+//            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
+            if ($response2->successful()) {
                 Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
                     $messaje->to($this->email, $this->name)
                         ->subject('GotoPeru')

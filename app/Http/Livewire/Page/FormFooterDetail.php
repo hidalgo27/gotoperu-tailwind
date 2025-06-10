@@ -145,9 +145,9 @@ class FormFooterDetail extends Component
         try {
             $response2 = Http::post('https://app.g1.agency/api/v1/leads/', $data2);
             // Enviar los datos al servicio mediante una solicitud HTTP POST
-            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
+//            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
 
-            if ($response2->successful() AND $response->successful()) {
+            if ($response2->successful()) {
 
 
                 Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
