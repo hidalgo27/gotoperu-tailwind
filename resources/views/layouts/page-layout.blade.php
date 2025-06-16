@@ -312,7 +312,7 @@
     <a href="#form-dream-adventure">
         <div class="flex items-center">
             <span class="bg-gray-800 text-white -mr-3 py-2 px-4 rounded-lg border-2 border-secondary">Start my quote</span>
-            <img src="{{asset('images/fiorella.jpg')}}" alt="" class="w-16 h-16 rounded-full border-2 border-secondary">
+            <img src="{{asset('images/team/sai4.png')}}" alt="" class="w-16 h-16 object-cover object-top  rounded-full border-2 border-secondary">
         </div>
     </a>
 </div>

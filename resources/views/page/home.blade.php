@@ -240,7 +240,7 @@
     <section class="grid grid-cols-1 md:grid-cols-6 sm:hidden">
         <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
             <div class="text-center">
-                <img src="{{asset('images/banners/joana.png')}}" alt="" class="w-1/2 mx-auto">
+                <img src="{{asset('images/banners/angie.png')}}" alt="" class="w-1/2 mx-auto">
                 <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -297,7 +297,7 @@
                         </div>
                     </div>
                     <div class="col-span-3 pt-12">
-                        <img src="{{asset('images/team/joana.png')}}" alt="">
+                        <img src="{{asset('images/team/angie.png')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -727,7 +727,7 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 {{--                    <div class="col-span-2">--}}
-{{--                        <img src="{{asset('images/banners/joana.png')}}" alt="">--}}
+{{--                        <img src="{{asset('images/banners/angie.png')}}" alt="">--}}
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
@@ -848,7 +848,7 @@
             </div>
         </div>
         <div class="bg-primary text-white dark:bg-gray-800 dark:bg-opacity-90  dark:text-gray-50 flex items-end">
-            <img src="{{asset('images/team/fiore.png')}}" alt="" class="mx-auto">
+            <img src="{{asset('images/team/pabel2.png')}}" alt="" class="mx-auto">
             <div class="text-center">
 {{--                <h3 class="font-semibold text-2xl">--}}
 {{--                    GET SOCIAL WITH US--}}
