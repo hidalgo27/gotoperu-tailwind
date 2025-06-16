@@ -51,7 +51,7 @@
         </div>
     </section>
 
-    <section class="py-12 text-gray-500 text-center bg-gray-100">
+    <section class="py-12 text-gray-500 text-center bg-gray-100 hidden">
         <div class="container">
         <h2 class="text-3xl font-semibold mb-2">{{__('message.abou_title3')}}</h2>
         <p class="">{{__('message.abou_par3')}}</p>
