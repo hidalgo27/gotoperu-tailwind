@@ -163,7 +163,10 @@ return [
     'book_par9' => 'Delayed payments: GOTOPERU reserves the right to treat cases of delayed payment as a cancellation of the booking, and the company can withdraw its confirmation of services. Please note that this applies if no agreement has been made for paying the remaining balance.',
 
     'abou_title1' => 'About',
-    'abou_title2' => 'YOUR LOCAL PERU TRAVEL EXPERTS',
+    'abou_title2' => 'OUR TEAM',
+    'abou_message1' => 'The driving force behind GOTOGROUP is our incredible team; an enthusiastic and diverse group of individuals united by a love for Latin America and a belief in the transformative power of travel. We are more than just travel agents; we serve as cultural ambassadors, adventure partners, and committed collaborators in crafting your dream vacation.',
+    'abou_message2' => 'For us, travel embodies the essence of making genuine connections: understanding the intricacies of locallife, mingling with communities, and discovering a place\'s true character. This philosophy guides every member of the GOTOGROUP team, from initial planning to on-the-ground support. We\'re here to create bespoke excursions that showcase Latin America and allow you to experience it firsthand, leaving you with memories that will endure long after you return.',
+    'abou_message3' => 'Discover the dedicated individuals who comprise the GOTOGROUP family and are happy to share their love for Latin America with you.',
     'abou_par1' => 'GOTOPERU is a specialist travel agency catering to travellers who want an original, authentic and unforgettable experience at the land of the Incas.',
     'abou_par2' => 'From MachuPicchu all included tours, to off-the-beaten-path adventures at the Amazon and into Sacred Valley, Lake Titicaca, Lima, Arequipa and many more: we offer tailor-made Peru travel packages for all interests and needs. Since GOTOPERU was established in 2009, we have had the pleasure of welcoming tens of thousands of happy travellers from over 50 countries. We hope to be able to welcome you and introduce you to the magical, biodiverse and historical Peru, our home.',
     'abou_title3' => 'OUR TEAM',
