@@ -312,20 +312,20 @@
     <a href="#form-dream-adventure">
         <div class="flex items-center">
             <span class="bg-gray-800 text-white -mr-3 py-2 px-4 rounded-lg border-2 border-secondary">Start my quote</span>
-            <img src="{{asset('images/fiorella.jpg')}}" alt="" class="w-16 h-16 rounded-full border-2 border-secondary">
+            <img src="{{asset('images/team/sai4.png')}}" alt="" class="w-16 h-16 object-cover object-top  rounded-full border-2 border-secondary">
         </div>
     </a>
 </div>
 
     <div class="fixed bottom-0 mb-20 right-0 z-40 py-6 px-7 sm:inline-flex md:mb-0">
-        <a href="https://api.whatsapp.com/send?phone=51934991442" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=51959685038" target="_blank">
             <span class="flex relative h-10 w-10">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
             </span>
         </a>
     </div>
     <div class="fixed bottom-0 mb-20 right-0 z-40 py-5 px-4 sm:inline-flex md:mb-0">
-        <a href="https://api.whatsapp.com/send?phone=51934991442" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=51959685038" target="_blank">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
@@ -436,7 +436,7 @@
                 <a href="#form-dream-adventure" class="btn-secondary text-center">{{__('message.button_inquire')}}</a>
                 <div class="dark:text-gray-400">
                     <span class="text-xs block text-right">US</span>
-                    (202) 491-1478
+                    +1 (813) 455-8646
                 </div>
 {{--                <div class="cursor-pointer flex items-center" @click="menu = !menu">--}}
 {{--                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}

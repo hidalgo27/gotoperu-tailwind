@@ -59,7 +59,7 @@
 
                     @else
                         @foreach($paquete['paquetes']['precio_paquetes'] as $precio)
-                            @if($precio['estrellas'] == 2)
+                            @if($precio['estrellas'] == 3)
                                 @if($precio['precio_d'] > 0)
                                     ${{$precio['precio_d']}} <span class="text-sm text-secondary">usd</span>
                                 @else
