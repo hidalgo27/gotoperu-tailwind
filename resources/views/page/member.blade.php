@@ -10,11 +10,11 @@
                     <p class="text-xl">{{ $member->cargo }}</p>
                 @endif
 
-                @if ($member->actividad)
+                {{-- @if ($member->actividad)
                     <p class="mt-4 italic font-bold leading-relaxed tracking-wide">
                         {{ $member->actividad }}
                     </p>
-                @endif
+                @endif --}}
 
                 @if ($member->descripcion)
                     <p class="mt-4">{{ $member->descripcion }}</p>
