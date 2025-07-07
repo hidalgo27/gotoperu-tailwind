@@ -38,9 +38,9 @@
     ];
 @endphp
 
-<div class="pt-24">
-    <div class="container flex flex-col">
-        <h1 class="text-4xl italic font-playfair mb-6">EXPLORE MORE WITH GOTOGROUP</h1>
+<div class="pt-24 bg-primary">
+    <div class="container flex flex-col ">
+        <h1 class="text-4xl italic font-playfair mb-6 text-white">EXPLORE MORE WITH GOTOGROUP</h1>
     </div>
     <div class="flex flex-wrap w-full h-full">
         @foreach ($gridItems as $item)
