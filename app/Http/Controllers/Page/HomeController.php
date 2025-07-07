@@ -184,7 +184,15 @@ class HomeController extends Controller
         return view('page.faq', compact('faqs', 'category'));
     }
 
+    public function our_team() {
+        $teams = TTeam::orderBy('nombre')->get();
+        return view('page.our-team', compact('teams'));
+    }
 
+    public function team_member($id) {
+        $member = TTeam::findOrFail($id);
+        return view('page.member', compact('member')); // You'll need to create this view
+    }
 
     public function hotels(){
         $hotels = THotel::all();
