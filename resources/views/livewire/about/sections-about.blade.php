@@ -67,9 +67,9 @@
     </div>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-gray-900/70"
+    <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-gray-900/70 align-middle"
         onclick="if(event.target === this) closeModal()">
-        <div class="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="relative bg-white rounded-lg shadow-xl w-full lg:w-3/4  max-h-[90vh] overflow-y-auto mx-auto p-6">
             <!-- Close button -->
             <button onclick="closeModal()"
                 class="absolute top-4 right-4 p-1 rounded-full hover:bg-gray-100 transition-colors"
@@ -80,53 +80,65 @@
                 </svg>
             </button>
 
-            <!-- Modal content -->
-            <div>
-                <!-- WorkWithUsForm would go here -->
-                <div class="p-8">
-                    <p class="text-center py-8">Work with us form would be displayed here</p>
+            <!-- Contenido del formulario -->
+            <div id="form-content">
+                <livewire:about.work-with-us-form />
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación de éxito (inicialmente oculta) -->
+    <div id="form-success-notification" class="fixed top-4 right-4 z-[60] hidden w-80">
+        <div class="inline-flex w-full overflow-hidden bg-white shadow-sm">
+            <div class="flex items-center justify-center w-12 bg-green-500"></div>
+            <div class="px-3 py-2 text-left w-full flex justify-between items-center">
+                <div>
+                    <span class="font-semibold text-green-500">{{ __('message.form_footer_par8') }}</span>
+                    <p class="mb-1 text-sm leading-none">{{ __('message.msg_email') }}</p>
+                </div>
+                <div>
+                    <button onclick="closeModal()"
+                        class="p-2 py-1 rounded text-green-500 text-sm bg-green-200 border border-green-300 cursor-pointer">
+                        OK
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@push('css')
-    <style>
-        /* Smooth transition for modal */
-        .modal-transition {
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-hidden {
-            opacity: 0;
-        }
-    </style>
-@endpush
-
 
 @push('scripts')
     <script>
-        function lockBodyScroll() {
-            document.body.style.overflow = 'hidden';
-        }
-
-        function unlockBodyScroll() {
-            document.body.style.overflow = '';
-        }
-
         function openModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.remove('hidden');
-            lockBodyScroll();
+            document.getElementById('modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            // Resetear el formulario al abrir
+            document.getElementById('form-success-notification').classList.add('hidden');
+            document.getElementById('form-content').classList.remove('hidden');
         }
 
         function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.add('hidden');
-            unlockBodyScroll();
+            document.getElementById('modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
         }
 
-        // Clean up on page navigation
-        window.addEventListener('beforeunload', unlockBodyScroll);
+        // Escuchar eventos de Livewire
+        document.addEventListener('DOMContentLoaded', function() {
+            // Para Livewire 2.x
+            Livewire.on('formSubmitted', () => {
+                // Mostrar notificación
+                document.getElementById('form-success-notification').classList.remove('hidden');
+                // Ocultar formulario
+                document.getElementById('form-content').classList.add('hidden');
+
+                // Cerrar automáticamente después de 3 segundos
+                setTimeout(closeModal, 3000);
+            });
+
+            // Para manejar errores
+            Livewire.on('formError', (message) => {
+                alert(message); // O mostrar en un div de error en el modal
+            });
+        });
     </script>
 @endpush
