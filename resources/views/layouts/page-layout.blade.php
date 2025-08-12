@@ -652,7 +652,7 @@
                             <a href="{{asset('terms-and-condition.pdf')}}" target="_blank" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Terms and conditions</a>
                         </li>
                         <li>
-                            <a href="{{asset('documents/gtg-política-del-SGIG.jpg')}}" target="_blank" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">SGIG Policy</a>
+                            <a href="{{asset('documents/gtg-política-del-SGIG.pdf')}}" target="_blank" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">SGIG Policy</a>
                         </li>
                         <li>
                             <a href="https://forms.gle/kpgG6PY9Zhd6qR8K9" target="_blank" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Whistleblower Channel</a>
