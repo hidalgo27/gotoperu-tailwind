@@ -651,6 +651,12 @@
                         <li>
                             <a href="{{asset('terms-and-condition.pdf')}}" target="_blank" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Terms and conditions</a>
                         </li>
+                        <li>
+                            <a href="{{asset('documents/gtg-política-del-SGIG.jpg')}}" target="_blank" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">SGIG Policy</a>
+                        </li>
+                        <li>
+                            <a href="https://forms.gle/kpgG6PY9Zhd6qR8K9" target="_blank" class="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">Whistleblower Channel</a>
+                        </li>
                     </ul>
                     <p class="font-semibold tracking-wide text-secondary mb-6">
 
@@ -676,7 +682,7 @@
 
             <div class="flex flex-col justify-between pt-5 border-t border-gray-500 sm:flex-row">
                 <p class="text-sm dark:text-gray-300">
-                    © Copyright 2022 GotoPeru. All rights reserved. | GOTOPERU COMPANY EIRL  - RUC  20609225441 - Avenida El Sol 449 - Cusco - Cusco - Peru
+                    © Copyright 2025 GotoPeru. All rights reserved. | GOTOPERU COMPANY EIRL  - RUC  20609225441 - Avenida El Sol 449 - Cusco - Cusco - Peru
                 </p>
                 <div class="flex items-center mt-4 space-x-4 sm:mt-0">
 {{--                    <a href="/" class="transition-colors duration-300 text-blue-100 hover:text-blue-400">--}}
