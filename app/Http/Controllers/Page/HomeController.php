@@ -25,6 +25,26 @@ class HomeController extends Controller
 //        $pipedrive = new Pipedrive(config('services.pipedrive.token'));
 //        $organizations = $pipedrive->organizations()->all();
 
+        $categoriesForTabs = TCategoria::query()
+
+            ->whereHas('paquetes', function ($q) {
+                $q->where('estado', 1);
+            })
+            ->with(['paquetes' => function ($q) {
+                $q->where('estado', 1)
+                    ->with([
+                        'imagen_paquetes',
+                        'paquetes_destinos.destinos',
+                        'paquetes_categoria.categoria',
+                        'precio_paquetes'
+                    ])
+                    ->orderBy('titulo'); // o el orden que prefieras
+            }])
+            ->orderBy('nombre')
+            ->get();
+
+        $defaultCategoryId = optional($categoriesForTabs->first())->id;
+
         $paquete_recommended = TPaquete::
         with('imagen_paquetes','paquetes_destinos.destinos','paquetes_categoria.categoria', 'precio_paquetes')
             ->where('estado', '1')
@@ -45,7 +65,15 @@ class HomeController extends Controller
         $category_block = TCategoria::where('estado', 1)->get();
         $category_footer = TCategoria::where('orden_block', 1)->get();
 
-        $destination = TDestino::with('destino_imagen')->get();
+//        $destination = TDestino::with('destino_imagen')->get();
+        $destination = TDestino::query()
+            ->where('estado', 1)
+            ->with(['destino_imagen' => function ($q) {
+                // si prefieres la primera creada, ordena por id asc
+                $q->orderBy('id', 'asc');
+            }])
+            ->orderBy('nombre')
+            ->get();
 
 
         $videos = TVideoTestimonio::all();
@@ -61,7 +89,9 @@ class HomeController extends Controller
                 'category_block',
                 'category_footer',
                 'destination',
-                'videos'
+                'videos',
+                'categoriesForTabs',
+                'defaultCategoryId'
             ));
     }
 
@@ -86,6 +116,15 @@ class HomeController extends Controller
 
 //        $paquetes = TPaquete::
 //        with('imagen_paquetes','paquetes_destinos.destinos.destino_imagen','paquetes_categoria.categoria', 'precio_paquetes', 'paquete_itinerario')->get();
+
+        $paquete->load([
+            'precio_paquetes' => function ($q) {
+                $q->where(function ($w) {
+                    $w->where('estado', 1)
+                        ->orWhereNull('estado');   // ← clave
+                })->orderBy('estrellas');
+            },
+        ]);
 
         $testinomials = TTestimonio::all();
         $testinomials_r = TTestimonio::inRandomOrder()->limit(1)->get();
@@ -130,7 +169,19 @@ class HomeController extends Controller
             ->get();
         $category = TCategoria::all();
 
-        return view('page.destination-show', compact('paquetes_api', 'destinations', 'category'));
+        $paquetes = $destinations->paquetes()
+            ->where('estado', 1)
+            ->with([
+                'imagen_paquetes',
+                'paquetes_destinos.destinos',
+                'paquetes_categoria.categoria',
+                'precio_paquetes',
+                // 'categorias:id,nombre', // <- opcional si también la usas
+            ])
+            ->orderBy('titulo')
+            ->get();
+
+        return view('page.destination-show', compact('paquetes_api', 'destinations', 'category', 'paquetes'));
     }
 
     public function category() {
@@ -154,9 +205,23 @@ class HomeController extends Controller
             ->where('idcategoria', $categories->id)
             ->get();
 
+
+
         $category = TCategoria::all();
 
-        return view('page.category-show', compact('paquetes_api', 'categories', 'category'));
+        $paquetes = $categories->paquetes()
+            ->where('estado', 1)
+            ->with([
+                'imagen_paquetes',
+                'paquetes_destinos.destinos',
+                'paquetes_categoria.categoria',
+                'precio_paquetes',
+                // 'categorias:id,nombre', // si tu card lo usa
+            ])
+            ->orderBy('titulo')
+            ->get();
+
+        return view('page.category-show', compact('paquetes_api', 'categories', 'category', 'paquetes'));
     }
 
     public function about(){

@@ -34,6 +34,17 @@ module.exports = {
                 'footer-texture': "url('/img/footer-texture.png')",
             }),
         },
+        // container: {
+        //     center: true, // centra el container (equivale a mx-auto)
+        //     padding: {
+        //         DEFAULT: '1rem',
+        //         sm: '1rem',
+        //         md: '1.25rem',
+        //         lg: '2rem',
+        //         xl: '2rem',
+        //         '2xl': '2rem',
+        //     },
+        // },
     },
     variants: {
         extend: {
@@ -46,7 +57,7 @@ module.exports = {
     },
 
     corePlugins: {
-        container: false
+        container: true
     },
 
 

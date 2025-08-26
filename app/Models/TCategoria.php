@@ -19,4 +19,14 @@ class TCategoria extends Model
     {
         return $this->hasMany(TPaqueteCategoria::class, 'idcategoria');
     }
+
+    public function paquetes()
+    {
+        return $this->belongsToMany(
+            TPaquete::class,
+            'tpaquetescategoria',
+            'idcategoria',   // FK en la pivote que apunta a TCategoria
+            'idpaquetes'     // FK en la pivote que apunta a TPaquete
+        );
+    }
 }

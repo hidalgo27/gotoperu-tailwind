@@ -18,53 +18,65 @@
 
 
 
-    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <section class="container mx-auto px-4 mb-12">
+        @if($paquetes->isNotEmpty())
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                @foreach($paquetes as $paquete)
+                    <x-packages-card :paquete="$paquete" />
+                @endforeach
+            </div>
+        @else
+            <div class="text-gray-500">No packages for this category yet.</div>
+        @endif
+    </section>
 
-        {{--        @foreach($paquetes as $paquete)--}}
-        {{--            {{$paquete->titulo}}--}}
-        {{--        @endforeach--}}
-        @foreach($paquetes_api as $paquete)
-            <div class="group">
-                <div class="overflow-hidden relative">
-                    <div class="relative">
-                        <img src="{{$paquete['paquetes']['imagen']}}" alt="sds" class="object-cover transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105"/>
-                        <div class="absolute inset-0 gradient-cicle-gray"></div>
-                    </div>
-                    <div class="absolute inset-x-0 bottom-0 w-full p-6">
-                        <div class="bg-primary bg-opacity-95 p-4 text-gray-50 group-hover:bg-opacity-100 transition duration-500 rounded-lg shadow-xl">
-                            <h2 class="text-xl font-bold">{{ $paquete['paquetes']['titulo'] }}</h2>
-                            <p class="text-xs my-2">
+{{--    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">--}}
+
+{{--        --}}{{--        @foreach($paquetes as $paquete)--}}
+{{--        --}}{{--            {{$paquete->titulo}}--}}
+{{--        --}}{{--        @endforeach--}}
+{{--        @foreach($paquetes_api as $paquete)--}}
+{{--            <div class="group">--}}
+{{--                <div class="overflow-hidden relative">--}}
+{{--                    <div class="relative">--}}
+{{--                        <img src="{{$paquete['paquetes']['imagen']}}" alt="sds" class="object-cover transition duration-500 ease-in-out transform group-hover:-translate-x-0 group-hover:scale-105"/>--}}
+{{--                        <div class="absolute inset-0 gradient-cicle-gray"></div>--}}
+{{--                    </div>--}}
+{{--                    <div class="absolute inset-x-0 bottom-0 w-full p-6">--}}
+{{--                        <div class="bg-primary bg-opacity-95 p-4 text-gray-50 group-hover:bg-opacity-100 transition duration-500 rounded-lg shadow-xl">--}}
+{{--                            <h2 class="text-xl font-bold">{{ $paquete['paquetes']['titulo'] }}</h2>--}}
+{{--                            <p class="text-xs my-2">--}}
 {{--                                @foreach($paquete['paquetes']['paquetes_destinos'] as $paquete_destino)--}}
 {{--                                    {{$paquete_destino['destinos']['nombre']}}--}}
 {{--                                    @if ($loop->iteration < count($paquete['paquetes']['paquetes_destinos'])) , @else . @endif--}}
 {{--                                @endforeach--}}
-                            </p>
+{{--                            </p>--}}
 
-                        </div>
-                    </div>
-                </div>
-                <div class="border p-6 block group-hover:border-primary text-center transition duration-500">
-                    <div class="font-bold text-gray-500 text-lg mb-4">
-                        {{ $paquete['paquetes']['duracion'] }} {{__('message.pack_par4')}} /
-                        @if($paquete['paquetes']['is_p_t'] == 0)
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="border p-6 block group-hover:border-primary text-center transition duration-500">--}}
+{{--                    <div class="font-bold text-gray-500 text-lg mb-4">--}}
+{{--                        {{ $paquete['paquetes']['duracion'] }} {{__('message.pack_par4')}} /--}}
+{{--                        @if($paquete['paquetes']['is_p_t'] == 0)--}}
 
-                            @if($paquete['paquetes']['precio_tours'] > 0)
-                                ${{$paquete['paquetes']['precio_tours']}} <span class="text-sm text-secondary">usd</span>
-                            @else
-                                <span class="text-red-500">{{__('message.pack_par6')}}</span>
-                            @endif
+{{--                            @if($paquete['paquetes']['precio_tours'] > 0)--}}
+{{--                                ${{$paquete['paquetes']['precio_tours']}} <span class="text-sm text-secondary">usd</span>--}}
+{{--                            @else--}}
+{{--                                <span class="text-red-500">{{__('message.pack_par6')}}</span>--}}
+{{--                            @endif--}}
 
-                        @else
-                            @foreach($paquete['paquetes']['precio_paquetes'] as $precio)
-                                @if($precio['estrellas'] == 3)
-                                    @if($precio['precio_d'] > 0)
-                                        ${{$precio['precio_d']}} <span class="text-sm text-secondary">usd</span>
-                                    @else
-                                        <span class="text-red-500">{{__('message.pack_par6')}}</span>
-                                    @endif
-                                @endif
-                            @endforeach
-                        @endif
+{{--                        @else--}}
+{{--                            @foreach($paquete['paquetes']['precio_paquetes'] as $precio)--}}
+{{--                                @if($precio['estrellas'] == 3)--}}
+{{--                                    @if($precio['precio_d'] > 0)--}}
+{{--                                        ${{$precio['precio_d']}} <span class="text-sm text-secondary">usd</span>--}}
+{{--                                    @else--}}
+{{--                                        <span class="text-red-500">{{__('message.pack_par6')}}</span>--}}
+{{--                                    @endif--}}
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+{{--                        @endif--}}
 
 {{--                        @foreach($paquete['paquetes']['precio_paquetes'] as $precio)--}}
 {{--                            @if($precio['estrellas'] == 2)--}}
@@ -75,15 +87,15 @@
 {{--                                @endif--}}
 {{--                            @endif--}}
 {{--                        @endforeach--}}
-                    </div>
-                    @if($paquete['paquetes']['codigo_f'])
-                        <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="{{$paquete['paquetes']['codigo_f']}}" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['paquetes']['codigo_f']}}" >Book Now</button>
-                    @endif
-                    <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary block">{{__('message.button_detail')}}</a>
-                </div>
-            </div>
-        @endforeach
-    </section>
+{{--                    </div>--}}
+{{--                    @if($paquete['paquetes']['codigo_f'])--}}
+{{--                        <button class="wtrvl-checkout_button btn-primary block w-full mb-2" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346" data-uuid="{{$paquete['paquetes']['codigo_f']}}" href="https://www.wetravel.com/checkout_embed?uuid={{$paquete['paquetes']['codigo_f']}}" >Book Now</button>--}}
+{{--                    @endif--}}
+{{--                    <a href="{{route('packages.detail', $paquete['paquetes']['url'])}}" class="btn-secondary block">{{__('message.button_detail')}}</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endforeach--}}
+{{--    </section>--}}
 
     <section class="mt-12">
         @livewire('page.form-footer')
