@@ -449,9 +449,9 @@
                         }
                     @endphp
 
-                    <div class="flex justify-center mb-12">
+                    <div class="flex justify-center mb-12 pt-6">
                         <a href="{{ $categoryLink }}"
-                           class="btn-secondary flex items-center gap-2">
+                           class="btn-dark flex items-center gap-2">
                             See more “{{ $cat->nombre }}” packages
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
