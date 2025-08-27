@@ -43,6 +43,8 @@ class HomeController extends Controller
             ->orderBy('nombre')
             ->get();
 
+        dd($categoriesForTabs);
+
         $defaultCategoryId = optional($categoriesForTabs->first())->id;
 
         $paquete_recommended = TPaquete::
