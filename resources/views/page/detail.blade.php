@@ -2,19 +2,27 @@
 @section('content')
     <div class="swiper mySwiper2 relative">
         <div class="swiper-wrapper">
-{{--            @foreach($paquete['paquetes_destinos'] as $paquete_destino)--}}
-{{--                @foreach($paquete_destino['destinos']['destino_imagen'] as $destino_imagen)--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">--}}
-{{--                    </div>--}}
 
-{{--                @endforeach--}}
-{{--            @endforeach--}}
-            <div class="swiper-slide">
-                @foreach($paquete['imagen_paquetes'] as $imagen)
-                    <img src="{{$imagen['nombre']}}" alt="{{$paquete['titulo']}}" class="object-cover h-80vh w-full object-top bg-yellow-300  ">
+                @foreach($paquete['imagen_paquetes'] as $destino_imagen)
+                    <div class="swiper-slide">
+                        <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">
+                    </div>
+
                 @endforeach
-            </div>
+
+{{--                @foreach($paquete['paquetes_destinos'] as $paquete_destino)--}}
+{{--                    @foreach($paquete_destino['destinos']['destino_imagen'] as $destino_imagen)--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">--}}
+{{--                        </div>--}}
+
+{{--                    @endforeach--}}
+{{--                @endforeach--}}
+{{--            <div class="swiper-slide">--}}
+{{--                @foreach($paquete['imagen_paquetes'] as $imagen)--}}
+{{--                    <img src="{{$imagen['nombre']}}" alt="{{$paquete['titulo']}}" class="object-cover h-80vh w-full object-top bg-yellow-300  ">--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
 {{--            <div class="swiper-slide">Slide 2</div>--}}
 {{--            <div class="swiper-slide">Slide 3</div>--}}
 {{--            <div class="swiper-slide">Slide 4</div>--}}
