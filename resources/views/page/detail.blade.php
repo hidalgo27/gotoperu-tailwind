@@ -893,7 +893,7 @@
 
                         // Solo TRIPLE (TPL) para 3★,4★,5★. Para 2★ usar precio_tours (por persona)
                         $priceRaw =
-                          $star === 3
+                          $star === 2
                             ? (int)($paquete->precio_tours ?? 0)
                             : (int)(is_array($row) ? ($row['precio_d'] ?? 0) : ($row->precio_d ?? 0));
 
@@ -911,10 +911,10 @@
                         </div>
 
                         <div class="text-[11px] text-gray-500 mt-1">
-                            @if($star === 3)
+                            @if($star === 2)
                                 per person
                             @else
-                                per person (triple)
+                                per person (double/triple)
                             @endif
                         </div>
                     </div>
