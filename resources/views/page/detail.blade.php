@@ -5,7 +5,7 @@
 
                 @foreach($paquete['imagen_paquetes'] as $destino_imagen)
                     <div class="swiper-slide">
-                        <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">
+                        <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-[70vh] w-full object-center">
                     </div>
 
                 @endforeach
@@ -377,9 +377,9 @@
                             {{--                                                        {{ $paquete['duracion'] }} {{__('message.pack_par4')}}--}}
                             {{--                                                    </div>--}}
                             @if($paquete['is_p_t'] == 1)
-                                <div class="flex-1 border bg-white p-3 flex items-center">
+                                <div class="flex-1 border backdrop-blur-sm bg-white/80 p-3 flex items-center">
                                     @foreach($paquete['precio_paquetes'] as $precio)
-                                        @if($precio['estrellas'] == 2)
+                                        @if($precio['estrellas'] == 3)
                                             <div class="text-4xl font-semibold text-gray-600">
                                                 {{--                                                                            <span> {{__('message.pack_par5')}} </span>--}}
                                                 <span class="text-base block">{{ $paquete['duracion'] }} {{__('message.pack_par4')}}</span>
@@ -893,9 +893,9 @@
 
                         // Solo TRIPLE (TPL) para 3★,4★,5★. Para 2★ usar precio_tours (por persona)
                         $priceRaw =
-                          $star === 2
+                          $star === 3
                             ? (int)($paquete->precio_tours ?? 0)
-                            : (int)(is_array($row) ? ($row['precio_t'] ?? 0) : ($row->precio_t ?? 0));
+                            : (int)(is_array($row) ? ($row['precio_d'] ?? 0) : ($row->precio_d ?? 0));
 
                         $price = $fmt($priceRaw) ?? 'Inquire Now';
                         $hasPrice = $priceRaw > 0;
@@ -911,7 +911,7 @@
                         </div>
 
                         <div class="text-[11px] text-gray-500 mt-1">
-                            @if($star === 2)
+                            @if($star === 3)
                                 per person
                             @else
                                 per person (triple)
