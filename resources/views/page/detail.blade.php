@@ -1079,6 +1079,8 @@
         @endif
     </section>
 
+
+    
     {{--    <section class="bg-secondary bg-opacity-60 my-12 py-12"> --}}
     {{--        <div class="container text-center grid  grid-cols-1 md:grid-cols-2 gap-6"> --}}
     {{--            <div class="text-center"> --}}
