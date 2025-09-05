@@ -65,4 +65,22 @@ class TPaquete extends Model
 //    public function destino(){
 //        return $this->hasManyThrough(TDestino::class, Section::class);
 //    }
+    public function destinos()
+    {
+        return $this->belongsToMany(
+            TDestino::class,
+            'tpaquetesdestinos',
+            'idpaquetes',
+            'iddestinos'
+        );
+    }
+    public function categoria()
+    {
+        return $this->belongsToMany(
+            TCategoria::class,
+            'tpaquetescategoria',
+            'idpaquetes',
+            'idcategoria'
+        );
+    }
 }

@@ -5,9 +5,12 @@
         <div class="vimeo-wrapper">
             <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
             <div class="absolute inset-0 gradient-cicle-gray"></div>
-            <div class="absolute bottom-0 text-center w-full z-10 mb-96">
-
-                <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+        </div>
+        <div class="absolute bottom-0 text-center w-full z-10 mb-96">
+            <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
+            <div class="flex items-center gap-2 justify-center">
+                <a href="{{route('packages.all')}}" class="btn-primary"> Explore Top Experiences </a>
+                <a href="#form-dream-adventure" class="btn-secondary"> Customize your trips </a>
             </div>
         </div>
     </div>
@@ -280,59 +283,7 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-    <div class="bg-gray-700 hidden md:block">
-    <section class="container grid grid-cols-1 md:grid-cols-6  items-end">
-        <div class="md:col-span-4 relative bg-gray-700">
-            <div class="inset-0 flex items-center text-white w-full">
-                <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
-                    <div class="p-6 col-span-3">
-                        <h3 class="font-semibold block text-xl">Your Peruvian Travel Operator</h3>
-                        <p class="block font-light text-sm leading-6 my-6">
-                            Trust our team of local travel experts to plan an unforgettable trip full of must-see attractions and our favorite hidden gems of the land of the Incas. Our peruvian experts have all traveled down the same roads, trains and treks and know what you’re about to experience.
-                            Every Peru tour offered is regularly inspected to ensure our travelers have an amazing experience.
-                        </p>
 
-                        <div class="block mt-6">
-                            <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>
-                        </div>
-                    </div>
-                    <div class="col-span-3 pt-12">
-                        <img src="{{asset('images/team/angie.png')}}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="md:col-span-2 bg-gray-800 p-9 font-light shadow-lg text-white dark:bg-gray-700 dark:bg-opacity-90 dark:text-gray-50 flex items-center">
-            <div class="">
-                <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Experts in tailor-made Peru travel</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Local staff with first-hand South America travel experience</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Dedicated to providing personalized, quality service</p>
-                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
-                <div class="block mt-6">
-                    <a href="{{route('book')}}" class="btn-primary">View More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    </div>
 
 
 {{--    <div class="w-4/5 mx-auto my-20 bg-white">--}}
@@ -427,13 +378,156 @@
 
 
 
+{{--    <div class="container flex items-center justify-center my-6">--}}
+{{--        @foreach($category as $category_all)--}}
+
+{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
+{{--            Best Sellers--}}
+{{--        </div>--}}
+{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
+{{--            Cultural--}}
+{{--        </div>--}}
+{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
+{{--            Luxury--}}
+{{--        </div>--}}
+{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
+{{--            Culinary--}}
+{{--        </div>--}}
+{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
+{{--            Adventure--}}
+{{--        </div>--}}
+{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
+{{--            Couple--}}
+{{--        </div>--}}
+{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
+{{--            Family--}}
+{{--        </div>--}}
+{{--        @endforeach--}}
+{{--    </div>--}}
+
+    <div
+        x-data="{ tab: '{{ $defaultCategoryId }}' }"
+        x-cloak
+        class="w-full container mb-12"
+    >
+        {{-- Header de Tabs --}}
+        <div class="grid md:grid-cols-5 gap-2 mb-6 grid-cols-1">
+            @foreach($categoriesForTabs as $cat)
+                <button
+                    type="button"
+                    @click="tab = '{{ $cat->id }}'"
+                    :class="tab === '{{ $cat->id }}'
+                    ? 'bg-primary text-white'
+                    : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300'"
+                    class="px-2 font-semibold py-6 transition-all duration-200 hover:bg-primary/90 hover:text-white"
+                >
+                    {{ $cat->nombre }}
+                </button>
+            @endforeach
+        </div>
+
+        {{-- Contenido de cada tab --}}
+        @foreach($categoriesForTabs as $cat)
+            <div x-show="tab === '{{ $cat->id }}'" class="space-y-6" x-transition>
+                @if($cat->paquetes->isNotEmpty())
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        @foreach($cat->paquetes as $paquete)
+                            <x-packages-card :paquete="$paquete" />
+                        @endforeach
+                    </div>
+
+                    {{-- Botón "See more..." al final --}}
+                    @php
+                        // Enlace por defecto usando el campo 'url' de la categoría (o slug del nombre)
+                        $categoryLink = url('/categories/' . ($cat->url ?? \Illuminate\Support\Str::slug($cat->nombre)));
+
+                        // Si tienes rutas con nombre, se priorizan
+                        if (\Illuminate\Support\Facades\Route::has('categories.show')) {
+                            $categoryLink = route('categories.show', $cat->url ?? $cat->id);
+                        } elseif (\Illuminate\Support\Facades\Route::has('category.show')) {
+                            $categoryLink = route('category.show', $cat->url ?? $cat->id);
+                        }
+                    @endphp
+
+                    <div class="flex justify-center mb-12 pt-6">
+                        <a href="{{ $categoryLink }}"
+                           class="btn-dark flex items-center gap-2">
+                            See more “{{ $cat->nombre }}” packages
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                @else
+                    <div class="text-gray-500 text-sm">No hay paquetes en esta categoría.</div>
+                @endif
+            </div>
+        @endforeach
+    </div>
+
+    <div class="bg-gray-700 hidden md:block">
+        <section class="container grid grid-cols-1 md:grid-cols-6  items-end">
+            <div class="md:col-span-4 relative bg-gray-700">
+                <div class="inset-0 flex items-center text-white w-full">
+                    <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
+                        <div class="p-6 col-span-3">
+                            <h3 class="font-semibold block text-xl">Your Peruvian Travel Operator</h3>
+                            <p class="block font-light text-sm leading-6 my-6">
+                                Trust our team of local travel experts to plan an unforgettable trip full of must-see attractions and our favorite hidden gems of the land of the Incas. Our peruvian experts have all traveled down the same roads, trains and treks and know what you’re about to experience.
+                                Every Peru tour offered is regularly inspected to ensure our travelers have an amazing experience.
+                            </p>
+
+                            <div class="block mt-6">
+                                <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>
+                            </div>
+                        </div>
+                        <div class="col-span-3 pt-32">
+                            <img src="{{asset('images/team/angie.png')}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-2 bg-gray-800 p-9 font-light shadow-lg text-white dark:bg-gray-700 dark:bg-opacity-90 dark:text-gray-50 flex items-center">
+                <div class="">
+                    <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
+                    <p class="flex my-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Experts in tailor-made Peru travel</p>
+                    <p class="flex my-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>
+                    <p class="flex my-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Local staff with first-hand South America travel experience</p>
+                    <p class="flex my-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Dedicated to providing personalized, quality service</p>
+                    {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
+                    <div class="block mt-6">
+                        <a href="{{route('book')}}" class="btn-primary">View More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <div class="dark:bg-gray-700">
     <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
         <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
             Most Popular Travel Packages
             <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
         </div>
-
     </section>
         <section class="container mb-12 ">
             <div class="grid grid-cols-6 gap-4">
@@ -480,9 +574,10 @@
         @foreach($paquete_recommended as $paquete)
             <x-packages-card :paquete="$paquete"></x-packages-card>
         @endforeach
-
-
     </section>
+        <div class="text-center flex justify-center">
+            <a href="{{route('packages.all')}}" class="btn-dark mx-auto">View all Peru Travel Packages</a>
+        </div>
     </div>
 
 {{--    <section class="grid md:grid-cols-2 sm:grid-cols-1 mx-auto gap-0">--}}
@@ -500,7 +595,7 @@
 {{--                            <div class="font-normal text-sm">--}}
 {{--                                {!! $category_b->resumen !!}--}}
 {{--                            </div>--}}
-{{--                            --}}{{--                            <a href="" class="float-right ">View self-drive tours</a>--}}
+{{--                                                        <a href="" class="float-right ">View self-drive tours</a>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
 {{--                </a>--}}
@@ -523,7 +618,7 @@
 {{--                            <div class="font-normal text-sm">--}}
 {{--                                {!! $category_f->resumen !!}--}}
 {{--                            </div>--}}
-{{--                            --}}{{--                        <a href="" class="float-right font-bold">View self-drive tours</a>--}}
+{{--                                                    <a href="" class="float-right font-bold">View self-drive tours</a>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
 {{--                </a>--}}
@@ -634,6 +729,62 @@
 {{--        </div>--}}
 
 {{--    </section>--}}
+
+
+    {{-- Carousel full width de Destinos --}}
+    <section class="w-full my-24">
+        <div class="swiper slider-destinations relative w-full
+              h-[50vh] md:h-[60vh] lg:h-[70vh] max-h-[70vh] overflow-hidden">
+
+            <div class="swiper-wrapper h-full">
+                @foreach($destination as $dest)
+                    @php
+                        $cover = optional($dest->destino_imagen->first())->nombre ?: $dest->imagen;
+
+                    @endphp
+
+                    <div class="swiper-slide h-full">
+                        <div class="relative h-full overflow-hidden">
+                            @if($cover)
+                                <img src="{{ $cover }}" alt="{{ $dest->nombre }}"
+                                     class="w-full h-full object-cover object-center">"
+                                     loading="lazy" decoding="async">
+                            @endif
+
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+                            <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
+                                <h3 class="text-white text-2xl md:text-4xl font-extrabold drop-shadow">
+                                    {{ $dest->nombre }}
+                                </h3>
+
+                                <div class="mt-4">
+                                    <a href="{{ route('destinations.show', $dest) }}"
+                                       class="btn-primary inline-flex">
+                                        View “{{ $dest->nombre }}”
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24"
+                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a href="{{ route('destinations.show', $dest) }}" class="absolute inset-0" aria-label="Open {{ $dest->nombre }}">
+                                <span class="sr-only">Open {{ $dest->nombre }}</span>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="swiper-pagination !bottom-4"></div>
+            <div class="swiper-button-prev btn-prev hidden md:flex"></div>
+            <div class="swiper-button-next btn-next hidden md:flex"></div>
+        </div>
+    </section>
+
+
 
 
     <section class="container my-6">
@@ -1195,7 +1346,27 @@
         //     });
         // });
 
-
+        var swiperDest = new Swiper('.slider-destinations', {
+            slidesPerView: 1,
+            loop: true,
+            speed: 700,
+            autoplay: {
+                delay: 4500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.slider-destinations .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.slider-destinations .btn-next',
+                prevEl: '.slider-destinations .btn-prev',
+            },
+            // Si quieres “coverflow”:
+            // effect: 'coverflow',
+            // coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 1, slideShadows: false },
+            // responsive heights podrían manejarse solo con Tailwind (clases en el contenedor)
+        });
 
     </script>
 

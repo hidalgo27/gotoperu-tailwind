@@ -11,10 +11,11 @@
     {{--        @livewire('page.form-home') --}}
     {{--    </div> --}}
 
-    <section class="bg-primary ">
+    {{-- New About-us --}}
+    {{-- <section class="bg-primary ">
         <main class="container py-14 text-white">
             <h2 class="text-3xl font-semibold mb-2">{{ __('message.abou_title2') }} </h2>
-            {{-- <p class="">{{__('message.abou_par1')}}</p> --}}
+            <p class="">{{__('message.abou_par1')}}</p>
             <div class="md:w-2/3 gap-2 leading-relaxed ">
                 <p>
                     {{ __('message.abou_message1') }}
@@ -156,9 +157,23 @@
                 </p>
             </div>
         </main>
+    </section> --}}
+    {{-- End About-Us --}}
+
+    <section class="container py-12 text-gray-500 text-center">
+        <h2 class="text-3xl font-semibold mb-2">{{ __('message.abou_title2') }} </h2>
+        <p class="">{{ __('message.abou_par1') }}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 mt-12">
+            <div class="">
+                <p>{{ __('message.abou_par2') }}</p>
+            </div>
+            <div class="">
+
+            </div>
+        </div>
     </section>
 
-    {{-- <section class="grid grid-cols-1 md:grid-cols-2">
+    <section class="grid grid-cols-1 md:grid-cols-2">
         <div class="bg-secondary p-12 grid grid-cols-3">
             <div class=""></div>
             <div class="col-span-2">
@@ -183,7 +198,7 @@
                 <p class="text-sm text-gray-800">{{ __('message.info_par7') }}</p>
             </div>
         </div>
-    </section> --}}
+    </section>
 
     {{-- <section class="py-12 text-gray-500 text-center bg-gray-100">
         <div class="container">
@@ -213,12 +228,12 @@
                             <p class="font-body mb-4">
                                 {{ $team->cargo }}
                             </p>
-                                              <p class="font-body text-sm mb-4"> 
-                                                  {{$team->actividad}} 
-                                                </p> 
-                                                <a class="font-body text-blue-500 hover:text-gray-800" href="#"> 
-                                                    {{$team->email}} 
-                                               </a> 
+                            <p class="font-body text-sm mb-4">
+                                {{ $team->actividad }}
+                            </p>
+                            <a class="font-body text-blue-500 hover:text-gray-800" href="#">
+                                {{ $team->email }}
+                            </a>
                         </div>
                     </div>
                 @endforeach
@@ -226,7 +241,7 @@
         </div>
     </section> --}}
 
-    {{-- <section class="container hidden md:block mt-12 py-6">
+    <section class="container hidden md:block mt-12 py-6">
 
         <div class="flex items-center text-2xl text-gray-700 mb-4 dark:text-secondary font-bold gap-2">
             <div class="border-4 h-1 w-12 border-secondary"></div> VIDEO TESTIMONIALS
@@ -251,7 +266,7 @@
                 </div>
             @endforeach
         </div>
-    </section> --}}
+    </section>
 
     <section class="container hidden md:block mt-12">
 
@@ -448,8 +463,8 @@
     </section>
 
     <section class="">
-        {{-- @livewire('page.form-footer') --}}
-        @include('livewire.about.sections-about')
+        @livewire('page.form-footer')
+        {{-- @include('livewire.about.sections-about') --}}
     </section>
 
     @push('css')

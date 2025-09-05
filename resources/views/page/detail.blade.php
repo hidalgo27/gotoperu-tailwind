@@ -2,14 +2,22 @@
 @section('content')
     <div class="swiper mySwiper2 relative">
         <div class="swiper-wrapper">
-            @foreach($paquete['paquetes_destinos'] as $paquete_destino)
-                @foreach($paquete_destino['destinos']['destino_imagen'] as $destino_imagen)
+
+                @foreach($paquete['imagen_paquetes'] as $destino_imagen)
                     <div class="swiper-slide">
-                        <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">
+                        <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-[70vh] w-full object-center">
                     </div>
 
                 @endforeach
-            @endforeach
+
+{{--                @foreach($paquete['paquetes_destinos'] as $paquete_destino)--}}
+{{--                    @foreach($paquete_destino['destinos']['destino_imagen'] as $destino_imagen)--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top">--}}
+{{--                        </div>--}}
+
+{{--                    @endforeach--}}
+{{--                @endforeach--}}
 {{--            <div class="swiper-slide">--}}
 {{--                @foreach($paquete['imagen_paquetes'] as $imagen)--}}
 {{--                    <img src="{{$imagen['nombre']}}" alt="{{$paquete['titulo']}}" class="object-cover h-80vh w-full object-top bg-yellow-300  ">--}}
@@ -369,7 +377,7 @@
                             {{--                                                        {{ $paquete['duracion'] }} {{__('message.pack_par4')}}--}}
                             {{--                                                    </div>--}}
                             @if($paquete['is_p_t'] == 1)
-                                <div class="flex-1 border bg-white p-3 flex items-center">
+                                <div class="flex-1 border backdrop-blur-sm bg-white/80 p-3 flex items-center">
                                     @foreach($paquete['precio_paquetes'] as $precio)
                                         @if($precio['estrellas'] == 3)
                                             <div class="text-4xl font-semibold text-gray-600">
@@ -443,7 +451,7 @@
                                         Departures Available
                                     </div>
                                     <div class="text-right font-medium">
-                                        Until December 2024
+                                        Until December 2026
                                     </div>
                                 </div>
 
@@ -488,7 +496,7 @@
                                                 @if($precio['precio_s'] > 0)
                                                     <div class="text-4xl font-semibold text-gray-600">
                                                         {{--                                                                            <span> {{__('message.pack_par5')}} </span>--}}
-                                                        From${{$precio['precio_d']}}usd
+{{--                                                        From${{$precio['precio_d']}}usd--}}
                                                     </div>
                                                 @else
                                                     <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span>
@@ -619,17 +627,17 @@
                 </div>
             </section>
 
-{{--            <section>--}}
-{{--                @if($paquete['is_p_t'] == 1)--}}
-{{--                    <section class="my-12 flex flex-col gap-4" id="prices">--}}
+            <section class="hidden">
+                @if($paquete['is_p_t'] == 1)
+                    <section class="my-12 flex flex-col gap-4" id="prices">
 
-{{--                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">--}}
-{{--                            <div class="">--}}
-{{--                                --}}{{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
-{{--                                --}}{{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
-{{--                                <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
-{{--                            </div> {{__('message.pack_deta_par4')}}--}}
-{{--                        </div>--}}
+                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
+                            <div class="">
+                                                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                                                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                                <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                            </div> {{__('message.pack_deta_par4')}}
+                        </div>
 
 
 {{--                            <div class="grid md:grid-cols-2 gap-4">--}}
@@ -709,57 +717,216 @@
 {{--                                </div>--}}
 
 {{--                            </div>--}}
-{{--                        <div class="grid md:grid-cols-2 gap-4 md:mt-5">--}}
-{{--                            <div class="overflow-x-scroll">--}}
-{{--                                <p class="font-semibold text-gray-500 text-center">Prices are based on triple occupancy.</p>--}}
-{{--                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">--}}
-{{--                                    <thead class="bg-gray-700 text-white">--}}
-{{--                                    <tr>--}}
-{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
-{{--                                            {{__('message.pack_deta_par9')}}--}}
-{{--                                        </th>--}}
-{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
-{{--                                            {{__('message.pack_deta_par10')}}--}}
-{{--                                        </th>--}}
-{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
-{{--                                            {{__('message.pack_deta_par11')}}--}}
-{{--                                        </th>--}}
-{{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">--}}
-{{--                                            {{__('message.pack_deta_par12')}}--}}
-{{--                                        </th>--}}
-{{--                                    </tr>--}}
-{{--                                    </thead>--}}
-{{--                                    <tbody class="bg-gray-50 divide-y divide-gray-200">--}}
+                        <div class="grid md:grid-cols-2 gap-4 md:mt-5">
+                            <div class="overflow-x-scroll">
+                                <p class="font-semibold text-gray-500 text-center">Prices are based on triple occupancy.</p>
+                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
+                                    <thead class="bg-gray-700 text-white">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par9')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par10')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par11')}}
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
+                                            {{__('message.pack_deta_par12')}}
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-gray-50 divide-y divide-gray-200">
 
-{{--                                    <tr>--}}
+                                    <tr>
 
-{{--                                        @foreach($paquete['precio_paquetes'] as $precio)--}}
-{{--                                            @if($precio['precio_t'] > 0)--}}
-{{--                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">${{$precio['precio_t']}}<small>USD</small></td>--}}
-{{--                                            @else--}}
-{{--                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td>--}}
-{{--                                            @endif--}}
-{{--                                        @endforeach--}}
+                                        @foreach($paquete['precio_paquetes'] as $precio)
+                                            @if($precio['precio_t'] > 0)
+                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">${{$precio['precio_t']}}<small>USD</small></td>
+                                            @else
+                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td>
+                                            @endif
+                                        @endforeach
 
-{{--                                    </tr>--}}
+                                    </tr>
 
-{{--                                    <!-- More people... -->--}}
-{{--                                    </tbody>--}}
-{{--                                </table>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-
-
-{{--                            <p class="text-sm text-gray-500">{{__('message.pack_deta_par6')}}</p>--}}
+                                    <!-- More people... -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
 
-{{--                    </section>--}}
-{{--                @endif--}}
-{{--            </section>--}}
+
+                            <p class="text-sm text-gray-500">{{__('message.pack_deta_par6')}}</p>
+
+
+                    </section>
+                @endif
+            </section>
 
         </section>
 
+
+
+{{--    @php--}}
+{{--        $precios = collect($paquete->precio_paquetes ?? ($paquete['precio_paquetes'] ?? []))--}}
+{{--                    ->sortBy('estrellas');--}}
+
+{{--        $fmt = fn($v) => (int)$v > 0 ? '$'.number_format((int)$v, 0).' usd' : '—';--}}
+
+{{--        // Mapa solicitado (respetando mayúsculas/minúsculas que pediste)--}}
+{{--        $labelMap = [--}}
+{{--            2 => 'without hotels',--}}
+{{--            3 => 'Tourist',--}}
+{{--            4 => 'superior',--}}
+{{--            5 => 'Luxury',--}}
+{{--        ];--}}
+{{--    @endphp--}}
+
+{{--    <section class="my-8 container">--}}
+{{--        <h2 class="text-xl md:text-2xl font-extrabold mb-4">Prices by hotel category</h2>--}}
+{{--        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">--}}
+{{--            <div class="">--}}
+{{--                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>--}}
+{{--                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>--}}
+{{--                <span class="inline-block w-5 h-2.5 bg-secondary"></span>--}}
+{{--            </div> Prices by hotel category--}}
+{{--        </div>--}}
+
+{{--        <div class="overflow-x-auto rounded-lg border">--}}
+{{--            <table class="min-w-full text-sm">--}}
+{{--                <thead class="bg-gray-50">--}}
+{{--                <tr class="text-gray-700">--}}
+{{--                    <th class="p-3 text-left font-semibold">Hotel category</th>--}}
+{{--                    <th class="p-3 text-right font-semibold">Single (SGL)</th>--}}
+{{--                    <th class="p-3 text-right font-semibold">Double (DBL)</th>--}}
+{{--                    <th class="p-3 text-right font-semibold">Triple (TPL)</th>--}}
+{{--                </tr>--}}
+{{--                </thead>--}}
+
+{{--                <tbody class="divide-y">--}}
+{{--                @forelse($precios as $p)--}}
+{{--                    @php--}}
+{{--                        // Soporta acceso como objeto o array--}}
+{{--                        $stars   = is_array($p) ? ($p['estrellas'] ?? null) : ($p->estrellas ?? null);--}}
+{{--                        $ps      = is_array($p) ? ($p['precio_s'] ?? null)   : ($p->precio_s ?? null);--}}
+{{--                        $pd      = is_array($p) ? ($p['precio_d'] ?? null)   : ($p->precio_d ?? null);--}}
+{{--                        $pt      = is_array($p) ? ($p['precio_t'] ?? null)   : ($p->precio_t ?? null);--}}
+{{--                    @endphp--}}
+
+{{--                    <tr>--}}
+{{--                        @php--}}
+{{--                            $stars = (int)(is_array($p) ? ($p['estrellas'] ?? 0) : ($p->estrellas ?? 0));--}}
+{{--                            $label = $labelMap[$stars] ?? null;--}}
+{{--                        @endphp--}}
+
+{{--                        <td class="p-3">--}}
+{{--                            --}}{{-- número + estrella + etiqueta --}}
+{{--                            <span class="font-semibold text-gray-800">{{ $stars }}★</span>--}}
+{{--                            @if($label)--}}
+{{--                                <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded bg-gray-100 text-gray-700 text-xs">--}}
+{{--      {{ $label }}--}}
+{{--    </span>--}}
+{{--                            @endif--}}
+{{--                        </td>--}}
+{{--                        <td class="p-3 text-right">{{ $fmt($ps) }}</td>--}}
+{{--                        <td class="p-3 text-right">{{ $fmt($pd) }}</td>--}}
+{{--                        <td class="p-3 text-right">{{ $fmt($pt) }}</td>--}}
+{{--                    </tr>--}}
+{{--                @empty--}}
+{{--                    <tr>--}}
+{{--                        <td colspan="4" class="p-3 text-center text-gray-500">--}}
+{{--                            No prices available for this package.--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
+{{--                @endforelse--}}
+{{--                </tbody>--}}
+{{--            </table>--}}
+{{--        </div>--}}
+
+{{--        --}}{{-- Nota opcional --}}
+{{--        <p class="text-xs text-gray-500 mt-2">--}}
+{{--            Prices shown in USD. Subject to availability and change without prior notice.--}}
+{{--        </p>--}}
+{{--    </section>--}}
+
+
+    <div class="container">
+        @php
+            // precios por estrellas
+            $precios = collect($paquete->precio_paquetes ?? ($paquete['precio_paquetes'] ?? []));
+            $byStars = $precios->keyBy(fn($p) => is_array($p) ? ($p['estrellas'] ?? null) : ($p->estrellas ?? null));
+
+            // orden como tu imagen
+            $order = [2,3,4,5];
+
+            // etiquetas
+            $labels = [
+              2 => 'Tour (without Hotels)',
+              3 => 'Tourist',
+              4 => 'Superior',
+              5 => 'Luxury',
+            ];
+
+            // formateo
+            $fmt = function($n){
+              $n = (int)$n;
+              return $n > 0 ? '$'.number_format($n, 0) : null; // null => "Inquire Now"
+            };
+        @endphp
+
+        <section class="my-8">
+{{--            <h2 class="text-xl md:text-2xl font-extrabold mb-4">Prices by hotel category</h2>--}}
+                    <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
+                        <div class="">
+                            <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                            <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                            <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                        </div> Prices by hotel category
+                    </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                @foreach($order as $star)
+                    @php
+                        $row = $byStars->get($star);
+
+                        // Solo TRIPLE (TPL) para 3★,4★,5★. Para 2★ usar precio_tours (por persona)
+                        $priceRaw =
+                          $star === 2
+                            ? (int)($paquete->precio_tours ?? 0)
+                            : (int)(is_array($row) ? ($row['precio_d'] ?? 0) : ($row->precio_d ?? 0));
+
+                        $price = $fmt($priceRaw) ?? 'Inquire Now';
+                        $hasPrice = $priceRaw > 0;
+                    @endphp
+
+                    <div class="bg-gray-50 border rounded-md p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">{{ $labels[$star] ?? ($star.' Stars') }}</h3>
+
+                        <div class="mx-auto my-3 h-px bg-gray-300 w-11/12"></div>
+
+                        <div class="text-2xl font-extrabold {{ $hasPrice ? 'text-orange-500' : 'text-primary' }}">
+                            {{ $price }}
+                        </div>
+
+                        <div class="text-[11px] text-gray-500 mt-1">
+                            @if($star === 2)
+                                per person
+                            @else
+                                per person (double/triple)
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <p class="text-xs text-gray-500 mt-3">
+                Prices shown in USD per person. Subject to availability and change without prior notice.
+            </p>
+        </section>
+
+    </div>
 
     <section class="container my-12 ">
         <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
