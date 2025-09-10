@@ -571,7 +571,7 @@
         </section>
     <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
-        @foreach($paquete_recommended as $paquete)
+        @foreach($paquetes_features as $paquete)
             <x-packages-card :paquete="$paquete"></x-packages-card>
         @endforeach
     </section>
