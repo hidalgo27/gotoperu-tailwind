@@ -40,7 +40,7 @@ class HomeController extends Controller
                     ])
                     ->orderBy('titulo'); // o el orden que prefieras
             }])
-            ->orderBy('nombre')
+            ->orderBy('id')
             ->get();
 
         $defaultCategoryId = optional($categoriesForTabs->first())->id;
