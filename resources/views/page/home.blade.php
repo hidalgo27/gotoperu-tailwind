@@ -243,7 +243,7 @@
     <section class="grid grid-cols-1 md:grid-cols-6 sm:hidden">
         <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
             <div class="text-center">
-                <img src="{{asset('images/banners/angie.png')}}" alt="" class="w-1/2 mx-auto">
+                <img src="{{asset('images/team/angie.png')}}" alt="" class="w-1/2 mx-auto">
                 <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
                 <p class="flex my-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
