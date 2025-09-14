@@ -148,7 +148,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
 </head>
-<body class="bg-white dark:bg-gray-800 dark:text-gray-400 relative">
+<body class="bg-white  relative overflow-x-clip">
 {{--<div class="preload" id="preload">--}}
 {{--    <div class="pulse"></div>--}}
 {{--</div>--}}

@@ -1,6 +1,6 @@
 .unreset a {
     --tw-text-opacity: 1;
-    color: rgb(29 78 216 / var(--tw-text-opacity));
+    color: rgb(29 78 216 / var(--tw-text-opacity, 1));
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline;
 }

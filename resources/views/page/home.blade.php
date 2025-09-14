@@ -408,7 +408,7 @@
     <div
         x-data="{ tab: '{{ $defaultCategoryId }}' }"
         x-cloak
-        class="w-full container mb-12"
+        class="w-full container mb-12 hidden md:block"
     >
         {{-- Header de Tabs --}}
         <div class="grid md:grid-cols-5 gap-2 mb-6 grid-cols-1">
@@ -468,6 +468,58 @@
         @endforeach
     </div>
 
+    <div class="md:hidden container">
+        {{-- Contenido de cada tab --}}
+        @foreach($categoriesForTabs as $cat)
+            <div x-show="tab === '{{ $cat->id }}'" class="space-y-6 pb-8" x-transition>
+                @if($cat->paquetes->isNotEmpty())
+                    {{-- Título de la categoría --}}
+                    <div class="flex items-center gap-2 mt-8">
+                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                        <h2 class="text-xl md:text-2xl font-extrabold">{{ $cat->nombre }}</h2>
+                    </div>
+
+                    @php
+                        $firstPackage = $cat->paquetes->first();
+                        // Enlace por defecto usando 'url' o slug del nombre
+                        $categoryLink = url('/categories/' . ($cat->url ?? \Illuminate\Support\Str::slug($cat->nombre)));
+                        if (\Illuminate\Support\Facades\Route::has('categories.show')) {
+                            $categoryLink = route('categories.show', $cat->url ?? $cat->id);
+                        } elseif (\Illuminate\Support\Facades\Route::has('category.show')) {
+                            $categoryLink = route('category.show', $cat->url ?? $cat->id);
+                        }
+                    @endphp
+
+                    {{-- Solo 1 paquete (full width) --}}
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="md:col-span-3">
+                            <x-packages-card :paquete="$firstPackage" />
+                        </div>
+                    </div>
+
+                    {{-- Botón "See more view" --}}
+                    <div class="flex justify-center mb-12 pt-2">
+                        <a href="{{ $categoryLink }}" class="btn-dark flex items-center gap-2">
+                            See more view
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                @else
+                    <div class="text-gray-500 text-sm">No hay paquetes en esta categoría.</div>
+                @endif
+            </div>
+
+            <hr>
+        @endforeach
+
+    </div>
+
+
     <div class="bg-gray-700 hidden md:block">
         <section class="container grid grid-cols-1 md:grid-cols-6  items-end">
             <div class="md:col-span-4 relative bg-gray-700">
@@ -484,7 +536,7 @@
                                 <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>
                             </div>
                         </div>
-                        <div class="col-span-3 pt-32">
+                        <div class="col-span-3 pt-36">
                             <img src="{{asset('images/team/angie.png')}}" alt="">
                         </div>
                     </div>
@@ -734,7 +786,7 @@
     {{-- Carousel full width de Destinos --}}
     <section class="w-full my-24">
         <div class="swiper slider-destinations relative w-full
-              h-[50vh] md:h-[60vh] lg:h-[70vh] max-h-[70vh] overflow-hidden">
+              h-[50vh] md:h-[60vh] lg:h-[70vh] max-h-[60vh] overflow-hidden">
 
             <div class="swiper-wrapper h-full">
                 @foreach($destination as $dest)
@@ -751,22 +803,24 @@
                                      loading="lazy" decoding="async">
                             @endif
 
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/30 to-transparent"></div>
 
                             <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
-                                <h3 class="text-white text-2xl md:text-4xl font-extrabold drop-shadow">
-                                    {{ $dest->nombre }}
-                                </h3>
+                                <div class="container">
+                                    <h3 class="text-white text-2xl md:text-4xl font-extrabold drop-shadow">
+                                        {{ $dest->nombre }}
+                                    </h3>
 
-                                <div class="mt-4">
-                                    <a href="{{ route('destinations.show', $dest) }}"
-                                       class="btn-primary inline-flex">
-                                        View “{{ $dest->nombre }}”
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
+                                    <div class="mt-4">
+                                        <a href="{{ route('destinations.show', $dest) }}"
+                                           class="btn-primary inline-flex">
+                                            View “{{ $dest->nombre }}”
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24"
+                                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1111,36 +1165,79 @@
 {{--    </section>--}}
 
 
-    <div class=" mb-3 container sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 hidden  md:flex">
-        <div class="">
+
+{{--    <div class=" mb-3 container sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2 hidden  md:flex">--}}
+{{--        <div class="">--}}
 {{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
 {{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
-            <span class="hidden md:inline-flex  w-5 h-2.5 bg-secondary dark:bg-primary"></span>
-        </div> {{__('message.subtitle6')}}
-    </div>
-        <div class="hidden md:block">
-            <section class="grid grid-cols-1 md:grid-cols-5 container gap-4">
-                <div class="md:col-span-3 relative">
-                    <img src="{{asset('images/hotel.jpg')}}" alt="" class="object-cover h-full w-full">
-                    <div class="absolute inset-0 gradient-cicle-gray"></div>
-                </div>
-                <div class="md:col-span-2 bg-secondary bg-opacity-20 dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
-                    <div class="">
-                        <h3 class="font-semibold text-2xl">{{__('message.info_sub1')}}</h3>
-                        <div class=" mb-10">
-                            <span class="inline-block w-10 h-2 bg-secondary dark:bg-primary"></span>
-                        </div>
-                        <p class="block my-12">
-                            {{__('message.info_par1')}}
-                        </p>
-                        <a href="{{route('hotels')}}" class="btn-primary">{{__('message.button_all')}}</a>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
+{{--            <span class="hidden md:inline-flex  w-5 h-2.5 bg-secondary dark:bg-primary"></span>--}}
+{{--        </div> {{__('message.subtitle6')}}--}}
+{{--    </div>--}}
+{{--        <div class="hidden md:block">--}}
+{{--            <section class="grid grid-cols-1 md:grid-cols-5 container gap-4">--}}
+{{--                <div class="md:col-span-3 relative">--}}
+{{--                    <img src="{{asset('images/hotel.jpg')}}" alt="" class="object-cover h-full w-full">--}}
+{{--                    <div class="absolute inset-0 gradient-cicle-gray"></div>--}}
+{{--                </div>--}}
+{{--                <div class="md:col-span-2 bg-secondary bg-opacity-20 dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">--}}
+{{--                    <div class="">--}}
+{{--                        <h3 class="font-semibold text-2xl">{{__('message.info_sub1')}}</h3>--}}
+{{--                        <div class=" mb-10">--}}
+{{--                            <span class="inline-block w-10 h-2 bg-secondary dark:bg-primary"></span>--}}
+{{--                        </div>--}}
+{{--                        <p class="block my-12">--}}
+{{--                            {{__('message.info_par1')}}--}}
+{{--                        </p>--}}
+{{--                        <a href="{{route('hotels')}}" class="btn-primary">{{__('message.button_all')}}</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </section>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
-{{--    <div class="hidden md:block">--}}
+        <!-- Full-bleed: rompe cualquier container/padding padre -->
+        <section
+            class="relative isolate overflow-hidden -mx-[calc(50vw-50%)]
+             bg-black
+             h-[50vh] min-h-[260px] sm:h-[58vh] md:h-[70vh] lg:h-[80vh]">
+
+            <!-- Video centrado y sobredimensionado -->
+            <iframe
+                src="https://player.vimeo.com/video/1118424734?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1&playsinline=1&dnt=1"
+                class="absolute z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+           w-[200vw] h-[200vh]
+           sm:w-[170vw] sm:h-[170vh]
+           md:w-[130vw] md:h-[130vh]
+           lg:w-[115vw] lg:h-[115vh]
+           pointer-events-none"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                aria-hidden="true" tabindex="-1">
+            </iframe>
+
+            <!-- Overlay (más oscuro en móvil para legibilidad) -->
+            <div class="absolute inset-0 z-10 bg-black/30 md:bg-black/20"></div>
+
+            <!-- Contenido -->
+            <div class="relative z-20 flex h-full items-center">
+                <div class="w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 text-white text-center md:text-left">
+                    <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-5xl text-center font-bold leading-tight tracking-tight">
+                        Private Transportation in Peru with GOTOPERU
+                    </h2>
+                    <p class="mt-2 sm:mt-3 text-xs sm:text-sm md:text-xl/relaxed text-center opacity-95">
+                        Safe, comfortable, and punctual transfers from Lima airport to Cusco, Sacred Valley, and Machu Picchu.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+        {{--    <div class="hidden md:block">--}}
 {{--    <section class="grid grid-cols-1 md:grid-cols-3 my-4 container gap-4 ">--}}
 {{--        <div class="md:col-span-1 relative flex items-center">--}}
 {{--            <div class="relative w-full">--}}
@@ -1272,7 +1369,7 @@
 {{--        </div>--}}
 {{--    </div>--}}
 
-    <section class="mt-12">
+    <section class="">
         @livewire('page.form-footer')
     </section>
 
