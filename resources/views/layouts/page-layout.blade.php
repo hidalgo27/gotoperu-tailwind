@@ -433,7 +433,8 @@
 
 {{--                @livewire('page.form-inquire')--}}
 {{--                @livewire('page.form-subscribe')--}}
-                <a href="#form-dream-adventure" class="btn-dark text-center">{{__('message.button_inquire')}}</a>
+                <span>info@gotoperu.com</span>
+                <a href="#form-dream-adventure" class="btn-secondary text-center">{{__('message.button_inquire')}}</a>
                 <div class="dark:text-gray-400">
                     <span class="text-xs block text-right">US</span>
                     +1 (813) 455-8646
