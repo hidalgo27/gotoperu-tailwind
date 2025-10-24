@@ -34,19 +34,47 @@
         // } else if (sessionStorage.theme === 'dark') {
         //     document.querySelector('html').classList.add('dark')
         // }
-        if (sessionStorage.theme === 'dark' || (!('theme' in sessionStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            let elem = document.getElementById('switchTheme');
-            document.documentElement.classList.add('dark')
-        } else {
-            let elem = document.getElementById('switchTheme');
-            document.documentElement.classList.remove('dark')
-
-        }
+        // if (sessionStorage.theme === 'dark' || (!('theme' in sessionStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        //     let elem = document.getElementById('switchTheme');
+        //     document.documentElement.classList.add('dark')
+        // } else {
+        //     let elem = document.getElementById('switchTheme');
+        //     document.documentElement.classList.remove('dark')
+        //
+        // }
 
         // window.addEventListener('load', function (){
         //     document.getElementById('preload').classList.add('hidden');
         // })
 
+        (function () {
+            const html = document.documentElement;
+            const btn  = document.getElementById('switchTheme');
+
+            // 1) Al cargar, fuerza modo claro
+            html.classList.remove('dark');
+            sessionStorage.removeItem('theme');
+
+            // 2) Si alguna parte del código intenta agregar 'dark', la quitamos al instante
+            new MutationObserver(() => {
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                }
+            }).observe(html, { attributes: true, attributeFilter: ['class'] });
+
+            // 3) El botón ya no activa dark; solo asegura estilos del ícono
+            if (btn) {
+                btn.classList.remove('text-yellow-500');
+                btn.classList.add('text-gray-500');
+
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault(); // no hacemos toggle
+                    html.classList.remove('dark');
+                    sessionStorage.removeItem('theme');
+                    // opcional: mostrar un toast "Dark mode disabled"
+                });
+            }
+        })();
 
     </script>
     <!-- Hotjar Tracking Code for https://gotoperu.com -->
