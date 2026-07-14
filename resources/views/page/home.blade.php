@@ -3,7 +3,7 @@
     <div class="h-80vh overflow-hidden relative hidden md:block">
 
         <div class="vimeo-wrapper">
-            <iframe src="https://player.vimeo.com/video/381676880?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
+            <iframe src="https://player.vimeo.com/video/381676880?autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
             <div class="absolute inset-0 gradient-cicle-gray"></div>
         </div>
         <div class="absolute bottom-0 text-center w-full z-10 mb-96">
