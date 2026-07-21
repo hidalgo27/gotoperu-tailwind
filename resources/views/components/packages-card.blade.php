@@ -98,23 +98,26 @@
 
         <div class="grid grid-cols-2 gap-2 mb-4">
         {{-- Botones --}}
-            @if($paquete['codigo_f'])
-                <button
-                    class="wtrvl-checkout_button btn-primary whitespace-nowrap text-center !py-2 !px-0"
-                    id="wetravel_button_widget"
-                    data-env="https://www.wetravel.com"
-                    data-version="v0.2"
-                    data-uid="239346"
-                    data-uuid="{{ $paquete['codigo_f'] }}"
-                    href="https://www.wetravel.com/checkout_embed?uuid={{ $paquete['codigo_f'] }}"
-                >
-                    {{ __('message.button_book') }}
-                </button>
-            @endif
+{{--            @if($paquete['codigo_f'])--}}
+{{--                <button--}}
+{{--                    class="wtrvl-checkout_button btn-primary whitespace-nowrap text-center !py-2 !px-0"--}}
+{{--                    id="wetravel_button_widget"--}}
+{{--                    data-env="https://www.wetravel.com"--}}
+{{--                    data-version="v0.2"--}}
+{{--                    data-uid="239346"--}}
+{{--                    data-uuid="{{ $paquete['codigo_f'] }}"--}}
+{{--                    href="https://www.wetravel.com/checkout_embed?uuid={{ $paquete['codigo_f'] }}"--}}
+{{--                >--}}
+{{--                    {{ __('message.button_book') }}--}}
+{{--                </button>--}}
+{{--            @endif--}}
 
+            <a href="#form-dream-adventure" class="btn-primary whitespace-nowrap text-center !py-2 !px-0">
+                Request a Quote
+            </a>
             <a href="{{ route('packages.detail', $paquete) }}" class="btn-secondary whitespace-nowrap text-center !py-2 !px-0">
 {{--                {{ __('message.button_detail') }}--}}
-                Customize
+                View Itinerary
             </a>
         </div>
     </div>
