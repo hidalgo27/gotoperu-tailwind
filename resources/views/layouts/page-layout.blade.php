@@ -572,6 +572,9 @@
     <div>
         <img src="{{asset('images/logos/prom-peru.png')}}" alt="logo prom peru" class="px-3 w-full">
     </div>
+    <div>
+        <img src="{{asset('images/logos/esnna.png')}}" alt="logo prom peru" class="px-3 w-full">
+    </div>
     {{--        <div>--}}
     {{--            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">--}}
     {{--        </div>--}}

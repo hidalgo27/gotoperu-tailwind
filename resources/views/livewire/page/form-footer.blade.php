@@ -1,3 +1,4 @@
+{{-- /resources/views/livewire/page/form-footer.blade.php--}}
 <div class="bg-gray-100 dark:bg-gray-700 dark:bg-gray-700 text-gray-500 dark:text-gray-100 py-12" x-data="{data: false}" id="form-dream-adventure">
     <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mb-10 text-center">
         <img src="{{asset('images/logos/logo-gotoperu-black.png')}}" alt="" class="mx-auto w-52">
@@ -194,6 +195,7 @@
 
 {{--        </div>--}}
         </div>
+
 
         <div class="mx-auto">
 {{--            <button type="button" class="btn-next" x-show="data" @click="data = !data">{{__('message.button_prev')}}</button>--}}

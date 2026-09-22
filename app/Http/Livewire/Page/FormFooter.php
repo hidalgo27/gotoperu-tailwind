@@ -1,5 +1,5 @@
 <?php
-
+// /app/Http/Livewire/Page/FormFooter.php
 namespace App\Http\Livewire\Page;
 
 use App\Models\TCategoria;
@@ -191,9 +191,9 @@ class FormFooter extends Component
 //                $this->addError('error', 'Hubo un problema enviando la información al servicio.');
                 $this->addError('api_error', 'Uno de los servicios falló');
                 Log::error('Uno de los servicios falló', [
-                    'response1_status' => $response->status(),
+//                    'response1_status' => $response->status(),
                     'response2_status' => $response2->status(),
-                    'response1' => $response->body(),
+//                    'response1' => $response->body(),
                     'response2' => $response2->body(),
                 ]);
             }
