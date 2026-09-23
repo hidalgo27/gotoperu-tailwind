@@ -1,1082 +1,922 @@
 @extends('layouts.page-layout')
 @section('content')
-    <div class="swiper mySwiper2 relative">
-        <div class="swiper-wrapper">
+    @php
+        $heroDestinations = collect($paquete['paquetes_destinos'] ?? [])
+            ->map(function ($destination) {
+                $name = data_get($destination, 'destinos.nombre');
+                return is_string($name) ? trim($name) : null;
+            })
+            ->filter()
+            ->unique(fn($name) => mb_strtolower($name))
+            ->values();
 
-            @foreach ($paquete['imagen_paquetes'] as $destino_imagen)
-                <div class="swiper-slide">
-                    <img src="{{ $destino_imagen['nombre'] }}" alt=""
-                        class="object-cover h-[70vh] w-full object-center">
+        $heroPrice = ($paquete['is_p_t'] ?? null) == 1
+            ? data_get(collect($paquete['precio_paquetes'] ?? [])->firstWhere('estrellas', 3), 'precio_d')
+            : ($paquete['precio_tours'] ?? null);
+        $hasHeroPrice = is_numeric($heroPrice) && $heroPrice > 0;
+    @endphp
+
+    <section class="package-hero bg-gray-900 text-gray-50" aria-labelledby="package-hero-title">
+        <div class="swiper mySwiper2 package-hero__gallery">
+            <div class="swiper-wrapper">
+                @foreach ($paquete['imagen_paquetes'] as $destino_imagen)
+                    <div class="swiper-slide">
+                        <img src="{{ $destino_imagen['nombre'] }}" alt="{{ $paquete['titulo'] }}"
+                            class="w-full h-full object-cover">
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="package-hero__shade" aria-hidden="true"></div>
+
+        <div class="container package-shell package-hero__content">
+            <div class="package-hero__identity">
+                <p class="package-hero__duration inline-flex items-center gap-2 text-sm font-semibold">
+                    <x-heroicon-o-calendar class="h-5 w-5 flex-shrink-0 text-secondary" aria-hidden="true" />
+                    {{ $paquete['duracion'] }} {{ __('message.pack_par4') }}
+                </p>
+                <h1 id="package-hero-title" class="package-hero__title font-semibold drop-shadow">{{ $paquete['titulo'] }}</h1>
+                @if ($heroDestinations->isNotEmpty())
+                    <div class="package-hero__destinations flex items-start gap-2 leading-relaxed">
+                        <x-heroicon-o-location-marker class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+                        <p>{{ $heroDestinations->implode(' • ') }}</p>
+                    </div>
+                @endif
+
+                <div class="package-hero__offer text-sm">
+                    @if ($hasHeroPrice)
+                        <p class="flex flex-wrap items-baseline gap-2">
+                            <span>From</span>
+                            <strong class="text-2xl font-semibold">${{ number_format((float) $heroPrice, (float) $heroPrice == (int) $heroPrice ? 0 : 2, '.', ',') }}</strong>
+                            <span>per person <span class="text-xs">USD</span></span>
+                        </p>
+                    @else
+                        <p class="package-hero__pricing-note text-xs">Contact us for pricing</p>
+                    @endif
                 </div>
+
+                <div class="package-hero__actions">
+                    <a href="#form-dream-adventure" class="btn-secondary text-center">Request a Quote</a>
+                    @if ($paquete['codigo_f'])
+                        <button class="wtrvl-checkout_button btn-white inline-flex items-center justify-center" id="wetravel_button_widget"
+                            data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346"
+                            data-uuid="{{ $paquete['codigo_f'] }}"
+                            href="https://www.wetravel.com/checkout_embed?uuid={{ $paquete['codigo_f'] }}">Book
+                            Now</button>
+                    @endif
+                </div>
+
+                <a href="#package-journey" class="package-hero__scroll inline-flex items-center gap-3 text-xs hover:text-secondary">
+                    <span>Explore the journey</span>
+                    <x-heroicon-o-arrow-down class="h-5 w-5" aria-hidden="true" />
+                </a>
+            </div>
+        </div>
+
+        <div class="package-hero__gallery-controls">
+            @foreach ($paquete['imagen_paquetes'] as $destino_imagen)
+                <a class="venobox @if ($loop->first) btn-white inline-flex items-center gap-2 @endif"
+                    data-gall="packageHeroGallery" href="{{ $destino_imagen['nombre'] }}"
+                    data-title="{{ $paquete['titulo'] }}" @if (!$loop->first) hidden @endif>
+                    @if ($loop->first)
+                        <x-heroicon-o-view-grid class="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                        View Gallery
+                    @endif
+                </a>
             @endforeach
-
-            {{--                @foreach ($paquete['paquetes_destinos'] as $paquete_destino) --}}
-            {{--                    @foreach ($paquete_destino['destinos']['destino_imagen'] as $destino_imagen) --}}
-            {{--                        <div class="swiper-slide"> --}}
-            {{--                            <img src="{{$destino_imagen['nombre']}}" alt="" class="object-cover h-50vh w-full object-top"> --}}
-            {{--                        </div> --}}
-
-            {{--                    @endforeach --}}
-            {{--                @endforeach --}}
-            {{--            <div class="swiper-slide"> --}}
-            {{--                @foreach ($paquete['imagen_paquetes'] as $imagen) --}}
-            {{--                    <img src="{{$imagen['nombre']}}" alt="{{$paquete['titulo']}}" class="object-cover h-80vh w-full object-top bg-yellow-300  "> --}}
-            {{--                @endforeach --}}
-            {{--            </div> --}}
-            {{--            <div class="swiper-slide">Slide 2</div> --}}
-            {{--            <div class="swiper-slide">Slide 3</div> --}}
-            {{--            <div class="swiper-slide">Slide 4</div> --}}
-            {{--            <div class="swiper-slide">Slide 5</div> --}}
-            {{--            <div class="swiper-slide">Slide 6</div> --}}
-            {{--            <div class="swiper-slide">Slide 7</div> --}}
-            {{--            <div class="swiper-slide">Slide 8</div> --}}
-            {{--            <div class="swiper-slide">Slide 9</div> --}}
+            <div class="package-hero__pagination text-xs font-semibold" role="group" aria-label="Gallery position" hidden>
+                <span data-package-slide-current></span>
+                <span class="package-hero__progress" aria-hidden="true"><span class="package-hero__progress-fill bg-secondary"></span></span>
+                <span data-package-slide-total></span>
+            </div>
         </div>
-        {{--        <div class="swiper-pagination"></div> --}}
-        <div class="absolute bottom-0  m-6 z-10">
-            {{--            <h1 class="text-3xl md:text-5xl font-semibold mb-3 text-gray-50">{{ $paquete['titulo'] }}</h1> --}}
+    </section>
 
-            {{--                        <div class="flex gap-3 mb-3"> --}}
-            {{--                            <div class="flex-1 border p-3 flex bg-white text-xl items-center justify-center"> --}}
-            {{--                                {{ $paquete['duracion'] }} {{__('message.pack_par4')}} --}}
-            {{--                            </div> --}}
-            {{--                            @if ($paquete['is_p_t'] == 1) --}}
-            {{--                                <div class="flex-1 border bg-white p-3 flex items-center"> --}}
-            {{--                                    @foreach ($paquete['precio_paquetes'] as $precio) --}}
-            {{--                                        @if ($precio['estrellas'] == 2) --}}
-            {{--                                            @if ($precio['precio_d'] > 0) --}}
-            {{--                                                <div class="text-xl font-semibold text-gray-600"> --}}
-            {{--                                                    <span> {{__('message.pack_par5')}} </span> --}}
-            {{--                                                    <span>${{$precio['precio_d']}}</span> --}}
-            {{--                                                    <span class="text-xs"> usd</span> --}}
-            {{--                                                </div> --}}
-            {{--                                            @else --}}
-            {{--                                                <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span> --}}
-            {{--                                            @endif --}}
-            {{--                                        @endif --}}
-            {{--                                    @endforeach --}}
-            {{--                                </div> --}}
-            {{--                            @else --}}
-            {{--                                <div class="flex-1 border bg-white p-3 flex items-center text-center"> --}}
-            {{--                                    @if ($paquete['precio_tours']) --}}
-            {{--                                        <div class="text-xl font-semibold text-gray-600"> --}}
-            {{--                                            <span> {{__('message.pack_par5')}} </span> --}}
-            {{--                                            <span>${{$paquete['precio_tours']}}</span> --}}
-            {{--                                            <span class="text-xs"> usd</span> --}}
-            {{--                                        </div> --}}
-            {{--                                    @else --}}
-            {{--                                        <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span> --}}
-            {{--                                    @endif --}}
-
-            {{--                                </div> --}}
-            {{--                            @endif --}}
-            {{--                        </div> --}}
-            {{--                        <div class="p-6 bg-white border"> --}}
-            {{--                            <h5>{{ $paquete['duracion'] }} {{__('message.pack_par4')}}</h5> --}}
-            {{--                            <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2> --}}
-            {{--                            <div class="flex -space-x-1 overflow-hidden"> --}}
-            {{--                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""> --}}
-            {{--                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""> --}}
-            {{--                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt=""> --}}
-            {{--                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""> --}}
-            {{--                            </div> --}}
-            {{--                            <div class="mt-3 text-sm text-gray-600"> --}}
-            {{--                                <p>Get a travel expert to plan your dream vacation</p> --}}
-            {{--                                <a href="#form-dream-adventure" class="btn btn-secondary inline-flex mt-3">Inquire</a> --}}
-            {{--                                @foreach ($paquete['paquetes_destinos'] as $paquete_destino) --}}
-            {{--                                    {{$paquete_destino['destinos']['nombre']}} --}}
-            {{--                                    @if ($loop->iteration < count($paquete['paquetes_destinos'])) , @else . @endif --}}
-            {{--                                @endforeach --}}
-            {{--                            </div> --}}
-            {{--                        </div> --}}
-
+    <section id="package-journey" class="package-bridge" aria-labelledby="package-glance-title">
+        <div class="container package-shell package-bridge__layout">
+            <div class="package-bridge__backdrop bg-gray-700" aria-hidden="true"></div>
+            <aside class="package-expert bg-gray-700 text-gray-50" aria-labelledby="package-expert-title">
+                <div class="package-expert__terrain bg-line-cover" aria-hidden="true"></div>
+                <div class="package-expert__copy">
+                    <p class="package-expert__eyebrow text-secondary font-semibold">Book With Confidence</p>
+                    <h2 id="package-expert-title" class="package-expert__title font-semibold leading-tight mt-3">
+                        <a href="#form-dream-adventure" class="hover:text-secondary">
+                            Plan with our Peru experts
+                            <x-heroicon-o-arrow-right class="inline-block h-5 w-5" aria-hidden="true" />
+                        </a>
+                    </h2>
+                    <p class="mt-3 text-xs leading-relaxed">Customize this itinerary with our travel advisors.</p>
+                </div>
+                <img src="/images/team/angie.png" alt="GoToPeru team" class="package-expert__portrait" width="436" height="577">
+            </aside>
+            <div class="package-glance bg-gray-50" data-package-reveal>
+                <div class="package-glance__terrain bg-line-cover" aria-hidden="true"></div>
+                <h2 id="package-glance-title" class="flex items-center gap-3 text-lg font-bold text-gray-700 mb-6">
+                    <span aria-hidden="true" class="inline-flex items-center gap-1"><span class="inline-block w-1 h-2.5 bg-secondary"></span><span class="inline-block w-3 h-2.5 bg-secondary"></span><span class="inline-block w-5 h-2.5 bg-secondary"></span></span> Trip at a glance
+                </h2>
+                <dl class="package-glance__facts grid grid-cols-2 gap-6">
+                    <div class="flex items-center gap-2">
+                        <span class="rounded-full bg-primary text-white p-2"><x-heroicon-o-calendar class="h-5 w-5 flex-shrink-0" aria-hidden="true" /></span>
+                        <div>
+                            <dt class="text-xs text-gray-500">Duration</dt>
+                            <dd class="text-sm font-semibold text-gray-700 mt-1">{{ $paquete['duracion'] }} {{ __('message.pack_par4') }}</dd>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="rounded-full bg-primary text-white p-2"><x-heroicon-o-location-marker class="h-5 w-5 flex-shrink-0" aria-hidden="true" /></span>
+                        <div>
+                            <dt class="text-xs text-gray-500">Travel Style</dt>
+                            <dd class="text-sm font-semibold text-gray-700 mt-1">ESCORTED TOURS</dd>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="rounded-full bg-primary text-white p-2"><x-heroicon-o-calendar class="h-5 w-5 flex-shrink-0" aria-hidden="true" /></span>
+                        <div>
+                            <dt class="text-xs text-gray-500">Season</dt>
+                            <dd class="text-sm font-semibold text-gray-700 mt-1">JAN - DEC</dd>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="rounded-full bg-primary text-white p-2"><x-heroicon-o-flag class="h-5 w-5 flex-shrink-0" aria-hidden="true" /></span>
+                        <div>
+                            <dt class="text-xs text-gray-500">Departure</dt>
+                            <dd class="text-sm font-semibold text-gray-700 mt-1">Daily</dd>
+                        </div>
+                    </div>
+                </dl>
+                <p class="package-glance__interest flex items-start gap-2 border-t border-gray-200 text-xs leading-relaxed text-gray-500">
+                    <span class="text-primary"><x-heroicon-o-star class="h-5 w-5 flex-shrink-0" aria-hidden="true" /></span>
+                    <span><span class="font-semibold text-gray-700">Interest:</span> Culture, history, Adventure</span>
+                </p>
+            </div>
         </div>
-    </div>
-    {{--        <section class="relative"> --}}
-    {{--            @foreach ($paquete['imagen_paquetes'] as $imagen) --}}
-    {{--                <img src="{{$imagen['nombre']}}" alt="{{$paquete['titulo']}}" class="object-cover h-80vh w-full object-top bg-yellow-300  "> --}}
-    {{--            @endforeach --}}
+    </section>
 
-    {{--            <div class="absolute w-full bottom-0 left-0 p-12"> --}}
-    {{--                <h1 class="text-3xl md:text-5xl font-semibold mb-3 text-gray-50">{{ $paquete['titulo'] }}</h1> --}}
-
-    {{--                <div class="container"> --}}
-    {{--                    <div class="grid grid-cols-3 justify-items-end"> --}}
-    {{--                        <div class="col-span-3  md:w-1/2"> --}}
-    {{--                            <div class="flex gap-3 mb-3"> --}}
-    {{--                                <div class="flex-1 border p-3 flex bg-white text-xl items-center justify-center"> --}}
-    {{--                                    {{ $paquete['duracion'] }} {{__('message.pack_par4')}} --}}
-    {{--                                </div> --}}
-    {{--                                @if ($paquete['is_p_t'] == 1) --}}
-    {{--                                    <div class="flex-1 border bg-white p-3 flex items-center"> --}}
-    {{--                                        @foreach ($paquete['precio_paquetes'] as $precio) --}}
-    {{--                                            @if ($precio['estrellas'] == 2) --}}
-    {{--                                                @if ($precio['precio_d'] > 0) --}}
-    {{--                                                    <div class="text-xl font-semibold text-gray-600"> --}}
-    {{--                                                        <span> {{__('message.pack_par5')}} </span> --}}
-    {{--                                                        <span>${{$precio['precio_d']}}</span> --}}
-    {{--                                                        <span class="text-xs"> usd</span> --}}
-    {{--                                                    </div> --}}
-    {{--                                                @else --}}
-    {{--                                                    <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span> --}}
-    {{--                                                @endif --}}
-    {{--                                            @endif --}}
-    {{--                                        @endforeach --}}
-    {{--                                    </div> --}}
-    {{--                                @else --}}
-    {{--                                    <div class="flex-1 border bg-white p-3 flex items-center text-center"> --}}
-    {{--                                        @if ($paquete['precio_tours']) --}}
-    {{--                                            <div class="text-xl font-semibold text-gray-600"> --}}
-    {{--                                                                                                <span> {{__('message.pack_par5')}} </span> --}}
-    {{--                                                <span>${{$paquete['precio_tours']}}</span> --}}
-    {{--                                                <span class="text-xs"> usd</span> --}}
-    {{--                                            </div> --}}
-    {{--                                        @else --}}
-    {{--                                            <span class="text-red-500 font-bold">{{__('message.button_inquire')}}</span> --}}
-    {{--                                        @endif --}}
-
-    {{--                                    </div> --}}
-    {{--                                @endif --}}
-    {{--                            </div> --}}
-    {{--                            <div class="p-6 bg-white border"> --}}
-    {{--                                <h2 class="text-2xl font-bold text-gray-600"> {{$paquete['titulo']}}</h2> --}}
-    {{--                                <div class="mt-3 text-sm text-gray-600"> --}}
-    {{--                                    @foreach ($paquete['paquetes_destinos'] as $paquete_destino) --}}
-    {{--                                        {{$paquete_destino['destinos']['nombre']}} --}}
-    {{--                                        @if ($loop->iteration < count($paquete['paquetes_destinos'])) , @else . @endif --}}
-    {{--                                    @endforeach --}}
-    {{--                                </div> --}}
-    {{--                            </div> --}}
-    {{--                        </div> --}}
-    {{--                    </div> --}}
-
-    {{--                </div> --}}
-    {{--            </div> --}}
-
-    {{--        </section> --}}
-
-
-    <section class="container" x-data="{ openTab: 1 }">
-        {{--            <div class=" mt-6 " > --}}
-        {{--                <ul class="grid  md:grid-cols-5 gap-3"> --}}
-        {{--                    <li @click="openTab = 1" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openTab == 1 ? 'bg-primary text-white' : 'bg-white hover:text-primary'"> --}}
-        {{--                        <div class=" ">Overview</div> --}}
-        {{--                    </li> --}}
-        {{--                    <li @click="openTab = 2" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openTab == 2 ? 'bg-primary text-white' : 'bg-white hover:text-primary'"> --}}
-        {{--                        <div class="">Full Itinerary</div> --}}
-        {{--                    </li> --}}
-        {{--                    <li> --}}
-        {{--                        <a href="#prices" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openTab == 3 ? 'bg-primary text-white' : 'bg-white hover:text-primary'">Price</a> --}}
-        {{--                    </li> --}}
-        {{--                    <li> --}}
-        {{--                        <a href="#hotels"  class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3">Hotels</a> --}}
-        {{--                    </li> --}}
-        {{--                    <li> --}}
-        {{--                        <a href="#reviews" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3">Reviews</a> --}}
-        {{--                    </li> --}}
-        {{--                </ul> --}}
-        {{--            </div> --}}
-
-        <section class="mt-6 grid grid-cols-1 md:grid-cols-3 md:gap-6">
-            <div class="col-span-2 order-2 md:order-1">
-
-
-                <div x-show="openTab === 1" x-transition:enter="transition duration-500 transform ease-in"
-                    x-transition:enter-start="opacity-0">
-                    <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
-                        <div class="">
-                            {{--                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span> --}}
-                            {{--                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span> --}}
-                            <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                        </div> {{ __('message.pack_deta_par1') }}
+    <section class="package-story" x-data="{ openTab: 1 }">
+        <div class="container">
+            <div class="package-journey grid grid-cols-1 xl:grid-cols-12 items-start gap-7 pt-9 lg:pt-12 xl:gap-x-10 xl:gap-y-0">
+                <section id="package-overview" class="package-overview xl:col-span-8 xl:col-start-1 xl:row-start-1" aria-labelledby="package-overview-title" x-show="openTab === 1"
+                    x-transition:enter="transition duration-500 transform ease-in" x-transition:enter-start="opacity-0">
+                    <div class="package-overview__copy bg-white" data-package-reveal>
+                        <span aria-hidden="true" class="inline-flex items-center gap-1 mb-6"><span class="inline-block w-1 h-2.5 bg-secondary"></span><span class="inline-block w-3 h-2.5 bg-secondary"></span><span class="inline-block w-5 h-2.5 bg-secondary"></span></span>
+                        <h2 id="package-overview-title" class="package-overview__title text-3xl font-semibold text-gray-700 mb-4">{{ __('message.pack_deta_par1') }}</h2>
+                        <div class="package-overview__text text-base leading-relaxed text-gray-600">
+                            {!! $paquete['descripcion'] !!}
+                        </div>
                     </div>
-                    <div class="mb-6">
-                        {!! $paquete['descripcion'] !!}
-                    </div>
-
-                    {{--                        <div class="flex items-center text-lg text-gray-700 font-bold gap-2 mt-6"> --}}
-                    {{--                            <div class="c"> --}}
-                    {{--                                --}}{{--                        <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span> --}}
-                    {{--                                --}}{{--                        <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span> --}}
-                    {{--                                <span class="inline-block w-5 h-2.5 bg-secondary"></span> --}}
-                    {{--                            </div> {{__('message.pack_deta_par2')}} --}}
-                    {{--                        </div> --}}
-
-                    {{--                        <div class="grid grid-cols-1 md:grid-cols-1 my-6"> --}}
-
-                    {{--                                @php $i = 1; @endphp --}}
-
-                    {{--                                <div class="grid grid-cols-3 place-content-between md:gap-3"> --}}
-                    {{--                                    @foreach ($paquete['paquetes_destinos'] as $paquete_destino) --}}
-                    {{--                                        @foreach ($paquete_destino['destinos']['destino_imagen'] as $destino_imagen) --}}
-                    {{--                                            <div class="flex items-center @if (count($paquete['paquetes_destinos']) % 2 != 0 and $i == 1) col-span-2 @endif"> --}}
-                    {{--                                                <img src="{{$destino_imagen['nombre']}}" alt="" class="rounded-full h-10 w-10 "> --}}
-                    {{--                                                <div class=" inset-x-0 bottom-0 text-sm tracking-wide text- p-2 font-medium"> --}}
-                    {{--                                                    {{$paquete_destino['destinos']['nombre']}} --}}
-                    {{--                                                </div> --}}
-                    {{--                                            </div> --}}
-                    {{--                                            @php $i++ @endphp --}}
-                    {{--                                        @endforeach --}}
-                    {{--                                    @endforeach --}}
-                    {{--                                </div> --}}
-
-                    {{--                        </div> --}}
-
-                    <div class="">
+                </section>
+                <section id="package-itinerary" class="package-route bg-white xl:col-span-8 xl:col-start-1 xl:row-start-2" aria-labelledby="package-itinerary-title" x-show="openTab === 1">
+                    <figure class="package-route__map" data-package-reveal>
+                        <figcaption class="package-route__label inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-primary">
+                            <span aria-hidden="true" class="inline-block w-3 h-2.5 bg-secondary"></span>
+                            The journey
+                        </figcaption>
                         <a class="venobox" data-gall="myGallery" href="{{ $paquete['mapa'] }}"><img
-                                src="{{ $paquete['mapa'] }}" /></a>
+                                src="{{ $paquete['mapa'] }}" class="w-full object-contain" /></a>
+                    </figure>
+                    <div class="package-itinerary">
+                        <div class="package-itinerary__layout">
+                            <div class="package-itinerary__intro">
+                                <div data-package-reveal>
+                                    <span aria-hidden="true" class="inline-flex items-center gap-1 mb-6"><span class="inline-block w-1 h-2.5 bg-secondary"></span><span class="inline-block w-3 h-2.5 bg-secondary"></span><span class="inline-block w-5 h-2.5 bg-secondary"></span></span>
+                                    <div class="package-itinerary__heading">
+                                        <h2 id="package-itinerary-title" class="package-itinerary__title text-3xl font-semibold text-gray-700">{{ __('message.pack_deta_par3') }}</h2>
+                                        <p class="package-itinerary__duration text-primary">
+                                            <x-heroicon-o-calendar class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+                                            <strong class="font-medium">{{ $paquete['duracion'] }}</strong>
+                                            {{ __('message.pack_par4') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="package-itinerary__days" x-data="{ selected: 1 }" data-package-reveal>
+                                @foreach ($paquete->paquete_itinerario as $section)
+                                    @php
+                                        $dayImages = $section->itinerarios->itinerario_imagen->filter(fn ($image) => filled($image->nombre));
+                                    @endphp
+                                    <article class="package-itinerary__day"
+                                        :class="{ 'is-open': selected === {{ $loop->iteration }} }">
+                                        @unless ($loop->last)
+                                            <span class="pointer-events-none absolute inset-0 flex lg:grid lg:grid-cols-12 lg:gap-x-4" aria-hidden="true">
+                                                <span class="relative flex w-9 flex-shrink-0 justify-center lg:col-span-1 lg:w-auto">
+                                                    <span class="package-itinerary__rail absolute w-px bg-tertiary/20"></span>
+                                                    <span class="package-itinerary__route-segment absolute w-px bg-secondary"></span>
+                                                </span>
+                                            </span>
+                                        @endunless
+                                        <h3 class="relative">
+                                            <button type="button" id="package-day-trigger-{{ $loop->iteration }}"
+                                                class="package-itinerary__trigger group flex items-start gap-3 py-4 text-tertiary lg:grid lg:grid-cols-12 lg:gap-x-4"
+                                                :aria-expanded="selected === {{ $loop->iteration }}"
+                                                aria-controls="package-day-panel-{{ $loop->iteration }}"
+                                                @click="selected !== {{ $loop->iteration }} ? selected = {{ $loop->iteration }} : selected = null">
+                                                <span class="relative flex h-9 w-9 flex-shrink-0 items-center justify-center lg:col-span-1 lg:h-11 lg:w-auto">
+                                                    <span class="package-itinerary__number relative inline-flex h-9 w-9 flex-col items-center justify-center gap-0 rounded-full border motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out"
+                                                        :class="selected === {{ $loop->iteration }} ? 'bg-secondary border-secondary text-tertiary lg:h-11 lg:w-11' : 'bg-white border-tertiary/10 text-tertiary lg:h-10 lg:w-10 lg:group-hover:border-primary/30'">
+                                                        <span class="text-sm font-semibold leading-none lg:text-base lg:leading-none">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                                                        <span class="text-xss font-medium uppercase tracking-wider leading-none text-tertiary/60">Day</span>
+                                                        <span class="pointer-events-none absolute left-full top-1/2 h-px w-3 motion-safe:transition-colors motion-safe:duration-300" aria-hidden="true"
+                                                            :class="selected === {{ $loop->iteration }} ? 'bg-secondary' : 'bg-tertiary/20 lg:group-hover:bg-primary/40'"></span>
+                                                    </span>
+                                                </span>
+                                                <span class="flex min-h-9 min-w-0 flex-1 items-center gap-3 lg:col-span-11 lg:min-h-11">
+                                                    <span class="package-itinerary__day-title min-w-0 flex-1 text-base leading-snug text-tertiary"
+                                                        :class="selected === {{ $loop->iteration }} ? 'font-semibold lg:text-lg' : 'font-medium'">{{ ucfirst(strtolower($section->itinerarios->titulo)) }}</span>
+                                                    <span class="package-itinerary__toggle flex flex-shrink-0 items-center justify-end lg:group-hover:text-secondary motion-safe:transition-colors motion-safe:duration-300" aria-hidden="true"
+                                                        :class="selected === {{ $loop->iteration }} ? 'text-secondary' : 'text-primary'">
+                                                        <x-heroicon-o-chevron-down class="package-itinerary__chevron h-5 w-5" />
+                                                    </span>
+                                                </span>
+                                            </button>
+                                        </h3>
+                                        <div id="package-day-panel-{{ $loop->iteration }}" class="package-itinerary__panel"
+                                            role="region" aria-labelledby="package-day-trigger-{{ $loop->iteration }}"
+                                            :aria-hidden="selected !== {{ $loop->iteration }}"
+                                            :inert="selected !== {{ $loop->iteration }}">
+                                            <div class="package-itinerary__panel-inner grid grid-cols-1 pl-12 lg:grid-cols-12 lg:gap-x-4 lg:pl-0">
+                                                <div class="package-itinerary__body relative lg:col-span-11 lg:col-start-2">
+                                                    <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
+                                                        <div class="package-itinerary__text font-normal text-gray-600 {{ $dayImages->isNotEmpty() ? 'lg:col-span-8' : 'lg:col-span-12' }}">
+                                                            {!! $section->itinerarios->descripcion !!}
+                                                        </div>
+                                                        @if ($dayImages->isNotEmpty())
+                                                            <div class="space-y-3 lg:col-span-4">
+                                                                @foreach ($dayImages as $imagen)
+                                                                    <img src="{{ $imagen->nombre }}" alt="{{ $imagen->alt }}" class="aspect-[4/3] w-full object-cover" loading="lazy">
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
-
-                    <div x-transition:enter="transition  duration-500 transform ease-in"
-                        x-transition:enter-start="opacity-0">
-
-                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
-                            <div class="">
-
-                                <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                            </div> {{ __('message.pack_deta_par3') }}
+                </section>
+                <aside class="package-commercial xl:col-span-4 xl:col-start-9 xl:row-start-1 xl:row-span-3" aria-labelledby="package-trip-title">
+                    <div class="package-commercial__content bg-gray-50">
+                        <div class="package-commercial__summary bg-tertiary text-white p-6 md:p-8">
+                            <h2 id="package-trip-title" class="package-commercial__eyebrow text-xs font-bold tracking-wider uppercase text-secondary">Plan your journey</h2>
+                            <p class="package-commercial__duration text-sm font-semibold tracking-wider uppercase text-white">{{ $paquete['duracion'] }} {{ __('message.pack_par4') }}</p>
+                            @if ($hasHeroPrice)
+                                <p class="package-commercial__price text-white">
+                                    <span class="text-xs">From</span>
+                                    <strong class="text-5xl md:text-6xl font-semibold leading-tight">${{ number_format((float) $heroPrice, (float) $heroPrice == (int) $heroPrice ? 0 : 2, '.', ',') }}</strong>
+                                    <span class="text-xs">per person USD</span>
+                                </p>
+                            @else
+                                <p class="package-commercial__price-note text-sm text-white/80">Contact us for pricing</p>
+                            @endif
+                            @if ($heroDestinations->isNotEmpty())
+                                <p class="package-commercial__destinations text-xs text-white/80">{{ $heroDestinations->implode(' • ') }}</p>
+                            @endif
+                            <div class="package-commercial__actions">
+                                <a href="#form-dream-adventure" class="btn-secondary text-center">Request a Quote</a>
+                                @if ($paquete['codigo_f'])
+                                    <button type="button" class="package-commercial__book text-xs text-white/80 underline hover:text-secondary"
+                                        @click="document.getElementById('wetravel_button_widget').click()">Book Now</button>
+                                @endif
+                            </div>
                         </div>
 
-                        <div class="grid divide-y" x-data="{ selected: 1 }">
 
-                            @foreach ($paquete->paquete_itinerario as $section)
-                                <div class="flex contents gap-4 cursor-pointer"
-                                    @click="selected !== {{ $loop->iteration }} ? selected = {{ $loop->iteration }} : selected = null">
-                                    <div class="relative">
-                                        <div class="h-full w-6 flex items-center justify-center">
-                                            <div class="h-full w-0.5 bg-gray-600 pointer-events-none"></div>
-                                        </div>
-                                        <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full  shadow text-center"
-                                            :class="selected !== {{ $loop->iteration }} ? 'bg-gray-500' : 'bg-secondary'">
 
-                                            <div :class="selected !== {{ $loop->iteration }} ? 'hidden' : ''">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 p-1 stroke-white"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                    stroke-width="2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                </svg>
-                                            </div>
-
-                                        </div>
+                        <div class="package-commercial__availability p-6 md:p-8">
+                            <h3 class="flex items-center gap-3 text-lg font-bold text-tertiary">
+                                <span aria-hidden="true" class="inline-flex items-center gap-1"><span class="inline-block w-1 h-2.5 bg-secondary"></span><span class="inline-block w-3 h-2.5 bg-secondary"></span></span>
+                                Availability
+                            </h3>
+                            <div class="text-sm text-gray-600">
+                                <div class="pb-3 text-xs text-gray-500">
+                                    <div class="">
+                                        Available through
                                     </div>
-                                    <div class=" col-start-2 col-end-12 p-4 my-4 mr-auto w-full">
-                                        <h3 class="font-semibold text-sm">Day {{ $loop->iteration }}:</span>
-                                            {{ ucfirst(strtolower($section->itinerarios->titulo)) }}</h3>
+                                    <div class="mt-1 text-lg font-semibold text-tertiary">
+                                        December 2026
+                                    </div>
+                                </div>
 
-                                        <div class="relative overflow-hidden transition-all max-h-0 duration-700"
-                                            style="" x-ref="container{{ $loop->iteration }}"
-                                            x-bind:style="selected == {{ $loop->iteration }} ? 'max-height: ' + $refs
-                                                .container{{ $loop->iteration }}.scrollHeight + 'px' : ''">
-                                            @foreach ($section->itinerarios->itinerario_imagen as $imagen)
-                                                <img src="{{ $imagen->nombre }}" alt="{{ $imagen->alt }}"
-                                                    class="w-full my-3">
-                                            @endforeach
-                                            <div class="text-sm">
-                                                {!! $section->itinerarios->descripcion !!}
-                                            </div>
-                                        </div>
+                                <div class="package-commercial__status">
 
+                                    <div class="package-commercial__status-label">
+                                        Group Tours
+                                    </div>
+
+                                    <div class="package-commercial__status-value text-sm font-semibold text-primary">
+                                        Available
                                     </div>
 
                                 </div>
-                            @endforeach
 
+
+                                <div class="package-commercial__status">
+
+                                    <div
+                                        class="package-commercial__status-label">
+                                        Private Tours
+                                    </div>
+
+                                    <div class="package-commercial__status-value text-sm font-semibold text-primary">
+                                        Available
+                                    </div>
+                                </div>
+
+                                <div class="package-commercial__status">
+
+                                    <div
+                                        class="package-commercial__status-label"> Solo Travelers
+                                    </div>
+
+                                    <div class="package-commercial__status-value text-sm font-semibold text-primary">
+                                        @foreach ($paquete['precio_paquetes'] as $precio)
+                                            @if ($precio['estrellas'] == 3)
+                                                @if ($precio['precio_s'] > 0)
+                                                    <div class="text-4xl font-semibold text-gray-600">
+                                                        {{--                                                                            <span> {{__('message.pack_par5')}} </span> --}}
+                                                        {{--                                                        From${{$precio['precio_d']}}usd --}}
+                                                    </div>
+                                                @else
+                                                    <span
+                                                        class="text-gray-600 font-semibold">{{ __('message.button_inquire') }}</span>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
 
+                    </div>
 
+                    <div class="package-commercial__trust text-primary">
+                        <div class="package-commercial__trust-strip" aria-label="Independent review platforms">
+                            <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html"
+                                target="_blank" rel="noopener noreferrer" aria-label="GoToPeru reviews on Tripadvisor">
+                                <img src="https://www.tripadvisor.com.pe/img/cdsi/img2/branding/v2/Tripadvisor_lockup_horizontal_secondary_registered-18034-2.svg"
+                                    alt="Tripadvisor" loading="lazy">
+                            </a>
+                            <a href="https://www.trustpilot.com/review/gotoperu.com" target="_blank" rel="noopener noreferrer"
+                                aria-label="GoToPeru reviews on Trustpilot">
+                                <span class="package-commercial__trust-wordmark">
+                                    <img src="{{ asset('images/logos/trust2.png') }}" alt="Trustpilot" width="385" height="230" loading="lazy">
+                                </span>
+                            </a>
+                            <a href="https://www.google.com/search?hl=es-419&amp;gl=pe&amp;q=GOTOPERU,+Av.+El+Sol+449,+Cusco+08001"
+                                target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-gray-600 hover:text-primary">
+                                Google Reviews
+                            </a>
+                        </div>
+                    </div>
+                    <nav class="package-section-nav text-tertiary" aria-label="Explore this trip">
+                        <p class="flex items-center gap-3 text-base font-bold tracking-wider uppercase text-tertiary">
+                            <span aria-hidden="true" class="inline-flex items-center gap-1"><span class="inline-block w-1 h-2.5 bg-secondary"></span><span class="inline-block w-3 h-2.5 bg-secondary"></span></span>
+                            Explore this trip
+                        </p>
+                        <ul class="package-section-nav__links border-l border-gray-200">
+                            <li>
+                                <a href="#package-overview" class="text-base text-gray-500 hover:text-tertiary" aria-current="location">
+                                    <span class="package-section-nav__marker bg-secondary" aria-hidden="true"></span>
+                                    <x-heroicon-o-flag class="package-section-nav__icon h-5 w-5 flex-shrink-0 text-primary" aria-hidden="true" />
+                                    <span>Overview</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#package-itinerary" class="text-base text-gray-500 hover:text-tertiary">
+                                    <span class="package-section-nav__marker bg-secondary" aria-hidden="true"></span>
+                                    <x-heroicon-o-calendar class="package-section-nav__icon h-5 w-5 flex-shrink-0 text-primary" aria-hidden="true" />
+                                    <span>Itinerary</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#package-prices" class="text-base text-gray-500 hover:text-tertiary">
+                                    <span class="package-section-nav__marker bg-secondary" aria-hidden="true"></span>
+                                    <x-heroicon-o-star class="package-section-nav__icon h-5 w-5 flex-shrink-0 text-primary" aria-hidden="true" />
+                                    <span>Prices &amp; Hotels</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#package-included" class="text-base text-gray-500 hover:text-tertiary">
+                                    <span class="package-section-nav__marker bg-secondary" aria-hidden="true"></span>
+                                    <x-heroicon-o-check class="package-section-nav__icon h-5 w-5 flex-shrink-0 text-primary" aria-hidden="true" />
+                                    <span>What's Included</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 
+                        {{--                            <div class="flex gap-3"> --}}
+                        {{--                                <div class="flex-1 border p-3 flex text-xl items-center justify-center"> --}}
+                        {{--                                    @foreach ($paquete['paquetes_categoria'] as $category_p) --}}
+                        {{--                                        <div class="text-xl font-semibold text-gray-600"> --}}
+                        {{--                                            <span class="text-xs">Travel Style</span> --}}
+                        {{--                                            <span class="block text-base">   {{ucwords(strtolower($category_p['categoria']['nombre']))}}</span> --}}
+                        {{--                                        </div> --}}
 
-
-                        {{--                            <div class="grid"> --}}
-                        {{--                                <div class="col-span-4 md:col-span-4"> --}}
-
-                        {{--                                    @foreach ($paquete->paquete_itinerario as $section) --}}
-
-                        {{--                                        <article class="mb-4" --}}
-                        {{--                                                 @if ($loop->first) --}}
-                        {{--                                                 x-data="{ open: true }" --}}
-                        {{--                                                 @else --}}
-                        {{--                                                 x-data="{ open: false }" --}}
-                        {{--                                            @endif --}}
-                        {{--                                        > --}}
-                        {{--                                            <header class="border border-gray-200 px-4 py-2 flex justify-between cursor-pointer bg-gray-100" x-on:click="open = !open"> --}}
-                        {{--                                                <h1 class="font-semibold text-sm text-gray-600 "><span class="capitalize">Day {{$loop->iteration}}:</span> {{ucfirst(strtolower($section->itinerarios->titulo))}}</h1> --}}
-
-                        {{--                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"> --}}
-                        {{--                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /> --}}
-                        {{--                                                </svg> --}}
-                        {{--                                            </header> --}}
-                        {{--                                            <div class="bg-white py-2 px-4 border mt-1" x-show="open" x-transition> --}}
-                        {{--                                                @foreach ($section->itinerarios->itinerario_imagen as $imagen) --}}
-                        {{--                                                    <a class="venobox swiper-slide" data-gall="myGallery" href="{{$imagen->nombre}}"><img src="{{$imagen->nombre}}" alt="{{$imagen->alt}}" class="w-100" loading="lazy"></a> --}}
-                        {{--                                                @endforeach --}}
-                        {{--                                                <div class="grid grid-cols-1 gap-2 text-sm"> --}}
-                        {{--                                                    {!! $section->itinerarios->descripcion !!} --}}
-                        {{--                                                </div> --}}
-                        {{--                                            </div> --}}
-                        {{--                                        </article> --}}
                         {{--                                    @endforeach --}}
+                        {{--                                </div> --}}
 
+                        {{--                                <div class="flex-1 border py-2 px-3 flex items-center"> --}}
+
+                        {{--                                        <div class="text-xl font-semibold text-gray-600"> --}}
+                        {{--                                            <span class="text-xs">Physical Rating</span> --}}
+                        {{--                                            @foreach ($paquete['paquetes_dificultad'] as $dificultad) --}}
+                        {{--                                            <span class="block text-base">   {{ucwords(strtolower($dificultad['dificultad']['nombre']))}}</span> --}}
+                        {{--                                            @endforeach --}}
+                        {{--                                        </div> --}}
+
+
+                        {{--                                </div> --}}
+                        {{--                            </div> --}}
+
+                        {{--                            <div class="flex gap-3"> --}}
+                        {{--                                <div class="flex-1 border p-3 flex text-xl items-center justify-center"> --}}
+
+                        {{--                                    <div class="text-xl font-semibold text-gray-600"> --}}
+                        {{--                                        <span class="text-xs">Group Size</span> --}}
+                        {{--                                        <span class="block text-base">{{$paquete['group_size']}}</span> --}}
+                        {{--                                    </div> --}}
 
 
                         {{--                                </div> --}}
 
+                        {{--                                <a href="#reviews" class="flex-1 border py-2 px-3 flex items-center"> --}}
+
+
+                        {{--                                        <div class="text-xl font-semibold text-gray-600"> --}}
+                        {{--                                            <span class="text-xs">Reviews</span> --}}
+                        {{--                                            --}}{{--                                    <span class="block text-base"></span> --}}
+                        {{--                                        </div> --}}
+
+                        {{--                                </a> --}}
                         {{--                            </div> --}}
-                    </div>
-
-                </div>
-
-
-
-                {{--                    <div x-show="openTab === 2" x-transition:enter="transition duration-500 transform ease-in" x-transition:enter-start="opacity-0"> --}}
-                {{--                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400"> --}}
-                {{--                            <div class=""> --}}
-                {{--                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span> --}}
-                {{--                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span> --}}
-                {{--                                <span class="inline-block w-5 h-2.5 bg-secondary"></span> --}}
-                {{--                            </div> {{__('message.pack_deta_par3')}} --}}
-                {{--                        </div> --}}
-
-                {{--                        <div class="grid"> --}}
-                {{--                            <div class="col-span-4 md:col-span-4"> --}}
-
-                {{--                                @foreach ($paquete->paquete_itinerario as $section) --}}
-
-                {{--                                    <article class="mb-4" --}}
-                {{--                                             @if ($loop->first) --}}
-                {{--                                             x-data="{ open: true }" --}}
-                {{--                                             @else --}}
-                {{--                                             x-data="{ open: false }" --}}
-                {{--                                        @endif --}}
-                {{--                                    > --}}
-                {{--                                        <header class="border border-gray-200 px-4 py-2 flex justify-between cursor-pointer bg-gray-100" x-on:click="open = !open"> --}}
-                {{--                                            <h1 class="font-semibold text-sm text-gray-600 "><span class="capitalize">Day {{$loop->iteration}}:</span> {{ucfirst(strtolower($section->itinerarios->titulo))}}</h1> --}}
-
-                {{--                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"> --}}
-                {{--                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /> --}}
-                {{--                                            </svg> --}}
-                {{--                                        </header> --}}
-                {{--                                        <div class="bg-white py-2 px-4 border mt-1" x-show="open" x-transition> --}}
-                {{--                                            <div class="grid grid-cols-1 gap-2 text-sm"> --}}
-                {{--                                                {!! $section->itinerarios->descripcion !!} --}}
-                {{--                                            </div> --}}
-                {{--                                        </div> --}}
-                {{--                                    </article> --}}
-                {{--                                @endforeach --}}
-
-
-
-                {{--                            </div> --}}
-
-                {{--                        </div> --}}
-                {{--                    </div> --}}
 
 
 
 
 
 
-            </div>
 
-            <div class="flex flex-col gap-3 order-1 md:order-2 -mt-44 z-10">
-                <div class="flex flex-col gap-3">
+                        {{--                        <img src="{{$paquete['mapa']}}" alt="" class="w-full mt-2"> --}}
 
-                    <div class="flex gap-3 ">
-                        {{--                                                    <div class="flex-1 border p-3 flex bg-white text-xl items-center justify-center"> --}}
-                        {{--                                                        {{ $paquete['duracion'] }} {{__('message.pack_par4')}} --}}
-                        {{--                                                    </div> --}}
-                        @if ($paquete['is_p_t'] == 1)
-                            <div class="flex-1 border backdrop-blur-sm bg-white/80 p-3 flex items-center">
-                                @foreach ($paquete['precio_paquetes'] as $precio)
-                                    @if ($precio['estrellas'] == 3)
-                                        <div class="text-4xl font-semibold text-gray-600">
-                                            {{--                                                                            <span> {{__('message.pack_par5')}} </span> --}}
-                                            <span class="text-base block">{{ $paquete['duracion'] }}
-                                                {{ __('message.pack_par4') }}</span>
-                                            <h2 class="text-2xl font-bold text-gray-600"> {{ $paquete['titulo'] }}</h2>
-                                            <div class="flex -space-x-1 overflow-hidden">
-                                                @foreach ($teams->take(6) as $team)
-                                                    @if ($team->imagen_perfil)
-                                                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                                                            src="{{ $team->imagen_perfil }}" alt="{{ $team->nombre }}">
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                            <p class="text-sm font-normal mt-2">Get a travel expert to plan your dream
-                                                vacation</p>
-                                            @if ($precio['precio_d'] > 0)
-                                                <p class="text-xs font-light mt-2">Price p.p. from</p>
-                                                <span>${{ $precio['precio_d'] }}</span>
-                                                <span class="text-sm"> usd</span>
-                                            @else
-                                                <span class="text-red-500 text-sm font-bold">Price:
-                                                    {{ __('message.button_inquire') }}</span>
-                                            @endif
-                                            <span class="block text-red-500 mt-3 text-xs font-normal">See book With
-                                                Confidence terms</span>
-                                        </div>
-                                    @endif
-                                @endforeach
+
+
+                </aside>
+
+
+            {{--            <div class=" mt-6 " > --}}
+            {{--                <ul class="grid  md:grid-cols-5 gap-3"> --}}
+            {{--                    <li @click="openTab = 1" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openTab == 1 ? 'bg-primary text-white' : 'bg-white hover:text-primary'"> --}}
+            {{--                        <div class=" ">Overview</div> --}}
+            {{--                    </li> --}}
+            {{--                    <li @click="openTab = 2" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openTab == 2 ? 'bg-primary text-white' : 'bg-white hover:text-primary'"> --}}
+            {{--                        <div class="">Full Itinerary</div> --}}
+            {{--                    </li> --}}
+            {{--                    <li> --}}
+            {{--                        <a href="#prices" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openTab == 3 ? 'bg-primary text-white' : 'bg-white hover:text-primary'">Price</a> --}}
+            {{--                    </li> --}}
+            {{--                    <li> --}}
+            {{--                        <a href="#hotels"  class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3">Hotels</a> --}}
+            {{--                    </li> --}}
+            {{--                    <li> --}}
+            {{--                        <a href="#reviews" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3">Reviews</a> --}}
+            {{--                    </li> --}}
+            {{--                </ul> --}}
+            {{--            </div> --}}
+
+                <div id="package-prices" class="package-prices xl:col-span-8 xl:col-start-1 xl:row-start-3">
+            <section class="hidden">
+                @if ($paquete['is_p_t'] == 1)
+                    <section class="my-12 flex flex-col gap-4" id="prices">
+
+                        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
+                            <div class="">
+                                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
+                                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
+                                <span class="inline-block w-5 h-2.5 bg-secondary"></span>
+                            </div> {{ __('message.pack_deta_par4') }}
+                        </div>
+
+
+                        {{--                            <div class="grid md:grid-cols-2 gap-4"> --}}
+                        {{--                                <div class="overflow-x-scroll"> --}}
+                        {{--                                    <p class="font-semibold text-secondary text-center">{{__('message.pack_deta_par5')}}</p> --}}
+                        {{--                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll"> --}}
+                        {{--                                    <thead class="bg-secondary dark:text-white"> --}}
+                        {{--                                    <tr> --}}
+                        {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
+                        {{--                                            {{__('message.pack_deta_par9')}} --}}
+                        {{--                                        </th> --}}
+                        {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
+                        {{--                                            {{__('message.pack_deta_par10')}} --}}
+                        {{--                                        </th> --}}
+                        {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
+                        {{--                                            {{__('message.pack_deta_par11')}} --}}
+                        {{--                                        </th> --}}
+                        {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
+                        {{--                                            {{__('message.pack_deta_par12')}} --}}
+                        {{--                                        </th> --}}
+                        {{--                                    </tr> --}}
+                        {{--                                    </thead> --}}
+                        {{--                                    <tbody class="bg-secondary bg-opacity-10 divide-y divide-gray-200"> --}}
+                        {{--                                    <tr> --}}
+
+                        {{--                                        @foreach ($paquete['precio_paquetes'] as $precio) --}}
+                        {{--                                            @if ($precio['precio_s'] > 0) --}}
+                        {{--                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800 dark:text-white">${{$precio['precio_s']}}<small>USD</small></td> --}}
+                        {{--                                            @else --}}
+                        {{--                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td> --}}
+                        {{--                                            @endif --}}
+                        {{--                                        @endforeach --}}
+
+                        {{--                                    </tr> --}}
+
+                        {{--                                    <!-- More people... --> --}}
+                        {{--                                    </tbody> --}}
+                        {{--                                </table> --}}
+                        {{--                                </div> --}}
+                        {{--                                <div class="overflow-x-scroll"> --}}
+                        {{--                                    <p class="font-semibold text-primary text-center">Prices are based on double occupancy.</p> --}}
+                        {{--                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll"> --}}
+                        {{--                                    <thead class="bg-primary text-white"> --}}
+                        {{--                                    <tr> --}}
+                        {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
+                        {{--                                            {{__('message.pack_deta_par9')}} --}}
+                        {{--                                        </th> --}}
+                        {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
+                        {{--                                            {{__('message.pack_deta_par10')}} --}}
+                        {{--                                        </th> --}}
+                        {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
+                        {{--                                            {{__('message.pack_deta_par11')}} --}}
+                        {{--                                        </th> --}}
+                        {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
+                        {{--                                            {{__('message.pack_deta_par12')}} --}}
+                        {{--                                        </th> --}}
+                        {{--                                    </tr> --}}
+                        {{--                                    </thead> --}}
+                        {{--                                    <tbody class="bg-primary bg-opacity-10 divide-y divide-gray-200"> --}}
+
+                        {{--                                    <tr> --}}
+
+                        {{--                                        @foreach ($paquete['precio_paquetes'] as $precio) --}}
+                        {{--                                            @if ($precio['precio_d'] > 0) --}}
+                        {{--                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800 dark:text-white">${{$precio['precio_d']}}<small>USD</small></td> --}}
+                        {{--                                            @else --}}
+                        {{--                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td> --}}
+                        {{--                                            @endif --}}
+                        {{--                                        @endforeach --}}
+
+                        {{--                                    </tr> --}}
+
+
+                        {{--                                    <!-- More people... --> --}}
+                        {{--                                    </tbody> --}}
+                        {{--                                </table> --}}
+                        {{--                                </div> --}}
+
+                        {{--                            </div> --}}
+                        <div class="grid md:grid-cols-2 gap-4 md:mt-5">
+                            <div class="overflow-x-scroll">
+                                <p class="font-semibold text-gray-500 text-center">Prices are based on triple occupancy.</p>
+                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
+                                    <thead class="bg-gray-700 text-white">
+                                        <tr>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
+                                                {{ __('message.pack_deta_par9') }}
+                                            </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
+                                                {{ __('message.pack_deta_par10') }}
+                                            </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
+                                                {{ __('message.pack_deta_par11') }}
+                                            </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
+                                                {{ __('message.pack_deta_par12') }}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-gray-50 divide-y divide-gray-200">
+
+                                        <tr>
+
+                                            @foreach ($paquete['precio_paquetes'] as $precio)
+                                                @if ($precio['precio_t'] > 0)
+                                                    <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">
+                                                        ${{ $precio['precio_t'] }}<small>USD</small></td>
+                                                @else
+                                                    <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">
+                                                        {{ __('message.button_inquire') }}</td>
+                                                @endif
+                                            @endforeach
+
+                                        </tr>
+
+                                        <!-- More people... -->
+                                    </tbody>
+                                </table>
                             </div>
-                        @else
-                            <div class="flex-1 border bg-white p-3 flex items-center">
-                                @if ($paquete['precio_tours'])
-                                    <div class="text-4xl font-semibold text-gray-600">
-                                        {{--                                                                            <span> {{__('message.pack_par5')}} </span> --}}
-                                        <span class="text-base block">{{ $paquete['duracion'] }}
-                                            {{ __('message.pack_par4') }}</span>
-                                        <p class="text-xs font-light mt-3">Price p.p. from</p>
-                                        <span>${{ $paquete['precio_tours'] }}</span>
-                                        <span class="text-sm"> usd</span>
-                                        <span class="block text-red-500 mt-3 text-xs font-normal">See book With Confidence
-                                            terms</span>
-                                    </div>
+                        </div>
 
-                                    {{--                                        <div class="text-xl font-semibold text-gray-600"> --}}
-                                    {{--                                            <span> {{__('message.pack_par5')}} </span> --}}
-                                    {{--                                            <span>${{$paquete['precio_tours']}}</span> --}}
-                                    {{--                                            <span class="text-xs"> usd</span> --}}
-                                    {{--                                        </div> --}}
-                                @else
-                                    <span class="text-red-500 font-bold">{{ __('message.button_inquire') }}</span>
+
+
+                        <p class="text-sm text-gray-500">{{ __('message.pack_deta_par6') }}</p>
+
+
+                    </section>
+                @endif
+            </section>
+
+
+
+
+
+        {{--    @php --}}
+        {{--        $precios = collect($paquete->precio_paquetes ?? ($paquete['precio_paquetes'] ?? [])) --}}
+        {{--                    ->sortBy('estrellas'); --}}
+
+        {{--        $fmt = fn($v) => (int)$v > 0 ? '$'.number_format((int)$v, 0).' usd' : '—'; --}}
+
+        {{--        // Mapa solicitado (respetando mayúsculas/minúsculas que pediste) --}}
+        {{--        $labelMap = [ --}}
+        {{--            2 => 'without hotels', --}}
+        {{--            3 => 'Tourist', --}}
+        {{--            4 => 'superior', --}}
+        {{--            5 => 'Luxury', --}}
+        {{--        ]; --}}
+        {{--    @endphp --}}
+
+        {{--    <section class="my-8 container"> --}}
+        {{--        <h2 class="text-xl md:text-2xl font-extrabold mb-4">Prices by hotel category</h2> --}}
+        {{--        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400"> --}}
+        {{--            <div class=""> --}}
+        {{--                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span> --}}
+        {{--                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span> --}}
+        {{--                <span class="inline-block w-5 h-2.5 bg-secondary"></span> --}}
+        {{--            </div> Prices by hotel category --}}
+        {{--        </div> --}}
+
+        {{--        <div class="overflow-x-auto rounded-lg border"> --}}
+        {{--            <table class="min-w-full text-sm"> --}}
+        {{--                <thead class="bg-gray-50"> --}}
+        {{--                <tr class="text-gray-700"> --}}
+        {{--                    <th class="p-3 text-left font-semibold">Hotel category</th> --}}
+        {{--                    <th class="p-3 text-right font-semibold">Single (SGL)</th> --}}
+        {{--                    <th class="p-3 text-right font-semibold">Double (DBL)</th> --}}
+        {{--                    <th class="p-3 text-right font-semibold">Triple (TPL)</th> --}}
+        {{--                </tr> --}}
+        {{--                </thead> --}}
+
+        {{--                <tbody class="divide-y"> --}}
+        {{--                @forelse($precios as $p) --}}
+        {{--                    @php --}}
+        {{--                        // Soporta acceso como objeto o array --}}
+        {{--                        $stars   = is_array($p) ? ($p['estrellas'] ?? null) : ($p->estrellas ?? null); --}}
+        {{--                        $ps      = is_array($p) ? ($p['precio_s'] ?? null)   : ($p->precio_s ?? null); --}}
+        {{--                        $pd      = is_array($p) ? ($p['precio_d'] ?? null)   : ($p->precio_d ?? null); --}}
+        {{--                        $pt      = is_array($p) ? ($p['precio_t'] ?? null)   : ($p->precio_t ?? null); --}}
+        {{--                    @endphp --}}
+
+        {{--                    <tr> --}}
+        {{--                        @php --}}
+        {{--                            $stars = (int)(is_array($p) ? ($p['estrellas'] ?? 0) : ($p->estrellas ?? 0)); --}}
+        {{--                            $label = $labelMap[$stars] ?? null; --}}
+        {{--                        @endphp --}}
+
+        {{--                        <td class="p-3"> --}}
+        {{--                            --}}{{-- número + estrella + etiqueta --}}
+        {{--                            <span class="font-semibold text-gray-800">{{ $stars }}★</span> --}}
+        {{--                            @if ($label) --}}
+        {{--                                <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded bg-gray-100 text-gray-700 text-xs"> --}}
+        {{--      {{ $label }} --}}
+        {{--    </span> --}}
+        {{--                            @endif --}}
+        {{--                        </td> --}}
+        {{--                        <td class="p-3 text-right">{{ $fmt($ps) }}</td> --}}
+        {{--                        <td class="p-3 text-right">{{ $fmt($pd) }}</td> --}}
+        {{--                        <td class="p-3 text-right">{{ $fmt($pt) }}</td> --}}
+        {{--                    </tr> --}}
+        {{--                @empty --}}
+        {{--                    <tr> --}}
+        {{--                        <td colspan="4" class="p-3 text-center text-gray-500"> --}}
+        {{--                            No prices available for this package. --}}
+        {{--                        </td> --}}
+        {{--                    </tr> --}}
+        {{--                @endforelse --}}
+        {{--                </tbody> --}}
+        {{--            </table> --}}
+        {{--        </div> --}}
+
+        {{--        --}}{{-- Nota opcional --}}
+        {{--        <p class="text-xs text-gray-500 mt-2"> --}}
+        {{--            Prices shown in USD. Subject to availability and change without prior notice. --}}
+        {{--        </p> --}}
+        {{--    </section> --}}
+
+
+            @php
+                // precios por estrellas
+                $precios = collect($paquete->precio_paquetes ?? ($paquete['precio_paquetes'] ?? []));
+                $byStars = $precios->keyBy(fn($p) => is_array($p) ? $p['estrellas'] ?? null : $p->estrellas ?? null);
+
+                // orden como tu imagen
+                $order = [2, 3, 4, 5];
+
+                // etiquetas
+                $labels = [
+                    2 => 'Tour (without Hotels)',
+                    3 => 'Tourist',
+                    4 => 'Superior',
+                    5 => 'Luxury',
+                ];
+
+                // formateo
+                $fmt = function ($n) {
+                    $n = (int) $n;
+                    return $n > 0 ? '$' . number_format($n, 0) : null; // null => "Inquire Now"
+                };
+            @endphp
+
+            <section class="mt-10 mb-10 lg:mt-12 lg:mb-12" aria-labelledby="package-prices-title">
+                <div class="bg-tertiary px-5 py-6 lg:px-6 lg:pt-7 lg:pb-10">
+                    <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-secondary">Prices per person</p>
+                    <h2 id="package-prices-title" class="text-3xl font-semibold text-white">Prices by hotel category</h2>
+                </div>
+                <div class="relative grid grid-cols-12 gap-0 mt-4 overflow-hidden rounded-sm border border-gray-200 bg-white lg:-mt-4 lg:mx-4">
+                    @foreach ($order as $star)
+                        @php
+                            $row = $byStars->get($star);
+
+                            // Solo TRIPLE (TPL) para 3★,4★,5★. Para 2★ usar precio_tours (por persona)
+                            $priceRaw =
+                                $star === 2
+                                    ? (int) ($paquete->precio_tours ?? 0)
+                                    : (int) (is_array($row) ? $row['precio_d'] ?? 0 : $row->precio_d ?? 0);
+
+                            $price = $fmt($priceRaw) ?? 'Inquire Now';
+                            $hasPrice = $priceRaw > 0;
+                        @endphp
+
+                        <div class="col-span-12 md:col-span-6 lg:col-span-3 min-w-0 border-gray-200 p-4 text-center transition-colors duration-200 lg:border-t-0 lg:hover:bg-gray-50
+                            {{ $loop->first ? '' : 'border-t lg:border-l' }}
+                            {{ $loop->iteration <= 2 ? 'md:border-t-0' : '' }}
+                            {{ $loop->even ? 'md:border-l' : '' }}">
+                            <div class="flex min-h-12 flex-col items-center justify-center gap-1">
+                                <h3 class="text-base font-semibold leading-snug text-tertiary">{{ $labels[$star] ?? $star . ' Stars' }}</h3>
+                                @if ($star !== 2 && $row)
+                                    <p class="flex items-center gap-1 text-xs font-normal text-primary">
+                                        <x-heroicon-o-star class="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
+                                        <span>{{ $star }}-star hotels</span>
+                                    </p>
                                 @endif
-
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="mt-6">
-                        @if ($paquete['codigo_f'])
-                            <button class="wtrvl-checkout_button btn-primary w-full" id="wetravel_button_widget"
-                                data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346"
-                                data-uuid="{{ $paquete['codigo_f'] }}"
-                                href="https://www.wetravel.com/checkout_embed?uuid={{ $paquete['codigo_f'] }}">Book
-                                Now</button>
-                        @endif
-                        <a href="#form-dream-adventure" class="btn-secondary mt-3  font-bold block text-center w-full">Get a
-                            Quote</a>
-                    </div>
-
-                    <div class="border my-3 bg-gray-600 text-white p-3 text-xs">
-                        <p class="text-white">Contact our travel advisor to use this itinerary (or others) as a base to
-                            design together your perfect peruvian adventure!</p>
-                        <p class="mt-2"><span class="text-secondary font-bold">For Example:</span> add one day / reduce
-                            the program lenght / upgrades hotels / add all meals / upgrade to private tours</p>
-                    </div>
-
-                    <div class="border">
-                        <div class="bg-blue-100 font-medium p-3">
-                            Availability
-                        </div>
-                        <div class="px-3 text-xs divide-y grid grid-cols-1 divide-slate-200">
-                            <div class="grid grid-cols-2 py-2 items-center">
-                                <div class="">
-                                    Departures Available
-                                </div>
-                                <div class="text-right font-medium">
-                                    Until December 2026
-                                </div>
                             </div>
 
-                            <div class="grid grid-cols-2 py-2 items-center">
-
-                                <div class="border p-1 text-center">
-                                    Group Tours
+                            <div class="mt-3">
+                                <div class="mb-1 h-4 text-xs font-normal text-gray-500">
+                                    @if ($hasPrice)
+                                        From
+                                    @endif
                                 </div>
-
-                                <div class="text-right font-medium">
-                                    Available
-                                </div>
-
-                            </div>
-
-
-                            <div class="grid grid-cols-2 py-2 items-center">
-
-                                <div
-                                    class="border border-fuchsia-500 text-fuchsia-500 p-1 text-center flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                                    </svg>
-                                    Private Tours
-                                </div>
-
-                                <div class="text-right font-medium">
-                                    Available
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-2 py-2 items-center">
-
-                                <div
-                                    class="border border-cyan-500 text-cyan-500 p-1 text-center flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg> Solo Travelers
-                                </div>
-
-                                <div class="text-right font-medium">
-                                    @foreach ($paquete['precio_paquetes'] as $precio)
-                                        @if ($precio['estrellas'] == 3)
-                                            @if ($precio['precio_s'] > 0)
-                                                <div class="text-4xl font-semibold text-gray-600">
-                                                    {{--                                                                            <span> {{__('message.pack_par5')}} </span> --}}
-                                                    {{--                                                        From${{$precio['precio_d']}}usd --}}
-                                                </div>
-                                            @else
-                                                <span
-                                                    class="text-red-500 font-bold">{{ __('message.button_inquire') }}</span>
-                                            @endif
-                                        @endif
-                                    @endforeach
-                                </div>
-
+                                <p class="font-semibold leading-8 tabular-nums {{ $hasPrice ? 'text-2xl text-secondary' : 'text-lg text-primary' }}">
+                                    {{ $price }}
+                                </p>
+                                <p class="mt-1 min-h-10 text-sm font-normal leading-5 text-gray-500">
+                                    @if ($star === 2)
+                                        per person
+                                    @else
+                                        per person <span class="block text-xs leading-5">(double/triple)</span>
+                                    @endif
+                                </p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 my-3 gap-4">
-                        <div class="flex items-center gap-3">
-                            <div class="rounded-full bg-secondary p-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <div class="leading-none">
-                                <span class="text-xs block">Travel Style</span>
-                                <span class="text-sm font-medium">ESCORTED TOURS</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="rounded-full bg-gray-400 p-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="stroke-amber-400" stroke-width="1">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                            </div>
-                            <div class="leading-none">
-                                <span class="text-xs block">Season</span>
-                                <span class="text-sm font-medium">JAN - DEC</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="rounded-full bg-gray-900 p-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                </svg>
-                            </div>
-                            <div class="leading-none">
-                                <span class="text-xs block">Interest</span>
-                                <span class="text-sm font-medium">Culture, history, Adventure</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="rounded-full bg-primary p-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-white" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
-                                </svg>
-                            </div>
-                            <div class="leading-none">
-                                <span class="text-xs block">Departure</span>
-                                <span class="text-sm font-medium">Daily</span>
-                            </div>
-                        </div>
-
-
-
-
-
-
-                    </div>
-
-                    <div class="block">
-                        <div id="TA_cdsratingsonlynarrow522" class="TA_cdsratingsonlynarrow w-full">
-                            <ul id="8CdJuXhFL" class="TA_links ZrzN0Ffd">
-                                <li id="7JQHh6DaTf" class="SOH6nHQUMt"><a target="_blank"
-                                        href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html"><img
-                                            src="https://www.tripadvisor.com.pe/img/cdsi/img2/branding/v2/Tripadvisor_lockup_horizontal_secondary_registered-18034-2.svg"
-                                            class="mx-auto" alt="TripAdvisor" /></a></li>
-                            </ul>
-                        </div>
-                        <script async
-                            src="https://www.jscache.com/wejs?wtype=cdsratingsonlynarrow&amp;uniq=522&amp;locationId=15202262&amp;lang=es_PE&amp;border=true&amp;display_version=2"
-                            data-loadtrk onload="this.loadtrk=true"></script>
-                    </div>
-
-                    {{--                            <div class="flex gap-3"> --}}
-                    {{--                                <div class="flex-1 border p-3 flex text-xl items-center justify-center"> --}}
-                    {{--                                    @foreach ($paquete['paquetes_categoria'] as $category_p) --}}
-                    {{--                                        <div class="text-xl font-semibold text-gray-600"> --}}
-                    {{--                                            <span class="text-xs">Travel Style</span> --}}
-                    {{--                                            <span class="block text-base">   {{ucwords(strtolower($category_p['categoria']['nombre']))}}</span> --}}
-                    {{--                                        </div> --}}
-
-                    {{--                                    @endforeach --}}
-                    {{--                                </div> --}}
-
-                    {{--                                <div class="flex-1 border py-2 px-3 flex items-center"> --}}
-
-                    {{--                                        <div class="text-xl font-semibold text-gray-600"> --}}
-                    {{--                                            <span class="text-xs">Physical Rating</span> --}}
-                    {{--                                            @foreach ($paquete['paquetes_dificultad'] as $dificultad) --}}
-                    {{--                                            <span class="block text-base">   {{ucwords(strtolower($dificultad['dificultad']['nombre']))}}</span> --}}
-                    {{--                                            @endforeach --}}
-                    {{--                                        </div> --}}
-
-
-                    {{--                                </div> --}}
-                    {{--                            </div> --}}
-
-                    {{--                            <div class="flex gap-3"> --}}
-                    {{--                                <div class="flex-1 border p-3 flex text-xl items-center justify-center"> --}}
-
-                    {{--                                    <div class="text-xl font-semibold text-gray-600"> --}}
-                    {{--                                        <span class="text-xs">Group Size</span> --}}
-                    {{--                                        <span class="block text-base">{{$paquete['group_size']}}</span> --}}
-                    {{--                                    </div> --}}
-
-
-                    {{--                                </div> --}}
-
-                    {{--                                <a href="#reviews" class="flex-1 border py-2 px-3 flex items-center"> --}}
-
-
-                    {{--                                        <div class="text-xl font-semibold text-gray-600"> --}}
-                    {{--                                            <span class="text-xs">Reviews</span> --}}
-                    {{--                                            --}}{{--                                    <span class="block text-base"></span> --}}
-                    {{--                                        </div> --}}
-
-                    {{--                                </a> --}}
-                    {{--                            </div> --}}
-
-
-
-
-
-
-
-                    {{--                        <img src="{{$paquete['mapa']}}" alt="" class="w-full mt-2"> --}}
+                    @endforeach
                 </div>
 
+                <p class="mt-4 text-xs leading-relaxed text-gray-500 lg:mx-4">
+                    Prices shown in USD per person. Subject to availability and change without prior notice.
+                </p>
+            </section>
 
-
+                </div>
             </div>
-        </section>
-
-        <section class="hidden">
-            @if ($paquete['is_p_t'] == 1)
-                <section class="my-12 flex flex-col gap-4" id="prices">
-
-                    <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
-                        <div class="">
-                            <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
-                            <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
-                            <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                        </div> {{ __('message.pack_deta_par4') }}
-                    </div>
-
-
-                    {{--                            <div class="grid md:grid-cols-2 gap-4"> --}}
-                    {{--                                <div class="overflow-x-scroll"> --}}
-                    {{--                                    <p class="font-semibold text-secondary text-center">{{__('message.pack_deta_par5')}}</p> --}}
-                    {{--                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll"> --}}
-                    {{--                                    <thead class="bg-secondary dark:text-white"> --}}
-                    {{--                                    <tr> --}}
-                    {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
-                    {{--                                            {{__('message.pack_deta_par9')}} --}}
-                    {{--                                        </th> --}}
-                    {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
-                    {{--                                            {{__('message.pack_deta_par10')}} --}}
-                    {{--                                        </th> --}}
-                    {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
-                    {{--                                            {{__('message.pack_deta_par11')}} --}}
-                    {{--                                        </th> --}}
-                    {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
-                    {{--                                            {{__('message.pack_deta_par12')}} --}}
-                    {{--                                        </th> --}}
-                    {{--                                    </tr> --}}
-                    {{--                                    </thead> --}}
-                    {{--                                    <tbody class="bg-secondary bg-opacity-10 divide-y divide-gray-200"> --}}
-                    {{--                                    <tr> --}}
-
-                    {{--                                        @foreach ($paquete['precio_paquetes'] as $precio) --}}
-                    {{--                                            @if ($precio['precio_s'] > 0) --}}
-                    {{--                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800 dark:text-white">${{$precio['precio_s']}}<small>USD</small></td> --}}
-                    {{--                                            @else --}}
-                    {{--                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td> --}}
-                    {{--                                            @endif --}}
-                    {{--                                        @endforeach --}}
-
-                    {{--                                    </tr> --}}
-
-                    {{--                                    <!-- More people... --> --}}
-                    {{--                                    </tbody> --}}
-                    {{--                                </table> --}}
-                    {{--                                </div> --}}
-                    {{--                                <div class="overflow-x-scroll"> --}}
-                    {{--                                    <p class="font-semibold text-primary text-center">Prices are based on double occupancy.</p> --}}
-                    {{--                                <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll"> --}}
-                    {{--                                    <thead class="bg-primary text-white"> --}}
-                    {{--                                    <tr> --}}
-                    {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
-                    {{--                                            {{__('message.pack_deta_par9')}} --}}
-                    {{--                                        </th> --}}
-                    {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
-                    {{--                                            {{__('message.pack_deta_par10')}} --}}
-                    {{--                                        </th> --}}
-                    {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
-                    {{--                                            {{__('message.pack_deta_par11')}} --}}
-                    {{--                                        </th> --}}
-                    {{--                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider"> --}}
-                    {{--                                            {{__('message.pack_deta_par12')}} --}}
-                    {{--                                        </th> --}}
-                    {{--                                    </tr> --}}
-                    {{--                                    </thead> --}}
-                    {{--                                    <tbody class="bg-primary bg-opacity-10 divide-y divide-gray-200"> --}}
-
-                    {{--                                    <tr> --}}
-
-                    {{--                                        @foreach ($paquete['precio_paquetes'] as $precio) --}}
-                    {{--                                            @if ($precio['precio_d'] > 0) --}}
-                    {{--                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800 dark:text-white">${{$precio['precio_d']}}<small>USD</small></td> --}}
-                    {{--                                            @else --}}
-                    {{--                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">{{__('message.button_inquire')}}</td> --}}
-                    {{--                                            @endif --}}
-                    {{--                                        @endforeach --}}
-
-                    {{--                                    </tr> --}}
-
-
-                    {{--                                    <!-- More people... --> --}}
-                    {{--                                    </tbody> --}}
-                    {{--                                </table> --}}
-                    {{--                                </div> --}}
-
-                    {{--                            </div> --}}
-                    <div class="grid md:grid-cols-2 gap-4 md:mt-5">
-                        <div class="overflow-x-scroll">
-                            <p class="font-semibold text-gray-500 text-center">Prices are based on triple occupancy.</p>
-                            <table class="table-auto min-w-full divide-y divide-gray-200 overflow-x-scroll">
-                                <thead class="bg-gray-700 text-white">
-                                    <tr>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{ __('message.pack_deta_par9') }}
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{ __('message.pack_deta_par10') }}
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{ __('message.pack_deta_par11') }}
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium font-bold uppercase tracking-wider">
-                                            {{ __('message.pack_deta_par12') }}
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-gray-50 divide-y divide-gray-200">
-
-                                    <tr>
-
-                                        @foreach ($paquete['precio_paquetes'] as $precio)
-                                            @if ($precio['precio_t'] > 0)
-                                                <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-800">
-                                                    ${{ $precio['precio_t'] }}<small>USD</small></td>
-                                            @else
-                                                <td class="px-6 py-4 whitespace-nowrap font-medium text-red-500">
-                                                    {{ __('message.button_inquire') }}</td>
-                                            @endif
-                                        @endforeach
-
-                                    </tr>
-
-                                    <!-- More people... -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
-
-                    <p class="text-sm text-gray-500">{{ __('message.pack_deta_par6') }}</p>
-
-
-                </section>
-            @endif
-        </section>
-
+        </div>
     </section>
-
-
-
-    {{--    @php --}}
-    {{--        $precios = collect($paquete->precio_paquetes ?? ($paquete['precio_paquetes'] ?? [])) --}}
-    {{--                    ->sortBy('estrellas'); --}}
-
-    {{--        $fmt = fn($v) => (int)$v > 0 ? '$'.number_format((int)$v, 0).' usd' : '—'; --}}
-
-    {{--        // Mapa solicitado (respetando mayúsculas/minúsculas que pediste) --}}
-    {{--        $labelMap = [ --}}
-    {{--            2 => 'without hotels', --}}
-    {{--            3 => 'Tourist', --}}
-    {{--            4 => 'superior', --}}
-    {{--            5 => 'Luxury', --}}
-    {{--        ]; --}}
-    {{--    @endphp --}}
-
-    {{--    <section class="my-8 container"> --}}
-    {{--        <h2 class="text-xl md:text-2xl font-extrabold mb-4">Prices by hotel category</h2> --}}
-    {{--        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400"> --}}
-    {{--            <div class=""> --}}
-    {{--                <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span> --}}
-    {{--                <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span> --}}
-    {{--                <span class="inline-block w-5 h-2.5 bg-secondary"></span> --}}
-    {{--            </div> Prices by hotel category --}}
-    {{--        </div> --}}
-
-    {{--        <div class="overflow-x-auto rounded-lg border"> --}}
-    {{--            <table class="min-w-full text-sm"> --}}
-    {{--                <thead class="bg-gray-50"> --}}
-    {{--                <tr class="text-gray-700"> --}}
-    {{--                    <th class="p-3 text-left font-semibold">Hotel category</th> --}}
-    {{--                    <th class="p-3 text-right font-semibold">Single (SGL)</th> --}}
-    {{--                    <th class="p-3 text-right font-semibold">Double (DBL)</th> --}}
-    {{--                    <th class="p-3 text-right font-semibold">Triple (TPL)</th> --}}
-    {{--                </tr> --}}
-    {{--                </thead> --}}
-
-    {{--                <tbody class="divide-y"> --}}
-    {{--                @forelse($precios as $p) --}}
-    {{--                    @php --}}
-    {{--                        // Soporta acceso como objeto o array --}}
-    {{--                        $stars   = is_array($p) ? ($p['estrellas'] ?? null) : ($p->estrellas ?? null); --}}
-    {{--                        $ps      = is_array($p) ? ($p['precio_s'] ?? null)   : ($p->precio_s ?? null); --}}
-    {{--                        $pd      = is_array($p) ? ($p['precio_d'] ?? null)   : ($p->precio_d ?? null); --}}
-    {{--                        $pt      = is_array($p) ? ($p['precio_t'] ?? null)   : ($p->precio_t ?? null); --}}
-    {{--                    @endphp --}}
-
-    {{--                    <tr> --}}
-    {{--                        @php --}}
-    {{--                            $stars = (int)(is_array($p) ? ($p['estrellas'] ?? 0) : ($p->estrellas ?? 0)); --}}
-    {{--                            $label = $labelMap[$stars] ?? null; --}}
-    {{--                        @endphp --}}
-
-    {{--                        <td class="p-3"> --}}
-    {{--                            --}}{{-- número + estrella + etiqueta --}}
-    {{--                            <span class="font-semibold text-gray-800">{{ $stars }}★</span> --}}
-    {{--                            @if ($label) --}}
-    {{--                                <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded bg-gray-100 text-gray-700 text-xs"> --}}
-    {{--      {{ $label }} --}}
-    {{--    </span> --}}
-    {{--                            @endif --}}
-    {{--                        </td> --}}
-    {{--                        <td class="p-3 text-right">{{ $fmt($ps) }}</td> --}}
-    {{--                        <td class="p-3 text-right">{{ $fmt($pd) }}</td> --}}
-    {{--                        <td class="p-3 text-right">{{ $fmt($pt) }}</td> --}}
-    {{--                    </tr> --}}
-    {{--                @empty --}}
-    {{--                    <tr> --}}
-    {{--                        <td colspan="4" class="p-3 text-center text-gray-500"> --}}
-    {{--                            No prices available for this package. --}}
-    {{--                        </td> --}}
-    {{--                    </tr> --}}
-    {{--                @endforelse --}}
-    {{--                </tbody> --}}
-    {{--            </table> --}}
-    {{--        </div> --}}
-
-    {{--        --}}{{-- Nota opcional --}}
-    {{--        <p class="text-xs text-gray-500 mt-2"> --}}
-    {{--            Prices shown in USD. Subject to availability and change without prior notice. --}}
-    {{--        </p> --}}
-    {{--    </section> --}}
-
-
-    <div class="container">
-        @php
-            // precios por estrellas
-            $precios = collect($paquete->precio_paquetes ?? ($paquete['precio_paquetes'] ?? []));
-            $byStars = $precios->keyBy(fn($p) => is_array($p) ? $p['estrellas'] ?? null : $p->estrellas ?? null);
-
-            // orden como tu imagen
-            $order = [2, 3, 4, 5];
-
-            // etiquetas
-            $labels = [
-                2 => 'Tour (without Hotels)',
-                3 => 'Tourist',
-                4 => 'Superior',
-                5 => 'Luxury',
-            ];
-
-            // formateo
-            $fmt = function ($n) {
-                $n = (int) $n;
-                return $n > 0 ? '$' . number_format($n, 0) : null; // null => "Inquire Now"
-            };
-        @endphp
-
-        <section class="my-8">
-            {{--            <h2 class="text-xl md:text-2xl font-extrabold mb-4">Prices by hotel category</h2> --}}
-            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
-                <div class="">
-                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span>
-                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span>
-                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                </div> Prices by hotel category
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                @foreach ($order as $star)
-                    @php
-                        $row = $byStars->get($star);
-
-                        // Solo TRIPLE (TPL) para 3★,4★,5★. Para 2★ usar precio_tours (por persona)
-                        $priceRaw =
-                            $star === 2
-                                ? (int) ($paquete->precio_tours ?? 0)
-                                : (int) (is_array($row) ? $row['precio_d'] ?? 0 : $row->precio_d ?? 0);
-
-                        $price = $fmt($priceRaw) ?? 'Inquire Now';
-                        $hasPrice = $priceRaw > 0;
-                    @endphp
-
-                    <div class="bg-gray-50 border rounded-md p-4 text-center">
-                        <h3 class="font-semibold text-gray-800">{{ $labels[$star] ?? $star . ' Stars' }}</h3>
-
-                        <div class="mx-auto my-3 h-px bg-gray-300 w-11/12"></div>
-
-                        <div class="text-2xl font-extrabold {{ $hasPrice ? 'text-orange-500' : 'text-primary' }}">
-                            {{ $price }}
-                        </div>
-
-                        <div class="text-[11px] text-gray-500 mt-1">
-                            @if ($star === 2)
-                                per person
-                            @else
-                                per person (double/triple)
-                            @endif
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <p class="text-xs text-gray-500 mt-3">
-                Prices shown in USD per person. Subject to availability and change without prior notice.
-            </p>
-        </section>
-
-    </div>
     @php
         $hasIncluye = !empty($paquete['incluye']);
         $hasNoIncluye = !empty($paquete['noincluye']);
-        $gridCols = $hasIncluye && $hasNoIncluye ? 'lg:grid-cols-2' : 'lg:grid-cols-1';
+
+        // Add Blade Heroicons without replacing the stored list content or its emphasis.
+        $renderCoverageList = static function ($html, $icon, $color) {
+            $marker = svg($icon, 'package-coverage__marker ' . $color, ['aria-hidden' => 'true'])->toHtml();
+
+            return preg_replace_callback('/<li\b[^>]*>/i', static fn($match) => $match[0] . $marker, $html);
+        };
+
     @endphp
 
-    <section class="container my-12 grid grid-cols-1 {{ $gridCols }} gap-6 ">
-        <div class="col-span-1">
-            <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
-                <div class="">
-                    {{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span> --}}
-                    {{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span> --}}
-                    <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                </div> Included
-            </div>
-            <div class="grid grid-cols-6 gap-4">
-                @if ($hasIncluye)
-                    <div class="col-span-6 text-center mb-3">
-                        <div class="text-sm tracking-wide leading-relaxed ">
-                            {!! str_replace('<ul>', '<ul class="list-disc pl-5 text-left space-y-1">', $paquete['incluye']) !!}
-                        </div>
-                    </div>
-                @else
-                    <div class="col-start-2 col-span-4">
-                        <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
-                            <div class="">
-                                <img src="{{ asset('images/include/assistances.png') }}"
-                                    alt="{{ __('message.serv_item2') }}" class="object-contain px-4 text-center">
-                                <p class="text-xs">{{ __('message.serv_item2') }}</p>
-                            </div>
-                            <div class="">
-                                <img src="{{ asset('images/include/breakfast.png') }}"
-                                    alt="{{ __('message.serv_item3') }}" class="object-contain px-4 text-center">
-                                <p class="text-xs">{{ __('message.serv_item3') }}</p>
-                            </div>
-                            <div class="">
-                                <img src="{{ asset('images/include/entrances.png') }}"
-                                    alt="{{ __('message.serv_item4') }}" class="object-contain px-4 text-center">
-                                <p class="text-xs">{{ __('message.serv_item4') }}</p>
-                            </div>
+    <section id="package-included" class="relative bg-gray-50" aria-labelledby="package-coverage-title">
+        <div class="container">
+            <div class="relative z-10 py-16 lg:py-20 xl:pb-0">
+                <header class="package-coverage__intro mb-10" data-package-reveal>
+                    <span aria-hidden="true" class="inline-flex items-center gap-1 mb-6"><span class="inline-block w-1 h-2.5 bg-secondary"></span><span class="inline-block w-3 h-2.5 bg-secondary"></span><span class="inline-block w-5 h-2.5 bg-secondary"></span></span>
+                    <h2 id="package-coverage-title" class="text-3xl font-semibold text-tertiary mb-4">What's included in your Peru journey</h2>
+                </header>
 
-                            <div class="">
-                                <img src="{{ asset('images/include/hotels.png') }}" alt="{{ __('message.serv_item6') }}"
-                                    class="object-contain px-4 text-center">
-                                <p class="text-xs">{{ __('message.serv_item6') }}</p>
+                <div class="package-coverage__details grid grid-cols-12 items-stretch gap-y-8 xl:gap-x-6" data-package-reveal>
+                    <div class="package-coverage__included col-span-12 {{ $hasNoIncluye ? 'xl:col-span-5' : 'xl:col-span-9' }} min-w-0 xl:pb-20">
+                        <div class="mb-6 flex items-center gap-3">
+                            <x-heroicon-o-check-circle class="h-6 w-6 flex-shrink-0 text-primary" aria-hidden="true" />
+                            <h3 class="text-2xl font-semibold text-tertiary">Included</h3>
+                        </div>
+                        @if ($hasIncluye)
+                            <div class="package-coverage__content text-base font-normal leading-relaxed text-gray-600">
+                                {!! $renderCoverageList($paquete['incluye'], 'heroicon-o-check', 'text-primary') !!}
                             </div>
-                            <div class="">
-                                <img src="{{ asset('images/include/tours.png') }}" alt="{{ __('message.serv_item7') }}"
-                                    class="object-contain px-4 text-center">
-                                <p class="text-xs">{{ __('message.serv_item7') }}</p>
-                            </div>
-                            <div class="">
-                                <img src="{{ asset('images/include/trains.png') }}" alt="{{ __('message.serv_item8') }}"
-                                    class="object-contain px-4 text-center">
-                                <p class="text-xs">{{ __('message.serv_item8') }}</p>
-                            </div>
-                            <div class="">
-                                <img src="{{ asset('images/include/transfers.png') }}"
-                                    alt="{{ __('message.serv_item9') }}" class="object-contain px-4 text-center">
-                                <p class="text-xs">{{ __('message.serv_item9') }}</p>
-                            </div>
+                        @else
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-5 text-center sm:grid-cols-4">
+                                <div class="space-y-2">
+                                    <img src="{{ asset('images/include/assistances.png') }}"
+                                        alt="{{ __('message.serv_item2') }}" class="mx-auto h-10 w-10 object-contain">
+                                    <p class="text-xs">{{ __('message.serv_item2') }}</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <img src="{{ asset('images/include/breakfast.png') }}"
+                                        alt="{{ __('message.serv_item3') }}" class="mx-auto h-10 w-10 object-contain">
+                                    <p class="text-xs">{{ __('message.serv_item3') }}</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <img src="{{ asset('images/include/entrances.png') }}"
+                                        alt="{{ __('message.serv_item4') }}" class="mx-auto h-10 w-10 object-contain">
+                                    <p class="text-xs">{{ __('message.serv_item4') }}</p>
+                                </div>
 
-                            <div class="">
-                                <img src="{{ asset('images/include/flight.png') }}" alt="{{ __('message.serv_item5') }}"
-                                    class="object-contain px-4 grayscale text-center">
-                                <p class="text-xs">{{ __('message.serv_item5') }}</p>
+                                <div class="space-y-2">
+                                    <img src="{{ asset('images/include/hotels.png') }}" alt="{{ __('message.serv_item6') }}"
+                                        class="mx-auto h-10 w-10 object-contain">
+                                    <p class="text-xs">{{ __('message.serv_item6') }}</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <img src="{{ asset('images/include/tours.png') }}" alt="{{ __('message.serv_item7') }}"
+                                        class="mx-auto h-10 w-10 object-contain">
+                                    <p class="text-xs">{{ __('message.serv_item7') }}</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <img src="{{ asset('images/include/trains.png') }}" alt="{{ __('message.serv_item8') }}"
+                                        class="mx-auto h-10 w-10 object-contain">
+                                    <p class="text-xs">{{ __('message.serv_item8') }}</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <img src="{{ asset('images/include/transfers.png') }}"
+                                        alt="{{ __('message.serv_item9') }}" class="mx-auto h-10 w-10 object-contain">
+                                    <p class="text-xs">{{ __('message.serv_item9') }}</p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <img src="{{ asset('images/include/flight.png') }}" alt="{{ __('message.serv_item5') }}"
+                                        class="mx-auto h-10 w-10 object-contain grayscale">
+                                    <p class="text-xs">{{ __('message.serv_item5') }}</p>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    @if ($hasNoIncluye)
+                        <div class="package-coverage__excluded col-span-12 xl:col-span-4 min-w-0 border-t border-gray-200/60 pt-8 xl:border-t-0 xl:border-l xl:pt-0 xl:pl-6 xl:pb-20">
+                            <div class="mb-6 flex items-center gap-3">
+                                <x-heroicon-o-minus-circle class="h-6 w-6 flex-shrink-0 text-tertiary" aria-hidden="true" />
+                                <h3 class="text-2xl font-semibold text-tertiary">Not Included</h3>
+                            </div>
+                            <div class="package-coverage__content text-base font-normal leading-relaxed text-gray-600">
+                                {!! $renderCoverageList($paquete['noincluye'], 'heroicon-o-minus', 'text-gray-500') !!}
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
+
+                    <aside class="relative col-span-12 xl:col-span-3 min-w-0 h-full overflow-hidden flex flex-col bg-tertiary text-white sm:flex-row xl:flex-col xl:self-stretch">
+                        <div class="min-w-0 p-6 pb-0 sm:flex-1 sm:pb-6 xl:flex-none xl:pb-0">
+                            <p class="text-xs font-semibold uppercase tracking-wider text-secondary">Personalized Service</p>
+                            <h3 class="mt-2 text-lg font-semibold leading-snug">
+                                <a href="#form-dream-adventure" class="inline-flex items-start gap-2 transition-colors duration-200 hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary">
+                                    <span>Plan with our Peru experts</span>
+                                    <x-heroicon-o-arrow-right class="mt-1 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                                </a>
+                            </h3>
+                            <p class="mt-3 text-sm leading-relaxed text-white/75">Customize this itinerary with our travel advisors.</p>
+                        </div>
+                        <div class="mt-2 flex flex-1 items-end justify-center sm:mt-0 sm:flex-none sm:justify-end xl:mt-0 xl:block xl:h-96 xl:flex-none">
+                            <img src="{{ asset('images/team/pabel2.png') }}" alt="Pabel, GoToPeru team"
+                                class="block h-72 w-auto max-w-full object-contain object-bottom xl:absolute xl:bottom-0 xl:left-1/2 xl:h-80 xl:origin-bottom xl:-translate-x-1/2 xl:scale-110" width="433" height="577" loading="lazy">
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
-        @if ($hasNoIncluye)
-            <div class="">
-                <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
-                    <div class="">
-                        {{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span> --}}
-                        {{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span> --}}
-                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                    </div> Not Included
-                </div>
-                <div class="grid grid-cols-6 gap-4">
-
-                    <div class="col-span-6  text-center mb-3">
-                        <div class="text-sm tracking-wide leading-relaxed ">
-                            {!! str_replace('<ul>', '<ul class="list-disc pl-5 text-left space-y-1">', $paquete['noincluye']) !!}
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        @endif
+        <div class="pointer-events-none absolute inset-0 bg-line-cover bg-cover bg-no-repeat opacity-10" aria-hidden="true"></div>
     </section>
 
 
@@ -1113,144 +953,189 @@
     {{--        </div> --}}
     {{--    </section> --}}
 
-    <section class="container" x-data="{ openDes: 1 }" id="hotels">
-        <div class="flex mb-3 items-center text-lg text-gray-700 font-bold gap-2 dark:text-gray-400">
-            <div class="">
-                {{--                                    <span class="inline-block w-1 h-2.5 bg-secondary ml-1"></span> --}}
-                {{--                                    <span class="inline-block w-3 h-2.5 bg-secondary ml-1"></span> --}}
-                <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-            </div> Recommended Hotels
-        </div>
-        <div class=" mt-6 ">
-            <ul class="flex flex-nowrap overflow-x-scroll gap-3">
-                @foreach ($paquete['paquetes_destinos'] as $paquete_destino)
-                    {{--                            {{$loop->iteration}} --}}
+    <section class="bg-white" x-data="{ openDes: 1 }" id="hotels" aria-labelledby="package-hotels-title">
+        <div class="container">
+            <div class="py-16 lg:py-20">
+                <header class="grid grid-cols-12 items-end gap-y-2">
+                    <div class="col-span-12 md:col-span-8">
+                        <span aria-hidden="true" class="inline-flex items-center gap-1 mb-6"><span class="inline-block w-1 h-2.5 bg-secondary"></span><span class="inline-block w-3 h-2.5 bg-secondary"></span><span class="inline-block w-5 h-2.5 bg-secondary"></span></span>
+                        <h2 id="package-hotels-title" class="text-3xl font-semibold text-tertiary mb-4">Recommended Hotels</h2>
+                    </div>
+                    <div class="col-span-12 flex min-w-0 md:col-span-4 md:justify-end md:pb-4">
+                        @foreach ($paquete['paquetes_destinos'] as $paquete_destino)
+                            <div class="flex items-center gap-4 text-tertiary" data-hotel-controls="{{ $loop->iteration }}"
+                                x-show="openDes === {{ $loop->iteration }}" @if (!$loop->first) style="display: none;" @endif>
+                                <span class="text-xs tabular-nums text-gray-500" data-hotel-counter aria-live="polite" aria-atomic="true">
+                                    <span data-hotel-current>01</span><span class="mx-2 text-gray-300" aria-hidden="true">/</span><span data-hotel-total></span>
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" data-hotel-prev aria-label="Previous hotel"
+                                        class="inline-flex h-10 w-10 items-center justify-center border border-gray-200 transition-colors duration-200 lg:hover:border-secondary lg:hover:text-secondary disabled:cursor-default disabled:opacity-30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary">
+                                        <x-heroicon-o-arrow-left class="h-5 w-5" aria-hidden="true" />
+                                    </button>
+                                    <button type="button" data-hotel-next aria-label="Next hotel"
+                                        class="inline-flex h-10 w-10 items-center justify-center border border-gray-200 transition-colors duration-200 lg:hover:border-secondary lg:hover:text-secondary disabled:cursor-default disabled:opacity-30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary">
+                                        <x-heroicon-o-arrow-right class="h-5 w-5" aria-hidden="true" />
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </header>
 
-                    <li @click="openDes = {{ $loop->iteration }}"
-                        class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3"
-                        :class="openDes == {{ $loop->iteration }} ? 'bg-primary text-white' : 'bg-white hover:text-primary'">
-                        <div class="">{{ $paquete_destino['destinos']['nombre'] }}</div>
-                    </li>
-                    {{--                        <li @click="openDes = 2" class="inline-block border py-2 px-4 font-medium w-full cursor-pointer text-center transition duration-300 py-3" :class="openDes == 2 ? 'bg-primary text-white' : 'bg-white hover:text-primary'"> --}}
-                    {{--                            <div class="">Full Itinerary</div> --}}
-                    {{--                        </li> --}}
-                @endforeach
-            </ul>
-        </div>
+                <nav class="mt-6 overflow-x-auto" aria-label="Hotel destinations">
+                    <ul class="flex w-max min-w-full items-center">
+                        @foreach ($paquete['paquetes_destinos'] as $paquete_destino)
+                            <li class="flex flex-shrink-0 items-center">
+                                <button type="button" id="hotel-destination-tab-{{ $loop->iteration }}"
+                                    @click="openDes = {{ $loop->iteration }}; $nextTick(() => $dispatch('package-hotels-change', { destination: {{ $loop->iteration }} }))"
+                                    :aria-pressed="openDes === {{ $loop->iteration }}"
+                                    aria-controls="hotel-destination-panel-{{ $loop->iteration }}"
+                                    class="relative inline-flex items-center whitespace-nowrap py-4 pl-8 pr-3 text-base transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-secondary"
+                                    :class="openDes === {{ $loop->iteration }} ? 'text-tertiary font-semibold' : 'text-gray-500 font-medium lg:hover:text-primary'">
+                                    <span x-show="openDes === {{ $loop->iteration }}" @if (!$loop->first) style="display: none;" @endif class="absolute left-2 top-1/2 -translate-y-1/2" aria-hidden="true">
+                                        <x-heroicon-o-location-marker class="h-4 w-4 text-primary" />
+                                    </span>
+                                    {{ $paquete_destino['destinos']['nombre'] }}
+                                    <span aria-hidden="true" class="absolute inset-x-3 bottom-0 h-0.5 origin-left bg-secondary transition-transform duration-200 motion-reduce:transition-none"
+                                        :class="openDes === {{ $loop->iteration }} ? 'scale-x-100' : 'scale-x-0'"></span>
+                                </button>
+                                @if (!$loop->last)
+                                    <span class="mx-2 h-px w-6 flex-shrink-0 bg-gray-200 sm:mx-4 sm:w-10" aria-hidden="true"></span>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </nav>
 
-        <section class="mt-6 grid grid-cols-1  gap-4">
-            <div class="col-span-2 order-2 md:order-1">
-                @foreach ($paquete['paquetes_destinos'] as $paquete_destino)
-                    <div x-show="openDes === {{ $loop->iteration }}"
-                        x-transition:enter="transition duration-500 transform ease-in"
-                        x-transition:enter-start="opacity-0">
-                        {{--                            <div class="">{{$paquete_destino['destinos']['nombre']}}</div> --}}
-                        <div class="grid grid-cols-1">
-                            @foreach ($hoteles_destinos->where('iddestinos', $paquete_destino->destinos->id)->take(3) as $hoteles_destino)
-                                <div class="grid grid-cols-3 gap-4 mb-4 border">
-                                    <div class="col-span-3 md:col-span-1">
-                                        {{--                @if ($hotel->imagen) --}}
-                                        {{--                    <img src="{{$hotel->imagen}}" alt="{{$hotel->nombre}}" class="object-cover w-full h-full"> --}}
-                                        {{--                @else --}}
-                                        <img src="{{ $hoteles_destino->hotel->imagen }}" alt=""
-                                            class="object-cover w-full h-full">
-                                        {{--                @endif --}}
+                @php
+                    $hotelAmenityIcons = [
+                        'internet' => 'heroicon-o-globe-alt',
+                        'wifi' => 'heroicon-o-wifi',
+                        'wi-fi' => 'heroicon-o-wifi',
+                        'room service' => 'heroicon-o-bell',
+                    ];
+                @endphp
 
-                                    </div>
-                                    <div class="col-span-3 md:col-span-2 p-6">
-                                        <h3 class="font-bold text-gray-500">{{ $hoteles_destino->hotel->nombre }}</h3>
-                                        <div class="flex">
-                                            @for ($i = 0; $i < $hoteles_destino->hotel->estrellas; $i++)
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path
-                                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                </svg>
-                                            @endfor
-                                        </div>
-                                        <div class="pt-2 flex text-sm mb-6">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            </svg>
-                                            <p class="ml-2">{{ $hoteles_destino->hotel->direccion }}</p>
-                                        </div>
-
-                                        <div class="text-sm">
-                                            <p>{!! $hoteles_destino->hotel->descripcion !!}</p>
-                                        </div>
-
-                                        @php $services = explode(',', $hoteles_destino->hotel->servicios); @endphp
-                                        {{--                                            <p class="text-gray-500"><b>{{__('message.hote_subtitle1')}}:</b></p> --}}
-
-                                        <div class="flex bg-blue-100 p-3 flex-wrap gap-4 mt-3 justify-center relative">
-                                            @foreach ($services as $service)
-                                                <div class="inline-flex text-sm">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2" d="M5 13l4 4L19 7" />
-                                                    </svg>
-                                                    {{ $service }}
+                <div class="relative isolate mt-10 grid grid-cols-12 lg:mt-14">
+                    <div class="relative z-10 col-span-12 col-start-1 row-start-1 min-w-0">
+                        @foreach ($paquete['paquetes_destinos'] as $paquete_destino)
+                            <div id="hotel-destination-panel-{{ $loop->iteration }}" role="region"
+                                data-hotel-destination="{{ $loop->iteration }}"
+                                aria-labelledby="hotel-destination-tab-{{ $loop->iteration }}"
+                                x-show="openDes === {{ $loop->iteration }}"
+                                @if (!$loop->first) style="display: none;" @endif
+                                x-transition:enter="transition duration-200 ease-out motion-reduce:transition-none"
+                                x-transition:enter-start="opacity-0 motion-safe:translate-y-1"
+                                x-transition:enter-end="opacity-100 translate-y-0"
+                                class="min-w-0">
+                                <div class="package-hotels__carousel swiper min-w-0" aria-label="Hotels in {{ $paquete_destino['destinos']['nombre'] }}">
+                                    <div class="swiper-wrapper">
+                                        @foreach ($hoteles_destinos->where('iddestinos', $paquete_destino->destinos->id)->take(3) as $hoteles_destino)
+                                            @php
+                                                $hotel = $hoteles_destino->hotel;
+                                                $services = array_filter(array_map('trim', explode(',', (string) $hotel->servicios)));
+                                            @endphp
+                                            <article class="swiper-slide group min-w-0">
+                                                @if (filled($hotel->imagen))
+                                                    <div class="aspect-[16/10] flex-shrink-0 overflow-hidden rounded-sm bg-gray-50">
+                                                        <img src="{{ $hotel->imagen }}" alt="{{ $hotel->nombre }}" loading="lazy"
+                                                            class="w-full h-full object-cover transition-transform duration-500 motion-reduce:transition-none motion-safe:lg:group-hover:scale-[1.02]">
+                                                    </div>
+                                                @endif
+                                                <div class="relative z-10 w-11/12 self-start border border-gray-200/70 bg-white p-4 sm:w-5/6 sm:p-5 {{ filled($hotel->imagen) ? '-mt-6' : '' }}">
+                                                    <h3 class="text-lg font-semibold leading-snug text-tertiary break-words">{{ $hotel->nombre }}</h3>
+                                                    @if ($hotel->estrellas > 0)
+                                                        <div class="mt-2 flex gap-1" role="img" aria-label="{{ $hotel->estrellas }} stars">
+                                                            @for ($i = 0; $i < $hotel->estrellas; $i++)
+                                                                <x-heroicon-s-star class="h-3.5 w-3.5 text-secondary" aria-hidden="true" />
+                                                            @endfor
+                                                        </div>
+                                                    @endif
+                                                    @if (filled($hotel->direccion))
+                                                        <p class="mt-2.5 flex items-start gap-2 text-xs leading-relaxed text-gray-500 sm:text-sm">
+                                                            <x-heroicon-o-location-marker class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" aria-hidden="true" />
+                                                            <span>{{ $hotel->direccion }}</span>
+                                                        </p>
+                                                    @endif
                                                 </div>
-                                            @endforeach
-                                        </div>
-
-                                        <div class="flex mt-6 text-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                            </svg>
-                                            <a href="{{ $hoteles_destino->hotel->url }}"
-                                                class="btn btn-outline-secondary text-blue-600 ml-2"
-                                                target="_blank">{{ ucfirst(strtolower($hoteles_destino->hotel->nombre)) }}</a>
-                                        </div>
+                                                <div class="flex min-w-0 flex-1 flex-col pt-5">
+                                                    <div class="line-clamp-4 text-base font-normal leading-relaxed text-gray-600 [&_p+p]:mt-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5">
+                                                        {!! $hotel->descripcion !!}
+                                                    </div>
+                                                    @if ($services)
+                                                        <ul class="mt-5 flex flex-wrap gap-x-3 gap-y-2" aria-label="Hotel amenities">
+                                                            @foreach ($services as $service)
+                                                                @php $amenityIcon = $hotelAmenityIcons[mb_strtolower($service, 'UTF-8')] ?? null; @endphp
+                                                                <li class="inline-flex min-w-0 max-w-full items-baseline gap-3 text-sm font-medium leading-6 text-gray-600">
+                                                                    <span class="inline-flex min-w-0 items-center gap-2">
+                                                                        @if ($amenityIcon)
+                                                                            {!! svg($amenityIcon, 'h-4 w-4 flex-shrink-0 text-primary', ['aria-hidden' => 'true'])->toHtml() !!}
+                                                                        @endif
+                                                                        <span class="min-w-0 break-words">{{ $service }}</span>
+                                                                    </span>
+                                                                    @if (!$loop->last)
+                                                                        <span class="flex-shrink-0 text-primary/50" aria-hidden="true">·</span>
+                                                                    @endif
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                    @if (filled($hotel->url))
+                                                        <div class="mt-auto pt-6">
+                                                            <a href="{{ $hotel->url }}" target="_blank" rel="noopener noreferrer"
+                                                                class="group/hotel-link inline-flex items-center gap-2 text-sm font-semibold text-primary underline-offset-4 decoration-primary/40 transition-colors duration-200 hover:underline hover:text-tertiary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                                                                View hotel
+                                                                <x-heroicon-o-arrow-right class="h-4 w-4 transition-transform duration-200 motion-safe:group-hover/hotel-link:translate-x-0.5" aria-hidden="true" />
+                                                            </a>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </article>
+                                        @endforeach
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </section>
-
-        <section class="my-12 text-center">
-            <a href="{{ route('hotels') }}" class="btn btn-primary">View more hotels</a>
-        </section>
-    </section>
-
-    <section class="my-12">
-        <div class="container">
-            <div class="grid bg-gray-100 py-3">
-                <div class="px-4 py-3 flex rounded-t-lg dark:bg-gray-900">
-                    <img src="https://source.unsplash.com/50x50/?portrait?2" alt=""
-                        class="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500 mr-5">
-                    <p class="relative py-1 italic text-center dark:text-gray-100 ">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
-                            class="absolute left-0-0 top-0 w-8 h-8 dark:text-violet-400">
-                            <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
-                            <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
-                        </svg>
-                        @foreach ($testinomials_r as $testinomial)
-                            <span class="px-9 block">{{ Str::limit($testinomial->contenido, 150) }} <span
-                                    class="text-right font-bold text-sm text-secondary">{{ $testinomial->nombre }} /
-                                    {{ $testinomial->ciudad }}</span></span>
+                            </div>
                         @endforeach
+                    </div>
+                </div>
 
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
-                            class="absolute right-0 bottom-0 w-8 h-8 dark:text-violet-400">
-                            <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
-                            <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
-                        </svg>
-                    </p>
+                <div class="mt-10 text-center lg:mt-12">
+                    <a href="{{ route('hotels') }}" class="btn-secondary inline-flex">View more hotels</a>
                 </div>
             </div>
         </div>
     </section>
+
+{{--    <section class="my-12">--}}
+{{--        <div class="container">--}}
+{{--            <div class="grid bg-gray-100 py-3">--}}
+{{--                <div class="px-4 py-3 flex rounded-t-lg dark:bg-gray-900">--}}
+{{--                    <img src="https://source.unsplash.com/50x50/?portrait?2" alt=""--}}
+{{--                        class="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500 mr-5">--}}
+{{--                    <p class="relative py-1 italic text-center dark:text-gray-100 ">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"--}}
+{{--                            class="absolute left-0-0 top-0 w-8 h-8 dark:text-violet-400">--}}
+{{--                            <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>--}}
+{{--                            <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>--}}
+{{--                        </svg>--}}
+{{--                        @foreach ($testinomials_r as $testinomial)--}}
+{{--                            <span class="px-9 block">{{ Str::limit($testinomial->contenido, 150) }} <span--}}
+{{--                                    class="text-right font-bold text-sm text-secondary">{{ $testinomial->nombre }} /--}}
+{{--                                    {{ $testinomial->ciudad }}</span></span>--}}
+{{--                        @endforeach--}}
+
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"--}}
+{{--                            class="absolute right-0 bottom-0 w-8 h-8 dark:text-violet-400">--}}
+{{--                            <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>--}}
+{{--                            <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>--}}
+{{--                        </svg>--}}
+{{--                    </p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <div class="elfsight-app-d1e14e4b-52d0-4ad9-9068-f94e0de6bf50" data-elfsight-app-lazy></div>--}}
 
     {{--        <div class="container mt-12 hidden mb-3"> --}}
     {{--            <div class="flex items-center text-lg text-gray-700 font-bold gap-2"> --}}
@@ -1481,13 +1366,301 @@
 
 
 
+    <!-- Elfsight Instagram Feed | GOTOPERU -->
+
+
     @livewire('page.form-footer-detail', ['paquete' => $paquete['titulo']], key('paquete' . $paquete['id']))
 
 
     @push('css')
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <style>
+            /* Local composition and motion; typography, palette and buttons belong to the site. */
+            .package-shell { padding-inline: clamp(16px, 3vw, 48px); }
+            .package-hero { position: relative; isolation: isolate; display: grid; min-height: 78vh; min-height: 78svh; }
+            .package-hero__gallery { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; min-width: 0; overflow: hidden; }
+            .package-hero__gallery .swiper-wrapper,
+            .package-hero__gallery .swiper-slide { width: 100%; height: 100%; }
+            .package-hero__gallery img { object-position: center; }
+            .package-hero__shade {
+                position: absolute; z-index: 1; inset: 0; pointer-events: none;
+                background: linear-gradient(0deg, rgba(17, 24, 39, .92) 0%, rgba(17, 24, 39, .65) 48%, transparent 90%),
+                    linear-gradient(180deg, rgba(17, 24, 39, .3), transparent 28%);
+            }
+            .package-hero__content { position: relative; z-index: 2; align-self: end; width: 100%; min-width: 0; padding-top: 160px; padding-bottom: 36px; pointer-events: none; }
+            .package-hero__identity { min-width: 0; max-width: 780px; pointer-events: auto; }
+            .package-hero__title { margin-top: 18px; font-size: clamp(2.125rem, 7.8vw, 3.5rem); line-height: 1.08; letter-spacing: -.025em; overflow-wrap: anywhere; text-wrap: balance; }
+            .package-hero__destinations { margin-top: 24px; font-size: .875rem; }
+            .package-hero__destinations svg { margin-top: 2px; }
+            .package-hero__offer { margin-top: 28px; }
+            .package-hero__offer > p { opacity: .9; }
+            .package-hero__offer > .package-hero__pricing-note { opacity: .72; }
+            .package-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 20px; }
+            .package-hero__actions > a { flex-basis: 100%; }
+            .package-hero__scroll { margin-top: 36px; gap: 16px; font-size: .8125rem; letter-spacing: .025em; }
+            .package-hero__scroll svg { width: 24px; height: 24px; }
+            .package-hero__gallery-controls { position: absolute; z-index: 3; top: 24px; right: clamp(20px, 3vw, 48px); display: flex; flex-direction: column; align-items: flex-end; gap: 20px; max-width: calc(100% - 40px); }
+            .package-hero__pagination { display: flex; align-items: center; gap: 16px; font-size: .8125rem; font-variant-numeric: tabular-nums; line-height: 1; }
+            .package-hero__pagination [data-package-slide-total] { opacity: .75; }
+            .package-hero__pagination[hidden] { display: none; }
+            .package-hero__progress { display: block; position: relative; width: 136px; height: 2px; background: rgba(249, 250, 251, .5); }
+            .package-hero__progress-fill { display: block; position: absolute; inset: 0; transform: scaleX(var(--package-gallery-progress, 0)); transform-origin: left; }
+            .package-bridge { position: relative; z-index: 4; scroll-margin-top: 32px; }
+            .package-bridge__layout { --bridge-gutter: clamp(16px, 3vw, 48px); position: relative; isolation: isolate; display: grid; gap: 0; }
+            .package-bridge__backdrop { display: none; }
+            .package-expert { --expert-portrait-width: clamp(120px, 40vw, 184px); position: relative; isolation: isolate; margin-inline: calc(-1 * var(--bridge-gutter)); min-width: 0; min-height: 210px; }
+            .package-expert__terrain { position: absolute; z-index: -1; inset: 0; opacity: .07; pointer-events: none; }
+            .package-expert__copy { position: relative; z-index: 1; width: calc(100% - var(--expert-portrait-width) - var(--bridge-gutter)); max-width: 520px; padding: 24px 16px 24px var(--bridge-gutter); }
+            .package-expert__eyebrow { font-size: .625rem; line-height: 1.5; letter-spacing: .1em; text-transform: uppercase; }
+            .package-expert__title { font-size: clamp(1.125rem, 2vw, 1.375rem); line-height: 1.25; text-wrap: balance; }
+            .package-expert__title svg { margin-left: 2px; vertical-align: middle; }
+            .package-expert__portrait { position: absolute; right: var(--bridge-gutter); bottom: 0; width: var(--expert-portrait-width); max-width: none; height: auto; pointer-events: none; }
+            .package-glance__terrain { position: absolute; z-index: -1; inset: 0 0 0 36%; opacity: .14; pointer-events: none; }
+            .package-glance > h2 { margin-bottom: 20px; }
+            .package-glance__facts { gap: 20px 16px; }
+            .package-glance__interest { margin-top: 20px; padding-top: 14px; }
+            .package-glance__interest svg { width: 16px; height: 16px; flex-shrink: 0; }
+            .package-glance__facts > div { min-width: 0; }
+            .package-glance__facts > div > span { flex-shrink: 0; }
+            .package-glance { position: relative; isolation: isolate; min-width: 0; margin-inline: calc(-1 * var(--bridge-gutter)); padding: 24px var(--bridge-gutter); }
+            .package-overview { position: relative; z-index: 1; display: flow-root; min-width: 0; }
+            .package-overview__copy { position: relative; z-index: 2; min-width: 0; max-width: 680px; padding-bottom: 0; }
+            .package-overview__copy > span[aria-hidden] { margin-bottom: 12px; }
+            .package-overview__title { overflow-wrap: anywhere; }
+            .package-overview__copy,
+            .package-route__map { min-width: 0; }
+            .package-overview__text { max-width: 64ch; }
+            .package-route { position: relative; min-width: 0; }
+            .package-route__map { position: relative; width: 100%; margin: 0; padding: 16px 12px 4px; }
+            .package-route__label { margin: 0 4px 12px; }
+            .package-route__map a { display: block; }
+            .package-route__map img { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
+            /* Marker center: py-4 plus half of the fixed h-9 / lg:h-11 slot. */
+            .package-itinerary { --itinerary-marker-center: 2.125rem; --itinerary-content-space: 32px; position: relative; z-index: 2; padding-top: 0; padding-bottom: 32px; }
+            .package-itinerary__layout { display: flow-root; padding-inline: 20px; }
+            .package-itinerary__intro { position: relative; width: 100%; padding: 0; }
+            .package-itinerary__intro > div > span[aria-hidden] { margin-bottom: 12px; }
+            .package-itinerary__heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; }
+            .package-itinerary__title { overflow-wrap: anywhere; }
+            .package-itinerary__days { margin-top: 12px; }
+            .package-itinerary__day { position: relative; }
+            .package-itinerary__rail,
+            .package-itinerary__route-segment { top: var(--itinerary-marker-center); bottom: calc(-1 * var(--itinerary-marker-center)); }
+            .package-itinerary__route-segment { transform-origin: top; transform: scaleY(0); opacity: 0; }
+            .package-itinerary__day.is-open .package-itinerary__route-segment { transform: scaleY(1); opacity: 1; }
+            .package-itinerary__intro,
+            .package-itinerary__days { min-width: 0; }
+            .package-itinerary__duration { display: flex; align-items: center; gap: 6px; font-size: .875rem; }
+            .package-itinerary__duration strong { font-size: inherit; line-height: inherit; }
+            .package-itinerary__trigger { width: 100%; min-height: 64px; text-align: left; cursor: pointer; }
+            .package-itinerary__trigger:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+            .package-itinerary__number { white-space: nowrap; }
+            .package-itinerary__day-title { overflow-wrap: anywhere; }
+            .package-itinerary__day.is-open .package-itinerary__chevron { transform: rotate(180deg); }
+            .package-itinerary__panel { display: grid; grid-template-rows: 0fr; opacity: 0; }
+            .package-itinerary__day.is-open .package-itinerary__panel { grid-template-rows: 1fr; opacity: 1; }
+            .package-itinerary__panel-inner { min-height: 0; overflow: hidden; }
+            .package-itinerary__body { padding-top: 12px; padding-bottom: var(--itinerary-content-space); }
+            .package-itinerary__text { max-width: 68ch; font-size: 1rem; line-height: 1.8; overflow-wrap: anywhere; }
+            .package-overview__text p + p,
+            .package-itinerary__text p + p { margin-top: 1em; }
+            .package-overview__text :is(ul, ol),
+            .package-itinerary__text :is(ul, ol) { margin-block: 1em; padding-left: 1.3em; }
+            .package-overview__text ul,
+            .package-itinerary__text ul { list-style-type: disc; }
+            .package-overview__text ol,
+            .package-itinerary__text ol { list-style-type: decimal; }
+            .package-hotels__carousel .swiper-wrapper { align-items: stretch; }
+            .package-hotels__carousel .swiper-slide { display: flex; height: auto; flex-direction: column; }
+            .package-prices { min-width: 0; }
+            .package-coverage__content { overflow-wrap: anywhere; }
+            .package-coverage__content :is(ul, ol) { display: grid; gap: 12px 24px; margin: 0; padding: 0; list-style: none; }
+            .package-coverage__content li { position: relative; padding-left: 28px; list-style: none; }
+            .package-coverage__content .package-coverage__marker { position: absolute; left: 0; top: 5px; width: 16px; height: 16px; pointer-events: none; }
+            .package-coverage__content > :is(p, ul, ol) + :is(p, ul, ol),
+            .package-coverage__content li > :is(ul, ol),
+            .package-coverage__content li > p + p { margin-top: 12px; }
+            .package-commercial { min-width: 0; width: 100%; padding: 0; }
+            .package-commercial__duration { margin-top: 16px; }
+            .package-commercial__price { display: grid; justify-items: start; gap: 4px; margin-top: 12px; }
+            .package-commercial__price strong { overflow-wrap: anywhere; }
+            .package-commercial__price-note { margin-top: 8px; }
+            .package-commercial__destinations { margin-top: 14px; line-height: 1.65; overflow-wrap: anywhere; }
+            .package-commercial__availability h3 { margin-bottom: 20px; }
+            .package-commercial__status { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-block: 10px; }
+            .package-commercial__status-label { min-width: 0; }
+            .package-commercial__status-value { flex-shrink: 0; max-width: 50%; text-align: right; }
+            .package-commercial__actions { display: flex; flex-direction: column; gap: 6px; padding-top: 18px; }
+            .package-commercial__book { min-height: 36px; }
+            .package-commercial__book:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+            .package-commercial__trust { margin-block: 20px 28px; }
+            .package-commercial__trust-strip { display: flex; align-items: center; gap: 12px; }
+            .package-commercial__trust-strip a { display: flex; flex: 1; align-items: center; justify-content: center; min-width: 0; min-height: 40px; line-height: 20px; text-align: center; }
+            .package-commercial__trust-strip img { display: block; width: 100%; max-width: 104px; height: auto; max-height: 18px; object-fit: contain; }
+            /* Show the existing wordmark only; the asset's baked-in stars are not verified ratings. */
+            .package-commercial__trust-wordmark { position: relative; display: block; width: 100%; max-width: 112px; aspect-ratio: 385 / 60; overflow: hidden; }
+            .package-commercial__trust-wordmark img { position: absolute; inset: 0 auto auto 0; width: 100%; max-width: none; max-height: none; height: auto; transform: translateY(-28%); }
+            .package-section-nav { display: none; margin-bottom: 24px; }
+            .package-section-nav__links { margin-top: 16px; }
+            .package-section-nav__links a { position: relative; display: flex; align-items: center; gap: 14px; min-height: 48px; padding: 12px 12px 12px 20px; }
+            .package-section-nav__links a[aria-current="location"] { color: inherit; font-weight: 600; }
+            .package-section-nav__marker { position: absolute; left: -2px; top: 10px; bottom: 10px; width: 4px; opacity: 0; }
+            .package-section-nav__links a:not([aria-current="location"]) .package-section-nav__icon { color: inherit; opacity: .65; }
+            .package-section-nav__links a:hover .package-section-nav__marker { opacity: .4; }
+            .package-section-nav__links a[aria-current="location"] .package-section-nav__marker { opacity: 1; }
+            .package-section-nav__links a[aria-current="location"] .package-section-nav__icon { stroke-width: 2; }
+            .package-section-nav__links a:focus-visible,
+            .package-commercial__trust-strip a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+            #package-overview, #package-itinerary, #package-prices, #package-included { scroll-margin-top: 112px; }
+            @media (min-width: 640px) {
+                .package-hero__actions > a { flex-basis: auto; }
+                .package-hero__content { padding-bottom: 48px; }
+                .package-hero__destinations { font-size: 1rem; }
+            }
+            @media (min-width: 1024px) {
+                .package-hero { min-height: clamp(620px, 80vh, 850px); }
+                .package-hero__shade {
+                    background: linear-gradient(90deg, rgba(17, 24, 39, .78) 0%, rgba(17, 24, 39, .42) 40%, rgba(17, 24, 39, .08) 75%, transparent),
+                        linear-gradient(0deg, rgba(17, 24, 39, .72), transparent 65%);
+                }
+                .package-hero__content { padding-top: 112px; padding-bottom: 120px; }
+                .package-hero__identity { width: 70%; max-width: 900px; }
+                .package-hero__title { font-size: clamp(3.5rem, 5vw, 4.5rem); }
+                .package-hero__destinations { max-width: 680px; }
+                .package-hero__gallery-controls { top: auto; bottom: 184px; gap: 24px; }
+                .package-overview__copy { padding-right: 12px; }
+                .package-route__map { padding: 18px 16px 4px; }
+                .package-itinerary { --itinerary-marker-center: 2.375rem; --itinerary-content-space: 36px; padding-bottom: 40px; }
+            }
+            @media (min-width: 1280px) {
+                .package-overview__copy { max-width: none; }
+                .package-overview__text { max-width: 80ch; }
+                .package-route { margin-top: 20px; }
+                .package-section-nav { display: block; }
+                /* The desktop navigation is about 76px tall; keep breathing room below it. */
+                .package-commercial { --rail-top: 6rem; position: sticky; top: var(--rail-top); align-self: start; max-height: calc(100vh - var(--rail-top) - 24px); max-height: calc(100dvh - var(--rail-top) - 24px); overflow-y: auto; scrollbar-width: thin; }
+                .package-hero__gallery-controls { bottom: 232px; }
+                .package-bridge__layout { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: stretch; margin-top: -52px; }
+                .package-bridge__backdrop { display: block; position: absolute; z-index: -1; top: 28px; right: var(--bridge-gutter); bottom: 0; left: calc(var(--bridge-gutter) + 28px); pointer-events: none; }
+                .package-expert { --expert-portrait-width: clamp(268px, 21.25vw, 306px); grid-column: 2; grid-row: 1; margin: 28px 0 0; min-height: 204px; background-color: transparent; }
+                .package-expert__copy { width: calc(100% - var(--expert-portrait-width)); padding: 24px 18px 24px 28px; }
+                .package-expert__portrait { right: 0; }
+                .package-glance { grid-column: 1; grid-row: 1; margin: 0 0 18px; padding: 24px 28px; }
+                .package-glance__facts { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+                .package-glance__facts > div { flex-direction: column; align-items: flex-start; }
+            }
+            /* Mobile overrides stay in this view, including the shared floating actions. */
+            @media (max-width: 767px) {
+                .package-hero__gallery-controls > .venobox { display: none; }
+                .package-hero__gallery-controls { top: calc(16px + var(--package-gallery-header-overlap, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); gap: 0; max-width: calc(100% - 32px); }
+                .package-hero__pagination { gap: 12px; font-size: .75rem; text-shadow: 0 1px 4px rgba(17, 24, 39, .6); }
+                .package-hero__progress { width: clamp(80px, 24vw, 104px); }
+                .package-hero__content { padding-top: 112px; padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+                .package-hero__destinations p { min-width: 0; overflow-wrap: anywhere; }
+                .package-hero__actions { gap: 14px; }
+                .package-hero__actions > a,
+                .package-hero__actions > button { flex: 0 0 100%; width: 100%; min-height: 44px; }
+                .package-hero__scroll { margin-top: 32px; }
+
+                .fixed.bottom-0:has(> a[href="#form-dream-adventure"]),
+                .fixed.bottom-0:has(> a[href^="https://api.whatsapp.com/send"] > img) {
+                    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+                    z-index: 20;
+                    margin: 0;
+                    padding: 0;
+                }
+                .fixed.bottom-0:has(> a[href="#form-dream-adventure"]) {
+                    left: max(12px, env(safe-area-inset-left, 0px));
+                    right: auto;
+                    max-width: calc(100% - 88px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+                }
+                .fixed.bottom-0 > a[href="#form-dream-adventure"] { display: flex; align-items: center; min-height: 48px; }
+                .fixed.bottom-0 > a[href="#form-dream-adventure"] > div > span {
+                    padding: 10px 18px 10px 12px;
+                    margin-right: -12px;
+                    font-size: .75rem;
+                    line-height: 1.2;
+                    white-space: nowrap;
+                }
+                .fixed.bottom-0 > a[href="#form-dream-adventure"] img { width: 48px; height: 48px; flex-shrink: 0; }
+                .fixed.bottom-0:has(> a[href^="https://api.whatsapp.com/send"] > img) {
+                    right: max(12px, env(safe-area-inset-right, 0px));
+                    left: auto;
+                }
+                .fixed.bottom-0:has(> a[href^="https://api.whatsapp.com/send"] > img) > a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 48px;
+                    height: 48px;
+                }
+                .fixed.bottom-0 > a[href^="https://api.whatsapp.com/send"] > img { width: 48px; height: 48px; object-fit: contain; }
+                /* The pulse has its own duplicate link; the actual WhatsApp action stays visible. */
+                .fixed.bottom-0:has(> a[href^="https://api.whatsapp.com/send"] > span) { display: none; }
+            }
+            @media (prefers-reduced-motion: no-preference) {
+                .package-hero__gallery { animation: package-photo-enter 1.1s ease-out both; }
+                .package-hero__gallery img { transform: scale(1); transition: transform 7s ease-out; }
+                .package-hero__gallery .swiper-slide-active img { transform: scale(1.045); }
+                .package-hero__duration,
+                .package-hero__title,
+                .package-hero__destinations,
+                .package-hero__offer,
+                .package-hero__actions,
+                .package-hero__scroll { animation: package-hero-enter .8s ease-out both; }
+                .package-hero__duration { animation-delay: .12s; }
+                .package-hero__title { animation-delay: .22s; }
+                .package-hero__destinations { animation-delay: .34s; }
+                .package-hero__offer { animation-delay: .4s; }
+                .package-hero__actions { animation-delay: .5s; }
+                .package-hero__scroll { animation-delay: .62s; }
+                .package-hero__scroll svg { animation: package-scroll-cue 2.8s ease-in-out 3; }
+                .package-hero__progress-fill { transition: transform .7s ease-out; }
+                [data-package-reveal] { transition: opacity .7s ease-out, transform .7s ease-out; }
+                .package-route__map[data-package-reveal] { transition-delay: .1s; }
+                .package-coverage__details[data-package-reveal] { transition-delay: .1s; }
+                .package-itinerary__panel { transition: grid-template-rows .3s ease-out, opacity .25s ease-out; }
+                .package-itinerary__day.is-open .package-itinerary__panel { transition-delay: 0s, .15s; }
+                .package-itinerary__route-segment { transition: transform .4s ease-out, opacity .2s ease-out; }
+                .package-itinerary__day.is-open .package-itinerary__route-segment { transition-duration: .7s, .2s; transition-delay: 0s; }
+                .package-itinerary__body { transform: translateY(-4px); transition: transform .3s ease-out; }
+                .package-itinerary__day.is-open .package-itinerary__body { transform: translateY(0); transition-delay: .15s; }
+                .package-itinerary__chevron { transition: transform .3s ease-out; }
+                .package-itinerary__day-title { transition: color .18s ease; }
+                .package-reveal-pending { opacity: 0; transform: translateY(16px); }
+                .package-coverage__intro.package-reveal-pending,
+                .package-coverage__details.package-reveal-pending { transform: translateY(10px); }
+            }
+            @keyframes package-scroll-cue { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(4px); opacity: 1; } }
+            @keyframes package-photo-enter { from { opacity: .4; } to { opacity: 1; } }
+            @keyframes package-hero-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        </style>
     @endpush
     @push('scripts')
+        <script>
+            (() => {
+                const controls = document.querySelector('.package-hero__gallery-controls');
+                const menu = document.querySelector('.menu-movil');
+                if (!controls || !menu) return;
+                const hero = controls.closest('.package-hero');
+                const mobile = window.matchMedia('(max-width: 767px)');
+                const positionCounter = () => {
+                    if (!mobile.matches) {
+                        controls.style.removeProperty('--package-gallery-header-overlap');
+                        return;
+                    }
+                    // Keep the counter anchored to the photo, allowing for the fixed menu at page start.
+                    const heroTop = hero.getBoundingClientRect().top + window.scrollY;
+                    const overlap = menu.getClientRects().length
+                        ? Math.max(0, menu.getBoundingClientRect().bottom - heroTop)
+                        : 0;
+                    controls.style.setProperty('--package-gallery-header-overlap', `${overlap}px`);
+                };
+                positionCounter();
+                window.addEventListener('resize', positionCounter, { passive: true });
+                window.addEventListener('load', positionCounter, { once: true });
+            })();
+        </script>
         <script src="https://apps.elfsight.com/p/platform.js" defer></script>
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script src="https://cdn.wetravel.com/master/core-app/assets/embed_checkout.js"></script>
@@ -1507,33 +1680,138 @@
                     prevEl: ".swiper-button-prev",
                 },
             });
+            function updatePackageGallery(swiper) {
+                const counter = swiper.el.closest('.package-hero').querySelector('.package-hero__pagination');
+                const total = swiper.slides.length;
+                counter.hidden = total === 0;
+                if (!total) return;
+                const current = swiper.realIndex + 1;
+                counter.querySelector('[data-package-slide-current]').textContent = String(current).padStart(2, '0');
+                counter.querySelector('[data-package-slide-total]').textContent = String(total).padStart(2, '0');
+                counter.style.setProperty('--package-gallery-progress', current / total);
+                counter.setAttribute('aria-label', `Image ${current} of ${total}`);
+            }
             var swiper = new Swiper(".mySwiper2", {
-                slidesPerView: 2,
+                slidesPerView: 1,
                 spaceBetween: 0,
-                freeMode: true,
+                effect: 'fade',
+                fadeEffect: { crossFade: true },
+                speed: 900,
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false,
                 },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                breakpoints: {
-                    320: {
-                        slidesPerView: 1,
-                    },
-                    640: {
-                        slidesPerView: 1,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                    },
-                    1024: {
-                        slidesPerView: 2,
-                    },
+                on: {
+                    init: updatePackageGallery,
+                    slideChange: updatePackageGallery,
                 },
             });
+        </script>
+        <script>
+            (() => {
+                const section = document.getElementById('hotels');
+                if (!section || typeof Swiper === 'undefined') return;
+                const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const activateDestination = (destination) => {
+                    const panel = section.querySelector(`[data-hotel-destination="${destination}"]`);
+                    if (!panel) return;
+                    const carousel = panel.querySelector('.package-hotels__carousel');
+                    const controls = section.querySelector(`[data-hotel-controls="${destination}"]`);
+                    if (carousel.swiper) {
+                        carousel.swiper.update();
+                        carousel.swiper.slideTo(0, 0);
+                        return;
+                    }
+                    const updateCounter = (instance) => {
+                        const total = instance.slides.length;
+                        const current = total ? instance.realIndex + 1 : 0;
+                        controls.hidden = total === 0;
+                        const counter = controls.querySelector('[data-hotel-counter]');
+                        counter.querySelector('[data-hotel-current]').textContent = String(current).padStart(2, '0');
+                        counter.querySelector('[data-hotel-total]').textContent = String(total).padStart(2, '0');
+                        counter.setAttribute('aria-label', `Hotel ${current} of ${total}`);
+                    };
+                    new Swiper(carousel, {
+                        slidesPerView: 1,
+                        spaceBetween: 24,
+                        speed: reducedMotion ? 0 : 350,
+                        watchOverflow: true,
+                        breakpoints: {
+                            768: { slidesPerView: 1.5, spaceBetween: 24 },
+                            1024: { slidesPerView: 2, spaceBetween: 32 },
+                        },
+                        navigation: {
+                            prevEl: controls.querySelector('[data-hotel-prev]'),
+                            nextEl: controls.querySelector('[data-hotel-next]'),
+                        },
+                        on: {
+                            init: updateCounter,
+                            slideChange: updateCounter,
+                        },
+                    });
+                };
+                section.addEventListener('package-hotels-change', (event) => {
+                    activateDestination(event.detail.destination);
+                });
+                activateDestination(1);
+            })();
+        </script>
+        <script>
+            (() => {
+                if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        entry.target.classList.remove('package-reveal-pending');
+                        observer.unobserve(entry.target);
+                    });
+                }, { threshold: 0 });
+                document.querySelectorAll('[data-package-reveal]').forEach((section) => {
+                    if (section.getBoundingClientRect().top < window.innerHeight) return;
+                    observer.observe(section);
+                    section.classList.add('package-reveal-pending');
+                });
+            })();
+        </script>
+        <script>
+            (() => {
+                const nav = document.querySelector('.package-section-nav');
+                if (!nav) return;
+                const items = Array.from(nav.querySelectorAll('a[href^="#"]'))
+                    .map(link => ({ link, section: document.getElementById(link.hash.slice(1)) }))
+                    .filter(item => item.section);
+                if (!items.length) return;
+                const setActive = (active) => items.forEach(item => {
+                    if (item === active) item.link.setAttribute('aria-current', 'location');
+                    else item.link.removeAttribute('aria-current');
+                });
+                const updateActive = () => {
+                    const marker = window.innerHeight * .4;
+                    const active = items.filter(item => item.section.getBoundingClientRect().top <= marker).pop();
+                    setActive(active || items[0]);
+                };
+                items.forEach(item => item.link.addEventListener('click', event => {
+                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    event.preventDefault();
+                    setActive(item);
+                    item.section.scrollIntoView({
+                        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                        block: 'start'
+                    });
+                }));
+                const desktop = window.matchMedia('(min-width: 1280px)');
+                let observer;
+                const observeSections = () => {
+                    if (observer) observer.disconnect();
+                    if (!desktop.matches) return;
+                    updateActive();
+                    if (!('IntersectionObserver' in window)) return;
+                    observer = new IntersectionObserver(updateActive, { rootMargin: '0px 0px -60% 0px', threshold: 0 });
+                    items.forEach(item => observer.observe(item.section));
+                };
+                desktop.addEventListener('change', observeSections);
+                observeSections();
+            })();
         </script>
     @endpush
 

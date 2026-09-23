@@ -33,6 +33,7 @@ module.exports = {
                 cyan: colors.cyan,
                 primary: '#7F8429',
                 secondary: '#f9a825',
+                tertiary: '#313842',
             },
         },
         // container: {
