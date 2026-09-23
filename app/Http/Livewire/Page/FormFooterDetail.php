@@ -5,9 +5,12 @@ namespace App\Http\Livewire\Page;
 use App\Models\TCategoria;
 use App\Models\TDestino;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Jenssegers\Agent\Agent;
 use Livewire\Component;
 
@@ -15,7 +18,31 @@ class FormFooterDetail extends Component
 {
     public $values_categories = [], $values_number, $values_trip_length, $travel_day, $comment, $name, $email, $phone, $country, $phonecountry, $values_number_input, $success, $paquete, $device, $browser;
 
-    public function mount()
+    // Authenticated snapshot of this form's initial request; never shared through session/cookies.
+    public $attributionContext;
+    public $ctaSource = 'form';
+
+    private const ATTRIBUTION_QUERY_KEYS = [
+        'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid',
+    ];
+
+    private const ATTRIBUTION_LABELS = [
+        'package_id' => 'Package ID',
+        'package_slug' => 'Package Slug',
+        'campaign_id' => 'Campaign ID',
+        'campaign_slug' => 'Campaign Slug',
+        'utm_source' => 'UTM Source',
+        'utm_medium' => 'UTM Medium',
+        'utm_campaign' => 'UTM Campaign',
+        'utm_content' => 'UTM Content',
+        'utm_term' => 'UTM Term',
+        'gclid' => 'GCLID',
+        'fbclid' => 'FBCLID',
+        'landing_url' => 'Landing',
+        'cta_source' => 'CTA Source',
+    ];
+
+    public function mount($packageId = null, $packageSlug = null, $campaignId = null, $campaignSlug = null)
     {
         $agent = new Agent();
 
@@ -28,7 +55,96 @@ class FormFooterDetail extends Component
         }
 
         $this->browser = $agent->browser();
+
+        // IDs/slugs are passed by the server-rendered package view, not read from the query string.
+        $context = [
+            'component_id' => $this->id,
+            'package_id' => $packageId,
+            'package_slug' => $packageSlug,
+            'campaign_id' => $campaignId,
+            'campaign_slug' => $campaignSlug,
+            'landing_url' => request()->getPathInfo(),
+        ];
+        $query = request()->query();
+        foreach (self::ATTRIBUTION_QUERY_KEYS as $key) {
+            $context[$key] = $this->normalizeAttributionValue($query[$key] ?? null, $key);
+        }
+        $this->validateAttributionContext($context);
+        $this->attributionContext = Crypt::encryptString(json_encode($context, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE));
     }
+
+    protected function normalizeAttributionValue($value, $key)
+    {
+        if (!is_string($value) || !mb_check_encoding($value, 'UTF-8')) {
+            return null;
+        }
+
+        if (in_array($key, ['gclid', 'fbclid'], true)) {
+            // Preserve valid opaque click IDs byte-for-byte; reject invalid/oversized values, never truncate.
+            return $value !== '' && mb_strlen($value) <= 512
+                && !preg_match('/[<>\x00-\x20\x7F]/u', $value) ? $value : null;
+        }
+
+        $value = trim(preg_replace('/[\x00-\x1F\x7F]+/u', ' ', strip_tags($value)) ?? '');
+        return $value === '' ? null : mb_substr($value, 0, 255);
+    }
+
+    protected function validateAttributionContext($context)
+    {
+        $rules = [
+            'component_id' => 'required|string|max:100',
+            'package_id' => 'nullable|integer|min:1|required_with:campaign_id',
+            'package_slug' => 'nullable|string|max:255|required_with:package_id|not_regex:/[<>\x00-\x1F\x7F]/',
+            'campaign_id' => 'nullable|integer|min:1|required_with:campaign_slug',
+            'campaign_slug' => 'nullable|string|max:120|required_with:campaign_id|not_regex:/[<>\x00-\x1F\x7F]/',
+            'landing_url' => 'required|string|max:1024|starts_with:/|not_regex:/[<>?\x00-\x1F\x7F]/',
+        ];
+        foreach (self::ATTRIBUTION_QUERY_KEYS as $key) {
+            $rules[$key] = 'nullable|string|max:' . (in_array($key, ['gclid', 'fbclid'], true) ? 512 : 255);
+        }
+        if (!is_array($context) || Validator::make($context, $rules)->fails()
+            || ($context['component_id'] ?? null) !== $this->id) {
+            throw ValidationException::withMessages(['api_error' => 'Please refresh the page and try again.']);
+        }
+    }
+
+    public function updatingAttributionContext()
+    {
+        // The initial snapshot is read-only; only the allowlisted CTA source can change in the browser.
+        throw ValidationException::withMessages(['api_error' => 'Please refresh the page and try again.']);
+    }
+
+    protected function leadAttribution()
+    {
+        try {
+            if (!is_string($this->attributionContext) || strlen($this->attributionContext) > 32768) {
+                throw new \UnexpectedValueException('Invalid attribution snapshot.');
+            }
+            $context = json_decode(Crypt::decryptString($this->attributionContext), true, 512, JSON_THROW_ON_ERROR);
+        } catch (\Throwable $exception) {
+            throw ValidationException::withMessages(['api_error' => 'Please refresh the page and try again.']);
+        }
+
+        $this->validateAttributionContext($context);
+        $hasAttribution = ($context['campaign_id'] ?? null) !== null;
+        foreach (self::ATTRIBUTION_QUERY_KEYS as $key) {
+            $context[$key] = $this->normalizeAttributionValue($context[$key] ?? null, $key);
+            $hasAttribution = $hasAttribution || $context[$key] !== null;
+        }
+        if (!$hasAttribution) {
+            return [];
+        }
+
+        $context['cta_source'] = $this->ctaSource;
+        $attribution = [];
+        foreach (self::ATTRIBUTION_LABELS as $key => $label) {
+            if (($context[$key] ?? null) !== null) {
+                $attribution[$label] = $context[$key];
+            }
+        }
+        return $attribution;
+    }
+
     public function render()
     {
         $destinations = TDestino::all();
@@ -64,8 +180,22 @@ class FormFooterDetail extends Component
         $this->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required'
+            'phone' => 'required',
+            'comment' => 'nullable|string',
+            'ctaSource' => 'required|string|in:hero,rail,final,form',
         ]);
+
+        $attribution = $this->leadAttribution();
+        $g1Comment = $this->comment;
+        if ($attribution) {
+            $lines = [];
+            foreach ($attribution as $label => $value) {
+                $lines[] = $label . ': ' . $value;
+            }
+            // G1's existing comment field is supported; no additional API fields are assumed.
+            $block = "[Campaign Attribution]\n" . implode("\n", $lines) . "\n[/Campaign Attribution]";
+            $g1Comment = (string) $this->comment . (trim((string) $this->comment) !== '' ? "\n\n" : '') . $block;
+        }
 
         $from = 'info@gotoperu.com';
 
@@ -135,7 +265,7 @@ class FormFooterDetail extends Component
             "name"=>$this->name,
             "email"=>$this->email,
             "phone"=>$this->phone,
-            "comment"=>$this->comment,
+            "comment"=>$g1Comment,
             "initial_price"=>0,
             "inquiry_date"=>$inquireDate,
             "dialCode"=>'',
@@ -163,6 +293,7 @@ class FormFooterDetail extends Component
 //                'trip_length' => implode(', ', $this->values_trip_length),
                     'travel_day_all' => $this->travel_day,
                     'comentario' => $this->comment,
+                    'attribution' => $attribution,
                     'nombre' => $this->name,
                     'email' => $this->email,
                     'telefono' => $this->phone,

@@ -22,6 +22,11 @@ class TPaquete extends Model
         }
     }
 
+    public function campaigns()
+    {
+        return $this->hasMany(PackageCampaign::class, 'package_id');
+    }
+
     public function paquete_itinerario()
     {
         return $this->hasMany(TpaqueteItinerario::class, 'idpaquetes');

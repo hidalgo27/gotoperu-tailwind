@@ -233,6 +233,16 @@
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
+            // Bind attribution to this rendered Livewire instance; keep the existing anchor/scroll behavior.
+            document.addEventListener('click', function (event) {
+                if (!(event.target instanceof Element)) return;
+                const cta = event.target.closest('a[href="#form-dream-adventure"]');
+                if (!cta) return;
+                const source = ['hero', 'rail', 'final', 'form'].includes(cta.dataset.quoteSource)
+                    ? cta.dataset.quoteSource : 'form';
+                @this.set('ctaSource', source, true);
+            });
+
             let input = document.querySelector('[data-intl-tel-input]');
             let countryInput = document.getElementById('country');
 
