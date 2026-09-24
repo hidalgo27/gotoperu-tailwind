@@ -33,4 +33,22 @@
         </td>
     </tr>
 
+    @if (!empty($attribution))
+        <tr>
+            <td style="padding:20px 0px 20px 50px">
+                <h3 style="font-size:16px; margin:0 0 12px">Marketing Attribution</h3>
+                <table role="presentation" style="border-collapse:collapse; width:100%; text-align:left; font-size:13px">
+                    <tbody>
+                    @foreach ($attribution as $label => $value)
+                        <tr>
+                            <th style="padding:6px 16px 6px 0; vertical-align:top; text-align:left">{{ $label }}</th>
+                            <td style="padding:6px 0; vertical-align:top; overflow-wrap:anywhere">{{ $value }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    @endif
+
 @stop

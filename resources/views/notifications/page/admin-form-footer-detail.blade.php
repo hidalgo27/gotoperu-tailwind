@@ -36,7 +36,7 @@
     @if (!empty($attribution))
         <tr>
             <td style="padding:20px 0px 20px 50px">
-                <h3 style="font-size:16px; margin:0 0 12px">Campaign Attribution</h3>
+                <h3 style="font-size:16px; margin:0 0 12px">Marketing Attribution</h3>
                 <table role="presentation" style="border-collapse:collapse; width:100%; text-align:left; font-size:13px">
                     <tbody>
                     @foreach ($attribution as $label => $value)

@@ -10,7 +10,7 @@
             <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
             <div class="flex items-center gap-2 justify-center">
                 <a href="{{route('packages.all')}}" class="btn-primary"> Explore Top Experiences </a>
-                <a href="#form-dream-adventure" class="btn-secondary"> Customize your trips </a>
+                <a href="#form-dream-adventure" data-quote-source="hero" class="btn-secondary"> Customize your trips </a>
             </div>
         </div>
     </div>

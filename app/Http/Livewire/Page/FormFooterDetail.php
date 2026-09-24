@@ -1,5 +1,5 @@
 <?php
-
+///Users/hidalgoponce/Laravel/gotoperu-tailwind/app/Http/Livewire/Page/FormFooterDetail.php
 namespace App\Http\Livewire\Page;
 
 use App\Models\TCategoria;
@@ -21,16 +21,15 @@ class FormFooterDetail extends Component
     // Authenticated snapshot of this form's initial request; never shared through session/cookies.
     public $attributionContext;
     public $ctaSource = 'form';
+    public $firstTouch = [];
 
     private const ATTRIBUTION_QUERY_KEYS = [
         'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid',
     ];
 
     private const ATTRIBUTION_LABELS = [
-        'package_id' => 'Package ID',
-        'package_slug' => 'Package Slug',
-        'campaign_id' => 'Campaign ID',
-        'campaign_slug' => 'Campaign Slug',
+        'first_landing_type' => 'First Landing Type',
+        'first_landing_path' => 'First Landing',
         'utm_source' => 'UTM Source',
         'utm_medium' => 'UTM Medium',
         'utm_campaign' => 'UTM Campaign',
@@ -38,7 +37,12 @@ class FormFooterDetail extends Component
         'utm_term' => 'UTM Term',
         'gclid' => 'GCLID',
         'fbclid' => 'FBCLID',
-        'landing_url' => 'Landing',
+        'conversion_page_type' => 'Conversion Page Type',
+        'conversion_page_path' => 'Conversion Page',
+        'package_id' => 'Package ID',
+        'package_slug' => 'Package Slug',
+        'campaign_id' => 'Offer Campaign ID',
+        'campaign_slug' => 'Offer Slug',
         'cta_source' => 'CTA Source',
     ];
 
@@ -126,13 +130,19 @@ class FormFooterDetail extends Component
         }
 
         $this->validateAttributionContext($context);
-        $hasAttribution = ($context['campaign_id'] ?? null) !== null;
+        $context['conversion_page_type'] = !empty($context['campaign_id']) ? 'offer' : (!empty($context['package_id']) ? 'package' : 'other');
+        $context['conversion_page_path'] = $context['landing_url'];
+        $firstTouch = is_array($this->firstTouch) ? $this->firstTouch : [];
+        $firstPath = $firstTouch['first_landing_path'] ?? null;
+        $validFirstTouch = in_array($firstTouch['first_landing_type'] ?? null, ['home', 'package', 'offer', 'other'], true)
+            && is_string($firstPath) && mb_check_encoding($firstPath, 'UTF-8') && mb_strlen($firstPath) <= 1024
+            && strpos($firstPath, '/') === 0 && strpos($firstPath, '//') !== 0
+            && !preg_match('/[<>?#\x00-\x1F\x7F]/u', $firstPath);
+        $context['first_landing_type'] = $validFirstTouch ? $firstTouch['first_landing_type'] : $context['conversion_page_type'];
+        $context['first_landing_path'] = $validFirstTouch ? $firstPath : $context['landing_url'];
         foreach (self::ATTRIBUTION_QUERY_KEYS as $key) {
-            $context[$key] = $this->normalizeAttributionValue($context[$key] ?? null, $key);
-            $hasAttribution = $hasAttribution || $context[$key] !== null;
-        }
-        if (!$hasAttribution) {
-            return [];
+            // A valid first touch takes precedence, including an original visit without UTMs.
+            $context[$key] = $this->normalizeAttributionValue($validFirstTouch ? ($firstTouch[$key] ?? null) : ($context[$key] ?? null), $key);
         }
 
         $context['cta_source'] = $this->ctaSource;
@@ -193,7 +203,7 @@ class FormFooterDetail extends Component
                 $lines[] = $label . ': ' . $value;
             }
             // G1's existing comment field is supported; no additional API fields are assumed.
-            $block = "[Campaign Attribution]\n" . implode("\n", $lines) . "\n[/Campaign Attribution]";
+            $block = "[Marketing Attribution]\n" . implode("\n", $lines) . "\n[/Marketing Attribution]";
             $g1Comment = (string) $this->comment . (trim((string) $this->comment) !== '' ? "\n\n" : '') . $block;
         }
 
@@ -278,6 +288,22 @@ class FormFooterDetail extends Component
 //            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
 
             if ($response2->successful()) {
+                $analyticsTravellers = is_scalar($travellers) ? filter_var($travellers, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) : false;
+                $analyticsCategories = array_unique(array_map('strval', array_filter($this->values_categories, function ($value) {
+                    return in_array($value, ['3', '4', '5', 3, 4, 5], true);
+                })));
+                sort($analyticsCategories, SORT_STRING);
+                $this->dispatchBrowserEvent('gtp:generate-lead', array_filter([
+                    'lead_event_id' => (string) \Illuminate\Support\Str::uuid(),
+                    'first_landing_type' => $attribution['First Landing Type'],
+                    'conversion_page_type' => $attribution['Conversion Page Type'],
+                    'package_id' => $attribution['Package ID'] ?? null,
+                    'package_slug' => $attribution['Package Slug'] ?? null,
+                    'offer_slug' => $attribution['Offer Slug'] ?? null,
+                    'cta_source' => $this->ctaSource,
+                    'number_travelers' => $analyticsTravellers === false ? null : $analyticsTravellers,
+                    'hotel_category' => implode('|', $analyticsCategories),
+                ], function ($value) { return $value !== null && $value !== ''; }));
 
 
                 Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {

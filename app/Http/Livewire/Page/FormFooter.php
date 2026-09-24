@@ -14,6 +14,9 @@ use Livewire\Component;
 class FormFooter extends Component
 {
     public $values_categories = [], $values_number, $values_trip_length, $travel_day, $comment, $name, $email, $phone, $country, $phonecountry, $values_number_input, $success, $device, $browser;
+    public $firstTouch = [];
+    public $ctaSource = 'form';
+    public $marketingHome = false;
 
     public function mount()
     {
@@ -28,6 +31,60 @@ class FormFooter extends Component
         }
 
         $this->browser = $agent->browser();
+        $this->marketingHome = request()->routeIs('home');
+        if ($this->marketingHome) {
+            $this->firstTouch = array_merge([
+                'first_landing_type' => 'home',
+                'first_landing_path' => '/',
+            ], request()->only(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid']));
+        }
+    }
+
+    public function updatingMarketingHome()
+    {
+        // The page that mounted this shared form is server-owned.
+        abort(403);
+    }
+
+    protected function marketingAttribution()
+    {
+        if (!$this->marketingHome) {
+            return [];
+        }
+
+        $firstTouch = is_array($this->firstTouch) ? $this->firstTouch : [];
+        $firstPath = $firstTouch['first_landing_path'] ?? null;
+        $validFirstTouch = in_array($firstTouch['first_landing_type'] ?? null, ['home', 'package', 'offer', 'other'], true)
+            && is_string($firstPath) && mb_check_encoding($firstPath, 'UTF-8') && mb_strlen($firstPath) <= 1024
+            && strpos($firstPath, '/') === 0 && strpos($firstPath, '//') !== 0
+            && !preg_match('/[<>?#\x00-\x1F\x7F]/u', $firstPath);
+        $attribution = [
+            'First Landing Type' => $validFirstTouch ? $firstTouch['first_landing_type'] : 'home',
+            'First Landing' => $validFirstTouch ? $firstPath : '/',
+        ];
+        foreach ([
+            'utm_source' => 'UTM Source', 'utm_medium' => 'UTM Medium', 'utm_campaign' => 'UTM Campaign',
+            'utm_content' => 'UTM Content', 'utm_term' => 'UTM Term', 'gclid' => 'GCLID', 'fbclid' => 'FBCLID',
+        ] as $key => $label) {
+            $value = $firstTouch[$key] ?? null;
+            if (!is_string($value) || !mb_check_encoding($value, 'UTF-8')) {
+                continue;
+            }
+            if (in_array($key, ['gclid', 'fbclid'], true)) {
+                if ($value === '' || mb_strlen($value) > 512 || preg_match('/[<>\x00-\x20\x7F]/u', $value)) {
+                    continue;
+                }
+            } else {
+                $value = mb_substr(trim(preg_replace('/[\x00-\x1F\x7F]+/u', ' ', strip_tags($value)) ?? ''), 0, 255);
+            }
+            if ($value !== '') {
+                $attribution[$label] = $value;
+            }
+        }
+        $attribution['Conversion Page Type'] = 'home';
+        $attribution['Conversion Page'] = '/';
+        $attribution['CTA Source'] = in_array($this->ctaSource, ['hero', 'rail', 'final', 'form'], true) ? $this->ctaSource : 'form';
+        return $attribution;
     }
 
     public function render()
@@ -61,6 +118,17 @@ class FormFooter extends Component
             'email' => 'required|email',
             'phone' => 'required'
         ]);
+
+        $attribution = $this->marketingAttribution();
+        $g1Comment = $this->comment;
+        if ($attribution) {
+            $lines = [];
+            foreach ($attribution as $label => $value) {
+                $lines[] = $label . ': ' . $value;
+            }
+            $block = "[Marketing Attribution]\n" . implode("\n", $lines) . "\n[/Marketing Attribution]";
+            $g1Comment = (string) $this->comment . (trim((string) $this->comment) !== '' ? "\n\n" : '') . $block;
+        }
 
         $from = 'info@gotoperu.com';
 
@@ -128,7 +196,7 @@ class FormFooter extends Component
             "name"=>$this->name,
             "email"=>$this->email,
             "phone"=>$this->phone,
-            "comment"=>$this->comment,
+            "comment"=>$g1Comment,
             "initial_price"=>0,
             "inquiry_date"=>$inquireDate,
             "dialCode"=>'',
@@ -146,6 +214,21 @@ class FormFooter extends Component
             // Enviar los datos al servicio mediante una solicitud HTTP POST
 //            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
             if ($response2->successful()) {
+                if ($this->marketingHome) {
+                    $analyticsTravellers = is_scalar($travellers) ? filter_var($travellers, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) : false;
+                    $analyticsCategories = array_unique(array_map('strval', array_filter($this->values_categories, function ($value) {
+                        return in_array($value, ['3', '4', '5', 3, 4, 5], true);
+                    })));
+                    sort($analyticsCategories, SORT_STRING);
+                    $this->dispatchBrowserEvent('gtp:generate-lead', array_filter([
+                        'lead_event_id' => (string) \Illuminate\Support\Str::uuid(),
+                        'first_landing_type' => $attribution['First Landing Type'],
+                        'conversion_page_type' => 'home',
+                        'cta_source' => $attribution['CTA Source'],
+                        'number_travelers' => $analyticsTravellers === false ? null : $analyticsTravellers,
+                        'hotel_category' => implode('|', $analyticsCategories),
+                    ], function ($value) { return $value !== null && $value !== ''; }));
+                }
                 Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
                     $messaje->to($this->email, $this->name)
                         ->subject('GotoPeru')
@@ -159,6 +242,7 @@ class FormFooter extends Component
                     'trip_length' => implode(', ', $this->values_trip_length),
                     'travel_day_all' => $this->travel_day,
                     'comentario' => $this->comment,
+                    'attribution' => $attribution,
                     'nombre' => $this->name,
                     'email' => $this->email,
                     'telefono' => $this->phone,

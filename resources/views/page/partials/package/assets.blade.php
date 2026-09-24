@@ -1,3 +1,4 @@
+{{--/Users/hidalgoponce/Laravel/gotoperu-tailwind/resources/views/page/partials/package/assets.blade.php--}}
 @once
     @push('css')
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />

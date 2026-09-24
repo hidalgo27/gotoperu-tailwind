@@ -5,7 +5,7 @@
         <h3 class="text-2xl font-semibold mt-2 text-gray-600 dark:text-gray-300">{{__('message.form_footer_title')}}</h3>
         <p class=" tracking-tighter text-sm">{{__('message.form_footer_par1')}}</p>
     </div>
-    <form wire:submit.prevent="store" class="grid grid-cols-1 gap-12 w-11/12 md:w-7/12 lg:w-1/2 xl:w-2/5 items-center mx-auto">
+    <form wire:submit.prevent="store" @if ($marketingHome) data-analytics-form="quote" @endif class="grid grid-cols-1 gap-12 w-11/12 md:w-7/12 lg:w-1/2 xl:w-2/5 items-center mx-auto">
 {{--        <div x-show="!data">--}}
         <div class="hidden">
             @if ($device == 'Móvil')
@@ -243,6 +243,16 @@
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
+            if (window.GTPAnalytics && window.GTPAnalytics.pageContext().page_type === 'home') {
+                @this.set('firstTouch', window.GTPAnalytics.getFirstTouch(), true);
+                document.addEventListener('click', function (event) {
+                    if (!(event.target instanceof Element)) return;
+                    const cta = event.target.closest('a[href="#form-dream-adventure"]');
+                    if (!cta) return;
+                    const source = ['hero', 'rail', 'final', 'form'].includes(cta.dataset.quoteSource) ? cta.dataset.quoteSource : 'form';
+                    @this.set('ctaSource', source, true);
+                });
+            }
             let input = document.querySelector('[data-intl-tel-input]');
             let countryInput = document.getElementById('country');
 

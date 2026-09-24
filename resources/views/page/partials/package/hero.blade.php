@@ -1,3 +1,4 @@
+{{--/Users/hidalgoponce/Laravel/gotoperu-tailwind/resources/views/page/partials/package/hero.blade.php--}}
     <section class="package-hero bg-gray-900 text-gray-50{{ $campaign ? ' campaign-hero' : '' }}" aria-labelledby="package-hero-title">
         <div class="swiper mySwiper2 package-hero__gallery">
             <div class="swiper-wrapper">
@@ -83,7 +84,7 @@
                 </div>
 
                 <div class="package-hero__actions">
-                    <a href="#form-dream-adventure" @if ($campaign) data-quote-source="hero" @endif class="btn-secondary text-center">{{ $heroCtaLabel }}</a>
+                    <a href="#form-dream-adventure" data-quote-source="hero" class="btn-secondary text-center">{{ $heroCtaLabel }}</a>
                     @if ($showPackageBooking)
                         <button class="wtrvl-checkout_button btn-white inline-flex items-center justify-center" id="wetravel_button_widget"
                             data-env="https://www.wetravel.com" data-version="v0.2" data-uid="239346"

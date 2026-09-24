@@ -1,4 +1,4 @@
-<div class="bg-gray-100 py-12" x-data="{data: false}" id="form-dream-adventure">
+<div class="bg-gray-100 py-12" x-data="{data: false}" id="form-dream-adventure" data-analytics-section="lead_form">
     <div class="w-11/12 md:w-7/12 lg:w-1/2 xl:w-1/3 mx-auto mb-6 text-center">
         <img src="{{asset('images/logos/logo-gotoperu-black.png')}}" alt="" class="mx-auto w-52">
         <h3 class="text-2xl font-semibold mt-2 text-gray-600">{{__('message.form_footer_title')}}</h3>
@@ -8,7 +8,7 @@
             <p class="text-lg font-medium">{{$paquete}}</p>
         </div>
     </div>
-    <form wire:submit.prevent="store">
+    <form wire:submit.prevent="store" data-analytics-form="quote">
         <div class="hidden">
             @if ($device == 'Móvil')
                 <input type="hidden" wire:model="device" value="Móvil" readonly>
@@ -233,6 +233,9 @@
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
+            if (window.GTPAnalytics) {
+                @this.set('firstTouch', window.GTPAnalytics.getFirstTouch(), true);
+            }
             // Bind attribution to this rendered Livewire instance; keep the existing anchor/scroll behavior.
             document.addEventListener('click', function (event) {
                 if (!(event.target instanceof Element)) return;

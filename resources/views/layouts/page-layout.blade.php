@@ -354,7 +354,7 @@
         </a>
     </div>
     <div class="fixed bottom-0 mb-20 right-0 z-40 py-5 px-4 sm:inline-flex md:mb-0">
-        <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank" data-analytics-cta="whatsapp">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
     </div>
@@ -751,6 +751,140 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('vendor/intl-tel-input/build/js/utils.js')}}"></script>
 <script src="{{asset('js/plugins.js')}}"></script>
+@php
+    $marketingPageType = request()->routeIs('home') ? 'home'
+        : (request()->routeIs('packages.detail') ? 'package' : (request()->routeIs('offers.show') ? 'offer' : 'other'));
+    $marketingPageContext = [
+        'page_type' => $marketingPageType,
+        'package_id' => in_array($marketingPageType, ['package', 'offer'], true) ? (int) $paquete['id'] : null,
+        'package_slug' => in_array($marketingPageType, ['package', 'offer'], true) ? $paquete['url'] : null,
+        'offer_campaign_id' => $marketingPageType === 'offer' ? (int) $campaign->id : null,
+        'offer_slug' => $marketingPageType === 'offer' ? $campaign->slug : null,
+    ];
+@endphp
+<script>
+    (() => {
+        if (window.GTPAnalytics) return;
+        window.dataLayer = window.dataLayer || [];
+        const page = @json($marketingPageContext);
+        const relevant = ['home', 'package', 'offer'].includes(page.page_type);
+        const storageKey = 'gtp_marketing_attribution_v1';
+        const queryKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
+        const landingTypes = ['home', 'package', 'offer', 'other'];
+        const typeForPath = path => path === '/' ? 'home'
+            : (/^\/peru-travel-packages\/.+/.test(path) ? 'package' : (/^\/offers\/.+/.test(path) ? 'offer' : 'other'));
+        const cleanPath = value => typeof value === 'string' && value.startsWith('/') && !value.startsWith('//')
+            && value.length <= 1024 && !/[<>?#\u0000-\u001f\u007f]/.test(value) ? value : null;
+        const cleanValue = (value, key) => {
+            if (typeof value !== 'string') return null;
+            if (key === 'gclid' || key === 'fbclid') {
+                return value && Array.from(value).length <= 512 && !/[<>\u0000-\u0020\u007f]/.test(value) ? value : null;
+            }
+            value = value.replace(/<[^>]*>/g, '').replace(/[<>]/g, '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim();
+            return value ? Array.from(value).slice(0, 255).join('') : null;
+        };
+        let raw = null;
+        let firstTouch = null;
+        try {
+            raw = sessionStorage.getItem(storageKey);
+            const stored = raw ? JSON.parse(raw) : null;
+            if (stored && stored.version === 1 && landingTypes.includes(stored.first_landing_type)
+                && cleanPath(stored.first_landing_path) && typeof stored.captured_at === 'string'
+                && stored.captured_at.length <= 40) {
+                firstTouch = {
+                    version: 1, captured_at: stored.captured_at,
+                    first_landing_type: stored.first_landing_type, first_landing_path: stored.first_landing_path
+                };
+                queryKeys.forEach(key => firstTouch[key] = cleanValue(stored[key], key));
+            }
+        } catch (error) { /* Storage can be unavailable; retain a page-local snapshot below. */ }
+        if (!firstTouch) {
+            const path = cleanPath(window.location.pathname) || '/';
+            const params = new URLSearchParams(window.location.search);
+            firstTouch = {
+                version: 1, captured_at: new Date().toISOString(),
+                first_landing_type: relevant ? page.page_type : typeForPath(path), first_landing_path: path
+            };
+            queryKeys.forEach(key => firstTouch[key] = cleanValue(params.get(key), key));
+            // Never overwrite an existing first touch while navigating in this tab.
+            if (raw === null) {
+                try { sessionStorage.setItem(storageKey, JSON.stringify(firstTouch)); } catch (error) {}
+            }
+        }
+        const eventFields = {
+            gtp_content_view: ['page_type', 'package_id', 'package_slug', 'offer_slug', 'first_landing_type'],
+            gtp_section_view: ['section_name', 'page_type', 'package_slug', 'offer_slug'],
+            gtp_cta_click: ['cta_name', 'cta_source', 'page_type', 'package_slug', 'offer_slug'],
+            gtp_lead_form_start: ['page_type', 'package_slug', 'offer_slug', 'cta_source'],
+            generate_lead: ['first_landing_type', 'conversion_page_type', 'package_id', 'package_slug', 'offer_slug', 'cta_source', 'number_travelers', 'hotel_category']
+        };
+        window.GTPAnalytics = {
+            getFirstTouch: () => ({ ...firstTouch }),
+            pageContext: () => ({ ...page }),
+            push: (event, values = {}) => {
+                if (!relevant || !Object.prototype.hasOwnProperty.call(eventFields, event)) return;
+                const payload = { event };
+                eventFields[event].forEach(key => {
+                    if (values[key] !== undefined && values[key] !== null && values[key] !== '') payload[key] = values[key];
+                });
+                window.dataLayer.push(payload);
+            }
+        };
+        if (!relevant) return;
+        const analytics = window.GTPAnalytics;
+        analytics.push('gtp_content_view', { ...page, first_landing_type: firstTouch.first_landing_type });
+        let ctaSource = 'form';
+        document.addEventListener('click', event => {
+            if (!(event.target instanceof Element)) return;
+            const quote = event.target.closest('a[href="#form-dream-adventure"]');
+            if (quote) {
+                ctaSource = ['hero', 'rail', 'final', 'form'].includes(quote.dataset.quoteSource) ? quote.dataset.quoteSource : 'form';
+                if (quote.hasAttribute('data-quote-source')) {
+                    analytics.push('gtp_cta_click', { ...page, cta_name: 'request_quote', cta_source: ctaSource });
+                }
+            }
+            if (event.target.closest('a[data-analytics-cta="whatsapp"]')) {
+                analytics.push('gtp_cta_click', { ...page, cta_name: 'whatsapp', cta_source: 'floating' });
+            }
+        });
+        let formStarted = false;
+        const formStart = event => {
+            const input = event.target;
+            if (formStarted || !event.isTrusted || !(input instanceof Element)
+                || !input.matches('input:not([type="hidden"]):not([type="submit"]), select, textarea')
+                || input.disabled || !input.closest('form[data-analytics-form="quote"]')) return;
+            formStarted = true;
+            analytics.push('gtp_lead_form_start', { ...page, cta_source: ctaSource });
+        };
+        ['focusin', 'input', 'change'].forEach(event => document.addEventListener(event, formStart, true));
+        const observeSections = () => {
+            if (!['package', 'offer'].includes(page.page_type) || !('IntersectionObserver' in window)) return;
+            const allowed = ['overview', 'itinerary', 'prices', 'included', 'recommended_hotels', 'lead_form'];
+            const seen = new Set();
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const section = entry.target.dataset.analyticsSection;
+                    if (!entry.isIntersecting || seen.has(section)) return;
+                    seen.add(section);
+                    analytics.push('gtp_section_view', { ...page, section_name: section });
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
+            document.querySelectorAll('[data-analytics-section]').forEach(section => {
+                if (allowed.includes(section.dataset.analyticsSection)) observer.observe(section);
+            });
+        };
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observeSections, { once: true });
+        else observeSections();
+        const leadEvents = new Set();
+        window.addEventListener('gtp:generate-lead', event => {
+            const lead = event.detail;
+            if (!lead || typeof lead.lead_event_id !== 'string' || leadEvents.has(lead.lead_event_id)) return;
+            leadEvents.add(lead.lead_event_id);
+            analytics.push('generate_lead', lead);
+        });
+    })();
+</script>
 @stack('scripts')
 <!-- begin olark code
 <script type="text/javascript">

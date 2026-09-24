@@ -1,3 +1,4 @@
+{{--/Users/hidalgoponce/Laravel/gotoperu-tailwind/resources/views/page/partials/package/body.blade.php--}}
     @php
         $heroDestinations = collect($paquete['paquetes_destinos'] ?? [])
             ->map(function ($destination) {
@@ -129,7 +130,7 @@
     <section class="package-story" x-data="{ openTab: 1 }">
         <div class="container">
             <div class="package-journey grid grid-cols-1 xl:grid-cols-12 items-start gap-7 pt-9 lg:pt-12 xl:gap-x-10 xl:gap-y-0">
-                <section id="package-overview" class="package-overview xl:col-span-8 xl:col-start-1 xl:row-start-1" aria-labelledby="package-overview-title" x-show="openTab === 1"
+                <section id="package-overview" data-analytics-section="overview" class="package-overview xl:col-span-8 xl:col-start-1 xl:row-start-1" aria-labelledby="package-overview-title" x-show="openTab === 1"
                     x-transition:enter="transition duration-500 transform ease-in" x-transition:enter-start="opacity-0">
                     <div class="package-overview__copy bg-white" data-package-reveal>
                         <span aria-hidden="true" class="inline-flex items-center gap-1 mb-6"><span class="inline-block w-1 h-2.5 bg-secondary"></span><span class="inline-block w-3 h-2.5 bg-secondary"></span><span class="inline-block w-5 h-2.5 bg-secondary"></span></span>
@@ -148,7 +149,7 @@
                         <a class="venobox" data-gall="myGallery" href="{{ $paquete['mapa'] }}"><img
                                 src="{{ $paquete['mapa'] }}" class="w-full object-contain" /></a>
                     </figure>
-                    <div class="package-itinerary">
+                    <div class="package-itinerary" data-analytics-section="itinerary">
                         <div class="package-itinerary__layout">
                             <div class="package-itinerary__intro">
                                 <div data-package-reveal>
@@ -254,7 +255,7 @@
                                 <p class="package-commercial__destinations text-xs text-white/80">{{ $heroDestinations->implode(' • ') }}</p>
                             @endif
                             <div class="package-commercial__actions">
-                                <a href="#form-dream-adventure" @if ($campaign) data-quote-source="rail" @endif class="btn-secondary text-center">Request a Quote</a>
+                                <a href="#form-dream-adventure" data-quote-source="rail" class="btn-secondary text-center">Request a Quote</a>
                                 @if ($showPackageBooking)
                                     <button type="button" class="package-commercial__book text-xs text-white/80 underline hover:text-secondary"
                                         @click="document.getElementById('wetravel_button_widget').click()">Book Now</button>
@@ -479,7 +480,7 @@
             {{--            </div> --}}
 
                 @if ($showPriceCategories)
-                <div id="package-prices" class="package-prices xl:col-span-8 xl:col-start-1 xl:row-start-3">
+                <div id="package-prices" data-analytics-section="prices" class="package-prices xl:col-span-8 xl:col-start-1 xl:row-start-3">
             <section class="hidden">
                 @if ($paquete['is_p_t'] == 1)
                     <section class="my-12 flex flex-col gap-4" id="prices">
@@ -831,7 +832,7 @@
 
     @endphp
 
-    <section id="package-included" class="relative bg-gray-50" aria-labelledby="package-coverage-title">
+    <section id="package-included" data-analytics-section="included" class="relative bg-gray-50" aria-labelledby="package-coverage-title">
         <div class="container">
             <div class="relative z-10 py-16 lg:py-20 xl:pb-0">
                 <header class="package-coverage__intro mb-10" data-package-reveal>
@@ -912,7 +913,7 @@
                         <div class="min-w-0 p-6 pb-0 sm:flex-1 sm:pb-6 xl:flex-none xl:pb-0">
                             <p class="text-xs font-semibold uppercase tracking-wider text-secondary">Personalized Service</p>
                             <h3 class="mt-2 text-lg font-semibold leading-snug">
-                                <a href="#form-dream-adventure" @if ($campaign) data-quote-source="final" @endif class="inline-flex items-start gap-2 transition-colors duration-200 hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary">
+                                <a href="#form-dream-adventure" data-quote-source="final" class="inline-flex items-start gap-2 transition-colors duration-200 hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary">
                                     <span>Plan with our Peru experts</span>
                                     <x-heroicon-o-arrow-right class="mt-1 h-4 w-4 flex-shrink-0" aria-hidden="true" />
                                 </a>
@@ -964,7 +965,7 @@
     {{--        </div> --}}
     {{--    </section> --}}
 
-    <section class="bg-white" x-data="{ openDes: 1 }" id="hotels" aria-labelledby="package-hotels-title">
+    <section class="bg-white" x-data="{ openDes: 1 }" id="hotels" data-analytics-section="recommended_hotels" aria-labelledby="package-hotels-title">
         <div class="container">
             <div class="py-16 lg:py-20">
                 <header class="grid grid-cols-12 items-end gap-y-2">
