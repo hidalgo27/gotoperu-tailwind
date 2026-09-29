@@ -13,10 +13,14 @@ use Livewire\Component;
 
 class FormFooter extends Component
 {
-    public $values_categories = [], $values_number, $values_trip_length, $travel_day, $comment, $name, $email, $phone, $country, $phonecountry, $values_number_input, $success, $device, $browser;
+    public $values_categories = [], $values_number, $values_trip_length = [], $travel_day, $comment, $name, $email, $phone, $country, $phonecountry, $values_number_input, $success, $device, $browser;
     public $firstTouch = [];
+    public $step = 1;
+    public $preferredContactMethod = [];
     public $ctaSource = 'form';
     public $marketingHome = false;
+    public $conversionPageType = 'home';
+    public $conversionPagePath = '/';
 
     public function mount()
     {
@@ -32,26 +36,25 @@ class FormFooter extends Component
 
         $this->browser = $agent->browser();
         $this->marketingHome = request()->routeIs('home');
-        if ($this->marketingHome) {
-            $this->firstTouch = array_merge([
-                'first_landing_type' => 'home',
-                'first_landing_path' => '/',
-            ], request()->only(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid']));
-        }
+        $this->conversionPageType = $this->marketingHome ? 'home'
+            : (request()->routeIs('packages.detail') ? 'package' : (request()->routeIs('offers.show') ? 'offer' : 'other'));
+        $this->conversionPagePath = request()->getPathInfo();
+        $this->firstTouch = array_merge([
+            'first_landing_type' => $this->conversionPageType,
+            'first_landing_path' => $this->conversionPagePath,
+        ], request()->only(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid']));
     }
 
-    public function updatingMarketingHome()
+    public function updating($name)
     {
         // The page that mounted this shared form is server-owned.
-        abort(403);
+        if (in_array($name, ['marketingHome', 'conversionPageType', 'conversionPagePath'], true)) {
+            abort(403);
+        }
     }
 
     protected function marketingAttribution()
     {
-        if (!$this->marketingHome) {
-            return [];
-        }
-
         $firstTouch = is_array($this->firstTouch) ? $this->firstTouch : [];
         $firstPath = $firstTouch['first_landing_path'] ?? null;
         $validFirstTouch = in_array($firstTouch['first_landing_type'] ?? null, ['home', 'package', 'offer', 'other'], true)
@@ -59,8 +62,8 @@ class FormFooter extends Component
             && strpos($firstPath, '/') === 0 && strpos($firstPath, '//') !== 0
             && !preg_match('/[<>?#\x00-\x1F\x7F]/u', $firstPath);
         $attribution = [
-            'First Landing Type' => $validFirstTouch ? $firstTouch['first_landing_type'] : 'home',
-            'First Landing' => $validFirstTouch ? $firstPath : '/',
+            'First Landing Type' => $validFirstTouch ? $firstTouch['first_landing_type'] : $this->conversionPageType,
+            'First Landing' => $validFirstTouch ? $firstPath : $this->conversionPagePath,
         ];
         foreach ([
             'utm_source' => 'UTM Source', 'utm_medium' => 'UTM Medium', 'utm_campaign' => 'UTM Campaign',
@@ -81,8 +84,8 @@ class FormFooter extends Component
                 $attribution[$label] = $value;
             }
         }
-        $attribution['Conversion Page Type'] = 'home';
-        $attribution['Conversion Page'] = '/';
+        $attribution['Conversion Page Type'] = $this->conversionPageType;
+        $attribution['Conversion Page'] = $this->conversionPagePath;
         $attribution['CTA Source'] = in_array($this->ctaSource, ['hero', 'rail', 'final', 'form'], true) ? $this->ctaSource : 'form';
         return $attribution;
     }
@@ -113,11 +116,23 @@ class FormFooter extends Component
     }
 
     public function store(){
+        if ($this->success) {
+            return;
+        }
+        $this->resetValidation();
+        $this->step = 2;
         $this->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required'
+            'phone' => 'required',
+            'comment' => 'nullable|string',
+            'preferredContactMethod' => 'nullable|array',
+            'preferredContactMethod.*' => 'string|distinct|in:WhatsApp,Email,Phone,No preference',
         ]);
+
+        $this->preferredContactMethod = in_array('No preference', $this->preferredContactMethod ?? [], true)
+            ? ['No preference']
+            : array_values(array_intersect(['WhatsApp', 'Email', 'Phone'], $this->preferredContactMethod ?? []));
 
         $attribution = $this->marketingAttribution();
         $g1Comment = $this->comment;
@@ -128,6 +143,11 @@ class FormFooter extends Component
             }
             $block = "[Marketing Attribution]\n" . implode("\n", $lines) . "\n[/Marketing Attribution]";
             $g1Comment = (string) $this->comment . (trim((string) $this->comment) !== '' ? "\n\n" : '') . $block;
+        }
+
+        if ($this->preferredContactMethod) {
+            $g1Comment = (string) $g1Comment . (trim((string) $g1Comment) !== '' ? "\n\n" : '')
+                . 'Preferred contact: ' . implode(', ', $this->preferredContactMethod);
         }
 
         $from = 'info@gotoperu.com';
@@ -143,12 +163,16 @@ class FormFooter extends Component
             $hotels_s.=$item;
         }
 
-        // Parsear la fecha recibida de Livewire, que probablemente esté en un formato legible como "9 Oct 2024"
-        $travelDay = Carbon::parse($this->travel_day);
-
-        // Formatear la fecha a ISO 8601 ("Y-m-d\TH:i:s.v\Z"), que es el formato deseado
-//        $formattedDate = $travelDay->format('Y-m-d\TH:i:s.v\Z');
-        $formattedDate = $travelDay->format('Y-m-d');
+        $formattedDate = null;
+        if (filled($this->travel_day)) {
+            try {
+                $formattedDate = Carbon::parse($this->travel_day)->format('Y-m-d');
+            } catch (\Throwable $exception) {
+                $this->step = 1;
+                $this->addError('travel_day', 'Please select a valid travel date or leave it blank.');
+                return;
+            }
+        }
 
 
 
@@ -186,7 +210,7 @@ class FormFooter extends Component
             "hotel_category" => array_values(array_filter($this->values_categories)),
             "destinations" => [],
             "passengers" => $travellers,
-            "duration" => array_values($this->values_trip_length),
+            "duration" => array_values($this->values_trip_length ?? []),
             "travel_date"=>$formattedDate,
             "country"=>$this->country,
             "country_code"=>$this->phonecountry,
@@ -207,6 +231,7 @@ class FormFooter extends Component
 
 
 
+        $leadCreated = false;
         try {
             $response2 = Http::post('https://app.g1.agency/api/v1/leads/', $data2);
 
@@ -214,49 +239,60 @@ class FormFooter extends Component
             // Enviar los datos al servicio mediante una solicitud HTTP POST
 //            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
             if ($response2->successful()) {
-                if ($this->marketingHome) {
-                    $analyticsTravellers = is_scalar($travellers) ? filter_var($travellers, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) : false;
-                    $analyticsCategories = array_unique(array_map('strval', array_filter($this->values_categories, function ($value) {
-                        return in_array($value, ['3', '4', '5', 3, 4, 5], true);
-                    })));
-                    sort($analyticsCategories, SORT_STRING);
-                    $this->dispatchBrowserEvent('gtp:generate-lead', array_filter([
-                        'lead_event_id' => (string) \Illuminate\Support\Str::uuid(),
-                        'first_landing_type' => $attribution['First Landing Type'],
-                        'conversion_page_type' => 'home',
-                        'cta_source' => $attribution['CTA Source'],
-                        'number_travelers' => $analyticsTravellers === false ? null : $analyticsTravellers,
-                        'hotel_category' => implode('|', $analyticsCategories),
-                    ], function ($value) { return $value !== null && $value !== ''; }));
+                $leadCreated = true;
+                $analyticsTravellers = is_scalar($travellers) ? filter_var($travellers, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) : false;
+                $analyticsCategories = array_unique(array_map('strval', array_filter($this->values_categories, function ($value) {
+                    return in_array($value, ['3', '4', '5', 3, 4, 5], true);
+                })));
+                sort($analyticsCategories, SORT_STRING);
+                $this->dispatchBrowserEvent('gtp:generate-lead', array_filter([
+                    'lead_event_id' => (string) \Illuminate\Support\Str::uuid(),
+                    'first_landing_type' => $attribution['First Landing Type'],
+                    'conversion_page_type' => $attribution['Conversion Page Type'],
+                    'cta_source' => $attribution['CTA Source'],
+                    'number_travelers' => $analyticsTravellers === false ? null : $analyticsTravellers,
+                    'hotel_category' => implode('|', $analyticsCategories),
+                ], function ($value) { return $value !== null && $value !== ''; }));
+                try {
+                    Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
+                        $messaje->to($this->email, $this->name)
+                            ->subject('GotoPeru')
+                            /*->attach('ruta')*/
+                            ->from('info@gotoperu.com', 'GotoPeru');
+                    });
+                } catch (\Throwable $exception) {
+                    Log::error('G1 lead created; client notification failed.', [
+                        'message' => $exception->getMessage(),
+                    ]);
                 }
-                Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
-                    $messaje->to($this->email, $this->name)
-                        ->subject('GotoPeru')
-                        /*->attach('ruta')*/
-                        ->from('info@gotoperu.com', 'GotoPeru');
-                });
-                Mail::send(['html' => 'notifications.page.admin-form-footer'], [
+                try {
+                    Mail::send(['html' => 'notifications.page.admin-form-footer'], [
 
-                    'category_all' => implode(', ', $this->values_categories),
-                    'travellers_all' => $travellers,
-                    'trip_length' => implode(', ', $this->values_trip_length),
-                    'travel_day_all' => $this->travel_day,
-                    'comentario' => $this->comment,
-                    'attribution' => $attribution,
-                    'nombre' => $this->name,
-                    'email' => $this->email,
-                    'telefono' => $this->phone,
-                    'code' => $this->phonecountry,
-                    'device' => $this->device,
-                    'browser' => $this->browser
+                        'category_all' => implode(', ', $this->values_categories),
+                        'travellers_all' => $travellers,
+                        'trip_length' => implode(', ', $this->values_trip_length ?? []),
+                        'travel_day_all' => $this->travel_day,
+                        'comentario' => $this->comment,
+                        'attribution' => $attribution,
+                        'nombre' => $this->name,
+                        'email' => $this->email,
+                        'telefono' => $this->phone,
+                        'code' => $this->phonecountry,
+                        'device' => $this->device,
+                        'browser' => $this->browser
 
-                ], function ($messaje) use ($from) {
-                    $messaje->to($from, 'GotoPeru')
-                        ->subject('GotoPeru')
-                        //                    ->cc($from2, 'GotoPeru')
-                        /*->attach('ruta')*/
-                        ->from('info@gotoperu.com', 'GotoPeru');
-                });
+                    ], function ($messaje) use ($from) {
+                        $messaje->to($from, 'GotoPeru')
+                            ->subject('GotoPeru')
+                            //                    ->cc($from2, 'GotoPeru')
+                            /*->attach('ruta')*/
+                            ->from('info@gotoperu.com', 'GotoPeru');
+                    });
+                } catch (\Throwable $exception) {
+                    Log::error('G1 lead created; admin notification failed.', [
+                        'message' => $exception->getMessage(),
+                    ]);
+                }
 
                 $this->reset('values_categories');
                 $this->reset('values_number');
@@ -264,7 +300,6 @@ class FormFooter extends Component
                 $this->reset('values_trip_length');
                 $this->reset('travel_day');
                 $this->reset('comment');
-                $this->reset('name');
                 $this->reset('email');
                 $this->reset('phone');
                 $this->reset('phonecountry');
@@ -287,7 +322,11 @@ class FormFooter extends Component
                 'message' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-            $this->addError('api_error', 'Ocurrió un error al enviar los datos.');
+            if ($leadCreated) {
+                $this->success = __('message.msg_email');
+            } else {
+                $this->addError('api_error', 'Ocurrió un error al enviar los datos.');
+            }
         }
 
 

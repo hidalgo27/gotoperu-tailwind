@@ -1383,6 +1383,7 @@
 
     @livewire('page.form-footer-detail', [
         'paquete' => $paquete['titulo'],
+        'packageDuration' => $paquete['duracion'],
         'packageId' => (int) $paquete['id'],
         'packageSlug' => $paquete['url'],
         'campaignId' => $campaign ? (int) $campaign->id : null,

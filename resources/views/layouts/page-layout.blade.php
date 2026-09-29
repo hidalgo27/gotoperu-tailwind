@@ -337,7 +337,7 @@
 {{--'nav_sub_links' => []--}}
 {{--],--}}
 
-<div class="fixed bottom-0 right-0 z-40 py-2 px-4 sm:inline-flex md:mb-0 md:hidden">
+<div data-quote-floating class="fixed bottom-0 right-0 z-40 py-2 px-4 sm:inline-flex md:mb-0 md:hidden">
     <a href="#form-dream-adventure">
         <div class="flex items-center">
             <span class="bg-gray-800 text-white -mr-3 py-2 px-4 rounded-lg border-2 border-secondary">Start my quote</span>
@@ -346,14 +346,14 @@
     </a>
 </div>
 
-    <div class="fixed bottom-0 mb-20 right-0 z-40 py-6 px-7 sm:inline-flex md:mb-0">
+    <div data-quote-floating class="fixed bottom-0 mb-20 right-0 z-40 py-6 px-7 sm:inline-flex md:mb-0">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank">
             <span class="flex relative h-10 w-10">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
             </span>
         </a>
     </div>
-    <div class="fixed bottom-0 mb-20 right-0 z-40 py-5 px-4 sm:inline-flex md:mb-0">
+    <div data-quote-floating class="fixed bottom-0 mb-20 right-0 z-40 py-5 px-4 sm:inline-flex md:mb-0">
         <a href="https://api.whatsapp.com/send?phone=12024911478" target="_blank" data-analytics-cta="whatsapp">
             <img src="{{asset('images/whatsapp-i.png')}}" alt="" class="w-16">
         </a>
@@ -767,7 +767,8 @@
         if (window.GTPAnalytics) return;
         window.dataLayer = window.dataLayer || [];
         const page = @json($marketingPageContext);
-        const relevant = ['home', 'package', 'offer'].includes(page.page_type);
+        const relevant = ['home', 'package', 'offer'].includes(page.page_type)
+            || !!document.querySelector('[data-quote-form="general"]');
         const storageKey = 'gtp_marketing_attribution_v1';
         const queryKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
         const landingTypes = ['home', 'package', 'offer', 'other'];
@@ -816,6 +817,7 @@
             gtp_section_view: ['section_name', 'page_type', 'package_slug', 'offer_slug'],
             gtp_cta_click: ['cta_name', 'cta_source', 'page_type', 'package_slug', 'offer_slug'],
             gtp_lead_form_start: ['page_type', 'package_slug', 'offer_slug', 'cta_source'],
+            gtp_lead_step_1_complete: ['page_type', 'package_slug', 'offer_slug', 'cta_source'],
             generate_lead: ['first_landing_type', 'conversion_page_type', 'package_id', 'package_slug', 'offer_slug', 'cta_source', 'number_travelers', 'hotel_category']
         };
         window.GTPAnalytics = {
@@ -858,8 +860,10 @@
         };
         ['focusin', 'input', 'change'].forEach(event => document.addEventListener(event, formStart, true));
         const observeSections = () => {
-            if (!['package', 'offer'].includes(page.page_type) || !('IntersectionObserver' in window)) return;
-            const allowed = ['overview', 'itinerary', 'prices', 'included', 'recommended_hotels', 'lead_form'];
+            if (!('IntersectionObserver' in window)) return;
+            const allowed = ['package', 'offer'].includes(page.page_type)
+                ? ['overview', 'itinerary', 'prices', 'included', 'recommended_hotels', 'lead_form']
+                : ['lead_form'];
             const seen = new Set();
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
