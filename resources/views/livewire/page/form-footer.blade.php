@@ -48,10 +48,7 @@
              );
          },
          init() {
-             this.viewportResizeHandler = () => {
-                 this.updateFloatingActions();
-                 this.keepFocusedFieldVisible();
-             };
+             this.viewportResizeHandler = () => this.updateFloatingActions();
              this.viewportScrollHandler = () => this.updateFloatingActions();
              if (window.visualViewport) {
                  window.visualViewport.addEventListener('resize', this.viewportResizeHandler);
@@ -59,30 +56,53 @@
              }
          },
          destroy() {
-             clearTimeout(this.fieldVisibilityTimer);
+             this.clearFocusedField();
              if (window.visualViewport) {
                  window.visualViewport.removeEventListener('resize', this.viewportResizeHandler);
                  window.visualViewport.removeEventListener('scroll', this.viewportScrollHandler);
              }
          },
-         keepFocusedFieldVisible() {
-             if (window.innerWidth >= 768) return;
-             const field = document.activeElement;
-             if (!field || !this.$el.contains(field) || field.readOnly
+         rememberFocusedField(field) {
+             if (window.innerWidth >= 768 || !field || field.readOnly
                  || !field.matches('textarea, input[type=text], input[type=email], input[type=tel]')) return;
+             this.clearFocusedField();
+             this.focusedField = field;
+             if (window.visualViewport) {
+                 this.fieldViewportHandler = () => {
+                     cancelAnimationFrame(this.fieldVisibilityFrame);
+                     this.fieldVisibilityFrame = requestAnimationFrame(() => {
+                         this.fieldVisibilityFrame = requestAnimationFrame(() => this.keepFocusedFieldVisible());
+                     });
+                 };
+                 window.visualViewport.addEventListener('resize', this.fieldViewportHandler);
+                 window.visualViewport.addEventListener('scroll', this.fieldViewportHandler);
+             } else {
+                 this.fieldVisibilityTimer = setTimeout(() => this.keepFocusedFieldVisible(), 300);
+             }
+         },
+         clearFocusedField(field = null) {
+             if (field && field !== this.focusedField) return;
              clearTimeout(this.fieldVisibilityTimer);
-             this.fieldVisibilityTimer = setTimeout(() => {
-                 if (window.innerWidth >= 768 || document.activeElement !== field || !field.isConnected) return;
-                 const viewport = window.visualViewport;
-                 const top = (viewport ? viewport.offsetTop : 0) + 16;
-                 const bottom = (viewport ? viewport.offsetTop + viewport.height : window.innerHeight) - 16;
-                 const bounds = field.getBoundingClientRect();
-                 if (bounds.top < top || bounds.bottom > bottom) {
-                     const offset = bounds.top < top || bounds.height > bottom - top
-                         ? bounds.top - top : bounds.bottom - bottom;
-                     window.scrollBy({ top: offset, left: 0, behavior: 'auto' });
-                 }
-             }, 300);
+             cancelAnimationFrame(this.fieldVisibilityFrame);
+             if (window.visualViewport && this.fieldViewportHandler) {
+                 window.visualViewport.removeEventListener('resize', this.fieldViewportHandler);
+                 window.visualViewport.removeEventListener('scroll', this.fieldViewportHandler);
+             }
+             this.focusedField = null;
+             this.fieldViewportHandler = null;
+         },
+         keepFocusedFieldVisible() {
+             const field = this.focusedField;
+             if (window.innerWidth >= 768 || !field || document.activeElement !== field || !field.isConnected) return;
+             const viewport = window.visualViewport;
+             const top = (viewport ? viewport.offsetTop : 0) + 16;
+             const bottom = (viewport ? viewport.offsetTop + viewport.height : window.innerHeight) - 16;
+             const bounds = field.getBoundingClientRect();
+             if (bounds.top < top || bounds.bottom > bottom) {
+                 const offset = bounds.top < top || bounds.height > bottom - top
+                     ? bounds.top - top : bounds.bottom - bottom;
+                 window.scrollBy({ top: offset, left: 0, behavior: 'auto' });
+             }
          },
          updateFloatingActions() {
              const viewport = window.visualViewport;
@@ -155,8 +175,8 @@
                                 <legend class="text-sm font-semibold text-tertiary mb-1 md:mb-2 w-full md:w-auto">
                                     <span class="flex items-center justify-between gap-2">
                                         <span>Number of travelers</span>
-                                        <button type="button" class="quote-action flex-shrink-0 px-2 text-xs font-normal md:hidden border text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-                                                :class="number === 'Undecided' ? 'border-primary bg-white' : 'border-transparent'"
+                                        <button type="button" class="quote-action flex-shrink-0 px-2 text-xs md:hidden text-primary focus:outline-none focus:underline"
+                                                :class="number === 'Undecided' ? 'font-semibold' : 'font-normal'"
                                                 :aria-pressed="number === 'Undecided'"
                                                 @click="number = number === 'Undecided' ? null : 'Undecided'; specified = null">
                                             Not sure yet
@@ -265,7 +285,7 @@
                             </button>
                         </div>
 
-                        <div x-show="step === 2" x-cloak class="grid grid-cols-1 gap-4 md:block md:space-y-6" @focusin="keepFocusedFieldVisible()">
+                        <div x-show="step === 2" x-cloak class="grid grid-cols-1 gap-4 md:block md:space-y-6" @focusin="rememberFocusedField($event.target)" @focusout="clearFocusedField($event.target)">
                             <div>
                                 <label for="quote-name-general" class="block text-sm font-semibold text-tertiary mb-2">Full name</label>
                                 <input id="quote-name-general" wire:model.defer="name" type="text" autocomplete="name"
@@ -293,14 +313,14 @@
                             <fieldset class="min-w-0">
                                 <legend class="text-sm font-semibold text-tertiary">How would you prefer us to contact you?</legend>
                                 <p class="text-xs text-gray-500 mt-2 mb-3 md:mt-1">Optional</p>
-                                <div class="flex gap-0 border border-gray-300 divide-x divide-gray-300 md:grid md:grid-cols-4 md:gap-2 md:border-0 md:divide-x-0">
+                                <div class="grid grid-cols-2 gap-2 md:grid-cols-4">
                                     @foreach(['WhatsApp', 'Email', 'Phone', 'No preference'] as $contactMethod)
                                         <label class="relative cursor-pointer flex-auto min-w-12 md:min-w-0" wire:key="quote-contact-{{ $loop->index }}">
                                             <input type="checkbox" value="{{ $contactMethod }}" class="quote-choice-input sr-only"
                                                    x-effect="$el.checked = (preferredContact || []).includes($el.value)"
                                                    @change="setPreferredContact($event.target.value, $event.target.checked)">
-                                            <span class="quote-choice flex items-center justify-center gap-2 text-center md:border border-gray-300 bg-gray-50 px-1 py-4 md:py-5 md:px-3 text-primary hover:border-primary">
-                                                <span class="text-sm text-tertiary">@if($contactMethod === 'No preference')<span class="md:hidden">Any</span><span class="hidden md:inline">{{ $contactMethod }}</span>@else{{ $contactMethod }}@endif</span>
+                                            <span class="quote-choice flex items-center justify-center gap-2 text-center border border-gray-300 bg-gray-50 px-1 py-4 md:py-5 md:px-3 text-primary hover:border-primary">
+                                                <span class="text-sm text-tertiary">{{ $contactMethod }}</span>
                                             </span>
                                         </label>
                                     @endforeach
@@ -546,27 +566,47 @@
 
     <!-- Inicialización de Pikaday -->
     <script>
-        var picker = new Pikaday({
-            field: document.querySelector('[data-quote-form="general"] #datepicker'),
-            minDate: new Date(),
-            format: 'D MMM YYYY',  // Especifica el formato correcto
-            toString(date, format) {
-                // Usa Moment.js para el formato de salida
-                return moment(date).format(format);
-            },
-            parse(dateString, format) {
-                // Usa Moment.js para el formato de entrada
-                return moment(dateString, format).toDate();
-            },
-            onSelect: function(date) {
-                console.log(this.getMoment().format('D MMM YYYY')); // Verificación en consola
+        (() => {
+            const formRoot = document.querySelector('[data-quote-form="general"]');
+            const componentId = formRoot.getAttribute('wire:id');
+            let closeAfterSelection = false;
+            const closeSelectedCalendar = () => {
+                if (!closeAfterSelection) return;
+                picker.hide();
                 const field = document.querySelector('[data-quote-form="general"] #datepicker');
-                if (field && field.readOnly) {
-                    this.hide();
-                    field.blur();
+                if (field) field.blur();
+            };
+            const picker = new Pikaday({
+                field: formRoot.querySelector('#datepicker'),
+                minDate: new Date(),
+                format: 'D MMM YYYY',  // Especifica el formato correcto
+                toString(date, format) {
+                    // Usa Moment.js para el formato de salida
+                    return moment(date).format(format);
+                },
+                parse(dateString, format) {
+                    // Usa Moment.js para el formato de entrada
+                    return moment(dateString, format).toDate();
+                },
+                onSelect: function(date) {
+                    console.log(this.getMoment().format('D MMM YYYY')); // Verificación en consola
+                    if (window.innerWidth >= 768 && !/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
+                    // Pikaday has already updated the value and emitted its change event.
+                    @this.set('travel_day', this.toString(), true);
+                    closeAfterSelection = true;
+                    requestAnimationFrame(closeSelectedCalendar);
                 }
-            }
-        });
+            });
+            formRoot.addEventListener('pointerdown', event => {
+                if (event.target.matches('#datepicker')) closeAfterSelection = false;
+            });
+            // Close again after Livewire morphs the field; a new user tap can reopen it.
+            window.Livewire.hook('message.processed', (message, component) => {
+                if (component.id === componentId && closeAfterSelection) {
+                    requestAnimationFrame(closeSelectedCalendar);
+                }
+            });
+        })();
     </script>
 
 @endpush
