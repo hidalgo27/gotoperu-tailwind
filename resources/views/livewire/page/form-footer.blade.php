@@ -276,7 +276,7 @@
                                 <p class="hidden md:block text-xs text-gray-500 mt-1 mb-3">Optional · Select one or more</p>
                                 <div class="grid grid-cols-3 gap-0 border border-gray-300 divide-x divide-gray-300 md:gap-2 md:border-0 md:divide-x-0">
                                     @foreach(array_reverse($hotels, true) as $index => $hotel)
-                                        <label class="relative cursor-pointer min-w-0" wire:key="quote-hotel-{{ $index }}">
+                                        <label class="quote-touch-choice relative cursor-pointer min-w-0" wire:key="quote-hotel-{{ $index }}">
                                             <input wire:model.defer="values_categories.{{ $index }}" type="checkbox" value="{{ $hotel['star'] }}" class="quote-choice-input sr-only">
                                             <span class="quote-choice quote-hotel !min-h-16 md:!min-h-12 flex flex-col items-center justify-center text-center gap-2 md:gap-1 md:border border-gray-300 bg-gray-50 px-1 py-4 md:py-5 md:px-3 text-primary hover:border-primary">
                                                 <x-heroicon-o-check class="quote-choice-check !absolute top-0 right-0 mt-2 mr-2 hidden md:block w-4 h-4" aria-hidden="true" />
@@ -325,9 +325,9 @@
                             <fieldset class="min-w-0">
                                 <legend class="text-sm font-semibold text-tertiary">How would you prefer us to contact you?</legend>
                                 <p class="text-xs text-gray-500 mt-2 mb-3 md:mt-1">Optional</p>
-                                <div class="flex gap-0 border border-gray-300 divide-x divide-gray-300 md:grid md:grid-cols-4 md:gap-2 md:border-0 md:divide-x-0">
+                                <div class="grid grid-cols-4 gap-0 border border-gray-300 divide-x divide-gray-300 md:grid md:grid-cols-4 md:gap-2 md:border-0 md:divide-x-0">
                                     @foreach(['WhatsApp', 'Email', 'Phone', 'No preference'] as $contactMethod)
-                                        <label class="relative cursor-pointer flex-auto min-w-0" wire:key="quote-contact-{{ $loop->index }}">
+                                        <label class="quote-touch-choice relative cursor-pointer min-w-0" wire:key="quote-contact-{{ $loop->index }}">
                                             <input type="checkbox" value="{{ $contactMethod }}" class="quote-choice-input sr-only"
                                                    x-effect="$el.checked = (preferredContact || []).includes($el.value)"
                                                    @change="setPreferredContact($event.target.value, $event.target.checked)">
@@ -455,6 +455,7 @@
     [data-quote-form] .quote-hotel-stars { gap: .0625rem; }
     [data-quote-form] .quote-hotel-stars svg { flex-shrink: 0; }
     @media (max-width: 767px) {
+        [data-quote-form] .quote-touch-choice { touch-action: manipulation; }
         [data-quote-form="general"] .quote-step > .quote-trip-length { margin-top: 1rem; }
     }
     @media (min-width: 768px) {
