@@ -4,6 +4,7 @@
          stepOneTracked: false,
          ctaSource: @entangle('ctaSource').defer,
          submitted: @entangle('success'),
+         dateReadOnly: window.innerWidth < 768 || /iPhone|iPad|iPod/.test(navigator.userAgent),
          number: @entangle('values_number').defer,
          specified: @entangle('values_number_input').defer,
          preferredContact: @entangle('preferredContactMethod').defer,
@@ -46,13 +47,55 @@
                  method === value ? checked : selected.includes(method)
              );
          },
+         init() {
+             this.viewportResizeHandler = () => {
+                 this.updateFloatingActions();
+                 this.keepFocusedFieldVisible();
+             };
+             this.viewportScrollHandler = () => this.updateFloatingActions();
+             if (window.visualViewport) {
+                 window.visualViewport.addEventListener('resize', this.viewportResizeHandler);
+                 window.visualViewport.addEventListener('scroll', this.viewportScrollHandler);
+             }
+         },
+         destroy() {
+             clearTimeout(this.fieldVisibilityTimer);
+             if (window.visualViewport) {
+                 window.visualViewport.removeEventListener('resize', this.viewportResizeHandler);
+                 window.visualViewport.removeEventListener('scroll', this.viewportScrollHandler);
+             }
+         },
+         keepFocusedFieldVisible() {
+             if (window.innerWidth >= 768) return;
+             const field = document.activeElement;
+             if (!field || !this.$el.contains(field) || field.readOnly
+                 || !field.matches('textarea, input[type=text], input[type=email], input[type=tel]')) return;
+             clearTimeout(this.fieldVisibilityTimer);
+             this.fieldVisibilityTimer = setTimeout(() => {
+                 if (window.innerWidth >= 768 || document.activeElement !== field || !field.isConnected) return;
+                 const viewport = window.visualViewport;
+                 const top = (viewport ? viewport.offsetTop : 0) + 16;
+                 const bottom = (viewport ? viewport.offsetTop + viewport.height : window.innerHeight) - 16;
+                 const bounds = field.getBoundingClientRect();
+                 if (bounds.top < top || bounds.bottom > bottom) {
+                     const offset = bounds.top < top || bounds.height > bottom - top
+                         ? bounds.top - top : bounds.bottom - bottom;
+                     window.scrollBy({ top: offset, left: 0, behavior: 'auto' });
+                 }
+             }, 300);
+         },
          updateFloatingActions() {
-             const bounds = this.$el.getBoundingClientRect();
+             const viewport = window.visualViewport;
+             const top = viewport ? viewport.offsetTop : 0;
+             const bottom = top + (viewport ? viewport.height : window.innerHeight);
              const hide = window.innerWidth < 768
-                 && (this.submitted || this.step === 1 || this.step === 2)
-                 && bounds.top < window.innerHeight && bounds.bottom > 0;
+                 && Array.from(document.querySelectorAll('[data-quote-form]')).some(form => {
+                     const bounds = form.getBoundingClientRect();
+                     return bounds.height > 0 && bounds.top < bottom && bounds.bottom > top;
+                 });
              document.querySelectorAll('[data-quote-floating]').forEach(action => {
-                 action.classList.toggle('!hidden', hide);
+                 if (hide) action.style.setProperty('display', 'none', 'important');
+                 else action.style.removeProperty('display');
              });
          },
          goToStep(value) {
@@ -68,9 +111,9 @@
              this.$nextTick(() => this.$refs.stepHeading.focus());
          }
      }"
-     x-effect="updateFloatingActions()"
+     x-effect="step; submitted; $nextTick(() => updateFloatingActions())"
      @scroll.window.throttle.100ms="updateFloatingActions()"
-     @resize.window.debounce.100ms="updateFloatingActions()">
+     @resize.window.debounce.100ms="dateReadOnly = window.innerWidth < 768 || /iPhone|iPad|iPod/.test(navigator.userAgent); updateFloatingActions()">
     <div class="container mx-auto">
         <div class="{{ $success ? 'w-11/12 max-w-6xl mx-auto' : 'quote-form-inner w-11/12 max-w-2xl mx-auto' }}">
             <div class="{{ $success ? 'quote-form-inner mx-auto text-center mb-6' : 'mb-4 text-center md:block md:mb-6' }}">
@@ -96,10 +139,11 @@
                     </div>
 
                     <fieldset class="min-w-0" wire:loading.attr="disabled" wire:target="store">
-                        <div x-show="step === 1" class="space-y-4 md:space-y-6">
+                        <div x-show="step === 1" class="grid grid-cols-1 gap-4 md:block md:space-y-6">
                             <div>
                                 <label for="datepicker" class="block text-sm font-semibold text-tertiary mb-2"><span class="md:hidden">Travel date</span><span class="hidden md:inline">When would you like to travel?</span></label>
                                 <input id="datepicker" wire:model.lazy="travel_day" type="text" autocomplete="off"
+                                       :readonly="dateReadOnly" :inputmode="dateReadOnly ? 'none' : null"
                                        class="quote-input bg-gray-50 border border-gray-400 p-3 md:p-5 text-gray-700 w-full focus:outline-none focus:border-primary"
                                        placeholder="Select a tentative date" aria-describedby="quote-date-help-general quote-date-error-general"
                                        aria-invalid="{{ $errors->has('travel_day') ? 'true' : 'false' }}">
@@ -221,7 +265,7 @@
                             </button>
                         </div>
 
-                        <div x-show="step === 2" x-cloak class="space-y-4 md:space-y-6">
+                        <div x-show="step === 2" x-cloak class="grid grid-cols-1 gap-4 md:block md:space-y-6" @focusin="keepFocusedFieldVisible()">
                             <div>
                                 <label for="quote-name-general" class="block text-sm font-semibold text-tertiary mb-2">Full name</label>
                                 <input id="quote-name-general" wire:model.defer="name" type="text" autocomplete="name"
@@ -248,7 +292,7 @@
                             </div>
                             <fieldset class="min-w-0">
                                 <legend class="text-sm font-semibold text-tertiary">How would you prefer us to contact you?</legend>
-                                <p class="text-xs text-gray-500 mt-1 mb-2 md:mb-3">Optional</p>
+                                <p class="text-xs text-gray-500 mt-2 mb-3 md:mt-1">Optional</p>
                                 <div class="flex gap-0 border border-gray-300 divide-x divide-gray-300 md:grid md:grid-cols-4 md:gap-2 md:border-0 md:divide-x-0">
                                     @foreach(['WhatsApp', 'Email', 'Phone', 'No preference'] as $contactMethod)
                                         <label class="relative cursor-pointer flex-auto min-w-12 md:min-w-0" wire:key="quote-contact-{{ $loop->index }}">
@@ -516,6 +560,11 @@
             },
             onSelect: function(date) {
                 console.log(this.getMoment().format('D MMM YYYY')); // Verificación en consola
+                const field = document.querySelector('[data-quote-form="general"] #datepicker');
+                if (field && field.readOnly) {
+                    this.hide();
+                    field.blur();
+                }
             }
         });
     </script>
