@@ -86,6 +86,18 @@
              const field = this.focusedField;
              if (window.innerWidth >= 768 || !field || document.activeElement !== field || !field.isConnected) return;
              const viewport = window.visualViewport;
+             if (/CriOS\//.test(navigator.userAgent) && viewport) {
+                 const bounds = field.getBoundingClientRect();
+                 const top = viewport.offsetTop;
+                 const bottom = top + viewport.height;
+                 // Let Chrome finish its own positioning when the field is already visible.
+                 if (bounds.top >= top && bounds.bottom <= bottom) return;
+                 const margin = 8;
+                 const offset = bounds.top < top || bounds.height > viewport.height - margin * 2
+                     ? bounds.top - top - margin : bounds.bottom - bottom + margin;
+                 if (Math.abs(offset) > 1) window.scrollBy({ top: offset, left: 0, behavior: 'auto' });
+                 return;
+             }
              const top = (viewport ? viewport.offsetTop : 0) + 16;
              const bottom = (viewport ? viewport.offsetTop + viewport.height : window.innerHeight) - 16;
              const bounds = field.getBoundingClientRect();
@@ -272,14 +284,14 @@
                             <fieldset class="min-w-0">
                                 <legend class="text-sm font-semibold text-tertiary">How would you prefer us to contact you?</legend>
                                 <p class="text-xs text-gray-500 mt-2 mb-3 md:mt-1">Optional</p>
-                                <div class="grid grid-cols-2 gap-2 md:grid-cols-4">
+                                <div class="flex gap-0 border border-gray-300 divide-x divide-gray-300 md:grid md:grid-cols-4 md:gap-2 md:border-0 md:divide-x-0">
                                     @foreach(['WhatsApp', 'Email', 'Phone', 'No preference'] as $contactMethod)
-                                        <label class="relative cursor-pointer flex-auto min-w-12 md:min-w-0" wire:key="quote-contact-{{ $loop->index }}">
+                                        <label class="relative cursor-pointer flex-auto min-w-0" wire:key="quote-contact-{{ $loop->index }}">
                                             <input type="checkbox" value="{{ $contactMethod }}" class="quote-choice-input sr-only"
                                                    x-effect="$el.checked = (preferredContact || []).includes($el.value)"
                                                    @change="setPreferredContact($event.target.value, $event.target.checked)">
-                                            <span class="quote-choice flex items-center justify-center gap-2 text-center border border-gray-300 bg-gray-50 px-1 py-4 md:py-5 md:px-3 text-primary hover:border-primary">
-                                                <span class="text-sm text-tertiary">{{ $contactMethod }}</span>
+                                            <span class="quote-choice flex items-center justify-center gap-2 text-center md:border border-gray-300 bg-gray-50 px-2 py-4 md:py-5 md:px-3 text-primary hover:border-primary">
+                                                <span class="text-sm text-tertiary">@if($contactMethod === 'No preference')<span class="md:hidden">Any</span><span class="hidden md:inline">{{ $contactMethod }}</span>@else{{ $contactMethod }}@endif</span>
                                             </span>
                                         </label>
                                     @endforeach
@@ -493,6 +505,8 @@
         (() => {
             const formRoot = document.querySelector('[data-quote-form="detail"]');
             const componentId = formRoot.getAttribute('wire:id');
+            const isIPhone = /iPhone|iPod/.test(navigator.userAgent);
+            let suppressDateFocus = false;
             let closeAfterSelection = false;
             const closeSelectedCalendar = () => {
                 if (!closeAfterSelection) return;
@@ -504,6 +518,16 @@
                 field: formRoot.querySelector('#datepicker'),
                 minDate: new Date(),
                 onSelect: function() {
+                    if (isIPhone) {
+                        const value = this.toString();
+                        const field = formRoot.querySelector('#datepicker');
+                        field.value = value;
+                        suppressDateFocus = true;
+                        this.hide();
+                        field.blur();
+                        requestAnimationFrame(() => @this.set('travel_day', value));
+                        return;
+                    }
                     if (window.innerWidth >= 768 && !/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
                     // Pikaday has already updated the value and emitted its change event.
                     @this.set('travel_day', this.toString(), true);
@@ -513,13 +537,36 @@
             });
             formRoot.addEventListener('pointerdown', event => {
                 if (event.target.matches('#datepicker')) closeAfterSelection = false;
-            });
-            // Close again after Livewire morphs the field; a new user tap can reopen it.
-            window.Livewire.hook('message.processed', (message, component) => {
-                if (component.id === componentId && closeAfterSelection) {
-                    requestAnimationFrame(closeSelectedCalendar);
+                if (isIPhone && (event.target.matches('#datepicker') || event.target.closest('label[for=datepicker]'))) {
+                    suppressDateFocus = false;
                 }
             });
+            if (isIPhone) {
+                // Defer only Pikaday's own change until after hide/blur; other changes keep their behavior.
+                formRoot.addEventListener('change', event => {
+                    if (event.firedBy === picker) event.stopImmediatePropagation();
+                }, true);
+                // draw() schedules trigger.focus(); ignore that refocus and the trailing touch click.
+                const preventDateReopen = event => {
+                    if (!event.target.matches('#datepicker') || !suppressDateFocus) return;
+                    if (event.type === 'click' && event.isTrusted && event.detail === 0) {
+                        suppressDateFocus = false;
+                        return;
+                    }
+                    event.stopImmediatePropagation();
+                    if (event.type === 'click') event.preventDefault();
+                    event.target.blur();
+                };
+                formRoot.addEventListener('focus', preventDateReopen, true);
+                formRoot.addEventListener('click', preventDateReopen, true);
+            } else {
+                // Keep the existing Android/desktop closing behavior.
+                window.Livewire.hook('message.processed', (message, component) => {
+                    if (component.id === componentId && closeAfterSelection) {
+                        requestAnimationFrame(closeSelectedCalendar);
+                    }
+                });
+            }
         })();
     </script>
 
