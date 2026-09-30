@@ -820,11 +820,19 @@
             gtp_lead_step_1_complete: ['page_type', 'package_slug', 'offer_slug', 'cta_source'],
             generate_lead: ['first_landing_type', 'conversion_page_type', 'package_id', 'package_slug', 'offer_slug', 'cta_source', 'number_travelers', 'hotel_category']
         };
+        let formStarted = false;
         window.GTPAnalytics = {
             getFirstTouch: () => ({ ...firstTouch }),
             pageContext: () => ({ ...page }),
             push: (event, values = {}) => {
                 if (!relevant || !Object.prototype.hasOwnProperty.call(eventFields, event)) return;
+                if (event === 'gtp_lead_step_1_complete' && !formStarted) {
+                    window.GTPAnalytics.push('gtp_lead_form_start', values);
+                }
+                if (event === 'gtp_lead_form_start') {
+                    if (formStarted) return;
+                    formStarted = true;
+                }
                 const payload = { event };
                 eventFields[event].forEach(key => {
                     if (values[key] !== undefined && values[key] !== null && values[key] !== '') payload[key] = values[key];
@@ -849,13 +857,11 @@
                 analytics.push('gtp_cta_click', { ...page, cta_name: 'whatsapp', cta_source: 'floating' });
             }
         });
-        let formStarted = false;
         const formStart = event => {
             const input = event.target;
             if (formStarted || !event.isTrusted || !(input instanceof Element)
                 || !input.matches('input:not([type="hidden"]):not([type="submit"]), select, textarea')
                 || input.disabled || !input.closest('form[data-analytics-form="quote"]')) return;
-            formStarted = true;
             analytics.push('gtp_lead_form_start', { ...page, cta_source: ctaSource });
         };
         ['focusin', 'input', 'change'].forEach(event => document.addEventListener(event, formStart, true));
