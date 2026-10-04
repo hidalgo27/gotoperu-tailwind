@@ -177,7 +177,7 @@
                 .package-glance__facts { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
                 .package-glance__facts > div { flex-direction: column; align-items: flex-start; }
             }
-            /* Mobile overrides stay in this view, including the shared floating actions. */
+            /* Mobile Hero overrides stay in this view. */
             @media (max-width: 767px) {
                 .package-hero__gallery-controls > .venobox { display: none; }
                 .package-hero__gallery-controls { top: calc(16px + var(--package-gallery-header-overlap, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); gap: 0; max-width: calc(100% - 32px); }
@@ -190,41 +190,6 @@
                 .package-hero__actions > button { flex: 0 0 100%; width: 100%; min-height: 44px; }
                 .package-hero__scroll { margin-top: 32px; }
 
-                .fixed.bottom-0:has(> a[href="#form-dream-adventure"]),
-                .fixed.bottom-0:has(> a[href^="https://api.whatsapp.com/send"] > img) {
-                    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-                    z-index: 20;
-                    margin: 0;
-                    padding: 0;
-                }
-                .fixed.bottom-0:has(> a[href="#form-dream-adventure"]) {
-                    left: max(12px, env(safe-area-inset-left, 0px));
-                    right: auto;
-                    max-width: calc(100% - 88px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
-                }
-                .fixed.bottom-0 > a[href="#form-dream-adventure"] { display: flex; align-items: center; min-height: 48px; }
-                .fixed.bottom-0 > a[href="#form-dream-adventure"] > div > span {
-                    padding: 10px 18px 10px 12px;
-                    margin-right: -12px;
-                    font-size: .75rem;
-                    line-height: 1.2;
-                    white-space: nowrap;
-                }
-                .fixed.bottom-0 > a[href="#form-dream-adventure"] img { width: 48px; height: 48px; flex-shrink: 0; }
-                .fixed.bottom-0:has(> a[href^="https://api.whatsapp.com/send"] > img) {
-                    right: max(12px, env(safe-area-inset-right, 0px));
-                    left: auto;
-                }
-                .fixed.bottom-0:has(> a[href^="https://api.whatsapp.com/send"] > img) > a {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 48px;
-                    height: 48px;
-                }
-                .fixed.bottom-0 > a[href^="https://api.whatsapp.com/send"] > img { width: 48px; height: 48px; object-fit: contain; }
-                /* The pulse has its own duplicate link; the actual WhatsApp action stays visible. */
-                .fixed.bottom-0:has(> a[href^="https://api.whatsapp.com/send"] > span) { display: none; }
             }
             @media (prefers-reduced-motion: no-preference) {
                 .package-hero__gallery { animation: package-photo-enter 1.1s ease-out both; }
@@ -244,7 +209,6 @@
                 .package-hero__scroll { animation-delay: .62s; }
                 .package-hero__scroll svg { animation: package-scroll-cue 2.8s ease-in-out 3; }
                 .package-hero__progress-fill { transition: transform .7s ease-out; }
-                [data-package-reveal] { transition: opacity .7s ease-out, transform .7s ease-out; }
                 .package-route__map[data-package-reveal] { transition-delay: .1s; }
                 .package-coverage__details[data-package-reveal] { transition-delay: .1s; }
                 .package-itinerary__panel { transition: grid-template-rows .3s ease-out, opacity .25s ease-out; }
@@ -255,13 +219,11 @@
                 .package-itinerary__day.is-open .package-itinerary__body { transform: translateY(0); transition-delay: .15s; }
                 .package-itinerary__chevron { transition: transform .3s ease-out; }
                 .package-itinerary__day-title { transition: color .18s ease; }
-                .package-reveal-pending { opacity: 0; transform: translateY(16px); }
                 .package-coverage__intro.package-reveal-pending,
                 .package-coverage__details.package-reveal-pending { transform: translateY(10px); }
             }
             @keyframes package-scroll-cue { 0%, 100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(4px); opacity: 1; } }
             @keyframes package-photo-enter { from { opacity: .4; } to { opacity: 1; } }
-            @keyframes package-hero-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
         </style>
         @if (!empty($campaign))
             <style>
@@ -287,8 +249,8 @@
         <script>
             (() => {
                 const controls = document.querySelector('.package-hero__gallery-controls');
-                const menu = document.querySelector('.menu-movil');
-                if (!controls || !menu) return;
+                const mobileHeader = document.querySelector('[data-mobile-site-header]');
+                if (!controls || !mobileHeader) return;
                 const hero = controls.closest('.package-hero');
                 const mobile = window.matchMedia('(max-width: 767px)');
                 const positionCounter = () => {
@@ -296,10 +258,10 @@
                         controls.style.removeProperty('--package-gallery-header-overlap');
                         return;
                     }
-                    // Keep the counter anchored to the photo, allowing for the fixed menu at page start.
+                    // Measure the shared fixed header; its bounds stay stable when the drawer opens.
                     const heroTop = hero.getBoundingClientRect().top + window.scrollY;
-                    const overlap = menu.getClientRects().length
-                        ? Math.max(0, menu.getBoundingClientRect().bottom - heroTop)
+                    const overlap = mobileHeader.getClientRects().length
+                        ? Math.max(0, mobileHeader.getBoundingClientRect().bottom - heroTop)
                         : 0;
                     controls.style.setProperty('--package-gallery-header-overlap', `${overlap}px`);
                 };
@@ -401,23 +363,6 @@
                     activateDestination(event.detail.destination);
                 });
                 activateDestination(1);
-            })();
-        </script>
-        <script>
-            (() => {
-                if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (!entry.isIntersecting) return;
-                        entry.target.classList.remove('package-reveal-pending');
-                        observer.unobserve(entry.target);
-                    });
-                }, { threshold: 0 });
-                document.querySelectorAll('[data-package-reveal]').forEach((section) => {
-                    if (section.getBoundingClientRect().top < window.innerHeight) return;
-                    observer.observe(section);
-                    section.classList.add('package-reveal-pending');
-                });
             })();
         </script>
         <script>

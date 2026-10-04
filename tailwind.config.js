@@ -17,6 +17,16 @@ module.exports = {
             // sans: ['Nunito', ...defaultTheme.fontFamily.sans],
         },
         extend: {
+            keyframes: {
+                'cta-attention': {
+                    '0%, 100%': { transform: 'scale(1)' },
+                    '35%': { transform: 'scale(1.04)' },
+                    '65%': { transform: 'scale(0.99)' },
+                },
+            },
+            animation: {
+                'cta-attention': 'cta-attention 400ms ease-out 1',
+            },
             backgroundImage: theme => ({
                 'hero-pattern': "url('https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png')",
                 'footer-texture': "url('/img/footer-texture.png')",

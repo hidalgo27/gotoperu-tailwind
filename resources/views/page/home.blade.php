@@ -1,636 +1,313 @@
 @extends('layouts.page-layout')
+@section('home-intro')
+    <section id="home-hero" data-analytics-section="hero" aria-labelledby="home-heading" class="flex min-w-0 flex-1 flex-col"
+             x-data="{
+                 playFilm: window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)').matches,
+                 filmReady: false,
+                 filmAvailable: false,
+                 sendFilm(method, value) {
+                     this.$refs.film?.contentWindow.postMessage({ method, value }, 'https://player.vimeo.com');
+                 },
+                 onFilmMessage(event) {
+                     if (event.origin !== 'https://player.vimeo.com' || event.source !== this.$refs.film?.contentWindow) return;
+                     let message;
+                     try { message = typeof event.data === 'string' ? JSON.parse(event.data) : event.data; } catch (_) { return; }
+                     if (!message) return;
+                     if (message.event === 'ready' || message.method === 'ping') {
+                         this.sendFilm('addEventListener', 'playing');
+                         this.sendFilm('addEventListener', 'error');
+                         this.sendFilm('getCurrentTime');
+                     }
+                     if (message.event === 'playing' || (message.method === 'getCurrentTime' && message.value > 0)) {
+                         this.filmReady = this.filmAvailable = true;
+                     }
+                     if (message.event === 'error') {
+                         this.filmReady = false;
+                         this.playFilm = false;
+                     }
+                 }
+             }" @message.window="onFilmMessage($event)">
+        <div class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <picture>
+            <source media="(min-width: 768px)" srcset="{{ asset('images/banners/mapi.jpg') }}" width="2000" height="1267">
+            <img src="{{ asset('images/p-cusco-1.jpg') }}" alt="" width="576" height="814"
+                 fetchpriority="high" class="absolute inset-0 h-full w-full object-cover object-center">
+        </picture>
+        {{-- Keep the existing desktop film; mobile and reduced-motion visitors use the photo. --}}
+        <div class="absolute inset-0 z-0 hidden opacity-0 md:block" :class="{ 'opacity-0': !filmReady }" aria-hidden="true">
+            <template x-if="playFilm">
+                <div class="vimeo-wrapper">
+                    <iframe x-ref="film" @load="sendFilm('ping')" src="https://player.vimeo.com/video/381676880?background=1&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;muted=1"
+                            title="Peru travel scenes" tabindex="-1" allow="autoplay; fullscreen"></iframe>
+                </div>
+            </template>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-tertiary/70 via-tertiary/30 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-tertiary/20 via-transparent to-transparent"></div>
+        </div>
+        <div class="container home-shell home-hero-content">
+            <div class="max-w-2xl">
+                <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-secondary" data-package-enter="eyebrow">
+                    <span class="inline-flex shrink-0 items-center gap-1" aria-hidden="true"><span class="h-2.5 w-1 bg-secondary"></span><span class="h-2.5 w-3 bg-secondary"></span><span class="h-2.5 w-5 bg-secondary"></span></span>
+                    Peru journeys. Local experts.
+                </p>
+                <h1 id="home-heading" class="font-sans text-4xl font-semibold leading-tight tracking-tight drop-shadow sm:text-5xl md:text-6xl lg:text-7xl" data-package-enter="title">Peru travel,<br>made personal.</h1>
+                <p class="mt-5 max-w-lg border-l-2 border-secondary/60 pl-4 text-base leading-relaxed text-white/90 md:text-lg" data-package-enter="description">
+                    Private and customizable journeys designed by our local Peru travel experts.
+                </p>
+                <div class="home-hero-actions" data-package-enter="actions">
+                    <a href="#popular-peru-trips" class="btn-secondary" data-home-action="hero-explore">
+                        Explore Peru Travel Packages <x-heroicon-o-arrow-narrow-right class="h-5 w-5 shrink-0" aria-hidden="true" />
+                    </a>
+                    <a href="#form-dream-adventure" class="btn-white"
+                       data-quote-source="hero" data-home-action="hero-quote">Plan My Trip</a>
+                </div>
+            </div>
+            <template x-if="filmAvailable">
+                <button type="button" @click="playFilm = !playFilm; filmReady = false" :aria-pressed="playFilm.toString()"
+                        class="absolute bottom-4 right-12 z-10 hidden min-h-11 items-center border border-white/70 px-3 text-xs text-white focus-visible:outline-secondary md:inline-flex"
+                        x-text="playFilm ? 'Pause video' : 'Play video'">Pause video</button>
+            </template>
+        </div>
+    </section>
+
+    @php
+        // Original GoToPeru trust messages and icons, in their original order.
+        $homeTrustItems = [
+            ['icon' => 'images/icons/shield.png', 'title' => 'Book with Confidence', 'description' => 'Plan your travels with peace of mind'],
+            ['icon' => 'images/icons/trusted.jpg', 'title' => 'Trusted local Peru travel experts', 'description' => 'Professional service from trusted local experts'],
+            ['icon' => 'images/icons/tripadvisor.png', 'title' => 'Great Reviews', 'description' => 'We are proud of our service quality and great reviews'],
+            ['icon' => 'images/icons/good.png', 'title' => 'You are in good hands', 'description' => 'While on your journey help is never out of reach'],
+            ['icon' => 'images/icons/hassle.png', 'title' => 'Hassle-free experience', 'description' => 'We plan and book your entire Peru trip before you arrive.'],
+            ['icon' => 'images/icons/tours.png', 'title' => 'Flexible tour options', 'description' => 'Our vacation packages are customisable to your needs.'],
+            ['icon' => 'images/icons/good.png', 'title' => 'Hospitality at its finest', 'description' => 'Peruvian hospitality is worldwide known and we are proof of that.'],
+            ['icon' => 'images/icons/secure.png', 'title' => 'Full Financial Protection', 'description' => 'Your payments are protected with financial safety as standard.'],
+            ['icon' => 'images/icons/guarantee.png', 'title' => 'Value for Money', 'description' => 'Exceptional quality for your Money, no intermediaries.'],
+        ];
+    @endphp
+    <section data-analytics-section="trust" aria-label="Why travel with GoToPeru" class="relative z-10" data-package-enter="trust">
+        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-white" aria-hidden="true"></div>
+        <div class="container home-shell relative">
+        <div class="flex items-center gap-1 border border-gray-200 bg-white px-1 shadow-sm md:gap-2 md:px-2">
+            <button id="home-trust-prev" type="button" class="home-trust-control" aria-label="Previous trust messages" aria-controls="home-trust-slider">
+                <x-heroicon-o-arrow-narrow-left class="h-5 w-5" aria-hidden="true" />
+            </button>
+            <div id="home-trust-slider" class="swiper slider-brands min-w-0 flex-1 overflow-hidden">
+                <ul class="swiper-wrapper">
+                    @foreach($homeTrustItems as $item)
+                        <li class="swiper-slide">
+                            <div class="home-trust-item">
+                                <img src="{{ asset($item['icon']) }}" alt="" width="48" height="48" loading="lazy" class="h-12 w-12 shrink-0 object-contain">
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold leading-snug text-tertiary">
+                                        @if($item['title'] === 'Great Reviews')
+                                            <a href="{{ route('reviews') }}" class="underline underline-offset-4 focus-visible:outline-primary">{{ $item['title'] }}</a>
+                                        @else
+                                            {{ $item['title'] }}
+                                        @endif
+                                    </p>
+                                    <p class="mt-1 text-xs leading-relaxed text-gray-600">{{ $item['description'] }}</p>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            <button id="home-trust-next" type="button" class="home-trust-control" aria-label="Next trust messages" aria-controls="home-trust-slider">
+                <x-heroicon-o-arrow-narrow-right class="h-5 w-5" aria-hidden="true" />
+            </button>
+        </div>
+        </div>
+    </section>
+@endsection
+
 @section('content')
-    <div class="h-80vh overflow-hidden relative hidden md:block">
+    @php
+        // Presentation tabs map to existing collections; they do not create categories.
+        $homeFeaturedPreview = $paquetes_features->take(5);
+        $homeTripCards = collect();
+        $homeTravelStyles = $homeCategories->whereIn('url', [
+            'traveler-favorites', 'treks-tours', 'adventure-tours',
+            'cultural-tours', 'gastronomy-tours', 'hot-deals-and-travel-offers',
+        ]);
+        $homeTripCollections = [
+            'featured' => [
+                'label' => 'FEATURED',
+                'url' => route('packages.all'),
+                'cta' => 'View all Peru trips',
+                'ids' => $homeFeaturedPreview->pluck('id')->map(function ($id) { return (int) $id; })->values()->all(),
+            ],
+            'styles' => [
+                'label' => 'TRAVEL STYLES',
+                'url' => route('packages.all'),
+                'cta' => '',
+                'ids' => [],
+            ],
+        ];
+        $homePackageTabs = [
+            'luxury' => ['slug' => 'luxury', 'label' => 'LUXURY', 'cta' => 'View all Luxury Tours'],
+            'multi-country' => ['slug' => 'multicountry', 'label' => 'MULTI-COUNTRY', 'cta' => 'View all Multi-Country trips'],
+            'day-tours' => ['slug' => 'full-day-tours', 'label' => 'DAY TOURS', 'cta' => 'View all Day Tours'],
+        ];
+        foreach ($homePackageTabs as $key => $tab) {
+            $cat = $homeCategories->firstWhere('url', $tab['slug']);
+            if (!$cat) {
+                continue;
+            }
+            $preview = $cat->paquetes->take(6);
+            $homeTripCollections[$key] = [
+                'label' => $tab['label'],
+                'url' => route('category.show', $cat),
+                'cta' => $tab['cta'],
+                'category_id' => $cat->id,
+                'category_slug' => $cat->url,
+                'ids' => $preview->pluck('id')->map(function ($id) { return (int) $id; })->values()->all(),
+            ];
+            foreach ($preview as $trip) {
+                if (!$homeTripCards->has($trip->id)) {
+                    $homeTripCards->put($trip->id, $trip);
+                }
+            }
+        }
+    @endphp
 
-        <div class="vimeo-wrapper">
-            <iframe src="https://player.vimeo.com/video/381676880?autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"  frameborder="0" allow="autoplay; fullscreen"></iframe>
-            <div class="absolute inset-0 gradient-cicle-gray"></div>
-        </div>
-        <div class="absolute bottom-0 text-center w-full z-10 mb-96">
-            <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
-            <div class="flex items-center gap-2 justify-center">
-                <a href="{{route('packages.all')}}" class="btn-primary"> Explore Top Experiences </a>
-                <a href="#form-dream-adventure" data-quote-source="hero" class="btn-secondary"> Customize your trips </a>
+    <section id="popular-peru-trips" data-analytics-section="packages" aria-labelledby="home-trips-heading" class="scroll-mt-24 bg-white"
+             x-data="{
+                 active: 'featured',
+                 indicatorLeft: 0,
+                 indicatorWidth: 0,
+                 collections: {{ json_encode($homeTripCollections) }},
+                 updateIndicator() {
+                     const tab = this.$refs.tabs.querySelector('[aria-selected=true]');
+                     if (!tab) return;
+                     this.indicatorLeft = tab.offsetLeft;
+                     this.indicatorWidth = tab.offsetWidth;
+                 },
+                 selectCollection(key) {
+                     if (this.active === key) return;
+                     this.active = key;
+                     this.$nextTick(() => {
+                         this.updateIndicator();
+                         // Keep keyboard/reading order aligned with the selected collection.
+                         this.collections[key].ids.forEach(id => {
+                             const card = this.$refs.trips.querySelector('[data-home-trip=&quot;' + id + '&quot;]');
+                             if (card) this.$refs.trips.append(card);
+                         });
+                         this.$refs.trips.scrollLeft = 0;
+                         this.$refs.featured.scrollLeft = 0;
+                         this.$refs.styles.scrollLeft = 0;
+                         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                             this.$refs.results.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
+                         }
+                     });
+                 },
+                 moveTab(event) {
+                     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+                     const tabs = Array.from(event.currentTarget.querySelectorAll('[role=tab]'));
+                     const index = tabs.indexOf(event.target);
+                     if (index < 0) return;
+                     event.preventDefault();
+                     const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+                     tabs[next].focus({ preventScroll: true });
+                     tabs[next].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                     tabs[next].click();
+                 }
+             }"
+             x-init="$nextTick(() => updateIndicator()); document.fonts.ready.then(() => updateIndicator())"
+             @resize.window.debounce.100ms="updateIndicator()">
+        <div class="home-content pt-14 md:pt-20">
+            <div class="mx-auto max-w-3xl text-center" data-package-reveal>
+                <p class="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-primary">
+                    <span class="h-px w-6 bg-primary/20 sm:w-10" aria-hidden="true"></span>
+                    <span class="inline-flex items-center gap-1" aria-hidden="true"><span class="h-2.5 w-1 bg-secondary"></span><span class="h-2.5 w-3 bg-secondary"></span><span class="h-2.5 w-5 bg-secondary"></span></span>
+                    Discover Peru
+                    <span class="h-px w-6 bg-primary/20 sm:w-10" aria-hidden="true"></span>
+                </p>
+                <h2 id="home-trips-heading" class="font-sans text-4xl font-semibold leading-tight tracking-tight text-tertiary md:text-5xl">Peru Travel Packages</h2>
+                <p class="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-gray-600 md:text-base">Journeys and travel styles designed by our local Peru travel experts.</p>
+            </div>
+            <div id="explore-by-interest" x-ref="tabs" class="relative mt-10 flex snap-x gap-4 overflow-x-auto border-b border-gray-200 md:mt-12 md:justify-center md:gap-8"
+                 role="tablist" aria-label="Peru travel collections" @keydown="moveTab($event)" data-package-reveal>
+                @foreach($homeTripCollections as $key => $collection)
+                    <button type="button" id="home-trip-tab-{{ $key }}" role="tab" aria-controls="home-trip-results"
+                            aria-selected="{{ $key === 'featured' ? 'true' : 'false' }}" :aria-selected="(active === '{{ $key }}').toString()"
+                            tabindex="{{ $key === 'featured' ? '0' : '-1' }}" :tabindex="active === '{{ $key }}' ? 0 : -1"
+                            @click="selectCollection('{{ $key }}')" class="home-collection-tab"
+                            @if(isset($collection['category_id'])) data-home-action="category" data-category-id="{{ $collection['category_id'] }}" data-category-slug="{{ $collection['category_slug'] }}" @endif>
+                        {{ $collection['label'] }}
+                    </button>
+                @endforeach
+                <span class="home-tab-indicator" aria-hidden="true"
+                      :style="{ width: indicatorWidth + 'px', transform: 'translateX(' + indicatorLeft + 'px)' }"></span>
             </div>
         </div>
-    </div>
-    <div class="relative w-full md:hidden">
-        <div class="text-center absolute w-full top-0 mt-12">
-            <a href="/" class="mx-auto"><img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-white.png" alt="" class="mx-auto"></a>
-        </div>
-        <img src="{{asset('images/p-cusco-1.jpg')}}" alt="" class="object-cover w-full h-full sm:hidden z-0">
-        <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden absolute bottom-0 right-0">
-
-            <h1 class="text-center text-lg md:text-3xl my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>
-
-        </div>
-    </div>
-{{--    <div class="flex h-83-5vh relative overflow-hidden">--}}
-{{--        <div class=" grid grid-cols-1 gap-12 place-items-center text-center justify-center text-white w-full">--}}
-{{--            <div class="mx-auto w-3/4">--}}
-{{--                <div class="bg-gray-900 bg-opacity-50 p-4 sm:hidden">--}}
-{{--                    <h1 class="text-center text-lg md:text-3xl my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>--}}
-{{--                </div>--}}
-{{--                    <h1 class="text-center text-3xl hidden sm:inline-block  my-6 font-normal font-cinzel text-white">THE <span class="text-secondary">BEST</span> VACATION IN PERU WITH THE <span class="text-secondary">BEST</span> PERUVIAN OPERATOR</h1>--}}
-{{--                <div class="fixed left-0 ml-3 bottom-0 mb-2 z-10 hidden sm:inline-block">--}}
-{{--                    <img src="{{asset('images/fiorella.jpg')}}" alt="" class="rounded-t-lg w-24 mx-auto">--}}
-{{--                    <a href="#form-dream-adventure" class="btn-secondary-2 text-center  font-bold"><span class="text-lg pt-3">Start my quote</span></a>--}}
-{{--                    <span class="my-5 block"></span>--}}
-{{--                </div>--}}
-{{--                @livewire('page.form-inquire')--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-{{--            <form-home-component></form-home-component>--}}
-{{--    <div class="hidden md:inline-block">--}}
-{{--            @livewire('page.form-home')--}}
-{{--    </div>--}}
-
-
-{{--            <div class="mb-10 pb-10 border-b border-gray-200"></div>--}}
-
-
-
-
-{{--    <section class="grid gap-12 bg-gray-100 p-6 grid-cols-8 hidden md:inline-flex"><!--.row -->--}}
-{{--        <div>--}}
-{{--            <img src="{{asset('images/logos/apavit.png')}}" alt="logo apavit" class="px-3 w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="{{asset('images/logos/apotur.png')}}" alt="logo apotur" class="px-3 w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="{{asset('images/logos/asta.png')}}"  alt="logo asta" class="px-3 w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="{{asset('images/logos/expedia.png')}}"  alt="logo expedia" class="px-3 w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="{{asset('images/logos/meetup.png')}}" alt="logo meetup" class="px-3 w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="{{asset('images/logos/new.png')}}" alt="logo the new york times" class="px-3 w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="{{asset('images/logos/peru.png')}}"  alt="logo marca peru" class="px-3 w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="{{asset('images/logos/prom-peru.png')}}" alt="logo prom peru" class="px-3 w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="https://www.gotoperu.com.pe/images/logos/tripadvisor.png" alt="logo tripadvisor" class="w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <img src="https://www.gotoperu.com.pe/images/logos/yelp.png" alt="logo yelp" class="w-full dark:filter dark:grayscale">--}}
-{{--        </div>--}}
-{{--    </section>--}}
-
-
-
-    <section class="bg-gray-50 hidden sm:flex dark:bg-gray-700">
-    <div class="container">
-        <div class="w-full swiper-container my-3 slider-brands overflow-hidden relative">
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/shield.png')}}" alt="" class="w-full">
+        <div class="bg-gray-50">
+        <div class="home-content pb-10 pt-8 md:pb-12 md:pt-12">
+            <p id="home-trips-hint" class="mb-4 text-xs text-gray-600 md:hidden" x-show="active !== 'styles'">Swipe to explore more trips →</p>
+            <div id="home-trip-results" x-ref="results" role="tabpanel" aria-labelledby="home-trip-tab-featured" :aria-labelledby="'home-trip-tab-' + active"
+                 class="focus-visible:outline-primary" data-package-reveal
+                 aria-describedby="home-trips-hint" :aria-describedby="active === 'styles' ? null : 'home-trips-hint'" tabindex="0">
+                <div x-ref="featured" x-show="active === 'featured'"
+                     class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-6 md:gap-6 md:overflow-visible md:pb-0">
+                    @foreach($homeFeaturedPreview as $paquete)
+                        <div class="home-trip-item {{ $loop->iteration <= 3 ? 'md:col-span-2' : 'md:col-span-3' }}">
+                            <x-packages-card :paquete="$paquete" variant="home-featured" />
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">Book with Confidence</h3>
-                            <p class="text-xs">Plan your travels with peace of mind</p>
-
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/trusted.jpg')}}" alt="" class="w-full">
+                <div x-ref="trips" x-show="active !== 'styles' && active !== 'featured'" style="display: none"
+                     class="home-package-grid"
+                     :class="{ 'home-package-grid-pair': collections[active].ids.length === 2, 'home-package-grid-single': collections[active].ids.length === 1 }">
+                    @foreach($homeTripCards as $paquete)
+                        <div class="home-trip-item" data-home-trip="{{ $paquete->id }}"
+                             x-show="collections[active].ids.includes({{ (int) $paquete->id }})" style="display: none">
+                            <x-packages-card :paquete="$paquete" variant="home" />
                         </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">Trusted local Peru travel experts</h3>
-                            <p class="text-xs">Professional service from trusted local experts</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/tripadvisor.png')}}" alt="" class="w-full">
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">Great Reviews</h3>
-                            <p class="text-xs">We are proud of our service quality and great reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/good.png')}}" alt="" class="w-full">
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">You are in good hands</h3>
-                            <p class="text-xs">While on your journey help is never out of reach</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/hassle.png')}}" alt="" class="w-full">
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">Hassle-free experience</h3>
-                            <p class="text-xs">We plan and book your entire Peru trip before you arrive.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/tours.png')}}" alt="" class="w-full">
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">Flexible tour options</h3>
-                            <p class="text-xs">Our vacation packages are customisable to your needs.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/good.png')}}" alt="" class="w-full">
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">Hospitality at its finest</h3>
-                            <p class="text-xs">Peruvian hospitality is worldwide known and we are proof of that.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/secure.png')}}" alt="" class="w-full">
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">Full Financial Protection</h3>
-                            <p class="text-xs">Your payments are protected with financial safety as standard.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="grid items-center grid-cols-5">
-                        <div class="">
-                            <img src="{{asset('images/icons/guarantee.png')}}" alt="" class="w-full">
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500 dark:text-gray-50">
-                            <h3 class="truncate font-bold text-sm">Value for Money</h3>
-                            <p class="text-xs">Exceptional quality for your Money, no intermediaries.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-{{--            <div class="swiper-button-next btn-next"></div>--}}
-{{--            <div class="swiper-button-prev btn-prev"></div>--}}
-        </div>
-    </div>
-    </section>
-
-    {{--    <div class="w-4/5 mx-auto my-20 bg-white">--}}
-    {{--        <div id="slider" class="swiper-container w-full">--}}
-    {{--            <div class="swiper-wrapper">--}}
-    {{--                <div class="swiper-slide bg-cover bg-center shadow-lg" style="background-image: url('https://picsum.photos/400/555');">--}}
-    {{--                    <div class="container mx-auto px-6 md:px-20 py-6">--}}
-    {{--                        <div class="w-full md:w-1/2">--}}
-    {{--                            <div class="md:border border-gray-100 md:p-10">--}}
-    {{--                                <h3 class="text-5xl leading-tight" style="font-family: Niconne, cursive;">Welcome To </h3>--}}
-    {{--                                <h2 class="font-bold leading-tight text-6xl">Web2Tailwind</h2>--}}
-    {{--                                <p class="text-xl mt-10 font-light">Use complete html components in your projects.--}}
-    {{--                                </p>--}}
-    {{--                            </div>--}}
-    {{--                            <div class="my-10 md:mx-10 md:-mt-2"><a href="#appointment"--}}
-    {{--                                                                    class="bg-pink-500  ease-linear hover:bg-blue-600 text-white px-6 py-4 rounded-full">USE--}}
-    {{--                                    TEMPLATE</a></div>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="hidden md:flex swiper-button-prev bg-white w-16 h-16 text-xs rounded-full text-pink-500"></div>--}}
-    {{--            <div class="hidden md:flex swiper-button-next bg-white w-16 h-16 text-xs rounded-full text-pink-500"></div>--}}
-    {{--            <div class="swiper-pagination"></div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-
-
-    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
-        <div class="text-center w-full col-span-4 items-center text-3xl text-secondary dark:text-secondary font-bold gap-2">
-            PERU TRAVEL PACKAGES
-            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
-            <div class="elfsight-app-1d94e47e-4771-4f33-b316-81fa2970c3fe" data-elfsight-app-lazy></div>
-
-        </div>
-        <div class="col-span-4 text-center mt-4">
-            GOTOPERU is a family-owned company committed to offering the highest level of customer service possible. The personnel at GOTOPERU will ensure that you have an unforgettable vacation. Peru is one of the world's most diversified nations, boasting stunning old cultures and breathtaking natural beauty. Explore the world with GOTOPERU.
-        </div>
-    </section>
-
-    <section class="grid grid-cols-1 md:grid-cols-6 sm:hidden">
-        <div class="md:col-span-2 bg-gray-800 text-white dark:bg-gray-700 dark:bg-opacity-90 p-6 dark:text-gray-50 flex items-center">
-            <div class="text-center">
-                <img src="{{asset('images/team/angie.png')}}" alt="" class="w-1/2 mx-auto">
-                <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Experts in tailor-made Peru travel</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Local staff with first-hand South America travel experience</p>
-                <p class="flex my-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Dedicated to providing personalized, quality service</p>
-                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
-{{--                <div class="block mt-6">--}}
-{{--                    <a href="{{route('book')}}" class="btn-primary">View More</a>--}}
-{{--                </div>--}}
-            </div>
-        </div>
-    </section>
-{{--    <section class="container grid grid-cols-1 md:grid-cols-4 py-12 bg-white dark:bg-gray-800 hidden sm:block">--}}
-{{--        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">--}}
-{{--            BOOK & TRAVEL WITH CONFIDENCE <br>Deposits from 10% : Free cancellation insurance available with 20% deposit--}}
-{{--            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>--}}
-{{--        </div>--}}
-{{--        <div class="col-span-4 text-center mt-4">--}}
-{{--            <a href="" class="text-secondary font-medium hover:text-gray-500 block">Book With Confidence - view flexible terms</a>--}}
-{{--            <a href="" class="text-secondary font-medium hover:text-gray-500 block">Travel With Confidence - view Health & Safety guarantees</a>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-
-
-
-
-{{--    <div class="w-4/5 mx-auto my-20 bg-white">--}}
-{{--        <div id="slider" class="swiper-container w-full">--}}
-{{--            <div class="swiper-wrapper">--}}
-{{--                <div class="swiper-slide bg-cover bg-center shadow-lg" style="background-image: url('https://picsum.photos/400/555');">--}}
-{{--                    <div class="container mx-auto px-6 md:px-20 py-6">--}}
-{{--                        <div class="w-full md:w-1/2">--}}
-{{--                            <div class="md:border border-gray-100 md:p-10">--}}
-{{--                                <h3 class="text-5xl leading-tight" style="font-family: Niconne, cursive;">Welcome To </h3>--}}
-{{--                                <h2 class="font-bold leading-tight text-6xl">Web2Tailwind</h2>--}}
-{{--                                <p class="text-xl mt-10 font-light">Use complete html components in your projects.--}}
-{{--                                </p>--}}
-{{--                            </div>--}}
-{{--                            <div class="my-10 md:mx-10 md:-mt-2"><a href="#appointment"--}}
-{{--                                                                    class="bg-pink-500  ease-linear hover:bg-blue-600 text-white px-6 py-4 rounded-full">USE--}}
-{{--                                    TEMPLATE</a></div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="hidden md:flex swiper-button-prev bg-white w-16 h-16 text-xs rounded-full text-pink-500"></div>--}}
-{{--            <div class="hidden md:flex swiper-button-next bg-white w-16 h-16 text-xs rounded-full text-pink-500"></div>--}}
-{{--            <div class="swiper-pagination"></div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-
-
-{{--    <section class="container hidden sm:block">--}}
-{{--        <h2 class="text-center font-bold text-gray-500 md:text-4xl mb-20 xl:text-5xl dark:text-secondary">Your Peru Vacation Worry-Free</h2>--}}
-{{--        <div class="grid text-center mb-16 gap-4 grid-cols-1 sm:grid-cols-3">--}}
-{{--            <div class="relative mb-12 sm:mb-0">--}}
-{{--                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">--}}
-{{--                    <a href="#" class="block relative">--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />--}}
-{{--                        </svg>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-secondary">--}}
-{{--                    <div class="text-center">--}}
-{{--                        <p class="font-bold text-gray-500 pb-2 dark:text-white">--}}
-{{--                            Your wellbeign is our priority--}}
-{{--                        </p>--}}
-{{--                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 font-light transition duration-500">--}}
-{{--                            Find out more--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="relative mb-12 sm:mb-0">--}}
-{{--                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">--}}
-{{--                    <a href="#" class="block relative">--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-primary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />--}}
-{{--                        </svg>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-primary">--}}
-{{--                    <div class="text-center">--}}
-{{--                        <p class="font-bold text-gray-500 pb-2 dark:text-white">--}}
-{{--                            Your perfectly planned trip--}}
-{{--                        </p>--}}
-{{--                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 font-light transition duration-500">--}}
-{{--                            Find out more--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="relative mb-12 sm:mb-0">--}}
-{{--                <div class="text-center mb-4 absolute -top-10 right-1/2 transform translate-x-1/2">--}}
-{{--                    <a href="#" class="block relative">--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto object-cover p-4 rounded-full bg-secondary text-green-50 h-20 w-20  border border-white dark:border-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
-{{--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />--}}
-{{--                        </svg>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--                <div class="bg-gray-50 bg-opacity-30 transition duration-500 dark:bg-gray-800 border px-8 py-4 pt-12 hover:border-secondary">--}}
-{{--                    <div class="text-center">--}}
-{{--                        <p class="font-bold text-gray-500 pb-2 dark:text-white">--}}
-{{--                            Free Changes & Cancellation--}}
-{{--                        </p>--}}
-{{--                        <a href="#" class="text-gray-500 dark:text-gray-200 font-light hover:text-blue-500 hover:font-bold font-light transition duration-500">--}}
-{{--                            Find out more--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-
-
-
-{{--    <div class="container flex items-center justify-center my-6">--}}
-{{--        @foreach($category as $category_all)--}}
-
-{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
-{{--            Best Sellers--}}
-{{--        </div>--}}
-{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
-{{--            Cultural--}}
-{{--        </div>--}}
-{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
-{{--            Luxury--}}
-{{--        </div>--}}
-{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
-{{--            Culinary--}}
-{{--        </div>--}}
-{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
-{{--            Adventure--}}
-{{--        </div>--}}
-{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
-{{--            Couple--}}
-{{--        </div>--}}
-{{--        <div class="border dark:border-gray-700 px-6 py-3 font-semibold text-xl">--}}
-{{--            Family--}}
-{{--        </div>--}}
-{{--        @endforeach--}}
-{{--    </div>--}}
-
-    <div
-        x-data="{ tab: '{{ $defaultCategoryId }}' }"
-        x-cloak
-        class="w-full container mb-12 hidden md:block"
-    >
-        {{-- Header de Tabs --}}
-        <div class="grid md:grid-cols-5 gap-2 mb-6 grid-cols-1">
-            @foreach($categoriesForTabs as $cat)
-                <button
-                    type="button"
-                    @click="tab = '{{ $cat->id }}'"
-                    :class="tab === '{{ $cat->id }}'
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300'"
-                    class="px-2 font-semibold py-6 transition-all duration-200 hover:bg-primary/90 hover:text-white"
-                >
-                    {{ $cat->nombre }}
-                </button>
-            @endforeach
-        </div>
-
-        {{-- Contenido de cada tab --}}
-        @foreach($categoriesForTabs as $cat)
-            <div x-show="tab === '{{ $cat->id }}'" class="space-y-6" x-transition>
-                @if($cat->paquetes->isNotEmpty())
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        @foreach($cat->paquetes as $paquete)
-                            <x-packages-card :paquete="$paquete" />
-                        @endforeach
-                    </div>
-
-                    {{-- Botón "See more..." al final --}}
-                    @php
-                        // Enlace por defecto usando el campo 'url' de la categoría (o slug del nombre)
-                        $categoryLink = url('/categories/' . ($cat->url ?? \Illuminate\Support\Str::slug($cat->nombre)));
-
-                        // Si tienes rutas con nombre, se priorizan
-                        if (\Illuminate\Support\Facades\Route::has('categories.show')) {
-                            $categoryLink = route('categories.show', $cat->url ?? $cat->id);
-                        } elseif (\Illuminate\Support\Facades\Route::has('category.show')) {
-                            $categoryLink = route('category.show', $cat->url ?? $cat->id);
-                        }
-                    @endphp
-
-                    <div class="flex justify-center mb-12 pt-6">
-                        <a href="{{ $categoryLink }}"
-                           class="btn-dark flex items-center gap-2">
-                            See more “{{ $cat->nombre }}” packages
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                @else
-                    <div class="text-gray-500 text-sm">No hay paquetes en esta categoría.</div>
-                @endif
-            </div>
-        @endforeach
-    </div>
-
-    <div class="md:hidden container">
-        {{-- Contenido de cada tab --}}
-        @foreach($categoriesForTabs as $cat)
-            <div x-show="tab === '{{ $cat->id }}'" class="space-y-6 pb-8" x-transition>
-                @if($cat->paquetes->isNotEmpty())
-                    {{-- Título de la categoría --}}
-                    <div class="flex items-center gap-2 mt-8">
-                        <span class="inline-block w-5 h-2.5 bg-secondary"></span>
-                        <h2 class="text-xl md:text-2xl font-extrabold">{{ $cat->nombre }}</h2>
-                    </div>
-
-                    @php
-                        $firstPackage = $cat->paquetes->first();
-                        // Enlace por defecto usando 'url' o slug del nombre
-                        $categoryLink = url('/categories/' . ($cat->url ?? \Illuminate\Support\Str::slug($cat->nombre)));
-                        if (\Illuminate\Support\Facades\Route::has('categories.show')) {
-                            $categoryLink = route('categories.show', $cat->url ?? $cat->id);
-                        } elseif (\Illuminate\Support\Facades\Route::has('category.show')) {
-                            $categoryLink = route('category.show', $cat->url ?? $cat->id);
-                        }
-                    @endphp
-
-                    {{-- Solo 1 paquete (full width) --}}
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div class="md:col-span-3">
-                            <x-packages-card :paquete="$firstPackage" />
-                        </div>
-                    </div>
-
-                    {{-- Botón "See more view" --}}
-                    <div class="flex justify-center mb-12 pt-2">
-                        <a href="{{ $categoryLink }}" class="btn-dark flex items-center gap-1 whitespace-nowrap">
-                            View more
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                @else
-                    <div class="text-gray-500 text-sm">No hay paquetes en esta categoría.</div>
-                @endif
-            </div>
-
-            <hr>
-        @endforeach
-
-    </div>
-
-
-    <div class="bg-gray-700 hidden md:block">
-        <section class="container grid grid-cols-1 md:grid-cols-6  items-end">
-            <div class="md:col-span-4 relative bg-gray-700">
-                <div class="inset-0 flex items-center text-white w-full">
-                    <div class="w-full grid grid-cols-1 md:grid-cols-6 items-center">
-                        <div class="p-6 col-span-3">
-                            <h3 class="font-semibold block text-xl">Your Peruvian Travel Operator</h3>
-                            <p class="block font-light text-sm leading-6 my-6">
-                                Trust our team of local travel experts to plan an unforgettable trip full of must-see attractions and our favorite hidden gems of the land of the Incas. Our peruvian experts have all traveled down the same roads, trains and treks and know what you’re about to experience.
-                                Every Peru tour offered is regularly inspected to ensure our travelers have an amazing experience.
-                            </p>
-
-                            <div class="block mt-6">
-                                <a href="{{route('packages.all')}}" class="btn-secondary">View Tours</a>
+                <div x-ref="styles" x-show="active === 'styles'" style="display: none"
+                     class="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
+                    @foreach($homeTravelStyles as $cat)
+                        <div class="min-w-0">
+                            <div class="relative h-52 overflow-hidden rounded-sm bg-tertiary sm:h-64 md:h-72 lg:h-80 2xl:h-96">
+                                <a href="{{ route('category.show', $cat) }}" class="group absolute inset-0 block text-white focus-visible:outline-primary"
+                                   data-home-action="category" data-category-id="{{ $cat->id }}" data-category-slug="{{ $cat->url }}">
+                                    @if($cat->imagen || $cat->imagen_banner)
+                                        <img src="{{ $cat->imagen ?: $cat->imagen_banner }}" alt="" loading="lazy" decoding="async"
+                                             class="home-card-photo">
+                                    @endif
+                                    <div class="absolute inset-x-0 bottom-0 isolate px-3 pb-3 pt-10 md:px-5 md:pb-5 md:pt-12">
+                                        <span class="home-card-shade from-tertiary/90 to-transparent" aria-hidden="true"></span>
+                                        <div class="flex items-end justify-between gap-2 md:gap-3">
+                                            <div class="min-w-0">
+                                                <h3 class="text-sm font-semibold leading-snug md:text-xl">{{ ucwords(strtolower($cat->nombre)) }}</h3>
+                                                <span class="mt-2 block h-px w-6 bg-secondary md:w-10" aria-hidden="true"></span>
+                                            </div>
+                                            <span class="home-card-arrow inline-flex shrink-0 items-center text-white" aria-hidden="true">
+                                                <x-heroicon-o-arrow-narrow-right class="h-4 w-4 md:h-5 md:w-5" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-span-3 pt-36">
-                            <img src="{{asset('images/team/angie.png')}}" alt="">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="md:col-span-2 bg-gray-800 p-9 font-light shadow-lg text-white dark:bg-gray-700 dark:bg-opacity-90 dark:text-gray-50 flex items-center">
-                <div class="">
-                    <h3 class="font-semibold block text-xl">WHY BOOK WITH US</h3>
-                    <p class="flex my-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        Experts in tailor-made Peru travel</p>
-                    <p class="flex my-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        Headquarters in Cusco, offices in Lima, Arequipa and Tampa,FL.</p>
-                    <p class="flex my-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        Local staff with first-hand South America travel experience</p>
-                    <p class="flex my-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        Dedicated to providing personalized, quality service</p>
-                    {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
-                    <div class="block mt-6">
-                        <a href="{{route('book')}}" class="btn-primary">View More</a>
-                    </div>
-                </div>
+            <div class="mt-6 pb-0 text-center md:mt-16 md:pb-6">
+                <p class="mb-5 text-xl font-medium text-tertiary"
+                   x-text="active === 'featured' ? 'Want to see more of Peru?' : active === 'styles' ? 'Looking for more ways to experience Peru?' : active === 'luxury' ? 'Explore more Luxury journeys' : active === 'multi-country' ? 'Explore more journeys across South America' : 'Discover more experiences in Peru'">Want to see more of Peru?</p>
+                <a href="{{ route('packages.all') }}" :href="collections[active].url"
+                   class="group inline-flex w-full max-w-sm items-center justify-between border border-tertiary bg-transparent text-xs font-bold tracking-wider text-tertiary transition-colors duration-200 hover:bg-tertiary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary" data-home-action="all-trips">
+                    <span class="flex-1 px-4 py-4" x-text="active === 'featured' || active === 'styles' ? 'Explore All Peru Travel Packages' : collections[active].cta">Explore All Peru Travel Packages</span>
+                    <span class="inline-flex shrink-0 items-center justify-center border-l border-tertiary/20 px-4 py-2 text-secondary transition-colors duration-200 group-hover:border-secondary" aria-hidden="true">
+                        <x-heroicon-o-arrow-narrow-right class="home-card-arrow h-5 w-5" />
+                    </span>
+                </a>
             </div>
-        </section>
-    </div>
-
-    <div class="dark:bg-gray-700">
-    <section class="px-6 container grid grid-cols-1 md:grid-cols-4 my-12">
-        <div class="text-center w-full col-span-4 items-center text-2xl text-gray-700 dark:text-secondary font-bold gap-2">
-            Most Popular Travel Packages
-            <div class="border-4 h-1 w-12 border-primary mx-auto mt-3"></div>
+        </div>
         </div>
     </section>
-        <section class="container mb-12 ">
-            <div class="grid grid-cols-6 gap-4">
-                <div class="col-start-2 col-span-4">
-                    <div class="grid grid-cols-3 md:grid-cols-8 content-center text-center">
-                        <div class="">
-                            <img src="{{asset('images/include/assistances.png')}}" alt="{{__('message.serv_item2')}}" class="object-contain px-4 text-center">
-                            <p class="text-xs">{{__('message.serv_item2')}}</p>
-                        </div>
-                        <div class="">
-                            <img src="{{asset('images/include/breakfast.png')}}" alt="{{__('message.serv_item3')}}" class="object-contain px-4 text-center">
-                            <p class="text-xs">{{__('message.serv_item3')}}</p>
-                        </div>
-                        <div class="">
-                            <img src="{{asset('images/include/entrances.png')}}" alt="{{__('message.serv_item4')}}" class="object-contain px-4 text-center">
-                            <p class="text-xs">{{__('message.serv_item4')}}</p>
-                        </div>
-                        <div class="">
-                            <img src="{{asset('images/include/flight.png')}}" alt="{{__('message.serv_item5')}}" class="object-contain px-4 text-center">
-                            <p class="text-xs">{{__('message.serv_item5')}}</p>
-                        </div>
-                        <div class="">
-                            <img src="{{asset('images/include/hotels.png')}}" alt="{{__('message.serv_item6')}}" class="object-contain px-4 text-center">
-                            <p class="text-xs">{{__('message.serv_item6')}}</p>
-                        </div>
-                        <div class="">
-                            <img src="{{asset('images/include/tours.png')}}" alt="{{__('message.serv_item7')}}" class="object-contain px-4 text-center">
-                            <p class="text-xs">{{__('message.serv_item7')}}</p>
-                        </div>
-                        <div class="">
-                            <img src="{{asset('images/include/trains.png')}}" alt="{{__('message.serv_item8')}}" class="object-contain px-4 text-center">
-                            <p class="text-xs">{{__('message.serv_item8')}}</p>
-                        </div>
-                        <div class="">
-                            <img src="{{asset('images/include/transfers.png')}}" alt="{{__('message.serv_item9')}}" class="object-contain px-4 text-center">
-                            <p class="text-xs">{{__('message.serv_item9')}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    <section class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
-        @foreach($paquetes_features as $paquete)
-            <x-packages-card :paquete="$paquete"></x-packages-card>
-        @endforeach
-    </section>
-        <div class="text-center flex justify-center">
-            <a href="{{route('packages.all')}}" class="btn-dark mx-auto">View all Peru Travel Packages</a>
-        </div>
-    </div>
 
 {{--    <section class="grid md:grid-cols-2 sm:grid-cols-1 mx-auto gap-0">--}}
 
@@ -783,136 +460,374 @@
 {{--    </section>--}}
 
 
-    {{-- Carousel full width de Destinos --}}
-    <section class="w-full my-24">
-        <div class="swiper slider-destinations relative w-full
-              h-[50vh] md:h-[60vh] lg:h-[70vh] max-h-[60vh] overflow-hidden">
+    @if($destination->isNotEmpty())
+        <section id="explore-peru-destinations" data-analytics-section="destinations" aria-labelledby="home-destinations-heading" class="w-full bg-tertiary py-16 lg:py-20"
+                 x-data="{
+                     activeDestinationIndex: 0,
+                     total: {{ $destination->count() }},
+                     scrollFrame: null,
+                     destinationCards() {
+                         return Array.from(this.$refs.destinationRail.querySelectorAll('[data-destination-card]'));
+                     },
+                     updatePosition() {
+                         if (this.scrollFrame !== null) return;
+                         this.scrollFrame = requestAnimationFrame(() => {
+                             this.scrollFrame = null;
+                             const rail = this.$refs.destinationRail;
+                             const end = Math.max(0, rail.scrollWidth - rail.clientWidth);
+                             const left = Math.min(end, Math.max(0, rail.scrollLeft));
+                             if (left <= 1) {
+                                 this.activeDestinationIndex = 0;
+                                 return;
+                             }
+                             if (end - left <= 1) {
+                                 this.activeDestinationIndex = this.total - 1;
+                                 return;
+                             }
+                             const center = left + rail.clientWidth / 2;
+                             let nearestDistance = Infinity;
+                             let nearestIndex = 0;
+                             this.destinationCards().forEach((card, index) => {
+                                 const distance = Math.abs(card.offsetLeft + card.offsetWidth / 2 - center);
+                                 if (distance < nearestDistance) {
+                                     nearestDistance = distance;
+                                     nearestIndex = index;
+                                 }
+                             });
+                             this.activeDestinationIndex = nearestIndex;
+                         });
+                     },
+                     centerDestination(index, instant = false) {
+                         const rail = this.$refs.destinationRail;
+                         const card = this.destinationCards()[Math.max(0, Math.min(this.total - 1, index))];
+                         if (!card) return;
+                         rail.scrollTo({
+                             left: card.offsetLeft + card.offsetWidth / 2 - rail.clientWidth / 2,
+                             behavior: instant || window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+                         });
+                         this.updatePosition();
+                     },
+                     selectDestination(event, index) {
+                         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                         if (index !== this.activeDestinationIndex) {
+                             event.preventDefault();
+                             this.centerDestination(index);
+                         }
+                     },
+                     destroy() {
+                         if (this.scrollFrame !== null) cancelAnimationFrame(this.scrollFrame);
+                     }
+                 }"
+                 x-init="$nextTick(() => centerDestination(activeDestinationIndex, true))"
+                 @resize.window.debounce.150ms="centerDestination(activeDestinationIndex, true)">
+            @php
+                $destinationPhotos = [
+                    'arequipa' => asset('images/destinations/arequipa.jpg'),
+                    'puno' => asset('images/destinations/puno.jpg'),
+                ];
+            @endphp
+            <div class="home-content">
+                <div class="mb-8 max-w-3xl lg:mb-10">
+                    <p class="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-secondary">
+                        <span class="inline-flex items-center gap-1" aria-hidden="true"><span class="h-2.5 w-1 bg-secondary"></span><span class="h-2.5 w-3 bg-secondary"></span><span class="h-2.5 w-5 bg-secondary"></span></span>
+                        Discover Peru
+                    </p>
+                    <h2 id="home-destinations-heading" class="font-sans text-4xl font-semibold leading-tight tracking-tight text-white md:text-5xl">Explore by Destination</h2>
+                    <p class="mt-5 max-w-xl text-sm leading-relaxed text-gray-300 md:text-base">Discover the places behind every journey.</p>
+                </div>
 
-            <div class="swiper-wrapper h-full">
-                @foreach($destination as $dest)
-                    @php
-                        $cover = optional($dest->destino_imagen->first())->nombre ?: $dest->imagen;
-
-                    @endphp
-
-                    <div class="swiper-slide h-full">
-                        <div class="relative h-full overflow-hidden">
-                            @if($cover)
-                                <img src="{{ $cover }}" alt="{{ $dest->nombre }}"
-                                     class="w-full h-full object-cover object-center">"
-                                     loading="lazy" decoding="async">
-                            @endif
-
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/30 to-transparent"></div>
-
-                            <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
-                                <div class="container">
-                                    <h3 class="text-white text-2xl md:text-4xl font-extrabold drop-shadow">
-                                        {{ $dest->nombre }}
-                                    </h3>
-
-                                    <div class="mt-4">
-                                        <a href="{{ route('destinations.show', $dest) }}"
-                                           class="btn-primary inline-flex">
-                                            View “{{ $dest->nombre }}”
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24"
-                                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path>
-                                            </svg>
-                                        </a>
+                <div class="relative">
+                    <ul id="home-destination-rail" x-ref="destinationRail" aria-label="Peru destinations" tabindex="0"
+                        @scroll.passive="updatePosition()"
+                        class="home-destination-rail relative flex min-w-0 snap-x snap-mandatory gap-2 overflow-x-auto scroll-smooth py-8 sm:gap-4 lg:gap-6 motion-reduce:scroll-auto focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-secondary">
+                        @foreach($destination as $dest)
+                            @php
+                                $cover = $destinationPhotos[strtolower(trim($dest->nombre))]
+                                    ?? (optional($dest->destino_imagen->first())->nombre ?: $dest->imagen);
+                            @endphp
+                            <li data-destination-card class="min-w-0 shrink-0 basis-4/5 snap-center sm:basis-2/3 lg:basis-1/2"
+                                :class="activeDestinationIndex === {{ $loop->index }} ? 'z-10' : 'z-0'">
+                                <a href="{{ route('destinations.show', $dest) }}"
+                                   @click="selectDestination($event, {{ $loop->index }})"
+                                   :class="activeDestinationIndex === {{ $loop->index }} ? 'scale-110 opacity-100' : 'scale-90 opacity-75'"
+                                   class="group relative block h-80 overflow-hidden rounded-sm bg-tertiary lg:h-96 {{ $loop->first ? 'origin-left' : ($loop->last ? 'origin-right' : 'origin-center') }} motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-out focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-secondary">
+                                    @if($cover)
+                                        <img src="{{ $cover }}" alt="{{ $dest->nombre }}" loading="lazy" decoding="async" class="home-destination-photo absolute inset-0">
+                                    @endif
+                                    <span :class="activeDestinationIndex === {{ $loop->index }} ? 'opacity-90' : 'opacity-100'"
+                                          class="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-tertiary/90 via-tertiary/60 to-transparent motion-safe:transition-opacity motion-safe:duration-500 motion-safe:ease-out" aria-hidden="true"></span>
+                                    <div class="absolute inset-x-0 bottom-0 p-6 lg:p-7">
+                                        <p class="mb-3 text-xs font-medium tracking-wide text-secondary" aria-hidden="true">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</p>
+                                        <h3 class="font-sans text-xl font-semibold leading-snug text-white lg:text-2xl">{{ $dest->nombre }}</h3>
+                                        <span class="mt-3 block h-px w-8 bg-secondary motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out motion-safe:group-hover:w-12" aria-hidden="true"></span>
+                                        <span class="mt-4 inline-flex items-center gap-3 text-xs font-medium text-white/90">
+                                            Explore destination
+                                            <x-heroicon-o-arrow-narrow-right class="home-card-arrow h-4 w-4 shrink-0" aria-hidden="true" />
+                                        </span>
                                     </div>
-                                </div>
-                            </div>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
 
-                            <a href="{{ route('destinations.show', $dest) }}" class="absolute inset-0" aria-label="Open {{ $dest->nombre }}">
-                                <span class="sr-only">Open {{ $dest->nombre }}</span>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <div class="swiper-pagination !bottom-4"></div>
-            <div class="swiper-button-prev btn-prev hidden md:flex"></div>
-            <div class="swiper-button-next btn-next hidden md:flex"></div>
-        </div>
-    </section>
-
-
-
-
-    <section class="container my-6">
-        <div class="grid grid-cols-3 gap-6">
-            @foreach($videos->take(3) as $video)
-                <div class="overflow-hidden relative">
-                    <a class="venobox" data-gall="myGallery" data-autoplay="true" data-maxwidth="50%" data-vbtype="video" href="{{$video->codigo}}">
-                        <img src="{{$video->imagen}}" class="transform bg-blue-400 hover:bg-blue-600 transition duration-500 hover:scale-105"/>
-                        <div class="absolute bottom-0 left-0 bg-gray-800 p-2 rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-6 h-6 text-white">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                            </svg>
-                        </div>
+                <div class="mt-8 text-center lg:mt-10">
+                    <a href="{{ route('destinations.all') }}"
+                       class="group inline-flex w-full max-w-sm items-center justify-between border border-white/40 bg-transparent text-xs font-bold tracking-wider text-white transition-colors duration-200 hover:bg-white hover:text-tertiary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary">
+                        <span class="flex-1 px-4 py-4">View All Destinations</span>
+                        <span class="inline-flex shrink-0 items-center justify-center border-l border-white/30 px-4 py-2 text-secondary transition-colors duration-200 group-hover:border-secondary" aria-hidden="true">
+                            <x-heroicon-o-arrow-narrow-right class="home-card-arrow h-5 w-5" />
+                        </span>
                     </a>
-                </div>
-            @endforeach
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-gray-100 dark:bg-gray-700 dark:border-gray-700 border p-4">
-                    <div class="flex items-center">
-                        <div class="w-10">
-                            <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">Z</div>
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Zeeshan B.</h3>
-                            <p class="text-sm">Toronto - Canada</p>
-                        </div>
-                    </div>
-                    <div class="text-sm">
-                        <p>...I would recommend Gotoperu 100%. You will not regret it!!!</p>
-                    </div>
-                </div>
-                <div class="bg-gray-100 border p-4 dark:bg-gray-700 dark:border-gray-700">
-                    <div class="flex items-center">
-                        <div class="w-10">
-                            <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">M</div>
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Mike T</h3>
-                            <p class="text-sm">Bryan, Texas</p>
-                        </div>
-                    </div>
-                    <div class="text-sm">
-                        <p>Great service, great communication, and everything was just as promised...!</p>
-                    </div>
-                </div>
-                <div class="bg-gray-100 border p-4 dark:bg-gray-700 dark:border-gray-700">
-                    <div class="flex items-center">
-                        <div class="w-10">
-                            <div class="m-1 mr-2 w-8 h-8 relative flex justify-center items-center rounded-full bg-secondary text-xl text-white uppercase">K</div>
-                        </div>
-                        <div class="col-span-4 p-3 text-gray-500">
-                            <h3 class="font-bold text-sm">Kavitabhagia</h3>
-                            <p class="text-sm">Dubai, United</p>
-                        </div>
-                    </div>
-                    <div class="text-sm">
-                        <p>...our experience with this tour company was very satisfying!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <section class="py-12">
-            <div class="container md:mx-auto">
-                <div class="overflow-hidden">
-                    <div class="elfsight-app-5eb4043b-fced-4876-890c-bcac70bb6720" data-elfsight-app-lazy></div>
                 </div>
             </div>
         </section>
+    @endif
 
 
+    <section id="why-gotoperu" data-analytics-section="why_gotoperu" aria-labelledby="home-experts-heading"
+             class="relative isolate overflow-hidden bg-white pt-20 font-sans text-tertiary lg:pt-28 xl:pt-32"
+             x-data="{
+                            landscapeFrame: null,
+                            landscapeMotion: null,
+                            landscapeTick: null,
+                            motionChanged: null,
+                            init() {
+                                this.landscapeMotion = window.matchMedia('(min-width: 1024px) and (prefers-reduced-motion: no-preference)');
+                                this.landscapeTick = () => this.queueLandscape();
+                                this.motionChanged = () => {
+                                    cancelAnimationFrame(this.landscapeFrame);
+                                    this.landscapeFrame = null;
+                                    if (this.landscapeMotion.matches) {
+                                        window.addEventListener('scroll', this.landscapeTick, { passive: true });
+                                        window.addEventListener('resize', this.landscapeTick);
+                                        this.queueLandscape();
+                                    } else {
+                                        window.removeEventListener('scroll', this.landscapeTick);
+                                        window.removeEventListener('resize', this.landscapeTick);
+                                        this.$refs.landscape.style.removeProperty('transform');
+                                    }
+                                };
+                                this.landscapeMotion.addEventListener('change', this.motionChanged);
+                                this.$nextTick(() => this.motionChanged());
+                            },
+                            queueLandscape() {
+                                if (!this.landscapeMotion.matches || this.landscapeFrame !== null) return;
+                                this.landscapeFrame = requestAnimationFrame(() => {
+                                    this.landscapeFrame = null;
+                                    if (!this.landscapeMotion.matches) return;
+                                    const bounds = this.$el.getBoundingClientRect();
+                                    if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) return;
+                                    const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
+                                    // Forty pixels of total travel; only the landscape moves.
+                                    const offset = (progress - 0.5) * 40;
+                                    this.$refs.landscape.style.transform = 'translate3d(0, ' + offset.toFixed(2) + 'px, 0)';
+                                });
+                            },
+                            destroy() {
+                                cancelAnimationFrame(this.landscapeFrame);
+                                window.removeEventListener('scroll', this.landscapeTick);
+                                window.removeEventListener('resize', this.landscapeTick);
+                                this.landscapeMotion.removeEventListener('change', this.motionChanged);
+                            }
+                        }">
+        {{-- One full-width landscape; all legibility and edge transitions belong to the section, not the team. --}}
+        <div data-home-team-background data-package-reveal
+             class="pointer-events-none absolute inset-0 h-full w-full !transform-none overflow-hidden" aria-hidden="true">
+            <div x-ref="landscape" class="absolute -inset-y-4 inset-x-0">
+                <img src="{{ asset('images/team/home/machupicchu.webp') }}" alt=""
+                     width="2700" height="1620" loading="lazy" decoding="async"
+                     class="h-full w-full object-cover object-center lg:scale-105 lg:object-right">
+            </div>
+            <div class="absolute inset-0 bg-white/80 lg:bg-transparent"></div>
+            <div class="absolute inset-0 hidden bg-gradient-to-r from-white from-10% via-white/90 via-45% to-white/80 to-95% lg:block"></div>
+            <div class="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-white to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-gray-50/60 to-gray-50 lg:h-40"></div>
+        </div>
+
+        {{-- Bottom padding stays inside the container so the team can sit near the section base without moving the copy. --}}
+        <div class="home-content relative grid grid-cols-1 pb-16 lg:grid-cols-12 lg:pb-20 xl:pb-24">
+            <div class="relative z-30 min-w-0 motion-safe:!duration-500 lg:col-start-1 lg:col-end-6 lg:row-start-1 lg:pr-8" data-package-reveal>
+                <p class="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-primary">
+                    <span class="inline-flex shrink-0 items-center gap-1" aria-hidden="true"><span class="h-2.5 w-1 bg-secondary"></span><span class="h-2.5 w-3 bg-secondary"></span><span class="h-2.5 w-5 bg-secondary"></span></span>
+                    Why GOTOPERU
+                </p>
+                <h2 id="home-experts-heading" class="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl">
+                    Your Peruvian<br>
+                    Travel Operator.
+                </h2>
+                <p class="mt-6 max-w-lg text-sm leading-relaxed text-gray-600 md:text-base">
+                    Based in Cusco, our local team creates custom-made itineraries and supports you throughout your journey in Peru.
+                </p>
+            </div>
+
+            <ol class="relative z-30 mt-8 space-y-6 motion-safe:!duration-500 lg:col-start-1 lg:col-end-5 lg:row-start-2 lg:pr-6" aria-label="Why travel with GoToPeru" data-package-reveal>
+                <li class="flex items-start gap-4">
+                    <span class="inline-flex shrink-0 items-center gap-3 pt-1 text-xs font-semibold tracking-wider text-primary" aria-hidden="true">01<span class="h-px w-6 bg-secondary"></span></span>
+                    <div class="min-w-0">
+                        <h3 class="text-base font-semibold">Local expertise</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-gray-600">Based in Cusco, with offices across Peru's main destinations.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="inline-flex shrink-0 items-center gap-3 pt-1 text-xs font-semibold tracking-wider text-primary" aria-hidden="true">02<span class="h-px w-6 bg-secondary"></span></span>
+                    <div class="min-w-0">
+                        <h3 class="text-base font-semibold">Tailor-made journeys</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-gray-600">Custom-made itineraries shaped around your interests and way of travelling.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="inline-flex shrink-0 items-center gap-3 pt-1 text-xs font-semibold tracking-wider text-primary" aria-hidden="true">03<span class="h-px w-6 bg-secondary"></span></span>
+                    <div class="min-w-0">
+                        <h3 class="text-base font-semibold">Personalized service</h3>
+                        <p class="mt-1 text-sm leading-relaxed text-gray-600">Local representatives, guides and drivers support you throughout your trip.</p>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="relative z-30 mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 motion-safe:!duration-500 lg:col-start-1 lg:col-end-5 lg:row-start-3 lg:self-end lg:pr-6" data-package-reveal>
+                <a href="#form-dream-adventure" data-quote-source="why_gotoperu" class="btn-primary group inline-flex min-h-12 items-center justify-center gap-3">
+                    Plan My Trip
+                    <x-heroicon-o-arrow-narrow-right class="home-card-arrow h-4 w-4 shrink-0" aria-hidden="true" />
+                </a>
+                <a href="{{ route('about') }}" class="group inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-tertiary transition-colors duration-300 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                    Meet Our Team
+                    <x-heroicon-o-arrow-narrow-right class="home-card-arrow h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
+                </a>
+            </div>
+
+            {{-- Both visual layers share the team's bottom anchor; the image stays in normal flow on mobile. --}}
+            <figure class="relative z-10 mt-10 w-full min-w-0 lg:absolute lg:bottom-6 lg:right-0 lg:mt-0 lg:w-2/3">
+                <div class="relative">
+                    <p class="pointer-events-none absolute left-0 top-0 z-10 !transform-none text-left text-6xl font-semibold leading-none tracking-tight text-primary/15 sm:text-8xl lg:-top-32 lg:left-16 xl:left-20 xl:text-9xl 2xl:left-24"
+                       aria-hidden="true" data-package-reveal>LOCAL<br>EXPERTS</p>
+                    <div class="relative z-20 motion-safe:!duration-500" data-package-reveal>
+                        <img src="{{ asset('images/team/home/group-gtp.png') }}" alt="GoToPeru local travel team"
+                             width="2000" height="853" loading="lazy" decoding="async"
+                             class="block h-auto w-full max-w-none object-contain lg:origin-bottom-right lg:scale-90">
+                    </div>
+                </div>
+            </figure>
+        </div>
+    </section>
+
+    <section id="peru-in-motion" data-analytics-section="peru_in_motion" aria-labelledby="home-social-heading" class="bg-gray-50 pt-12 pb-16 font-sans text-tertiary lg:pt-16 lg:pb-20">
+        <div class="home-content">
+            <div class="home-social-header" data-package-reveal>
+                <div class="max-w-2xl">
+                    <p class="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-primary">
+                        <span class="inline-flex shrink-0 items-center gap-1" aria-hidden="true"><span class="h-2.5 w-1 bg-secondary"></span><span class="h-2.5 w-3 bg-secondary"></span><span class="h-2.5 w-5 bg-secondary"></span></span>
+                        From Peru, Now
+                    </p>
+                    <h2 id="home-social-heading" class="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">Peru, in motion.</h2>
+                    <p class="mt-4 text-sm leading-relaxed text-gray-600 md:text-base">Recent moments, places and experiences from our journeys.</p>
+                </div>
+                <nav aria-label="Follow GOTOPERU" class="shrink-0 lg:text-right">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-gray-600">Follow GOTOPERU</p>
+                    <ul class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold">
+                        <li>
+                            <a href="https://www.instagram.com/goto.peru/" target="_blank" rel="noopener noreferrer" class="group inline-flex min-h-11 items-center gap-2 transition-colors duration-200 hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                                <img src="{{ asset('images/logos/instagram.png') }}" alt="" width="512" height="512" loading="lazy" decoding="async" class="h-4 w-4 object-contain transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none">
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank" rel="noopener noreferrer" class="group inline-flex min-h-11 items-center gap-2 transition-colors duration-200 hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                                <img src="{{ asset('images/logos/facebook.png') }}" alt="" width="512" height="512" loading="lazy" decoding="async" class="h-4 w-4 object-contain transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none">
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank" rel="noopener noreferrer" class="group inline-flex min-h-11 items-center gap-2 transition-colors duration-200 hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                                <img src="{{ asset('images/logos/youtube.png') }}" alt="" width="512" height="512" loading="lazy" decoding="async" class="h-4 w-4 object-contain transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none">
+                                YouTube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.tiktok.com/@gotoperu" target="_blank" rel="noopener noreferrer" class="group inline-flex min-h-11 items-center gap-2 transition-colors duration-200 hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                                <img src="{{ asset('images/logos/tiktok.png') }}" alt="" width="512" height="512" loading="lazy" decoding="async" class="h-4 w-4 object-contain transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none">
+                                TikTok
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            {{-- Elfsight owns the feed, carousel and playback; keep its container outside our reveal motion. --}}
+            {{-- Configure the responsive carousel in Elfsight: desktop 3, tablet 2, mobile 1 with a peek where supported. --}}
+            <div class="min-h-64 w-full min-w-0 md:min-h-80">
+                <div class="elfsight-app-b65da1af-4fbc-4952-a82b-341db07f2409" data-elfsight-app-lazy></div>
+            </div>
+
+            {{-- Detail's bridge pattern: the backdrop is independent of the portrait and raised review panel. --}}
+            <div class="home-social-bridge" data-analytics-section="advisor_reviews">
+                <div class="home-social-bridge__backdrop" aria-hidden="true">
+                    <div class="home-social-bridge__decoration !transform-none" data-package-reveal>
+                        <span>Local</span>
+                        <span>Travel Expert</span>
+                    </div>
+                </div>
+                <div class="home-social-bridge__copy" data-package-reveal>
+                    <span class="mb-5 block h-px w-8 bg-secondary" aria-hidden="true"></span>
+                    <p class="mb-5 text-xs font-semibold uppercase tracking-wider text-white/70">Plan with a local Peru expert.</p>
+                    <h3 id="home-advisor-heading" class="text-2xl font-semibold leading-snug">Inspired by something you saw?</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-white/80">Our local team can help shape your journey.</p>
+                </div>
+                <div class="home-social-bridge__person" data-package-reveal>
+                    <picture class="block">
+                        <source media="not all and (min-width: 768px)" srcset="{{ asset('images/team/home/pabel.webp') }}" width="768" height="1154">
+                        <img src="{{ asset('images/team/home/pabel.png') }}" alt="Pabel, GOTOPERU team"
+                             width="1023" height="1537" loading="lazy" decoding="async"
+                             class="home-social-bridge__portrait">
+                    </picture>
+                </div>
+                <div class="home-social-bridge__actions">
+                    <a href="#form-dream-adventure" data-quote-source="advisor" class="group inline-flex min-h-12 items-center justify-center gap-3 border border-white bg-white px-6 py-3 text-xs font-semibold text-tertiary transition-colors duration-200 hover:bg-transparent hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary">
+                        Plan My Trip
+                        <x-heroicon-o-arrow-narrow-right class="home-card-arrow h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
+                    </a>
+                </div>
+                <div class="home-social-bridge__review" data-package-reveal>
+                        <figure>
+                            <h3 class="mb-5 text-xs font-semibold uppercase tracking-wider text-primary">Travelers tell it better</h3>
+                            <blockquote class="relative pt-4 text-lg font-medium leading-relaxed xl:text-xl">
+                                <span class="pointer-events-none absolute -top-5 -left-2 text-8xl leading-none text-primary/10" aria-hidden="true">“</span>
+                                <p class="relative">...I would recommend Gotoperu 100%. You will not regret it!!!</p>
+                            </blockquote>
+                            <figcaption class="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+                                <span class="font-semibold">Zeeshan B.</span>
+                                <span class="text-gray-600">Toronto - Canada</span>
+                            </figcaption>
+                        </figure>
+                        <ul aria-label="Traveler review platforms" class="mt-5 grid grid-cols-3 items-center gap-3">
+                            <li class="min-w-0">
+                                <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank" rel="noopener noreferrer"
+                                   class="inline-flex min-h-11 w-full items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                                    <img src="{{ asset('images/logos/tripadvisor2.png') }}" alt="Tripadvisor" loading="lazy" decoding="async" class="h-14 w-auto max-w-full object-contain">
+                                </a>
+                            </li>
+                            <li class="min-w-0">
+                                <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank" rel="noopener noreferrer"
+                                   class="inline-flex min-h-11 w-full items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                                    <img src="{{ asset('images/logos/yelp2.png') }}" alt="Yelp" loading="lazy" decoding="async" class="h-14 w-auto max-w-full object-contain">
+                                </a>
+                            </li>
+                            <li class="min-w-0">
+                                <a href="https://www.trustpilot.com/review/gotoperu.com" target="_blank" rel="noopener noreferrer"
+                                   class="inline-flex min-h-11 w-full items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                                    <img src="{{ asset('images/logos/trust2.png') }}" alt="Trustpilot" loading="lazy" decoding="async" class="h-14 w-auto max-w-full object-contain">
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="{{ route('reviews') }}"
+                           class="group relative mt-4 inline-flex min-h-11 items-center gap-3 border-b border-tertiary/20 text-xs font-semibold transition-colors duration-200 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                            Read Traveler Reviews
+                            <x-heroicon-o-arrow-narrow-right class="home-card-arrow h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
+                            <span class="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none" aria-hidden="true"></span>
+                        </a>
+                </div>
+            </div>
+        </div>
     </section>
 
 
@@ -975,124 +890,11 @@
 {{--        <p class="font-light text-lg mt-2">Follow our Peruvian adventures and share your own with us.</p>--}}
 {{--    </div>--}}
 
-    <section class="container mt-12">
-        <div class="flex mb-3 sm:mt-0 items-center text-2xl text-gray-700 dark:text-secondary mt-12 font-bold gap-2  md:flex">
-
-            {{--            <span class="inline-block w-1 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
-            {{--            <span class="hidden md:inline-flex inline-block w-3 h-2.5 bg-secondary dark:bg-primary ml-1"></span>--}}
-            <span class="md:inline-flex inline-block w-5 h-2.5 bg-secondary dark:bg-primary"></span> GET SOCIAL WITH US
-
-        </div>
-        <p class="font-light text-lg mt-2">Follow our Peruvian adventures and share your own with us.</p>
-    </section>
-
-    <div class="container  my-6">
-        <div class="grid grid-cols-7 items-center text-2xl text-gray-700 font-bold gap-3">
-            <div class="border dark:border-gray-700">
-                <a href="https://www.instagram.com/goto.peru/" target="_blank">
-                    <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full">
-                </a>
-            </div>
-            <div class="border dark:border-gray-700">
-                <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">
-                    <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full">
-                </a>
-            </div>
-            <div class="border dark:border-gray-700">
-                <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">
-                    <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full">
-                </a>
-            </div>
-            <div class="border dark:border-gray-700">
-                <a href="https://www.tiktok.com/@gotoperu" target="_blank">
-                    <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full">
-                </a>
-            </div>
-            <div class="border dark:border-gray-700">
-                <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294314-d15202262-Reviews-Gotoperu-Cusco_Cusco_Region.html" target="_blank">
-                    <img src="{{asset('images/logos/tripadvisor2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full dark:filter dark:grayscale dark:invert">
-                </a>
-            </div>
-            <div class="border dark:border-gray-700">
-                <a href="https://www.yelp.com/biz/gotoperu-washington?osq=gotoperu.com" target="_blank">
-                    <img src="{{asset('images/logos/yelp2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full dark:filter dark:grayscale dark:invert">
-                </a>
-            </div>
-            <div class="border dark:border-gray-700">
-                <a href="https://www.trustpilot.com/review/gotoperu.com">
-                    <img src="{{asset('images/logos/trust2.png')}}" alt="" class="md:px-6 md:py-4 p-2 w-full dark:filter dark:grayscale dark:invert">
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <section class="container grid grid-cols-1 md:grid-cols-2 md:mb-12">
-        <div class="bg-gray-800 dark:bg-gray-800 text-white dark:bg-opacity-90 p-6 dark:text-gray-50  items-center  md:block">
-            <div class="py-12 text-sm">
-                <h3 class="font-semibold text-2xl">
-                    ABOUT GOTOPERU
-                </h3>
-                <p class="block my-12">
-                    We are a travel operator with Headquarters in Cusco City and offices in the main destinations of Peru catering to travelers who want an original, authentic and unforgettable experience at the land of the Incas.
-                </p>
-
-                <h3 class="font-medium">Personalized Service</h3>
-                <p class="flex my-4 items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    First name basis always, since your own custom-made itinerary our dedicated local team, including representatives, guides, drivers will be always there for you on each day of your vacation. Plus a truly local assistance 24/7 on each destination.
-                </p>
-                <h3 class="font-medium">Confidence</h3>
-                <p class="flex my-4 items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    GOTOPERU is certified by the Peruvian Government, by the Ministry of Foreign Trade and Tourism of Peru (MINCETUR) . In addition we are also highly rated on Tripadvisor, Trustpilot and diverse well known travel forums.
-                </p>
-            </div>
-        </div>
-        <div class="bg-primary text-white dark:bg-gray-800 dark:bg-opacity-90  dark:text-gray-50 flex items-end">
-            <img src="{{asset('images/team/pabel2.png')}}" alt="" class="mx-auto">
-            <div class="text-center">
-{{--                <h3 class="font-semibold text-2xl">--}}
-{{--                    GET SOCIAL WITH US--}}
-{{--                </h3>--}}
-{{--                <p class="block my-12">--}}
-{{--                    Follow our Peruvian adventures and share your own with us.--}}
-{{--                </p>--}}
-{{--                <div class="w-full md:w-1/2 mx-auto mt-12 bg-gray-100 bg-opacity-50 p-6 rounded">--}}
-{{--                    <div class="flex inline-flex items-center text-2xl text-gray-700 font-bold gap-3">--}}
-{{--                        <div class="">--}}
-{{--                            <a href="https://www.instagram.com/goto.peru/" target="_blank">--}}
-{{--                                <img src="{{asset('images/logos/instagram2.png')}}" alt="" class="px-2">--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="">--}}
-{{--                            <a href="https://www.facebook.com/GOTOPERUcom/" target="_blank">--}}
-{{--                                <img src="{{asset('images/logos/facebook2.png')}}" alt="" class="px-2">--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="">--}}
-{{--                            <a href="https://www.youtube.com/channel/UCWjJ10j-_BfNTDnmjBug8Ng" target="_blank">--}}
-{{--                                <img src="{{asset('images/logos/youtube2.png')}}" alt="" class="px-2">--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="">--}}
-{{--                            <a href="https://www.tiktok.com/@gotoperu" target="_blank">--}}
-{{--                                <img src="{{asset('images/logos/tiktok2.png')}}" alt="" class="px-2">--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-                {{--                <a href="#" class="btn-primary">{{__('message.button_all')}}</a>--}}
-            </div>
-        </div>
-    </section>
+    {{-- Legacy About content is preserved in page/partials/home/about-legacy.blade.php. --}}
 
 
 
-    <div class="dark:bg-gray-700 pt-12">
+
 
 
 
@@ -1195,41 +997,39 @@
 {{--        </div>--}}
 {{--    </div>--}}
 
-        <!-- Full-bleed: rompe cualquier container/padding padre -->
-        <section
-            class="relative isolate overflow-hidden -mx-[calc(50vw-50%)]
-             bg-black
-             h-[50vh] min-h-[260px] sm:h-[58vh] md:h-[70vh] lg:h-[80vh]">
-
-            <!-- Video centrado y sobredimensionado -->
-            <iframe
-                src="https://player.vimeo.com/video/1118424734?background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1&playsinline=1&dnt=1"
-                class="absolute z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                   w-[200vw] h-[200vh]
-                   sm:w-[170vw] sm:h-[170vh]
-                   md:w-[130vw] md:h-[130vh]
-                   lg:w-[115vw] lg:h-[115vh]
-                   pointer-events-none"
-                frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                aria-hidden="true" tabindex="-1">
-            </iframe>
-
-            <!-- Overlay (más oscuro en móvil para legibilidad) -->
-            <div class="absolute inset-0 z-10 bg-black/30 md:bg-black/20"></div>
-
-            <!-- Contenido -->
-            <div class="relative z-20 flex h-full items-center">
-                <div class="w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 text-white text-center md:text-left">
-                    <h2 class="text-xl sm:text-3xl md:text-5xl lg:text-5xl text-center font-bold leading-tight tracking-tight">
+    <section id="home-transportation" data-analytics-section="transportation" aria-labelledby="home-transportation-heading" class="home-transportation">
+        <div class="home-transportation__media" aria-hidden="true">
+            <img src="{{ asset('images/banners/confidence/safe-transportation.jpg') }}"
+                 alt="" width="700" height="450" loading="lazy" decoding="async"
+                 class="home-transportation__image">
+            {{-- Original transportation embed: background autoplay stays muted and loops; no separate player. --}}
+            <iframe src="https://player.vimeo.com/video/1118424734?background=1&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;muted=1&amp;playsinline=1&amp;dnt=1"
+                    title="Private transportation in Peru with GOTOPERU" loading="lazy"
+                    class="home-transportation__video" frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture" aria-hidden="true" tabindex="-1"></iframe>
+        </div>
+        <div class="home-transportation__shade" aria-hidden="true"></div>
+        <div class="home-content home-transportation__content">
+            <div class="grid w-full grid-cols-12">
+                <div class="home-transportation__copy" data-package-reveal>
+                    <p class="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-secondary">
+                        <span class="inline-flex shrink-0 items-center gap-1" aria-hidden="true"><span class="h-2.5 w-1 bg-secondary"></span><span class="h-2.5 w-3 bg-secondary"></span><span class="h-2.5 w-5 bg-secondary"></span></span>
+                        Operations in Peru
+                    </p>
+                    <h2 id="home-transportation-heading" class="text-3xl font-semibold leading-tight tracking-tight md:text-4xl xl:text-5xl">
                         Private Transportation in Peru with GOTOPERU
                     </h2>
-                    <p class="mt-2 sm:mt-3 text-xs sm:text-sm md:text-xl/relaxed text-center opacity-95">
+                    <p class="max-w-lg text-sm leading-relaxed text-white/90 md:text-base">
                         Safe, comfortable, and punctual transfers from Lima airport to Cusco, Sacred Valley, and Machu Picchu.
                     </p>
+                    <a href="#form-dream-adventure" data-quote-source="transportation" class="btn-white home-transportation__cta group inline-flex min-h-12 items-center justify-center gap-3">
+                        Plan My Trip
+                        <x-heroicon-o-arrow-narrow-right class="home-card-arrow h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
 
 
@@ -1381,50 +1181,32 @@
 
     <script src="https://cdn.wetravel.com/widgets/embed_checkout.js"></script>
 
-    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
     <script>
 
-        new VenoBox({
-            selector: '.venobox'
+        new Swiper('#home-trust-slider', {
+            slidesPerView: 1.05,
+            spaceBetween: 0,
+            watchOverflow: true,
+            navigation: {
+                prevEl: '#home-trust-prev',
+                nextEl: '#home-trust-next',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1280: { slidesPerView: 4 },
+            },
+            a11y: {
+                slideRole: 'listitem',
+                prevSlideMessage: 'Previous trust messages',
+                nextSlideMessage: 'Next trust messages',
+            },
         });
 
-        var swiper = new Swiper(".mySwiper", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-        var swiper = new Swiper(".slider-featured", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-        var swiper = new Swiper(".slider-brands", {
-            slidesPerView: 4,
-            // navigation: {
-            //     nextEl: ".swiper-button-next",
-            //     prevEl: ".swiper-button-prev",
-            // },
-            breakpoints: {
-                320: {
-                    slidesPerView: 2,
-                    // spaceBetween: 20,
-                },
-                640: {
-                    slidesPerView: 1,
-                    // spaceBetween: 20,
-                },
-                768: {
-                    slidesPerView: 4,
-                    // spaceBetween: 40,
-                },
-                1024: {
-                    slidesPerView: 4,
-                    // spaceBetween: 50,
-                },
-            },
+        new VenoBox({
+            selector: '.venobox'
         });
 
         // document.querySelectorAll('.departamento').forEach(dept => {
@@ -1443,27 +1225,6 @@
         //     });
         // });
 
-        var swiperDest = new Swiper('.slider-destinations', {
-            slidesPerView: 1,
-            loop: true,
-            speed: 700,
-            autoplay: {
-                delay: 4500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.slider-destinations .swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.slider-destinations .btn-next',
-                prevEl: '.slider-destinations .btn-prev',
-            },
-            // Si quieres “coverflow”:
-            // effect: 'coverflow',
-            // coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 1, slideShadows: false },
-            // responsive heights podrían manejarse solo con Tailwind (clases en el contenedor)
-        });
 
     </script>
 

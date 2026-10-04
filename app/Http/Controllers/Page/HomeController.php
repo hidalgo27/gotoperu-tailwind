@@ -25,25 +25,20 @@ class HomeController extends Controller
 //        $pipedrive = new Pipedrive(config('services.pipedrive.token'));
 //        $organizations = $pipedrive->organizations()->all();
 
-        $categoriesForTabs = TCategoria::query()
-
+        $homeCategories = TCategoria::query()
             ->whereHas('paquetes', function ($q) {
                 $q->where('estado', 1);
             })
-            ->with(['paquetes' => function ($q) {
-                $q->where('estado', 1)
-                    ->with([
-                        'imagen_paquetes',
-                        'paquetes_destinos.destinos',
-                        'paquetes_categoria.categoria',
-                        'precio_paquetes'
-                    ])
-                    ->orderBy('titulo'); // o el orden que prefieras
-            }])
             ->orderBy('id')
             ->get();
 
-        $defaultCategoryId = optional($categoriesForTabs->first())->id;
+        // Only these Home tabs show products; travel styles use category imagery.
+        $homeCategories->whereIn('url', ['luxury', 'multicountry', 'full-day-tours'])
+            ->load(['paquetes' => function ($q) {
+                $q->where('estado', 1)
+                    ->orderBy('titulo')
+                    ->with('paquetes_destinos.destinos', 'precio_paquetes');
+            }]);
 
         $paquete_recommended = TPaquete::
         with('imagen_paquetes','paquetes_destinos.destinos','paquetes_categoria.categoria', 'precio_paquetes')
@@ -90,8 +85,7 @@ class HomeController extends Controller
                 'category_footer',
                 'destination',
                 'videos',
-                'categoriesForTabs',
-                'defaultCategoryId'
+                'homeCategories'
             ));
     }
 

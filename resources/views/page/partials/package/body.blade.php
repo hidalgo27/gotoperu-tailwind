@@ -73,7 +73,7 @@
                 <div class="package-expert__copy">
                     <p class="package-expert__eyebrow text-secondary font-semibold">Book With Confidence</p>
                     <h2 id="package-expert-title" class="package-expert__title font-semibold leading-tight mt-3">
-                        <a href="#form-dream-adventure" class="hover:text-secondary">
+                        <a href="#form-dream-adventure" data-quote-source="advisor" class="hover:text-secondary">
                             Plan with our Peru experts
                             <x-heroicon-o-arrow-right class="inline-block h-5 w-5" aria-hidden="true" />
                         </a>
@@ -1389,5 +1389,4 @@
         'campaignId' => $campaign ? (int) $campaign->id : null,
         'campaignSlug' => $campaign->slug ?? null,
     ], key('paquete' . $paquete['id'] . ($campaign ? '-campaign-' . $campaign->id : '')))
-
 

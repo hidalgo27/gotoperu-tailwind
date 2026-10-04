@@ -111,11 +111,14 @@
              const viewport = window.visualViewport;
              const top = viewport ? viewport.offsetTop : 0;
              const bottom = top + (viewport ? viewport.height : window.innerHeight);
-             const hide = window.innerWidth < 768
-                 && Array.from(document.querySelectorAll('[data-quote-form]')).some(form => {
+             const hero = document.querySelector('.package-hero')?.getBoundingClientRect();
+             const hide = window.innerWidth < 768 && (
+                 (hero && hero.height > 0 && hero.top < bottom && hero.bottom > top)
+                 || Array.from(document.querySelectorAll('[data-quote-form]')).some(form => {
                      const bounds = form.getBoundingClientRect();
-                     return bounds.height > 0 && bounds.top < bottom && bounds.bottom > top;
-                 });
+                     return bounds.height > 0 && bounds.top < bottom;
+                 })
+             );
              document.querySelectorAll('[data-quote-floating]').forEach(action => {
                  if (hide) action.style.setProperty('display', 'none', 'important');
                  else action.style.removeProperty('display');
@@ -433,15 +436,14 @@
         document.addEventListener("DOMContentLoaded", function () {
             if (window.GTPAnalytics) {
                 @this.set('firstTouch', window.GTPAnalytics.getFirstTouch(), true);
+                @this.set('ctaSource', window.GTPAnalytics.getCtaSource(), true);
             }
             // Bind attribution to this rendered Livewire instance; keep the existing anchor/scroll behavior.
             document.addEventListener('click', function (event) {
-                if (!(event.target instanceof Element)) return;
-                const cta = event.target.closest('a[href="#form-dream-adventure"]');
+                if (!(event.target instanceof Element) || !window.GTPAnalytics) return;
+                const cta = event.target.closest('[data-quote-source]');
                 if (!cta) return;
-                const source = ['hero', 'rail', 'final', 'form'].includes(cta.dataset.quoteSource)
-                    ? cta.dataset.quoteSource : 'form';
-                @this.set('ctaSource', source, true);
+                @this.set('ctaSource', window.GTPAnalytics.getCtaSource(), true);
             });
 
             const formRoot = document.querySelector('[data-quote-form="detail"]');

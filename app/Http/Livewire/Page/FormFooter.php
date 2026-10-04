@@ -86,7 +86,10 @@ class FormFooter extends Component
         }
         $attribution['Conversion Page Type'] = $this->conversionPageType;
         $attribution['Conversion Page'] = $this->conversionPagePath;
-        $attribution['CTA Source'] = in_array($this->ctaSource, ['hero', 'rail', 'final', 'form'], true) ? $this->ctaSource : 'form';
+        $attribution['CTA Source'] = in_array($this->ctaSource, [
+            'hero', 'header', 'header_mobile', 'mobile_drawer', 'sticky_nav', 'packages', 'why_gotoperu',
+            'advisor', 'transportation', 'footer', 'floating', 'rail', 'final', 'form',
+        ], true) ? $this->ctaSource : 'form';
         return $attribution;
     }
 
@@ -240,6 +243,21 @@ class FormFooter extends Component
 //            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
             if ($response2->successful()) {
                 $leadCreated = true;
+                // Preserve notification data before the Livewire fields are reset.
+                $mailData = [
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'values_categories' => $this->values_categories,
+                    'travellers' => $travellers,
+                    'values_trip_length' => $this->values_trip_length ?? [],
+                    'travel_day' => $this->travel_day,
+                    'comment' => $this->comment,
+                    'attribution' => $attribution,
+                    'phone' => $this->phone,
+                    'phonecountry' => $this->phonecountry,
+                    'device' => $this->device,
+                    'browser' => $this->browser,
+                ];
                 $analyticsTravellers = is_scalar($travellers) ? filter_var($travellers, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) : false;
                 $analyticsCategories = array_unique(array_map('strval', array_filter($this->values_categories, function ($value) {
                     return in_array($value, ['3', '4', '5', 3, 4, 5], true);
@@ -253,46 +271,48 @@ class FormFooter extends Component
                     'number_travelers' => $analyticsTravellers === false ? null : $analyticsTravellers,
                     'hotel_category' => implode('|', $analyticsCategories),
                 ], function ($value) { return $value !== null && $value !== ''; }));
-                try {
-                    Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $this->name], function ($messaje) {
-                        $messaje->to($this->email, $this->name)
-                            ->subject('GotoPeru')
-                            /*->attach('ruta')*/
-                            ->from('info@gotoperu.com', 'GotoPeru');
-                    });
-                } catch (\Throwable $exception) {
-                    Log::error('G1 lead created; client notification failed.', [
-                        'message' => $exception->getMessage(),
-                    ]);
-                }
-                try {
-                    Mail::send(['html' => 'notifications.page.admin-form-footer'], [
+                app()->terminating(static function () use ($mailData, $from) {
+                    try {
+                        Mail::send(['html' => 'notifications.page.client-form-design'], ['name' => $mailData['name']], static function ($messaje) use ($mailData) {
+                            $messaje->to($mailData['email'], $mailData['name'])
+                                ->subject('GotoPeru')
+                                /*->attach('ruta')*/
+                                ->from('info@gotoperu.com', 'GotoPeru');
+                        });
+                    } catch (\Throwable $exception) {
+                        Log::error('G1 lead created; client notification failed.', [
+                            'message' => $exception->getMessage(),
+                        ]);
+                    }
+                    try {
+                        Mail::send(['html' => 'notifications.page.admin-form-footer'], [
 
-                        'category_all' => implode(', ', $this->values_categories),
-                        'travellers_all' => $travellers,
-                        'trip_length' => implode(', ', $this->values_trip_length ?? []),
-                        'travel_day_all' => $this->travel_day,
-                        'comentario' => $this->comment,
-                        'attribution' => $attribution,
-                        'nombre' => $this->name,
-                        'email' => $this->email,
-                        'telefono' => $this->phone,
-                        'code' => $this->phonecountry,
-                        'device' => $this->device,
-                        'browser' => $this->browser
+                            'category_all' => implode(', ', $mailData['values_categories']),
+                            'travellers_all' => $mailData['travellers'],
+                            'trip_length' => implode(', ', $mailData['values_trip_length']),
+                            'travel_day_all' => $mailData['travel_day'],
+                            'comentario' => $mailData['comment'],
+                            'attribution' => $mailData['attribution'],
+                            'nombre' => $mailData['name'],
+                            'email' => $mailData['email'],
+                            'telefono' => $mailData['phone'],
+                            'code' => $mailData['phonecountry'],
+                            'device' => $mailData['device'],
+                            'browser' => $mailData['browser']
 
-                    ], function ($messaje) use ($from) {
-                        $messaje->to($from, 'GotoPeru')
-                            ->subject('GotoPeru')
-                            //                    ->cc($from2, 'GotoPeru')
-                            /*->attach('ruta')*/
-                            ->from('info@gotoperu.com', 'GotoPeru');
-                    });
-                } catch (\Throwable $exception) {
-                    Log::error('G1 lead created; admin notification failed.', [
-                        'message' => $exception->getMessage(),
-                    ]);
-                }
+                        ], static function ($messaje) use ($from) {
+                            $messaje->to($from, 'GotoPeru')
+                                ->subject('GotoPeru')
+                                //                    ->cc($from2, 'GotoPeru')
+                                /*->attach('ruta')*/
+                                ->from('info@gotoperu.com', 'GotoPeru');
+                        });
+                    } catch (\Throwable $exception) {
+                        Log::error('G1 lead created; admin notification failed.', [
+                            'message' => $exception->getMessage(),
+                        ]);
+                    }
+                });
 
                 $this->reset('values_categories');
                 $this->reset('values_number');

@@ -123,7 +123,7 @@
              const hide = window.innerWidth < 768
                  && Array.from(document.querySelectorAll('[data-quote-form]')).some(form => {
                      const bounds = form.getBoundingClientRect();
-                     return bounds.height > 0 && bounds.top < bottom && bounds.bottom > top;
+                     return bounds.height > 0 && bounds.top < bottom;
                  });
              document.querySelectorAll('[data-quote-floating]').forEach(action => {
                  if (hide) action.style.setProperty('display', 'none', 'important');
@@ -476,12 +476,12 @@
         document.addEventListener("DOMContentLoaded", function () {
             if (window.GTPAnalytics) {
                 @this.set('firstTouch', window.GTPAnalytics.getFirstTouch(), true);
+                @this.set('ctaSource', window.GTPAnalytics.getCtaSource(), true);
                 document.addEventListener('click', function (event) {
                     if (!(event.target instanceof Element)) return;
-                    const cta = event.target.closest('a[href="#form-dream-adventure"]');
+                    const cta = event.target.closest('[data-quote-source]');
                     if (!cta) return;
-                    const source = ['hero', 'rail', 'final', 'form'].includes(cta.dataset.quoteSource) ? cta.dataset.quoteSource : 'form';
-                    @this.set('ctaSource', source, true);
+                    @this.set('ctaSource', window.GTPAnalytics.getCtaSource(), true);
                 });
             }
             const formRoot = document.querySelector('[data-quote-form="general"]');
