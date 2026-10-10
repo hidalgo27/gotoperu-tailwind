@@ -287,12 +287,15 @@ class FormFooterDetail extends Component
             "package"=>$this->paquete,
             "hotel_category" => array_values(array_filter($this->values_categories)),
             "destinations" => [],
-            "passengers" => $travellers,
+            "passengers" => (string) $travellers,
             "duration" => (is_int($this->packageDuration) || is_string($this->packageDuration))
                 && filter_var($this->packageDuration, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) !== false
                     ? [(string) (int) $this->packageDuration]
                     : [],
-            "travel_date"=>$formattedDate,
+            // TODO: Solución temporal para compatibilidad con G1.
+            // Eliminar fecha ficticia cuando el backend permita
+            // registrar travel_date como SQL NULL.
+            "travel_date" => $formattedDate ?? '1900-01-01',
             "country"=>$this->country,
             "country_code"=>$this->phonecountry,
             "device"=>$this->device,
@@ -314,7 +317,11 @@ class FormFooterDetail extends Component
             // Enviar los datos al servicio mediante una solicitud HTTP POST
 //            $response = Http::post('https://api.gotoecuador.com/api/store/inquire', $data);
 
-            if ($response2->successful()) {
+            $g1Result = $response2->json();
+            if ($response2->successful()
+                && is_array($g1Result)
+                && ($g1Result['success'] ?? null) === true
+                && !$this->g1ResponseHasErrors($g1Result)) {
                 $leadCreated = true;
                 // Preserve notification data before the Livewire fields are reset.
                 $mailData = [
@@ -404,10 +411,17 @@ class FormFooterDetail extends Component
                 $this->success = __('message.msg_email');
             } else {
                 // Manejo de errores
-                $this->addError('api_error', 'Uno de los servicios falló');
-                Log::error('Uno de los servicios falló', [
+                $this->addError('api_error', "We couldn't register your quote request. Your details have been kept. Please contact our team for help.");
+                $errorFields = is_array($g1Result['errors'] ?? null)
+                    ? $g1Result['errors'] : (is_array($g1Result) ? $g1Result : []);
+                Log::error('G1 rejected the Gotoperu detail lead', [
                     'response2_status' => $response2->status(),
-                    'response2' => $response2->body(),
+                    'response_is_json' => is_array($g1Result),
+                    'error_fields' => array_values(array_intersect(
+                        array_keys($errorFields),
+                        array_merge(array_keys($data2), ['travel_date2', 'non_field_errors'])
+                    )),
+                    'product_id' => 1,
                 ]);
             }
         }catch (\Throwable $e) {
@@ -423,6 +437,30 @@ class FormFooterDetail extends Component
         }
 
 
+    }
+
+    private function g1ResponseHasErrors(array $result): bool
+    {
+        foreach (['error', 'errors', 'non_field_errors'] as $key) {
+            if (isset($result[$key]) && !in_array($result[$key], [false, '', []], true)) {
+                return true;
+            }
+        }
+
+        if (array_key_exists('success', $result)
+            && in_array($result['success'], [false, 0, 'false', '0'], true)) {
+            return true;
+        }
+
+        $status = $result['status'] ?? null;
+        if (is_string($status) && in_array(strtolower(trim($status)), [
+            'error', 'failed', 'failure', 'rejected', 'invalid',
+        ], true)) {
+            return true;
+        }
+
+        return is_array($result['data'] ?? null)
+            && $this->g1ResponseHasErrors($result['data']);
     }
 
     public function load_submit(){
