@@ -182,6 +182,8 @@
 {{--    <div class="pulse"></div>--}}
 {{--</div>--}}
 @php
+    $grayLineLogo = asset('images/logos/graylinelogo.png');
+    $grayLineHeaderLogo = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA5MCA1MiIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgOTAgNTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6IzI0NDA3Qjt9Cgkuc3Qxe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0ZGRkZGRjt9Cgkuc3Qye2ZpbGw6I0ZGRkZGRjt9Cgkuc3Qze2Rpc3BsYXk6bm9uZTtmaWxsOiMyNDQwN0I7fQo8L3N0eWxlPgoJPHBhdGggY2xhc3M9InN0MCIgZD0ibTQ5LjcgMmwzNy41IDIxLjVjMi42IDEuNSAyLjYgMy45IDAgNS40bC0zNy41IDIxLjVjLTIuNiAxLjUtNi44IDEuNS05LjQgMGwtMzcuNS0yMS41Yy0yLjYtMS41LTIuNi0zLjkgMC01LjRsMzcuNS0yMS41YzIuNi0xLjQgNi44LTEuNCA5LjQgMHoiLz4KCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Im00OS41IDIuN2wzNi42IDIwLjljMy4xIDEuOCAzLjEgMy40IDAgNS4ybC0zNi42IDIwLjljLTIuNyAxLjYtNi40IDEuNi05LjEgMGwtMzYuNi0yMC45Yy0zLTEuNy0zLTMuNSAwLTUuMmwzNi42LTIwLjljMi42LTEuNSA2LjYtMS42IDkuMSAwem0tMC4yIDEuMmwzNC43IDE5LjljMy40IDEuOSAzLjUgMi45IDAgNC45bC0zNC43IDE5LjhjLTIuNiAxLjUtNi4xIDEuNS04LjcgMGwtMzQuNi0xOS45Yy0zLjMtMS44LTMuMy0zLjEgMC00LjlsMzQuNi0xOS44YzIuNS0xLjQgNi4zLTEuNSA4LjcgMHoiLz4KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Im03OC4yIDI1LjZjLTAuMy0xLjktMS40LTIuOC0zLjUtMi44LTEgMC0xLjkgMC4zLTIuNiAxcy0xLjEgMS41LTEuMSAyLjUgMC40IDEuOCAxIDIuNWMwLjcgMC43IDEuNSAxIDIuNSAxIDAuOCAwIDEuNi0wLjIgMi4zLTAuNSAwLjktMC40IDEuNC0wLjkgMS42LTEuNWwxIDFjLTAuNCAwLjgtMS4xIDEuNC0yIDEuOC0wLjggMC40LTEuOCAwLjYtMi44IDAuNi0xLjQgMC0yLjctMC41LTMuNy0xLjQtMS0xLTEuNS0yLjEtMS41LTMuNXMwLjUtMi42IDEuNS0zLjVjMS0xIDIuMy0xLjQgMy43LTEuNCAxLjUgMCAyLjggMC40IDMuNiAxIDEgMC44IDEuNiAyLjEgMS42IDMuOHYwLjZoLTcuNHYtMS4yaDUuOHoiLz4KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Im02OC42IDI1LjZ2NS42aC0xLjV2LTUuNWMwLTAuOC0wLjMtMS41LTAuOC0yLTAuNS0wLjYtMS4yLTAuOC0yLTAuOHMtMS41IDAuMy0yIDAuOC0wLjggMS4yLTAuOCAydjUuNWgtMS41di05LjdoMS42djFjMC41LTAuNCAxLTAuNyAxLjMtMC44IDAuNS0wLjIgMS0wLjMgMS41LTAuMyAxLjIgMCAyLjEgMC40IDIuOSAxLjIgMC45IDAuOCAxLjMgMS44IDEuMyAzeiIvPgoJPHBhdGggY2xhc3M9InN0MiIgZD0ibTU3LjIgMTkuOWMwLTAuMyAwLjEtMC41IDAuMy0wLjYgMC4yLTAuMiAwLjQtMC4zIDAuNi0wLjMgMC4zIDAgMC41IDAuMSAwLjcgMC4zczAuMyAwLjQgMC4zIDAuNmMwIDAuMy0wLjEgMC41LTAuMyAwLjdzLTAuNCAwLjMtMC43IDAuMy0wLjUtMC4xLTAuNi0wLjNjLTAuMi0wLjItMC4zLTAuNS0wLjMtMC43eiIvPgoJPHBvbHlnb24gY2xhc3M9InN0MiIgcG9pbnRzPSI1OC45IDMxLjEgNTcuMyAzMS4xIDU3LjMgMjEuMyA1OC45IDIxLjMiLz4KCTxwb2x5Z29uIGNsYXNzPSJzdDIiIHBvaW50cz0iMzkuNyAyMS41IDQxLjUgMjEuNSA0My42IDI0LjcgNDUuNyAyMS41IDQ3LjUgMjEuNSA0NC40IDI2LjMgNDQuNCAzMS4xIDQyLjggMzEuMSA0Mi44IDI2LjMiLz4KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Im0zNy4yIDMxLjF2LTguM2gtMi4xYy0xIDAtMS44IDAuMy0yLjUgMXMtMSAxLjUtMSAyLjUgMC4zIDEuOCAxIDIuNGMwLjcgMC43IDEuNSAxIDIuNSAxIDAuNiAwIDEuMS0wLjEgMS42LTAuNHYxLjZjLTAuNiAwLjItMS4yIDAuMy0xLjcgMC4zLTEuNCAwLTIuNi0wLjUtMy42LTEuNHMtMS41LTIuMS0xLjUtMy41YzAtMC44IDAuMi0xLjUgMC41LTIuMiAwLjQtMC44IDEtMS41IDEuOC0xLjkgMC44LTAuNSAxLjYtMC43IDIuNi0wLjdoMy44djkuN2wtMS40LTAuMXoiLz4KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Im0yNi44IDIyLjhjLTAuOCAwLTEuNCAwLjMtMiAwLjgtMC41IDAuNS0wLjggMS4yLTAuOCAydjUuNWgtMS42di05LjdoMS42djFjMC41LTAuNCAxLTAuNyAxLjMtMC44IDAuNS0wLjIgMS0wLjMgMS41LTAuMyAxLjMgMCAyLjQgMC41IDMuMiAxLjVsLTEuNCAwLjdjLTAuMy0wLjQtMS0wLjctMS44LTAuN3oiLz4KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Im0xNi4zIDI0LjhoNS4ydjAuNGMwIDAuNi0wLjEgMS4yLTAuMiAxLjdzLTAuMyAxLTAuNSAxLjRjLTAuNSAwLjktMS4yIDEuNy0yIDIuMi0wLjggMC40LTEuOCAwLjctMi44IDAuNy0wLjcgMC0xLjQtMC4xLTIuMS0wLjRzLTEuMy0wLjctMS44LTEuMi0wLjktMS4yLTEuMi0xLjhjLTAuMy0wLjctMC40LTEuNC0wLjQtMi4yczAuMS0xLjUgMC40LTIuMiAwLjctMS4zIDEuMi0xLjggMS4xLTAuOSAxLjgtMS4yIDEuNC0wLjQgMi4yLTAuNCAxLjYgMC4yIDIuMyAwLjUgMS40IDAuOCAyLjEgMS41bC0xIDFjLTAuNS0wLjYtMS4xLTEtMS43LTEuMi0wLjYtMC4zLTEuMS0wLjQtMS44LTAuNC0wLjQgMC0wLjggMC4xLTEuMiAwLjJzLTAuNyAwLjMtMSAwLjVjLTAuNiAwLjQtMS4xIDAuOS0xLjUgMS42LTAuMyAwLjYtMC41IDEuNC0wLjUgMi4xIDAgMC42IDAuMSAxLjEgMC4zIDEuNnMwLjUgMSAwLjkgMS40IDAuOCAwLjcgMS4zIDAuOSAxIDAuMyAxLjYgMC4zYzEgMCAxLjktMC4zIDIuNy0xIDAuNy0wLjcgMS4yLTEuNiAxLjMtMi43aC0zLjd2LTEuNWgwLjF6Ii8+Cgk8cGF0aCBjbGFzcz0ic3QyIiBkPSJtNTAuOCAxOWgxLjR2OC42YzAgMC43IDAuMiAxLjMgMC42IDEuN3MwLjkgMC42IDEuNiAwLjZoMnYxLjNoLTEuN2MtMS4zIDAtMi4zLTAuMy0yLjktMC45cy0xLTEuNi0xLTIuOXYtOC40eiIvPgoJPHBhdGggY2xhc3M9InN0MyIgZD0ibTYzLjggNDYuOGMwLTAuNiAwLjUtMS4xIDEuMS0xLjF2MC4zYy0wLjUgMC0wLjggMC40LTAuOCAwLjggMCAwLjUgMC40IDAuOCAwLjggMC44IDAuNSAwIDAuOC0wLjQgMC44LTAuOCAwLTAuNS0wLjQtMC44LTAuOC0wLjh2LTAuMmMwLjYgMCAxLjEgMC41IDEuMSAxLjFzLTAuNSAxLjEtMS4xIDEuMWMtMC43LTAuMS0xLjEtMC42LTEuMS0xLjJ6Ii8+Cgk8cGF0aCBjbGFzcz0ic3QzIiBkPSJtNjQuNiA0Ni44di0wLjRoMC40YzAuMiAwIDAuMiAwLjEgMC4yIDAuMiAwIDAuMi0wLjEgMC4yLTAuMyAwLjJoLTAuM3ptLTAuMiAwLjZoMC4ydi0wLjVoMC40YzAuMiAwIDAuMiAwLjEgMC4yIDAuMnYwLjNoMC4yYy0wLjEtMC4xLTAuMS0wLjItMC4xLTAuM3MwLTAuMi0wLjItMC4zYzAuMiAwIDAuMi0wLjIgMC4yLTAuMyAwLTAuMi0wLjEtMC4zLTAuNC0wLjNoLTAuNnYxLjJoMC4xeiIvPgo8L3N2Zz4=';
 
     $nav_links = [
         [
@@ -507,6 +509,10 @@
             </nav>
             <div class="site-mobile-footer">
                 <div class="site-mobile-contact" inert :inert="menu ? null : ''">
+                    <figure>
+                        <figcaption>Part of</figcaption>
+                        <img src="{{ $grayLineLogo }}" alt="Gray Line" width="1215" height="698" decoding="async">
+                    </figure>
                     <p>Let's plan your Peru journey</p>
                     <a href="mailto:info@gotoperu.com" @click="closeMenu()">info@gotoperu.com</a>
                     <a href="tel:+18134558646" @click="closeMenu()">+1 (813) 455-8646 <span>· US</span></a>
@@ -531,6 +537,10 @@
                 </a>
                 <div class="hidden items-center gap-6 md:flex">
                     <a href="mailto:info@gotoperu.com" class="hidden text-xs text-gray-500 hover:underline xl:inline">info@gotoperu.com</a>
+                    <div class="site-header-affiliation">
+                        <span>Part of</span>
+                        <img src="{{ $grayLineHeaderLogo }}" alt="Gray Line" width="90" height="52" decoding="async">
+                    </div>
                     <a href="tel:+18134558646" class="text-tertiary xl:border-l xl:border-gray-200 xl:pl-6">
                         <span class="mb-1 block text-xs font-medium uppercase tracking-wider text-gray-500">Call our team · US</span>
                         <span class="block text-sm font-semibold">+1 (813) 455-8646</span>
@@ -560,6 +570,10 @@
 {{--                @livewire('page.form-subscribe')--}}
                 <span>info@gotoperu.com</span>
                 <a href="#form-dream-adventure" data-quote-source="header" class="btn-secondary text-center">{{__('message.button_inquire')}}</a>
+                <div class="site-header-affiliation">
+                    <span>Part of</span>
+                    <img src="{{ $grayLineHeaderLogo }}" alt="Gray Line" width="90" height="52" decoding="async">
+                </div>
                 <div class="dark:text-gray-400">
                     <span class="text-xs block text-right">US</span>
                     +1 (813) 455-8646
@@ -651,6 +665,11 @@
 
     <section class="site-recognition" aria-label="Tourism logos" @if(request()->routeIs('home')) data-analytics-section="recognition" @endif>
         <div class="home-content">
+            <figure>
+                <figcaption>Part of</figcaption>
+                <img src="{{ $grayLineLogo }}" alt="Gray Line" width="1215" height="698" loading="lazy" decoding="async">
+                <p>GOTOPERU is part of the Gray Line network, combining our local expertise in Peru with the reach of an international travel network.</p>
+            </figure>
             {{-- Existing tourism logos, without adding membership or endorsement claims. --}}
             <div class="site-recognition__logos">
                 <div><img src="{{asset('images/logos/apavit.png')}}" alt="APAVIT" width="220" height="110" loading="lazy" decoding="async"></div>

@@ -553,6 +553,9 @@
 .site-recognition {
     @apply bg-white py-8 font-sans text-tertiary md:py-10;
 }
+.site-recognition > .home-content > figure > p {
+    @apply mt-2 max-w-3xl text-center text-sm leading-relaxed text-gray-600;
+}
 .site-recognition__logos {
     @apply grid grid-cols-2 items-center gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-10;
 }

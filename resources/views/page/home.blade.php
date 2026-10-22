@@ -755,7 +755,7 @@
 
             {{-- Elfsight owns the feed, carousel and playback; keep its container outside our reveal motion. --}}
             {{-- Configure the responsive carousel in Elfsight: desktop 3, tablet 2, mobile 1 with a peek where supported. --}}
-            <div class="min-h-64 w-full min-w-0 md:min-h-80">
+            <div class="min-h-64 w-full min-w-0 max-md:overflow-x-clip md:min-h-80">
                 <div class="elfsight-app-b65da1af-4fbc-4952-a82b-341db07f2409" data-elfsight-app-lazy></div>
             </div>
 
