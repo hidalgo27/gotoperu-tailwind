@@ -1,4 +1,162 @@
 @extends('layouts.page-layout')
+@push('css')
+    <style>
+        .home-bf-backdrop {
+            background-image: linear-gradient(100deg, rgba(28, 35, 43, .78), rgba(28, 35, 43, .32) 50%, rgba(28, 35, 43, .62));
+        }
+        .home-bf-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            align-items: start;
+            gap: 2rem;
+        }
+        .home-bf-promo {
+            width: 100%;
+            min-width: 0;
+            color: #fff;
+        }
+        .home-bf-art { position: relative; isolation: isolate; }
+        .home-bf-route { transform: scale(1.28); transform-origin: 62% 50%; }
+        .home-bf-geography {
+            margin-bottom: 1.125rem;
+            color: rgba(255, 255, 255, .72);
+            font-size: .6875rem;
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .home-bf-wordmark {
+            position: relative;
+            font-size: clamp(3.25rem, 5.4vw, 5.75rem);
+            font-weight: 800;
+            line-height: .92;
+            letter-spacing: -.065em;
+            text-transform: uppercase;
+        }
+        .home-bf-wordmark span { display: block; }
+        .home-bf-wordmark .home-bf-friday {
+            margin-top: .1em;
+            margin-left: .3em;
+            color: #fff;
+            font-size: .86em;
+            letter-spacing: -.035em;
+        }
+        @supports (-webkit-text-stroke: 1px white) {
+            .home-bf-wordmark .home-bf-friday {
+                color: transparent;
+                -webkit-text-stroke: 1px rgba(255, 255, 255, .92);
+                background-image: linear-gradient(110deg, transparent 42%, rgba(255, 255, 255, .72) 50%, transparent 58%);
+                background-size: 250% 100%;
+                background-position: 150% 0;
+                background-repeat: no-repeat;
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+        }
+        .home-bf-traveler {
+            fill: #fff;
+            opacity: 0;
+            transform-origin: 0 0;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, .7));
+        }
+        .home-bf-price { margin-top: 1.75rem; }
+        .home-bf-amount, .home-bf-currency { color: #f9a825; }
+        .home-bf-amount {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -.04em;
+        }
+        .home-bf-countdown {
+            display: inline-flex;
+            align-items: center;
+            gap: .625rem;
+            margin-top: 1rem;
+            padding: .5rem .75rem;
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 4px;
+            background: rgba(28, 35, 43, .82);
+            color: #fff;
+            font-variant-numeric: tabular-nums;
+        }
+        .home-bf-countdown-unit { display: inline-flex; align-items: baseline; gap: .25rem; }
+        .home-bf-countdown-unit + .home-bf-countdown-unit { padding-left: .625rem; border-left: 1px solid rgba(255, 255, 255, .2); }
+        .home-bf-countdown-value { min-width: 2ch; font-size: 1.125rem; font-weight: 500; line-height: 1; }
+        .home-bf-countdown-label { color: rgba(255, 255, 255, .65); font-size: .625rem; line-height: 1; }
+        .home-bf-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            min-height: 3rem;
+            margin-top: 1.25rem;
+            padding: .75rem 0 0;
+            border-top: 1px solid rgba(255, 255, 255, .28);
+            color: #fff;
+            font-size: .8125rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .home-bf-link::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, .85);
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+        .home-bf-link-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            flex-shrink: 0;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .35);
+            border-radius: 50%;
+        }
+        .home-bf-link:hover,
+        .home-bf-link:focus-visible { color: #fff; }
+        .home-bf-link:hover::before,
+        .home-bf-link:focus-visible::before { transform: scaleX(1); }
+        .home-bf-link:focus-visible { outline: 2px solid #fff; outline-offset: 6px; }
+        @media (prefers-reduced-motion: no-preference) {
+            .home-bf-link, .home-bf-link-arrow { transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+            .home-bf-link::before { transition: transform .45s ease; }
+            .home-bf-link:hover .home-bf-link-arrow,
+            .home-bf-link:focus-visible .home-bf-link-arrow { transform: translateX(3px); border-color: currentColor; }
+        }
+        @media (min-width: 768px) {
+            .home-bf-layout {
+                grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+                column-gap: clamp(2rem, 5vw, 5rem);
+            }
+            .home-bf-layout #home-heading { font-size: clamp(2.4rem, 4.5vw, 4.5rem); }
+            .home-bf-promo { max-width: 23.5rem; justify-self: end; }
+        }
+        @media (max-width: 767px) {
+            .home-bf-promo {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                align-items: center;
+                gap: 1.25rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid rgba(255, 255, 255, .2);
+            }
+            .home-bf-geography { margin-bottom: .75rem; font-size: .625rem; letter-spacing: .08em; }
+            .home-bf-wordmark { font-size: clamp(2rem, 7.4vw, 3.25rem); }
+            .home-bf-price { min-width: 0; margin-top: 0; }
+            .home-bf-amount { font-size: clamp(1.5rem, 5.5vw, 2rem); }
+            .home-bf-countdown { grid-column: 1 / -1; justify-self: start; margin-top: 0; }
+            .home-bf-link { grid-column: 1 / -1; margin-top: 0; padding-top: 0; border-top: 0; }
+        }
+    </style>
+@endpush
 @section('home-intro')
     <section id="home-hero" data-analytics-section="hero" aria-labelledby="home-heading" class="flex min-w-0 flex-1 flex-col"
              x-data="{
@@ -42,17 +200,18 @@
                 </div>
             </template>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-r from-tertiary/70 via-tertiary/30 to-transparent"></div>
+        <div class="absolute inset-0 {{ $homeBlackFridayCampaign ? 'home-bf-backdrop' : 'bg-gradient-to-r from-tertiary/70 via-tertiary/30 to-transparent' }}"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-tertiary/20 via-transparent to-transparent"></div>
         </div>
         <div class="container home-shell home-hero-content">
-            <div class="max-w-2xl">
-                <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-secondary" data-package-enter="eyebrow">
+            <div class="w-full @if($homeBlackFridayCampaign) home-bf-layout @endif">
+            <div class="max-w-2xl min-w-0">
+                <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider {{ $homeBlackFridayCampaign ? 'text-white/70' : 'text-secondary' }}" data-package-enter="eyebrow">
                     <span class="inline-flex shrink-0 items-center gap-1" aria-hidden="true"><span class="h-2.5 w-1 bg-secondary"></span><span class="h-2.5 w-3 bg-secondary"></span><span class="h-2.5 w-5 bg-secondary"></span></span>
                     Peru journeys. Local experts.
                 </p>
                 <h1 id="home-heading" class="font-sans text-4xl font-semibold leading-tight tracking-tight drop-shadow sm:text-5xl md:text-6xl lg:text-7xl" data-package-enter="title">Peru travel,<br>made personal.</h1>
-                <p class="mt-5 max-w-lg border-l-2 border-secondary/60 pl-4 text-base leading-relaxed text-white/90 md:text-lg" data-package-enter="description">
+                <p class="mt-5 max-w-lg border-l-2 {{ $homeBlackFridayCampaign ? 'border-white/25' : 'border-secondary/60' }} pl-4 text-base leading-relaxed text-white/90 md:text-lg" data-package-enter="description">
                     Private and customizable journeys designed by our local Peru travel experts.
                 </p>
                 <div class="home-hero-actions" data-package-enter="actions">
@@ -62,6 +221,172 @@
                     <a href="#form-dream-adventure" class="btn-white"
                        data-quote-source="hero" data-home-action="hero-quote">Plan My Trip</a>
                 </div>
+            </div>
+            @if($homeBlackFridayCampaign)
+                <aside aria-label="Black Friday travel deals" class="home-bf-promo"
+                         x-data="{
+                             endsAt: {{ $homeBlackFridayCampaign->ends_at ? $homeBlackFridayCampaign->ends_at->getTimestamp() * 1000 : 0 }},
+                             campaignVisible: true,
+                             countdownTimer: null,
+                             days: '00',
+                             hours: '00',
+                             minutes: '00',
+                             seconds: '00',
+                             routeAnimation: null,
+                             travelerAnimation: null,
+                             letterAnimation: null,
+                             routeFrames: null,
+                             routeAnimated: false,
+                             routeVisible: false,
+                             routeObserver: null,
+                             routeMotion: null,
+                             routeChanged: null,
+                             init() {
+                                 this.tickCountdown();
+                                 if (!this.campaignVisible) return;
+                                 if (this.endsAt > 0) this.countdownTimer = window.setInterval(() => this.tickCountdown(), 1000);
+                                 this.routeMotion = window.matchMedia('(prefers-reduced-motion: no-preference)');
+                                 this.routeChanged = () => {
+                                     if (this.routeMotion.matches) {
+                                         this.enterRoute();
+                                     } else {
+                                         this.stopMotion();
+                                     }
+                                 };
+                                 this.routeMotion.addEventListener('change', this.routeChanged);
+                                 this.$nextTick(() => {
+                                     if ('IntersectionObserver' in window) {
+                                         this.routeObserver = new IntersectionObserver(entries => {
+                                             this.routeVisible = entries[0].isIntersecting;
+                                             if (this.routeVisible) this.enterRoute();
+                                             else this.stopMotion();
+                                         }, { threshold: .15 });
+                                         this.routeObserver.observe(this.$el);
+                                     } else {
+                                         this.routeVisible = true;
+                                         this.enterRoute();
+                                     }
+                                 });
+                             },
+                             tickCountdown() {
+                                 if (!this.endsAt) return;
+                                 // Match the global bar's deadline and rounding, using the real campaign timestamp.
+                                 const remaining = Math.max(0, Math.ceil((this.endsAt - Date.now()) / 1000));
+                                 const pad = value => String(value).padStart(2, '0');
+                                 this.days = pad(Math.floor(remaining / 86400));
+                                 this.hours = pad(Math.floor(remaining / 3600) % 24);
+                                 this.minutes = pad(Math.floor(remaining / 60) % 60);
+                                 this.seconds = pad(remaining % 60);
+                                 if (remaining === 0) {
+                                     this.campaignVisible = false;
+                                     this.stopCountdown();
+                                     this.stopMotion();
+                                 }
+                             },
+                             stopCountdown() {
+                                 if (this.countdownTimer !== null) window.clearInterval(this.countdownTimer);
+                                 this.countdownTimer = null;
+                             },
+                             enterRoute() {
+                                 const route = this.$refs.journeyRoute;
+                                 if (!this.campaignVisible || this.routeAnimated || !this.routeVisible || !this.routeMotion?.matches || typeof route.animate !== 'function') return;
+                                 this.routeAnimated = true;
+                                 const length = route.getTotalLength();
+                                 route.setAttribute('stroke-dasharray', length);
+                                 this.routeAnimation = route.animate([
+                                     { strokeDashoffset: length },
+                                     { strokeDashoffset: 0 }
+                                 ], { duration: 1800, delay: 200, easing: 'ease-in-out', fill: 'backwards' });
+                                 this.routeAnimation.onfinish = () => { this.routeAnimation = null; };
+                                 this.travel(200);
+                             },
+                             travel(delay = 0) {
+                                 if (!this.campaignVisible || this.travelerAnimation || !this.routeVisible || !this.routeMotion?.matches || typeof this.$refs.traveler.animate !== 'function') return;
+                                 if (!this.routeFrames) {
+                                     const route = this.$refs.journeyRoute;
+                                     const length = route.getTotalLength();
+                                     this.routeFrames = Array.from({ length: 65 }, (_, index) => {
+                                         const progress = index / 64;
+                                         const point = route.getPointAtLength(length * progress);
+                                         return {
+                                             offset: progress,
+                                             transform: 'translate(' + point.x + 'px, ' + point.y + 'px)',
+                                             opacity: Math.min(1, progress / .08, (1 - progress) / .12)
+                                         };
+                                     });
+                                 }
+                                 this.travelerAnimation = this.$refs.traveler.animate(this.routeFrames,
+                                     { duration: 1800, delay, easing: 'ease-in-out' });
+                                 this.travelerAnimation.onfinish = () => { this.travelerAnimation = null; };
+                             },
+                             invite(event) {
+                                 if (!this.campaignVisible || !this.routeVisible || !this.routeMotion?.matches) return;
+                                 if (event?.type === 'mouseenter' && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+                                 this.travel();
+                                 const letter = this.$refs.friday;
+                                 if (this.letterAnimation || typeof letter.animate !== 'function') return;
+                                 this.letterAnimation = letter.animate([
+                                     { backgroundPosition: '150% 0' },
+                                     { backgroundPosition: '-50% 0' }
+                                 ], { duration: 1100, easing: 'ease-in-out' });
+                                 this.letterAnimation.onfinish = () => { this.letterAnimation = null; };
+                             },
+                             stopMotion() {
+                                 this.routeAnimation?.cancel();
+                                 this.travelerAnimation?.cancel();
+                                 this.letterAnimation?.cancel();
+                                 this.routeAnimation = this.travelerAnimation = this.letterAnimation = null;
+                             },
+                             destroy() {
+                                 this.stopCountdown();
+                                 this.stopMotion();
+                                 this.routeObserver?.disconnect();
+                                 this.routeMotion?.removeEventListener('change', this.routeChanged);
+                             }
+                         }" x-show="campaignVisible" @mouseenter="invite($event)" @focusin="invite($event)">
+                    <div class="home-bf-art" data-bf-art="home-campaign">
+                        <svg class="home-bf-route pointer-events-none absolute inset-0 -z-10 h-full w-full" viewBox="0 0 480 360" fill="none" aria-hidden="true" focusable="false">
+                            <path x-ref="journeyRoute" d="M428 32C476 76 466 163 404 190C354 212 327 178 358 157C386 138 420 168 397 199C372 232 308 230 260 246C190 274 120 294 44 304"
+                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" class="text-white opacity-40" />
+                            <circle cx="428" cy="32" r="4" fill="currentColor" class="text-white/80" />
+                            <circle cx="44" cy="304" r="5" fill="currentColor" class="text-white/80" />
+                            <circle x-ref="traveler" class="home-bf-traveler" cx="0" cy="0" r="4" />
+                        </svg>
+                        <p class="home-bf-geography" data-package-enter="eyebrow">Peru &amp; South America</p>
+                        <p class="home-bf-wordmark">
+                            <span data-package-enter="title">Black</span>
+                            <span x-ref="friday" class="home-bf-friday" data-package-enter="description">Friday</span>
+                        </p>
+                    </div>
+                    <div class="home-bf-price" data-package-enter="trust">
+                        @if($homeBlackFridayOriginalPrice !== null)
+                            <p class="mb-1 text-xs font-normal text-white/70">Regular price <del class="whitespace-nowrap">US${{ number_format($homeBlackFridayOriginalPrice, 2) }}</del></p>
+                        @endif
+                        <p class="text-xs font-semibold uppercase tracking-wider text-white/80">Black Friday prices</p>
+                        <p class="mt-1 flex flex-wrap items-baseline gap-2 leading-none">
+                            <span class="text-xs font-medium uppercase text-white/70">From</span>
+                            <span class="home-bf-currency text-xs font-semibold">US$</span>
+                            <span class="home-bf-amount">{{ number_format($homeBlackFridayCampaign->offer_price, 2) }}</span>
+                        </p>
+                    </div>
+                    @if($homeBlackFridayCampaign->ends_at)
+                        <div class="home-bf-countdown" role="timer" aria-live="off"
+                             x-show="campaignVisible" style="display: none;"
+                             :aria-label="'Black Friday ends in ' + days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds'">
+                            @foreach(['days' => 'd', 'hours' => 'h', 'minutes' => 'm', 'seconds' => 's'] as $unit => $label)
+                                <span class="home-bf-countdown-unit" aria-hidden="true">
+                                    <span class="home-bf-countdown-value" x-text="{{ $unit }}"></span>
+                                    <span class="home-bf-countdown-label">{{ $label }}</span>
+                                </span>
+                            @endforeach
+                        </div>
+                    @endif
+                    <a href="{{ route('black-friday') }}" class="home-bf-link" data-package-enter="actions">
+                        Explore Black Friday deals
+                        <span class="home-bf-link-arrow" aria-hidden="true"><x-heroicon-o-arrow-narrow-right class="h-4 w-4" /></span>
+                    </a>
+                </aside>
+            @endif
             </div>
             <template x-if="filmAvailable">
                 <button type="button" @click="playFilm = !playFilm; filmReady = false" :aria-pressed="playFilm.toString()"

@@ -18,6 +18,7 @@ use App\Models\TTestimonio;
 use App\Models\TVideoTestimonio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Schema;
 
 class HomeController extends Controller
 {
@@ -74,6 +75,31 @@ class HomeController extends Controller
 
         $videos = TVideoTestimonio::all();
 
+        // Advertise only current, visible catalogue offers; both prices belong to the same Package.
+        $homeBlackFridayCampaign = Schema::hasTable('package_campaigns')
+            ? PackageCampaign::query()
+                ->where('slug', 'black-friday')
+                ->where('is_active', true)
+                ->where('offer_price', '>', 0)
+                ->where(function ($query) {
+                    $query->whereNull('starts_at')->orWhere('starts_at', '<=', now());
+                })
+                ->where(function ($query) {
+                    $query->whereNull('ends_at')->orWhere('ends_at', '>', now());
+                })
+                ->whereHas('package', fn ($query) => $query->where('estado', 1))
+                ->with('package.imagen_paquetes')
+                ->orderBy('offer_price')
+                ->get()
+                ->first(fn ($campaign) => (int) data_get($campaign->config, 'black_friday.collection_order') > 0
+                    && (filled($campaign->package->imagen)
+                        || $campaign->package->imagen_paquetes->contains(fn ($image) => filled($image->nombre))))
+            : null;
+        $homeBlackFridayOriginalPrice = $homeBlackFridayCampaign
+            && is_numeric($homeBlackFridayCampaign->original_price)
+            && $homeBlackFridayCampaign->original_price > $homeBlackFridayCampaign->offer_price
+            ? $homeBlackFridayCampaign->original_price : null;
+
         return view('page.home',
             compact(
                 'paquete_recommended',
@@ -86,7 +112,9 @@ class HomeController extends Controller
                 'category_footer',
                 'destination',
                 'videos',
-                'homeCategories'
+                'homeCategories',
+                'homeBlackFridayCampaign',
+                'homeBlackFridayOriginalPrice'
             ));
     }
 
