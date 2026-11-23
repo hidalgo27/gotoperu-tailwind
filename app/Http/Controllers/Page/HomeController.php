@@ -199,6 +199,9 @@ class HomeController extends Controller
 
         $teams = TTeam::all();
 
+        $packageSeoTitles = __('message.package_seo_titles', [], 'en');
+        $packageSeoTitle = $packageSeoTitles[$paquete->url] ?? null;
+
         return view('page.detail',
             compact(
                 'paquete',
@@ -206,7 +209,8 @@ class HomeController extends Controller
                 'testinomials',
                 'hoteles_destinos',
                 'testinomials_r',
-                'teams'
+                'teams',
+                'packageSeoTitle'
             ));
     }
 

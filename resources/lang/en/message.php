@@ -1,6 +1,13 @@
 <?php
 return [
     'seo_title' => 'Peru Travel Packages',
+    'package_seo_titles' => [
+        'best-of-peru' => 'Best of Peru Tour: 12 Days with Machu Picchu | GOTOPERU',
+        'classic-chile-and-peru-journey' => 'Peru & Chile Tour: 9 Days with Machu Picchu | GOTOPERU',
+        'amazon-cruise-and-andes-wonders' => 'Amazon River Cruise & Machu Picchu: 9 Days | GOTOPERU',
+        'cusco-classic-rainbow-mountain' => 'Machu Picchu & Rainbow Mountain Tour: 6 Days | GOTOPERU',
+        'city-tour-cusco' => 'Cusco City Tour: Half-Day Guided Tour | GOTOPERU',
+    ],
     'destination_seo' => [
         'machu-picchu' => [
             'title' => 'Peru Travel Packages to Machu Picchu | GOTOPERU',
