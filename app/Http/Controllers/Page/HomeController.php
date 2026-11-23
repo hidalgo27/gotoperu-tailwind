@@ -250,11 +250,18 @@ class HomeController extends Controller
             ->orderBy('titulo')
             ->get();
 
-        $destinationSeo = null;
+        $destinationSeo = [];
         if (in_array($destinations->url, ['machu-picchu', 'puno'], true)) {
             $destinationSeo = __('message.destination_seo.' . $destinations->url, [], 'en');
             $destinationSeo['canonical'] = 'https://gotoperu.com/destinations/' . $destinations->url;
         }
+
+        $destinationNames = __('message.destination_names', [], 'en');
+        $destinationName = $destinationNames[$destinations->url] ?? $destinations->nombre;
+        $destinationSeo['h1'] = $paquetes->isNotEmpty()
+            ? __('message.destination_heading', ['destination' => $destinationName], 'en')
+            : $destinationName;
+        $destinationSeo['title'] = __('message.destination_title', ['heading' => $destinationSeo['h1']], 'en');
 
         return view('page.destination-show', compact('paquetes_api', 'destinations', 'category', 'paquetes', 'destinationSeo'));
     }

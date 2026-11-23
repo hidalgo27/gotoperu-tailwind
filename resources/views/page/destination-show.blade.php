@@ -1,11 +1,13 @@
 @extends('layouts.page-layout')
 
-@if($destinationSeo ?? null)
-    @push('meta')
+@push('meta')
+    @if(filled($destinationSeo['description'] ?? null))
         <meta name="description" content="{{ $destinationSeo['description'] }}">
+    @endif
+    @if(filled($destinationSeo['canonical'] ?? null))
         <link rel="canonical" href="{{ $destinationSeo['canonical'] }}">
-    @endpush
-@endif
+    @endif
+@endpush
 
 @section('content')
     <section class="-mt-32 h-80vh -z-1 relative">
