@@ -246,7 +246,13 @@ class HomeController extends Controller
             ->orderBy('titulo')
             ->get();
 
-        return view('page.destination-show', compact('paquetes_api', 'destinations', 'category', 'paquetes'));
+        $destinationSeo = null;
+        if (in_array($destinations->url, ['machu-picchu', 'puno'], true)) {
+            $destinationSeo = __('message.destination_seo.' . $destinations->url, [], 'en');
+            $destinationSeo['canonical'] = 'https://gotoperu.com/destinations/' . $destinations->url;
+        }
+
+        return view('page.destination-show', compact('paquetes_api', 'destinations', 'category', 'paquetes', 'destinationSeo'));
     }
 
     public function category() {

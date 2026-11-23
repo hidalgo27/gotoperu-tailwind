@@ -1,4 +1,12 @@
 @extends('layouts.page-layout')
+
+@if($destinationSeo ?? null)
+    @push('meta')
+        <meta name="description" content="{{ $destinationSeo['description'] }}">
+        <link rel="canonical" href="{{ $destinationSeo['canonical'] }}">
+    @endpush
+@endif
+
 @section('content')
     <section class="-mt-32 h-80vh -z-1 relative">
         @foreach($destinations->destino_imagen as $imagen)
@@ -6,7 +14,7 @@
         @endforeach
 
         <div class="absolute bottom-0 left-0 p-12">
-            <h1 class="text-5xl font-semibold text-gray-50">{{__('message.dest_deta_title')}}</h1>
+            <h1 class="text-5xl font-semibold text-gray-50">{{ $destinationSeo['h1'] ?? __('message.dest_deta_title') }}</h1>
         </div>
     </section>
 
@@ -15,7 +23,7 @@
 {{--    </div>--}}
 
     <section class="container py-12 text-gray-500 text-center mx-auto">
-        <p>{{__('message.dest_deta_par1')}}</p>
+        <p>{{ $destinationSeo['intro'] ?? __('message.dest_deta_par1') }}</p>
 
     </section>
 

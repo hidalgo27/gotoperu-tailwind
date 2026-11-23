@@ -1,6 +1,20 @@
 <?php
 return [
     'seo_title' => 'Peru Travel Packages',
+    'destination_seo' => [
+        'machu-picchu' => [
+            'title' => 'Peru Travel Packages to Machu Picchu | GOTOPERU',
+            'h1' => 'Peru Travel Packages to Machu Picchu',
+            'description' => 'Compare Peru travel packages to Machu Picchu, from full-day train tours to itineraries through Cusco and the Sacred Valley.',
+            'intro' => 'Discover itineraries that bring together Machu Picchu, Cusco and the Sacred Valley, alongside full-day train tours to Machu Picchu. The selection below includes shorter visits and longer journeys through Peru, so you can compare routes and find the itinerary that fits your plans.',
+        ],
+        'puno' => [
+            'title' => 'Peru Travel Packages to Puno & Lake Titicaca | GOTOPERU',
+            'h1' => 'Peru Travel Packages to Puno & Lake Titicaca',
+            'description' => 'Compare Peru travel packages through Puno and Lake Titicaca, including itineraries featuring the Uros Islands and Taquile.',
+            'intro' => 'Explore journeys through Puno and Lake Titicaca, including itineraries that visit the Uros Islands and Taquile. The packages below place this part of the Peruvian highlands within longer routes through Peru. Compare their day-by-day itineraries to see how Puno connects with the rest of your trip.',
+        ],
+    ],
     'msg_email' => 'Thank you for reaching out to us!',
     'msc_client_email' => 'Thank you for contacting us, a GOTOPERU representative will contact you shortly.',
     'msg_default' => 'THE BEST VACATIONS IN PERU WITH THE BEST PERUVIAN OPERATOR',
