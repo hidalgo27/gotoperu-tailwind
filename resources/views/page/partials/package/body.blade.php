@@ -237,7 +237,7 @@
                             <h2 id="package-trip-title" class="package-commercial__eyebrow text-xs font-bold tracking-wider uppercase text-secondary">Plan your journey</h2>
                             <p class="package-commercial__duration text-sm font-semibold tracking-wider uppercase text-white">{{ $paquete['duracion'] }} {{ __('message.pack_par4') }}</p>
                             @if ($campaignOriginalPrice !== null)
-                                <p class="mt-3 text-xs text-white/80">Was <del>{{ $formatDisplayPrice($campaignOriginalPrice) }}</del></p>
+                                <p class="mt-3 text-xs text-white/80">{{ ($campaign->slug ?? null) === 'black-friday' ? 'Regular price' : 'Was' }} <del>{{ $formatDisplayPrice($campaignOriginalPrice) }}</del></p>
                             @endif
                             @if ($hasDisplayPrice)
                                 <p class="package-commercial__price text-white">
@@ -770,7 +770,7 @@
                                         Special offer
                                     </p>
                                     @if ($campaignOriginalPrice !== null)
-                                        <p class="mb-1 text-xs text-tertiary/60">Was <del>{{ $formatDisplayPrice($campaignOriginalPrice) }}</del></p>
+                                        <p class="mb-1 text-xs text-tertiary/60">{{ ($campaign->slug ?? null) === 'black-friday' ? 'Regular price' : 'Was' }} <del>{{ $formatDisplayPrice($campaignOriginalPrice) }}</del></p>
                                     @endif
                                     <p class="text-2xl font-semibold leading-8 tabular-nums text-secondary">
                                         {{ $formatDisplayPrice($displayPrice) }}

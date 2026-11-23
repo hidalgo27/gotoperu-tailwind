@@ -340,9 +340,11 @@
                         counter.querySelector('[data-hotel-total]').textContent = String(total).padStart(2, '0');
                         counter.setAttribute('aria-label', `Hotel ${current} of ${total}`);
                     };
+                    const showMobilePeek = {{ request()->routeIs('offers.show') ? 'true' : 'false' }}
+                        && carousel.querySelectorAll('.swiper-slide').length > 1;
                     new Swiper(carousel, {
-                        slidesPerView: 1,
-                        spaceBetween: 24,
+                        slidesPerView: showMobilePeek ? 1.15 : 1,
+                        spaceBetween: showMobilePeek ? 16 : 24,
                         speed: reducedMotion ? 0 : 350,
                         watchOverflow: true,
                         breakpoints: {

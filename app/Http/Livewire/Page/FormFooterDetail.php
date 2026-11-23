@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Page;
 
 use App\Models\TCategoria;
 use App\Models\TDestino;
+use App\Models\PackageCampaign;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Http;
@@ -46,6 +47,8 @@ class FormFooterDetail extends Component
         'package_slug' => 'Package Slug',
         'campaign_id' => 'Offer Campaign ID',
         'campaign_slug' => 'Offer Slug',
+        'black_friday_original_price' => 'Original Price (USD per person)',
+        'black_friday_price' => 'Black Friday Price (USD per person)',
         'cta_source' => 'CTA Source',
     ];
 
@@ -72,6 +75,24 @@ class FormFooterDetail extends Component
             'campaign_slug' => $campaignSlug,
             'landing_url' => request()->getPathInfo(),
         ];
+        if ($campaignSlug === 'black-friday') {
+            $campaign = PackageCampaign::query()
+                ->whereKey($campaignId)
+                ->where('package_id', $packageId)
+                ->where('slug', 'black-friday')
+                ->where('is_active', true)
+                ->whereHas('package', function ($query) use ($packageSlug) {
+                    $query->where('url', $packageSlug)->where('estado', 1);
+                })
+                ->first();
+
+            // Keep the displayed price and submitted price in the same authenticated snapshot.
+            $context['black_friday_price'] = $campaign ? $campaign->offer_price : null;
+            $context['black_friday_original_price'] = $campaign
+                && is_numeric($campaign->original_price)
+                && $campaign->original_price > $campaign->offer_price
+                    ? $campaign->original_price : null;
+        }
         $query = request()->query();
         foreach (self::ATTRIBUTION_QUERY_KEYS as $key) {
             $context[$key] = $this->normalizeAttributionValue($query[$key] ?? null, $key);
@@ -104,6 +125,8 @@ class FormFooterDetail extends Component
             'package_slug' => 'nullable|string|max:255|required_with:package_id|not_regex:/[<>\x00-\x1F\x7F]/',
             'campaign_id' => 'nullable|integer|min:1|required_with:campaign_slug',
             'campaign_slug' => 'nullable|string|max:120|required_with:campaign_id|not_regex:/[<>\x00-\x1F\x7F]/',
+            'black_friday_price' => 'nullable|required_if:campaign_slug,black-friday|numeric|min:0.01',
+            'black_friday_original_price' => 'nullable|numeric|gt:black_friday_price',
             'landing_url' => 'required|string|max:1024|starts_with:/|not_regex:/[<>?\x00-\x1F\x7F]/',
         ];
         foreach (self::ATTRIBUTION_QUERY_KEYS as $key) {
@@ -160,6 +183,9 @@ class FormFooterDetail extends Component
 
     public function render()
     {
+        $attribution = $this->leadAttribution();
+        $blackFridayPrice = $attribution['Black Friday Price (USD per person)'] ?? null;
+        $blackFridayOriginalPrice = $attribution['Original Price (USD per person)'] ?? null;
         $destinations = TDestino::all();
         $categories = TCategoria::all();
 
@@ -186,7 +212,7 @@ class FormFooterDetail extends Component
 //            'category'=>__('message.form_footer_par18')
 //        ]
 
-        return view('livewire.page.form-footer-detail', compact('destinations','categories', 'number','trip_lengths','hotels'));
+        return view('livewire.page.form-footer-detail', compact('destinations','categories', 'number','trip_lengths','hotels', 'blackFridayPrice', 'blackFridayOriginalPrice'));
     }
 
     public function store(){
@@ -305,6 +331,8 @@ class FormFooterDetail extends Component
             "email"=>$this->email,
             "phone"=>$this->phone,
             "comment"=>$g1Comment,
+            // G1's Create DTO accepts only an integer here. Keep its unset value;
+            // the exact USD/person offer price travels in the authenticated attribution above.
             "initial_price"=>0,
             "inquiry_date"=>$inquireDate,
             "dialCode"=>'',

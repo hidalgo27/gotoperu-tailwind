@@ -21,7 +21,20 @@ class OfferController extends Controller
 
         $now = now();
         abort_unless($campaign->is_active, 404);
-        abort_if($campaign->starts_at && $now->lt($campaign->starts_at), 404);
+        if ($campaign->slug === 'black-friday') {
+            abort_unless((int) $paquete->estado === 1, 404);
+        }
+
+        // Preview upcoming Black Friday offers only from this computer in local development.
+        $localBlackFridayPreview = $campaign->slug === 'black-friday'
+            && app()->environment('local')
+            && in_array(request()->getHost(), ['localhost', '127.0.0.1', '[::1]', '::1'], true)
+            && in_array(request()->ip(), ['127.0.0.1', '::1'], true);
+
+        abort_if(
+            !$localBlackFridayPreview && $campaign->starts_at && $now->lt($campaign->starts_at),
+            404
+        );
 
         if ($campaign->ends_at && $now->gte($campaign->ends_at)) {
             return redirect()->route('packages.detail', ['paquete' => $paquete], 302);

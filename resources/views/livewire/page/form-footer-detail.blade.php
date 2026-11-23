@@ -144,6 +144,17 @@
         <div class="{{ $success ? 'w-11/12 max-w-6xl mx-auto' : 'quote-form-inner w-11/12 max-w-2xl mx-auto' }}">
             <div class="{{ $success ? 'quote-form-inner mx-auto text-center mb-6' : 'mb-4 text-center md:block md:mb-6' }}">
                 <img src="{{ asset('images/logos/logo-ave.svg') }}" alt="GoToPeru" class="block mx-auto h-12 w-auto max-w-full mb-1 md:mb-4">
+                @if($blackFridayPrice !== null)
+                    <p class="mb-3 inline-flex flex-wrap items-center justify-center gap-1 border-b border-secondary bg-tertiary px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white">
+                        <span class="whitespace-nowrap">Black <span class="text-secondary">Friday</span></span>
+                        <span class="ml-2 inline-flex flex-wrap items-center justify-center gap-2 border-l border-white/25 pl-3 normal-case tracking-normal">
+                            @if($blackFridayOriginalPrice !== null)
+                                <span class="whitespace-nowrap font-normal text-white/70">Regular price <del>US${{ number_format($blackFridayOriginalPrice, 2, '.', ',') }}</del></span>
+                            @endif
+                            <span class="whitespace-nowrap">US${{ number_format($blackFridayPrice, 2, '.', ',') }} <span class="font-normal text-white/70">per person</span></span>
+                        </span>
+                    </p>
+                @endif
                 @if(!$success)
                     <h2 class="text-lg text-center md:text-2xl md:text-center font-semibold text-tertiary">Request a Quote</h2>
                     <p class="mt-3 w-full bg-white px-2 py-2 text-center text-sm font-medium text-tertiary md:hidden">

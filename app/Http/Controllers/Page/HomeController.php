@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
+use App\Models\PackageCampaign;
 use App\Models\TCategoria;
 use App\Models\TDestino;
 use App\Models\THotel;
@@ -89,6 +90,76 @@ class HomeController extends Controller
             ));
     }
 
+
+    public function blackFriday()
+    {
+        $category = TCategoria::all();
+
+        // The catalogue can announce an upcoming campaign; each Offer retains its
+        // existing start/end access rules. Expired and inactive products are omitted.
+        $campaigns = PackageCampaign::query()
+            ->where('slug', 'black-friday')
+            ->where('is_active', true)
+            ->where(function ($query) {
+                $query->whereNull('ends_at')->orWhere('ends_at', '>', now());
+            })
+            ->whereHas('package', fn ($query) => $query->where('estado', 1))
+            ->with(['package.imagen_paquetes', 'package.paquetes_destinos.destinos'])
+            ->get()
+            ->filter(fn ($campaign) => (int) data_get($campaign->config, 'black_friday.collection_order') > 0)
+            ->sortBy(fn ($campaign) => (int) data_get($campaign->config, 'black_friday.collection_order'));
+
+        $blackFridayDeals = $campaigns->map(function ($campaign) {
+            $package = $campaign->package;
+            $image = filled($package->imagen)
+                ? $package->imagen
+                : $package->imagen_paquetes->first(fn ($image) => filled($image->nombre))?->nombre;
+            if (blank($image) || !is_numeric($campaign->offer_price) || $campaign->offer_price <= 0) {
+                return null;
+            }
+
+            $title = filled($campaign->headline) ? $campaign->headline : $package->titulo;
+            $destinations = $package->paquetes_destinos
+                ->map(fn ($destination) => trim((string) data_get($destination, 'destinos.nombre')))
+                ->filter()
+                ->unique(fn ($name) => mb_strtolower($name))
+                ->values();
+
+            return [
+                'id' => $package->id,
+                'name' => $title,
+                'title' => $title,
+                'slug' => $package->url,
+                'days' => $package->duracion,
+                'price' => $campaign->offer_price,
+                'original_price' => is_numeric($campaign->original_price)
+                    && $campaign->original_price > $campaign->offer_price
+                    ? $campaign->original_price : null,
+                'label' => $campaign->offer_label,
+                'image' => $image,
+                'destinations' => $destinations->implode(' · '),
+                'offer_url' => route('offers.show', [
+                    'packageSlug' => $package->url,
+                    'campaignSlug' => $campaign->slug,
+                ]),
+                'featured' => (bool) data_get($campaign->config, 'black_friday.super_deal'),
+                'multi_country' => (bool) data_get($campaign->config, 'black_friday.multi_country'),
+            ];
+        })->filter()->values();
+
+        $featuredDeals = $blackFridayDeals->where('featured', true)->values();
+        $featuredDeal = $featuredDeals->first();
+        $secondaryDeals = $featuredDeals->skip(1)->values();
+        $multiCountryDeals = $blackFridayDeals->where('multi_country', true)->values();
+        $blackFridayStartingDeal = $blackFridayDeals->sortBy('price')->first();
+        $blackFridayMinPrice = $blackFridayStartingDeal['price'] ?? null;
+        $blackFridayMinOriginalPrice = $blackFridayStartingDeal['original_price'] ?? null;
+
+        return view('page.black-friday', compact(
+            'category', 'blackFridayDeals', 'featuredDeal', 'secondaryDeals',
+            'multiCountryDeals', 'blackFridayMinPrice', 'blackFridayMinOriginalPrice'
+        ));
+    }
 
     public function packages() {
         $paquetes = TPaquete::where('is_p_t', '1')->orderBy('duracion')->get();

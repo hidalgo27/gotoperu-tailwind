@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/black-friday', [HomeController::class, 'blackFriday'])->name('black-friday');
 Route::get('/'.__('message.url_1'), [HomeController::class, 'packages'])->name('packages.all');
 Route::get('/'.__('message.url_1').'/{paquete}', [HomeController::class, 'packages_detail'])->name('packages.detail');
 

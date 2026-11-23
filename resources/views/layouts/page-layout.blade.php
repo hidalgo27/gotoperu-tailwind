@@ -400,8 +400,144 @@
     {{-- Header, media, editorial content and trust share one initial viewport. --}}
     <div class="home-intro">
 @endif
+    @php
+        // Reuse persisted campaign validity; keep every header and the announcement's presentation unchanged.
+        $blackFridaySchedule = \Illuminate\Support\Facades\Schema::hasTable('package_campaigns')
+            ? \App\Models\PackageCampaign::query()
+                ->where('slug', 'black-friday')
+                ->where('is_active', true)
+                ->whereHas('package', fn ($query) => $query->where('estado', 1))
+                ->whereNotNull('starts_at')
+                ->whereNotNull('ends_at')
+                ->orderByDesc('ends_at')
+                ->first(['starts_at', 'ends_at'])
+            : null;
+    @endphp
+    {{-- One campaign announcement, independent of the shared headers. Epoch milliseconds are timezone-unambiguous. --}}
+    <div class="relative z-[60] shrink-0" data-black-friday-bar
+         x-show="visible" style="display: none;"
+         x-data="{
+             startsAt: {{ $blackFridaySchedule ? $blackFridaySchedule->starts_at->getTimestamp() * 1000 : 0 }},
+             endsAt: {{ $blackFridaySchedule ? $blackFridaySchedule->ends_at->getTimestamp() * 1000 : 0 }},
+             closed: false,
+             visible: false,
+             phase: 'pre-launch',
+             days: '00',
+             hours: '00',
+             minutes: '00',
+             seconds: '00',
+             timer: null,
+             resizeHandler: null,
+             label: 'Ends in',
+             animateDigit(element, value) {
+                 const previous = element.dataset.countdownValue;
+                 if (previous === value) return;
+                 element.dataset.countdownValue = value;
+                 if (previous === undefined || !element.getClientRects().length || !element.animate
+                     || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                 element.getAnimations().forEach(animation => animation.cancel());
+                 element.animate([
+                     { transform: 'translateY(-6px)', opacity: 0.3 },
+                     { transform: 'translateY(0)', opacity: 1 }
+                 ], { duration: 280, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)' });
+             },
+             init() {
+                 try { this.closed = sessionStorage.getItem('gtp_black_friday_2026_bar_closed') === '1'; } catch (error) {}
+                 this.tick();
+                 if (!this.visible) return;
+                 this.resizeHandler = () => this.$nextTick(() => this.syncOffset());
+                 window.addEventListener('resize', this.resizeHandler, { passive: true });
+                 this.timer = window.setInterval(() => this.tick(), 1000);
+                 this.$nextTick(() => this.syncOffset(true));
+             },
+             tick() {
+                 const now = Date.now();
+                 if (now >= this.endsAt || this.closed) {
+                     if (now >= this.endsAt) this.phase = 'ended';
+                     this.visible = false;
+                     this.stopTimer();
+                     this.$nextTick(() => this.syncOffset(true));
+                     return;
+                 }
+                 this.phase = now < this.startsAt ? 'pre-launch' : 'live';
+                 // The campaign launches Monday; the countdown always points to Friday's close.
+                 const remaining = Math.ceil((this.endsAt - now) / 1000);
+                 const pad = value => String(value).padStart(2, '0');
+                 this.days = pad(Math.floor(remaining / 86400));
+                 this.hours = pad(Math.floor(remaining / 3600) % 24);
+                 this.minutes = pad(Math.floor(remaining / 60) % 60);
+                 this.seconds = pad(remaining % 60);
+                 this.visible = true;
+             },
+             syncOffset(notify = false) {
+                 const height = this.visible ? this.$refs.bar.getBoundingClientRect().height : 0;
+                 this.$el.style.height = height + 'px';
+                 if (height > 0 && window.matchMedia('(max-width: 767px)').matches) {
+                     document.documentElement.style.setProperty('--gtp-bf-bar-offset', height + 'px');
+                 } else {
+                     document.documentElement.style.removeProperty('--gtp-bf-bar-offset');
+                 }
+                 // Recalculate the existing header/hero offsets without a second scroll handler.
+                 if (notify) window.dispatchEvent(new Event('resize'));
+             },
+             close() {
+                 this.closed = true;
+                 this.visible = false;
+                 this.stopTimer();
+                 try { sessionStorage.setItem('gtp_black_friday_2026_bar_closed', '1'); } catch (error) {}
+                 this.$nextTick(() => this.syncOffset(true));
+             },
+             stopTimer() {
+                 if (this.timer !== null) window.clearInterval(this.timer);
+                 this.timer = null;
+             },
+             destroy() {
+                 this.stopTimer();
+                 if (this.resizeHandler) window.removeEventListener('resize', this.resizeHandler);
+                 document.documentElement.style.removeProperty('--gtp-bf-bar-offset');
+             }
+         }">
+        <div x-ref="bar" class="fixed inset-x-0 top-0 z-[60] bg-tertiary text-white md:static">
+            <div class="relative flex min-h-10 items-center justify-between px-4 md:justify-center">
+                <a href="{{ route('black-friday') }}"
+                   class="group inline-flex min-h-10 items-center gap-3 whitespace-nowrap text-xs md:gap-6 focus-visible:outline focus-visible:outline-2">
+                    <span class="font-semibold uppercase leading-none tracking-wider md:text-sm">Black <span class="text-secondary">Friday</span></span>
+                    <span role="timer" aria-live="off" class="relative inline-flex h-8 items-center gap-1 overflow-hidden border-t border-white/20 bg-black bg-opacity-20 px-2 shadow-inner tabular-nums md:gap-2 md:px-3"
+                          :aria-label="label + ': ' + days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds'">
+                        <span class="absolute inset-x-0 bottom-0 h-px bg-secondary bg-opacity-50" aria-hidden="true"></span>
+                        <span class="inline-flex items-baseline gap-1" aria-hidden="true">
+                            <span class="inline-block text-base font-medium leading-none md:text-xl" x-text="days" x-effect="animateDigit($el, days)"></span>
+                            <span class="text-xs font-normal text-white/60">d</span>
+                        </span>
+                        <span class="inline-flex items-baseline gap-1 border-l border-white/20 pl-2" aria-hidden="true">
+                            <span class="inline-block text-base font-medium leading-none md:text-xl" x-text="hours" x-effect="animateDigit($el, hours)"></span>
+                            <span class="text-xs font-normal text-white/60">h</span>
+                        </span>
+                        <span class="inline-flex items-baseline gap-1 border-l border-white/20 pl-2" aria-hidden="true">
+                            <span class="inline-block text-base font-medium leading-none md:text-xl" x-text="minutes" x-effect="animateDigit($el, minutes)"></span>
+                            <span class="text-xs font-normal text-white/60">m</span>
+                        </span>
+                        <span class="hidden items-baseline gap-1 border-l border-white/20 pl-2 lg:flex" aria-hidden="true">
+                            <span class="inline-block text-base font-medium leading-none md:text-xl" x-text="seconds" x-effect="animateDigit($el, seconds)"></span>
+                            <span class="text-xs font-normal text-white/60">s</span>
+                        </span>
+                    </span>
+                    <span class="hidden items-center gap-2 text-xs font-medium text-white md:inline-flex">
+                        Explore deals
+                        <x-heroicon-o-arrow-right class="h-4 w-4 text-secondary motion-safe:transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                    </span>
+                </a>
+                <button type="button" @click="close()" aria-label="Close Black Friday announcement"
+                        class="absolute right-0 top-0 inline-flex h-10 w-10 items-center justify-center text-white/70 hover:text-secondary focus-visible:outline focus-visible:outline-2">
+                    <x-heroicon-o-x class="h-4 w-4" aria-hidden="true" />
+                </button>
+            </div>
+        </div>
+    </div>
+
     {{-- One mobile header and drawer, shared by every page using this layout. --}}
     <div class="site-mobile-header" data-mobile-site-header :class="{ 'is-open': menu, 'is-closing': drawerClosing }"
+         :style="{ top: 'var(--gtp-bf-bar-offset, 0px)' }"
          x-data="{
              menu: false,
              drawerClosing: false,
@@ -462,8 +598,13 @@
          @keydown.escape.window="if (menu) { $event.preventDefault(); closeMenu(true); }"
          @keydown.tab="trapMenuFocus($event)"
          @resize.window="if (menu && window.matchMedia('(min-width: 768px)').matches) closeMenu()">
-        <div class="site-mobile-backdrop" aria-hidden="true" @click="closeMenu(true)"></div>
+        <div class="site-mobile-backdrop" aria-hidden="true" @click="closeMenu(true)"
+             :style="{ top: 'var(--gtp-bf-bar-offset, 0px)' }"></div>
         <header x-ref="mobileHeader" class="site-mobile-panel"
+                :style="{
+                    top: menu || drawerClosing ? 'calc(0.75rem + var(--gtp-bf-bar-offset, 0px))' : 'var(--gtp-bf-bar-offset, 0px)',
+                    height: menu || drawerClosing ? 'calc(' + (window.CSS?.supports('height', '100dvh') ? '100dvh' : '100vh') + ' - 1.5rem - var(--gtp-bf-bar-offset, 0px))' : null
+                }"
                 :role="menu ? 'dialog' : null" :aria-modal="menu ? 'true' : null"
                 :aria-label="menu ? 'Main navigation' : null">
             <div class="site-mobile-row">
@@ -529,7 +670,7 @@
             </div>
         </header>
     </div>
-@if(request()->routeIs('home'))
+    {{-- One desktop header, shared by every page using this layout. --}}
     <header class="relative z-30 hidden border-b border-gray-200 bg-white/95 md:block">
         <div class="flex min-h-20 w-full items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-10 xl:px-12">
                 <a href="{{ route('home') }}" aria-label="GoToPeru home" class="inline-flex min-h-12 items-center">
@@ -549,47 +690,15 @@
                 </div>
         </div>
     </header>
-@else
-    <header class="hidden md:block">
-        <div class="border-b dark:border-gray-900 dark:border-opacity-40  shadow p-4 bg-gray-50 items-center flex flex-wrap">
-            <div class="mx-auto hidden md:block">
-                <a href="/"><img src="https://gotoperu-com.s3-us-west-1.amazonaws.com/logos/logo-gotoperu-black.png" alt="" class="w-full"></a>
-            </div>
-            <div class="flex-1 p-3 dark:text-gray-400 hidden sm:inline-block">
-                <div class='console-container'>
-                    <span id='text'></span>
-                    <div class='console-underscore' id='console'>_</div>
-                </div>
-            </div>
-            <div class="flex justify-end gap-4 items-center hidden sm:inline-flex">
-{{--                <button id="switchTheme" class="h-10 w-10 flex justify-center items-center focus:outline-none text-gray-500">--}}
-{{--                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>--}}
-{{--                </button>--}}
 
-{{--                @livewire('page.form-inquire')--}}
-{{--                @livewire('page.form-subscribe')--}}
-                <span>info@gotoperu.com</span>
-                <a href="#form-dream-adventure" data-quote-source="header" class="btn-secondary text-center">{{__('message.button_inquire')}}</a>
-                <div class="site-header-affiliation">
-                    <span>Part of</span>
-                    <img src="{{ $grayLineHeaderLogo }}" alt="Gray Line" width="90" height="52" decoding="async">
-                </div>
-                <div class="dark:text-gray-400">
-                    <span class="text-xs block text-right">US</span>
-                    +1 (813) 455-8646
-                </div>
-            </div>
-        </div>
-    </header>
-@endif
 
     @if(request()->routeIs('home'))
         <div class="hidden md:block" data-home-nav-slot>
     @endif
-    <nav class="banner-wrapper top-0 z-30 {{ request()->routeIs('home') ? 'home-nav relative hidden md:block' : 'sticky' }}">
+    <nav class="banner-wrapper home-nav top-0 z-30 hidden md:block {{ request()->routeIs('home') ? 'relative' : 'sticky' }}">
         <div class="banner">
             <!-- This example requires Tailwind CSS v2.0+ -->
-            <div class="{{ request()->routeIs('home') ? 'border-b border-white/30 bg-white/80 backdrop-blur-sm transition-colors duration-300' : 'bg-gray-50 opacity-90 shadow-lg dark:bg-gray-800' }} hidden md:inline-flex">
+            <div class="border-b border-white/30 bg-white/80 backdrop-blur-sm transition-colors duration-300 hidden md:inline-flex">
                 <div class="container flex items-center justify-center mx-auto text-gray-600 capitalize " x-data="{menu : false}">
                     {{--                    <a href="#" class="text-gray-800 text-sm dark:text-gray-200 border-b border-transparent transition duration-500 hover:border-blue-500 mx-1.5 sm:mx-6">Peru Travel Packages</a>--}}
                     @foreach($nav_links as $nav_link)
@@ -597,7 +706,7 @@
                             <div class="relative">
 
                              @if($nav_link['nav_sub_links'])
-                                    <span @click="menu = !menu" class="menu-list {{ request()->routeIs('home') ? 'home-nav-link' : 'dark:text-gray-400' }} flex items-center block cursor-pointer {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+                                    <span @click="menu = !menu" class="menu-list home-nav-link flex items-center block cursor-pointer {{ $nav_link['active'] == 1 ? 'active' : '' }}">
                                         {{ $nav_link['name'] }}
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -627,7 +736,7 @@
 
                                 </div>
                                 @else
-                                    <a href="{{ $nav_link['route'] }}" class="menu-list {{ request()->routeIs('home') ? 'home-nav-link' : 'dark:text-gray-400' }} block relative {{ $nav_link['active'] == 1 ? 'active' : '' }}">
+                                    <a href="{{ $nav_link['route'] }}" class="menu-list home-nav-link block relative {{ $nav_link['active'] == 1 ? 'active' : '' }}">
                                         {{ $nav_link['name'] }}
                                     </a>
                                 @endif
@@ -637,9 +746,7 @@
                         @endif
 
                     @endforeach
-                    @if(request()->routeIs('home'))
-                        <a href="#form-dream-adventure" data-quote-source="sticky_nav" class="home-sticky-cta" hidden>Request a Quote</a>
-                    @endif
+                    <a href="#form-dream-adventure" data-quote-source="sticky_nav" class="home-sticky-cta" hidden>Request a Quote</a>
 {{--                    <a href="https://gotolatam.com/" target="_blank" class="dark:text-gray-400 menu-list block relative">South America Packages</a>--}}
 
 
@@ -1035,6 +1142,7 @@
         let refOffset = 0;
         const bannerHeight = 77;
         const bannerWrapper = document.querySelector('.banner-wrapper');
+        const campaignBar = document.querySelector('[data-black-friday-bar]');
         const homeNavSlot = document.querySelector('[data-home-nav-slot]');
         const homeIntro = homeNavSlot?.closest('.home-intro');
         const homeStickyCta = homeNavSlot?.querySelector('.home-sticky-cta');
@@ -1094,7 +1202,7 @@
             }
             const scrollingUp = newOffset < refOffset;
             const wasHidden = bannerWrapper.classList.contains('animateOut');
-            let stickyStart = bannerHeight;
+            let stickyStart = bannerHeight + (campaignBar?.offsetHeight || 0);
             if (homeNavSlot) {
                 stickyStart = homeNavSlot.getBoundingClientRect().top + newOffset;
                 const stuck = window.matchMedia('(min-width: 768px)').matches && newOffset > stickyStart;
@@ -1135,60 +1243,6 @@
         if (homeNavSlot || mobileHeader) window.addEventListener('resize', handler, { passive: true });
         handler();
     })();
-
-    // function([string1, string2],target id,[color1,color2])
-    @unless(request()->routeIs('home'))
-        consoleText(['Go with the Experts', 'Vamos a Perú'], 'text',['#585858','#7F8429','#f9a825']);
-    @endunless
-
-    function consoleText(words, id, colors) {
-        if (colors === undefined) colors = ['#fff'];
-        var visible = true;
-        var con = document.getElementById('console');
-        var letterCount = 1;
-        var x = 1;
-        var waiting = false;
-        var target = document.getElementById(id)
-        target.setAttribute('style', 'color:' + colors[0])
-        window.setInterval(function() {
-
-            if (letterCount === 0 && waiting === false) {
-                waiting = true;
-                target.innerHTML = words[0].substring(0, letterCount)
-                window.setTimeout(function() {
-                    var usedColor = colors.shift();
-                    colors.push(usedColor);
-                    var usedWord = words.shift();
-                    words.push(usedWord);
-                    x = 1;
-                    target.setAttribute('style', 'color:' + colors[0])
-                    letterCount += x;
-                    waiting = false;
-                }, 1000)
-            } else if (letterCount === words[0].length + 1 && waiting === false) {
-                waiting = true;
-                window.setTimeout(function() {
-                    x = -1;
-                    letterCount += x;
-                    waiting = false;
-                }, 1000)
-            } else if (waiting === false) {
-                target.innerHTML = words[0].substring(0, letterCount)
-                letterCount += x;
-            }
-        }, 100)
-        window.setInterval(function() {
-            if (visible === true) {
-                con.className = 'console-underscore hidden'
-                visible = false;
-
-            } else {
-                con.className = 'console-underscore'
-
-                visible = true;
-            }
-        }, 400)
-    }
 
     // document.getElementById('switchTheme').addEventListener('click', function() {
     //

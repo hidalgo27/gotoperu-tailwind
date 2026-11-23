@@ -85,6 +85,13 @@
     @apply relative isolate flex min-h-screen flex-col bg-tertiary;
 }
 
+.site-header-affiliation {
+    @apply inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-xs text-gray-500;
+}
+.site-header-affiliation img {
+    @apply block h-auto w-16 object-contain;
+}
+
 .site-mobile-header {
     display: none;
 }
@@ -235,6 +242,15 @@
     .site-mobile-header:is(.is-open, .is-closing) .site-mobile-contact {
         @apply grid gap-1 text-sm text-white/70;
     }
+    .site-mobile-contact > figure {
+        @apply mb-4 flex flex-col items-start gap-2 border-b border-white/10 pb-4;
+    }
+    .site-mobile-contact > figure figcaption {
+        @apply text-xs font-medium uppercase tracking-wide text-white/60;
+    }
+    .site-mobile-contact > figure img {
+        @apply block h-auto w-20 object-contain;
+    }
     .site-mobile-contact p {
         @apply mb-2 text-xs font-semibold uppercase tracking-wider text-white/60;
     }
@@ -321,9 +337,9 @@
 .home-shell {
     @apply w-full px-4 sm:px-6 lg:px-12;
 }
-.home-intro .menu-list.home-nav-link,
-.home-intro .menu-list.home-nav-link:hover,
-.home-intro .menu-list.home-nav-link.active {
+.home-nav .menu-list.home-nav-link,
+.home-nav .menu-list.home-nav-link:hover,
+.home-nav .menu-list.home-nav-link.active {
     @apply bg-transparent dark:bg-transparent;
 }
 .home-intro.nav-stuck {
@@ -438,7 +454,7 @@
     @apply mb-10 flex flex-col gap-6 lg:mb-12 lg:flex-row lg:items-end lg:justify-between;
 }
 .home-social-bridge {
-    @apply relative isolate overflow-visible mt-10 grid grid-cols-1 md:mt-20 lg:mt-20 lg:min-h-96 lg:grid-cols-12;
+    @apply relative isolate overflow-visible mt-10 grid grid-cols-1 md:mt-20 lg:mt-32 lg:min-h-96 lg:grid-cols-12;
 }
 .home-social-bridge__backdrop {
     @apply pointer-events-none absolute inset-0 z-10 overflow-hidden bg-tertiary lg:top-8;
@@ -552,6 +568,15 @@
 /* The existing shared recognition block and footer use Home's editorial container. */
 .site-recognition {
     @apply bg-white py-8 font-sans text-tertiary md:py-10;
+}
+.site-recognition > .home-content > figure {
+    @apply mb-6 flex flex-col items-center gap-2 border-b border-gray-200 pb-6;
+}
+.site-recognition > .home-content > figure figcaption {
+    @apply text-xs font-medium uppercase tracking-wider text-gray-500;
+}
+.site-recognition > .home-content > figure img {
+    @apply block h-auto w-28 max-w-full object-contain md:w-32;
 }
 .site-recognition > .home-content > figure > p {
     @apply mt-2 max-w-3xl text-center text-sm leading-relaxed text-gray-600;
