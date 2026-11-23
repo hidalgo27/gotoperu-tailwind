@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\FormpageController;
 use App\Http\Controllers\Page\HomeController;
 use App\Http\Controllers\Page\OfferController;
+use App\Http\Controllers\Page\SitemapController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/black-friday', [HomeController::class, 'blackFriday'])->name('black-friday');
 Route::get('/'.__('message.url_1'), [HomeController::class, 'packages'])->name('packages.all');
 Route::get('/'.__('message.url_1').'/{paquete}', [HomeController::class, 'packages_detail'])->name('packages.detail');
